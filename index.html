@@ -301,7 +301,7 @@ function App() {
   /* ── TOP BAR ── */
   const TopBar = () => (
     <div className="bg-brand-dark text-gray-300 text-xs md:text-sm py-2.5 border-b border-gray-800 hide-mobile">
-      <div className="w-full px-4 lg:px-12 flex justify-between items-center">
+      <div className="w-full px-4 sm:px-7 lg:px-10 flex justify-between items-center">
         <span className="font-body tracking-wide truncate">Angola · Luanda — Tecnologia que conecta. Soluções que impulsionam.</span>
         <div className="flex items-center space-x-6 flex-shrink-0">
           <span className="flex items-center space-x-2"><i className="fa-solid fa-phone text-brand-red text-xs"></i><span>(+244) 923 457 890</span></span>
@@ -322,7 +322,7 @@ function App() {
   /* ── HEADER (LOGOMARCA AMPLIADA COM IMAGEM ORIGINAL DUPLAS.PNG) ── */
   const Header = () => (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-md transition-all">
-      <div className="w-full px-4 lg:px-12 h-28 md:h-[125px] flex items-center justify-between">
+      <div className="w-full px-4 sm:px-7 lg:px-10 h-28 md:h-[125px] flex items-center justify-between">
         
         {/* LOGO AMPLIADO */}
         <button onClick={()=>setPage('home')} className="flex-shrink-0 py-2 flex items-center space-x-3 text-left group">
@@ -392,7 +392,7 @@ function App() {
     <section className="relative text-white overflow-hidden animate-fade-in-up" style={{minHeight:'290px'}}>
       <img src={img} className="absolute inset-0 w-full h-full object-cover animate-fade-in-scale" style={{filter:'brightness(0.28)'}}/>
       <div className="absolute inset-0 page-hero-overlay"></div>
-      <div className="relative z-10 w-full px-4 lg:px-10 py-16 md:py-20 flex flex-col justify-end" style={{minHeight:'290px'}}>
+      <div className="relative z-10 w-full px-4 sm:px-7 lg:px-10 py-16 md:py-20 flex flex-col justify-end" style={{minHeight:'290px'}}>
         <span className="inline-block badge-red text-white text-[10px] font-heading tracking-[0.2em] uppercase px-3 py-1 rounded mb-3 w-fit shadow">{tag}</span>
         <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">{title}</h1>
         {subtitle&&<p className="mt-3 text-gray-300 font-body max-w-3xl text-sm md:text-base leading-relaxed">{subtitle}</p>}
@@ -411,7 +411,7 @@ function App() {
           className="absolute inset-0 w-full h-full object-cover animate-fade-in-scale" style={{filter:'brightness(0.24) contrast(1.15)'}}/>
         <div className="absolute inset-0" style={{background:'linear-gradient(135deg,rgba(10,12,18,0.96) 0%,rgba(10,12,18,0.65) 55%,rgba(180,0,0,0.12) 100%)'}}></div>
         
-        <div className="relative z-10 w-full px-4 lg:px-12 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center" style={{minHeight:'calc(100vh - 90px)'}}>
+        <div className="relative z-10 w-full px-4 sm:px-7 lg:px-10 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center" style={{minHeight:'calc(100vh - 90px)'}}>
           <div className="lg:col-span-7 space-y-6 md:space-y-8 animate-fade-in-left">
             <div className="flex items-center space-x-3">
               <div className="w-12 h-1 bg-brand-red rounded-full animate-pulse-glow"></div>
@@ -481,7 +481,7 @@ function App() {
 
       {/* STATS BAR */}
       <section className="bg-brand-dark py-10 border-y border-gray-800">
-        <div className="w-full px-4 lg:px-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div className="w-full px-4 sm:px-7 lg:px-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
             { val:'99.9%', label:'Disponibilidade de Rede', icon:'fa-signal' },
             { val:'10+ Anos', label:'Experiência no Mercado', icon:'fa-award' },
@@ -499,7 +499,7 @@ function App() {
 
       {/* FEATURED SERVICES */}
       <section className="py-16 bg-gray-50">
-        <div className="w-full px-4 lg:px-12">
+        <div className="w-full px-4 sm:px-7 lg:px-10">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="font-heading text-brand-red text-xs font-bold tracking-[0.25em] uppercase">O Que Fazemos</span>
             <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2 uppercase heading-line">Nossas Soluções Principais</h2>
@@ -544,7 +544,7 @@ function App() {
         subtitle="Conexão ultra rápida, dedicada e estável com fibra óptica e VSAT para residências e empresas."
         img="https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=1800&q=90"/>
       <section className="py-16 bg-gray-50">
-        <div className="w-full px-4 lg:px-10">
+        <div className="w-full px-4 sm:px-7 lg:px-10">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="font-heading text-3xl font-extrabold text-gray-900 uppercase heading-line">Planos de Internet</h2>
             <p className="font-body text-sm text-gray-600 mt-3">Escolha o plano ideal para a sua residência ou empresa com preços transparentes em Kwanza (Kz).</p>
@@ -599,7 +599,7 @@ function App() {
         subtitle="Transforme a comunicação da sua empresa com centrais virtuais PABX IP, troncos SIP e rádios microondas em Angola."
         img="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=90"/>
       <section className="py-16 bg-gray-50">
-        <div className="w-full px-4 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="w-full px-4 sm:px-7 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-6">
           {telecomServices.map((s,i)=>(
             <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 card-hover hover:border-brand-red transition-all">
               <div className="img-zoom h-52 relative">
@@ -631,7 +631,7 @@ function App() {
         subtitle="Engenharia de redes de dados, fusão de fibra óptica, sistemas de segurança eletrónica avançada e data centers corporativos."
         img="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1800&q=90"/>
       <section className="py-16 bg-gray-50">
-        <div className="w-full px-4 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="w-full px-4 sm:px-7 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-6">
           {techServices.map((s,i)=>(
             <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 card-hover hover:border-brand-red transition-all">
               <div className="img-zoom h-52 relative">
@@ -664,7 +664,7 @@ function App() {
 
     return (
       <div className="py-10 bg-gray-50 min-h-screen animate-fade-in-up">
-        <div className="w-full px-4 lg:px-10">
+        <div className="w-full px-4 sm:px-7 lg:px-10">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-7 pb-5 border-b border-gray-200 gap-3">
             <div>
               <h1 className="font-heading font-bold text-2xl md:text-3xl text-gray-900 uppercase tracking-wide">Loja Online</h1>
@@ -741,7 +741,7 @@ function App() {
         subtitle="Mais de uma década a transformar a conectividade e infraestrutura tecnológica de empresas e famílias em Angola."
         img="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1800&q=90"/>
       <section className="py-16 bg-gray-50">
-        <div className="w-full px-4 lg:px-10">
+        <div className="w-full px-4 sm:px-7 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-14">
             <div>
               <span className="font-heading text-brand-red text-[11px] font-medium tracking-[0.3em] uppercase">A Nossa História</span>
@@ -765,7 +765,7 @@ function App() {
         subtitle="Estamos prontos para atender a sua empresa ou residência em Luanda e em todo o território nacional."
         img="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=90"/>
       <section className="py-16 bg-gray-50">
-        <div className="w-full px-4 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        <div className="w-full px-4 sm:px-7 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           <div className="lg:col-span-5 space-y-4">
             {[
               {icon:'fa-phone',label:'Telefone',val:'(+244) 923 457 890',img:'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80'},
@@ -822,7 +822,7 @@ function App() {
   /* ════ FOOTER (LOGOMARCA: "Duplas" em BRANCO, "DMP" em VERMELHO, "Investment" em BRANCO) ════ */
   const Footer = () => (
     <footer className="bg-brand-dark text-gray-300 border-t border-gray-800">
-      <div className="w-full px-4 lg:px-12 pt-16 pb-10">
+      <div className="w-full px-4 sm:px-7 lg:px-10 pt-16 pb-10">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-gray-800">
           
           {/* COLUMN 1: FOOTER LOGO COM "Duplas" E "Investment" EM BRANCO, E "DMP" EM VERMELHO */}
