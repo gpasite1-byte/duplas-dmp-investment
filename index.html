@@ -88,8 +88,9 @@
 const { useState, useEffect, useRef } = React;
 
 /* ─── DATA ─────────────────────────────────────────── */
-const LOGO_PATH = "logo.png";          // real logo file (copy to project folder)
-const LOGO_ABS  = "file:///C:/Users/GPA%20(PC)/.gemini/antigravity-ide/brain/6e0f548f-1bcd-4b7e-8245-addb4c0d7590/media__1785830520331.png";
+const LOGO_ONLINE = "https://i.ibb.co/XkF3VWps/DUPLAS.png";
+const LOGO_PATH   = "logo.png";
+const LOGO_ABS    = "file:///C:/Users/GPA%20(PC)/.gemini/antigravity-ide/brain/6e0f548f-1bcd-4b7e-8245-addb4c0d7590/media__1785830520331.png";
 
 const productsData = [
   { id:'p1', name:'Router Wi-Fi 6 AX3000', subtitle:'Dual Band · 4 Antenas', priceStr:'45.000 Kz', priceVal:45000, category:'Internet',
@@ -174,14 +175,16 @@ function App() {
   const cartTotal = cart.reduce((a,p)=>a+(p.priceVal||0)*p.qty,0);
 
   const handleLogoError = (e) => {
-    e.target.onerror = null;
-    e.target.src = LOGO_ABS;
+    if (e.target.src !== LOGO_PATH) {
+      e.target.onerror = null;
+      e.target.src = LOGO_PATH;
+    }
   };
 
   /* ── LOGO COMPONENT ── */
   const Logo = ({height=125}) => (
     <img
-      src={LOGO_PATH}
+      src={LOGO_ONLINE}
       alt="Duplas DMP Investment"
       style={{height:`${height}px`, width:'auto', objectFit:'contain', maxHeight:'140px', maxWidth:'500px'}}
       onError={handleLogoError}
