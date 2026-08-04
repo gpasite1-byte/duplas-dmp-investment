@@ -13,43 +13,39 @@
       theme: {
         extend: {
           colors: {
-            brand: {
-              red: '#E30613',
-              redHover: '#C7000B',
-              redDark: '#8F0006',
-              dark: '#070A10',
-              darkCard: '#0F1626',
-            }
+            brand: { red:'#CC0000', redHover:'#AA0000', dark:'#0A0C12', gray:'#1A1E2E' }
           },
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            heading: ['Oswald','Impact','sans-serif'],
+            body:    ['Barlow','system-ui','sans-serif'],
+            display: ['Bebas Neue','Impact','sans-serif'],
           }
         }
       }
     }
   </script>
 
-  <!-- Google Fonts Inter -->
+  <!-- Google Fonts: Oswald, Barlow, Bebas Neue -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- React 18 & Babel -->
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
-    html { scroll-behavior: smooth; }
-    
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #070A10; }
-    ::-webkit-scrollbar-thumb { background: #E30613; border-radius: 4px; }
+    *, body { font-family:'Barlow',system-ui,sans-serif; margin:0; padding:0; box-sizing:border-box; }
+    h1,h2,h3,.font-heading { font-family:'Oswald',Impact,sans-serif; }
+    html { scroll-behavior:smooth; }
 
-    /* ── HIGH-IMPACT ANIMATIONS ── */
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:#0A0C12; }
+    ::-webkit-scrollbar-thumb { background:#CC0000; border-radius:4px; }
+
+    /* ── ANIMATIONS ── */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(35px); }
       to { opacity: 1; transform: translateY(0); }
@@ -58,883 +54,1013 @@
       from { opacity: 0; transform: scale(0.93); }
       to { opacity: 1; transform: scale(1); }
     }
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-35px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(35px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
     @keyframes floatSlow {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(1deg); }
+      50% { transform: translateY(-12px) rotate(1deg); }
     }
     @keyframes shimmerText {
       0% { background-position: -200% 0; }
       100% { background-position: 200% 0; }
     }
     @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 20px rgba(227,6,19,0.35), 0 0 40px rgba(227,6,19,0.15); }
-      50% { box-shadow: 0 0 45px rgba(227,6,19,0.75), 0 0 80px rgba(227,6,19,0.35); }
+      0%, 100% { box-shadow: 0 0 24px rgba(204,0,0,0.4), 0 0 45px rgba(204,0,0,0.18); }
+      50% { box-shadow: 0 0 45px rgba(204,0,0,0.85), 0 0 85px rgba(204,0,0,0.45); }
     }
     @keyframes pulseRing {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(227,6,19,0.7); }
-      70% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(227,6,19,0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(227,6,19,0); }
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0.7); }
+      70% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(204,0,0,0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0); }
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    .animate-fade-in-up { animation: fadeInUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .animate-fade-in-scale { animation: fadeInScale 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-left { animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-right { animation: fadeInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .animate-float { animation: floatSlow 5.5s ease-in-out infinite; }
-    .animate-pulse-glow { animation: pulseGlow 3s infinite; }
+    .animate-pulse-glow { animation: pulseGlow 3.5s infinite; }
     .pulse-red { animation: pulseRing 2s infinite; }
     
+    .text-gradient-red {
+      background: linear-gradient(135deg,#CC0000 0%,#FF4444 50%,#CC0000 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 5s ease infinite;
+    }
     .animate-shimmer {
-      background: linear-gradient(90deg, #E30613 0%, #FF5555 25%, #FFFFFF 50%, #FF5555 75%, #E30613 100%);
+      background: linear-gradient(90deg, #CC0000 0%, #FF6666 25%, #FFFFFF 50%, #FF6666 75%, #CC0000 100%);
       background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: shimmerText 4.5s linear infinite;
     }
 
-    .glass-card {
-      background: rgba(15, 22, 38, 0.95);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
+    .glass { background:rgba(10,12,18,0.88); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.08); }
+    .glow-red { box-shadow:0 0 28px rgba(204,0,0,0.35),0 4px 16px rgba(0,0,0,0.4); }
+    .glow-red-hover:hover { box-shadow:0 0 45px rgba(204,0,0,0.6),0 8px 30px rgba(0,0,0,0.5); }
     
-    .card-hover {
-      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .card-hover:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px -10px rgba(227,6,19,0.25);
-    }
+    .img-zoom { overflow:hidden; }
+    .img-zoom img, .img-zoom-child { transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .img-zoom:hover img, .img-zoom:hover .img-zoom-child { transform:scale(1.08); }
+    
+    .card-hover { transition:all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .card-hover:hover { transform:translateY(-8px) scale(1.015); box-shadow:0 20px 35px -10px rgba(204,0,0,0.2); }
+    
+    .heading-line::after { content:''; display:block; width:56px; height:3px; background:#CC0000; margin:10px auto 0; border-radius:2px; }
+    .heading-line-left::after { content:''; display:block; width:56px; height:3px; background:#CC0000; margin:10px 0 0; border-radius:2px; }
+    
+    .nav-link { position:relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#CC0000; transition:width 0.3s ease; }
+    .nav-link:hover::after,.nav-link.active::after { width:100%; }
+    .nav-link.active { color:#CC0000; }
+    
+    .badge-red { background:linear-gradient(135deg,#CC0000,#E30613); }
+    .product-card { border-bottom:3px solid transparent; transition:all 0.35s ease; }
+    .product-card:hover { border-bottom-color:#CC0000; transform:translateY(-6px); box-shadow:0 15px 30px rgba(0,0,0,0.12); }
+    
+    input:focus, textarea:focus, select:focus { outline:none; border-color:#CC0000!important; box-shadow:0 0 0 3px rgba(204,0,0,0.12)!important; }
+    .stat-card { border-top:4px solid #CC0000; transition: transform 0.3s ease; }
+    .stat-card:hover { transform: translateY(-4px); }
 
-    .img-zoom { overflow: hidden; }
-    .img-zoom img { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-    .img-zoom:hover img { transform: scale(1.1); }
-
-    .nav-link { position: relative; }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #E30613;
-      transition: width 0.3s ease;
+    .section-full { width:100%; }
+    .mobile-menu { display:none; }
+    .mobile-menu.open { display:block; }
+    @keyframes slideDown { from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);} }
+    .mobile-menu.open { animation:slideDown 0.25s ease; }
+    .page-hero-overlay { background:linear-gradient(135deg,rgba(10,12,18,0.95) 0%,rgba(10,12,18,0.6) 70%,transparent 100%); }
+    
+    @media (max-width:768px){
+      .hide-mobile { display:none!important; }
+      .mobile-stack { flex-direction:column!important; }
     }
-    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-
-    /* Mobile menu animation */
-    .mobile-menu { display: none; }
-    .mobile-menu.open { display: block; }
-    @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-    .mobile-menu.open { animation: slideDown 0.25s ease; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans antialiased selection:bg-brand-red selection:text-white">
-  <div id="root"></div>
+<body class="bg-white text-gray-900 antialiased selection:bg-brand-red selection:text-white">
+<div id="root"></div>
 
-  <script type="text/babel">
-    const { useState, useEffect } = React;
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
 
-    /* ─── FULL CATALOGO PRODUTOS ANGOLA ─── */
-    const productsData = [
-      // --- INTERNET ---
-      { id: 'p1', name: 'Router Wi-Fi 6 AX3000', subtitle: 'Dual Band · 4 Antenas High Gain', priceStr: '45.000 Kz', priceVal: 45000, category: 'Internet', badge: 'Mais Vendido', img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80', specs: ['Dual Band 2.4GHz & 5GHz', 'Velocidade até 3000 Mbps', '4 Antenas Alto Ganho', 'MU-MIMO & OFDMA'] },
-      { id: 'p2', name: 'Antena Ubiquiti LiteBeam 5AC', subtitle: '23dBi · 5GHz AirMax Gen2', priceStr: '85.000 Kz', priceVal: 85000, category: 'Internet', badge: 'Longo Alcance', img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80', specs: ['Frequência 5GHz', 'Ganho 23dBi Enlaces 15km+', 'Alimentação PoE', 'Resistente a Ventos'] },
-      { id: 'p3', name: 'Router 4G/5G LTE Dual SIM', subtitle: 'Cat 6 · 300Mbps · 4x RJ45', priceStr: '65.000 Kz', priceVal: 65000, category: 'Internet', img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80', specs: ['Suporta Cartão SIM Unitel/Movicel', 'Failover Automático', 'Bateria Backup 4h', 'Wi-Fi 150m²'] },
-      { id: 'p4', name: 'ONU GPON Fibra Huawei', subtitle: '1x Port Gigabit GPON HG8310M', priceStr: '25.000 Kz', priceVal: 25000, category: 'Internet', img: 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80', specs: ['Compatível OLT Huawei/ZTE', '1 Porta RJ45 Gigabit', 'Baixo Consumo', 'Plug & Play'] },
-      { id: 'p5', name: 'Kit Suporte & Adaptador Starlink', subtitle: 'Fixação em Mastros & Telhados', priceStr: '55.000 Kz', priceVal: 55000, category: 'Internet', img: 'https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=600&q=80', specs: ['Aço Galvanizado Anticorrosão', 'Resistente a Intempéries', 'Ajuste Angular', 'Passagem Cabo Protegida'] },
+/* ─── DATA ─────────────────────────────────────────── */
+const LOGO_ONLINE = "https://i.ibb.co/XkF3VWps/DUPLAS.png";
+const LOGO_PATH   = "logo.png";
 
-      // --- REDES ---
-      { id: 'p6', name: 'Switch PoE+ 24 Portas Gigabit', subtitle: '24x PoE+ · 4x SFP · Managed 370W', priceStr: '120.000 Kz', priceVal: 120000, category: 'Redes', badge: 'Gestão Web', img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80', specs: ['24 Portas RJ45 Gigabit PoE+', '4 Slots SFP 1G/10G', 'Power Budget 370W', 'Rack 19" Metálico'] },
-      { id: 'p7', name: 'Switch Mikrotik CRS326 24P', subtitle: '24x Gigabit · 2x SFP+ 10G', priceStr: '180.000 Kz', priceVal: 180000, category: 'Redes', badge: 'Dual Boot', img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80', specs: ['24 Portas Gigabit RJ45', '2 Portas SFP+ 10G High Speed', 'Dual Boot (RouterOS / SwOS)', 'Consumo Baixo'] },
-      { id: 'p8', name: 'Cabo Fibra Óptica GYFTY 24F (1000m)', subtitle: 'Monomodo OS2 · 24 Fibras', priceStr: '68.000 Kz', priceVal: 68000, category: 'Redes', img: 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80', specs: ['24 Fibras Monomodo OS2', 'Rolo 1000 Metros', 'Proteção UV Antiroedores', 'Certificação ITU-T G.652D'] },
-      { id: 'p9', name: 'Cabo de Rede Cat6 UTP 305m', subtitle: '100% Cobre Puro Homologado', priceStr: '55.000 Kz', priceVal: 55000, category: 'Redes', img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80', specs: ['Caixa de 305 Metros', 'Condutores 100% Cobre 23AWG', 'Frequência 250MHz Gigabit', 'Capa LSZH Anti-Chama'] },
+const productsData = [
+  // --- INTERNET ---
+  { id:'p1', name:'Router Wi-Fi 6 AX3000', subtitle:'Dual Band · 4 Antenas High Gain', priceStr:'45.000 Kz', priceVal:45000, category:'Internet', badge:'Mais Vendido',
+    img:'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=600&q=80',
+    specs:['Dual Band 2.4GHz & 5GHz','Velocidade até 3000 Mbps','4 Antenas Alto Ganho','MU-MIMO & OFDMA'] },
+  { id:'p2', name:'Antena Ubiquiti LiteBeam 5AC Gen2', subtitle:'23dBi · 5GHz AirMax', priceStr:'85.000 Kz', priceVal:85000, category:'Internet', badge:'Longo Alcance',
+    img:'https://images.unsplash.com/photo-1533228876829-65c94e7b5025?auto=format&fit=crop&w=600&q=80',
+    specs:['Frequência 5GHz de Alta Performance','Ganho 23dBi Enlaces 15km+','Imunidade Ruído AirMax','Alimentação PoE Incluída'] },
+  { id:'p3', name:'Router 4G/5G LTE Dual SIM', subtitle:'Cat 6 · 300Mbps · 4x RJ45', priceStr:'65.000 Kz', priceVal:65000, category:'Internet',
+    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    specs:['Suporta Cartão SIM Unitel & Movicel','Failover Automático Dual SIM','Bateria Backup 4 Horas','Wi-Fi Cobertura 150m²'] },
+  { id:'p4', name:'ONU GPON Fibra Huawei HG8310M', subtitle:'1x Port Gigabit GPON', priceStr:'25.000 Kz', priceVal:25000, category:'Internet',
+    img:'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80',
+    specs:['Compatível OLT Huawei & ZTE','1 Porta RJ45 Gigabit 10/100/1000','Baixo Consumo Energia','Plug and Play'] },
+  { id:'p5', name:'Router Mikrotik hEX S Gigabit', subtitle:'5x RJ45 · 1x SFP · IPsec Hardware', priceStr:'58.000 Kz', priceVal:58000, category:'Internet', badge:'Profissional',
+    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    specs:['Processador Dual-Core 880MHz','5 Portas Gigabit + SFP Port','Aceleração IPsec Hardware','RouterOS Nível 4'] },
 
-      // --- SEGURANÇA ---
-      { id: 'p10', name: 'Câmera IP 4K Dome AI Hikvision', subtitle: 'ColorVu 8MP · Visão Noturna 40m · IP67', priceStr: '75.000 Kz', priceVal: 75000, category: 'Segurança', badge: 'AI Deteção', img: 'https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&w=600&q=80', specs: ['Resolução 4K Ultra HD 8MP', 'ColorVu Imagem Colorida 24/7', 'Deteção IA Pessoas & Veículos', 'Impermeável IP67 + IK10'] },
-      { id: 'p11', name: 'Câmera PTZ Speed Dome IP 4K', subtitle: '30x Zoom Óptico · Auto-Tracking · IR 150m', priceStr: '240.000 Kz', priceVal: 240000, category: 'Segurança', badge: '360° PTZ', img: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80', specs: ['30x Zoom Óptico', 'Rotação 360° Contínua', 'Rastreamento Automático', 'IR Noturno 150m'] },
-      { id: 'p12', name: 'NVR 16 Canais 4K Dahua 2x HDD', subtitle: 'Gravador IP 16P · 4K UHD · H.265+', priceStr: '160.000 Kz', priceVal: 160000, category: 'Segurança', img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80', specs: ['Suporta 16 Câmeras 4K', '2 Baias SATA (Até 20TB)', 'Compressão H.265+', 'App Telemóvel'] },
+  // --- REDES ---
+  { id:'p6', name:'Switch PoE+ 24 Portas Gigabit Managed', subtitle:'24x PoE+ · 4x SFP · 370W', priceStr:'120.000 Kz', priceVal:120000, category:'Redes', badge:'Gestão Web',
+    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    specs:['24 Portas RJ45 Gigabit PoE+','4 Slots SFP 1G/10G','Power Budget 370W Total','Chassi Metálico Rack 19"'] },
+  { id:'p7', name:'Switch Mikrotik CRS326 24P SFP+', subtitle:'24x Gigabit · 2x SFP+ 10G', priceStr:'180.000 Kz', priceVal:180000, category:'Redes', badge:'Dual Boot',
+    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    specs:['24 Portas Gigabit RJ45','2 Portas SFP+ 10G High Speed','Dual Boot (RouterOS / SwOS)','Consumo Ultra Eficiente'] },
+  { id:'p8', name:'Cabo Fibra Óptica GYFTY 24F (1000m)', subtitle:'Monomodo OS2 · 24 Fibras', priceStr:'68.000 Kz', priceVal:68000, category:'Redes',
+    img:'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80',
+    specs:['24 Fibras Monomodo OS2','Rolo 1000 Metros','Proteção UV e Antiroedores','Certificação ITU-T G.652D'] },
+  { id:'p9', name:'Cabo de Rede Cat6 UTP 305m', subtitle:'100% Cobre Puro · Homologado', priceStr:'55.000 Kz', priceVal:55000, category:'Redes',
+    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    specs:['Caixa de 305 Metros','Condutores 100% Cobre 23AWG','Frequência 250MHz Gigabit','Capa LSZH Anti-Chama'] },
 
-      // --- INFORMÁTICA ---
-      { id: 'p13', name: 'Laptop Dell Latitude 5540 i7', subtitle: 'Core i7 13ª Gen · 16GB RAM · 512GB SSD', priceStr: 'Sob Consulta', priceVal: 0, isCustom: true, category: 'Informática', badge: 'Empresarial', img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80', specs: ['Intel Core i7-1355U vPro', '16GB RAM DDR5', 'SSD NVMe 512GB', 'Tela 15.6" FHD IPS'] },
-      { id: 'p14', name: 'UPS / No-Break APC Smart 1500VA', subtitle: '1500VA / 1000W · LCD 230V', priceStr: '210.000 Kz', priceVal: 210000, category: 'Informática', img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80', specs: ['Capacidade 1500VA / 1000W', 'Onda Senoidal Pura', 'Proteção AVR', 'Display LCD'] },
+  // --- SEGURANÇA ---
+  { id:'p10', name:'Câmera IP 4K Dome AI Hikvision ColorVu', subtitle:'4K 8MP · Visão Noturna 40m · IP67', priceStr:'75.000 Kz', priceVal:75000, category:'Segurança', badge:'AI Deteção',
+    img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80',
+    specs:['Resolução 4K Ultra HD 8MP','ColorVu Imagem Colorida 24/7','Deteção IA Pessoas & Veículos','Proteção Impermeável IP67 + IK10'] },
+  { id:'p11', name:'Câmera PTZ Speed Dome IP 4K 30x Zoom', subtitle:'Auto-Tracking · IR 150m · PoE+', priceStr:'240.000 Kz', priceVal:240000, category:'Segurança', badge:'360° PTZ',
+    img:'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80',
+    specs:['30x Zoom Óptico de Precisão','Rotação Pan 360° Contínua','Rastreamento Automático Alvos','Visão Noturna IR até 150 metros'] },
+  { id:'p12', name:'NVR 16 Canais 4K Dahua 2x HDD', subtitle:'Gravador IP 16P · 4K UHD · H.265+', priceStr:'160.000 Kz', priceVal:160000, category:'Segurança',
+    img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80',
+    specs:['Suporta até 16 Câmeras 4K','2 Baias SATA (Até 20TB Total)','Compressão de Vídeo H.265+','Acesso Remoto via Smartphone'] },
 
-      // --- ACESSÓRIOS ---
-      { id: 'p15', name: 'Fusionadora de Fibra Óptica AI-9', subtitle: 'Motor 6 Motores · Alinhamento Núcleo', priceStr: '450.000 Kz', priceVal: 450000, category: 'Acessórios', badge: 'Profissional', img: 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80', specs: ['Fusão em 5 Segundos', 'Aquecimento em 15s', 'Mala + Clivador', 'Bateria 7800mAh'] },
-      { id: 'p16', name: 'Alicate de Cravar Profissional RJ45', subtitle: 'Cat5e / Cat6 / Cat6A + Decapador', priceStr: '15.000 Kz', priceVal: 15000, category: 'Acessórios', img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80', specs: ['Catraca de Pressão Regulável', 'Lâminas Alta Precisão', 'Cabo Ergonómico Antiderrapante'] }
-    ];
+  // --- INFORMÁTICA ---
+  { id:'p13', name:'Laptop Dell Latitude 5540 Core i7', subtitle:'i7 13ª Gen · 16GB RAM · 512GB SSD', priceStr:'Sob Consulta', priceVal:0, isCustom:true, category:'Informática', badge:'Empresarial',
+    img:'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80',
+    specs:['Intel Core i7-1355U vPro','16GB RAM DDR5 4800MHz','SSD M.2 NVMe 512GB High Speed','Tela 15.6" Full HD IPS Anti-reflexo'] },
+  { id:'p14', name:'UPS / No-Break APC Smart 1500VA', subtitle:'1500VA / 1000W · LCD 230V', priceStr:'210.000 Kz', priceVal:210000, category:'Informática',
+    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    specs:['Capacidade 1500VA / 1000 Watts','Onda Senoidal Pura','Proteção Surto e Estabilizador AVR','Display LCD'] },
 
-    /* ─── PLANOS INTERNET ─── */
-    const internetPlans = [
-      { name: 'Residencial Light', speed: '10 Mbps', price: '8.500 Kz', period: '/mês', badge: 'Mais Popular', features: ['Download ilimitado', 'Router Wi-Fi 6 incluído', 'Instalação rápida em Luanda', 'Suporte Técnico 24/7'] },
-      { name: 'Residencial Plus', speed: '30 Mbps', price: '18.500 Kz', period: '/mês', features: ['Ideal para streaming 4K e jogos', 'Router Dual Band Gigabit', 'Sem fidelização longa', 'Suporte Técnico Prioritário'] },
-      { name: 'Empresarial Pro', speed: '50 Mbps', price: '45.000 Kz', period: '/mês', badge: 'Recomendado', features: ['Banda 100% Dedicada 1:1', 'IP Fixo Público', 'SLA Garantido 99.9%', 'Gerente de Conta Dedicado'] },
-      { name: 'Corporativo Fibra', speed: '100 Mbps', price: '95.000 Kz', period: '/mês', features: ['Link Simétrico Dedicado 1:1', 'Múltiplos IPs Fixos', 'Monitorização Ativa 24h', 'Suporte Técnico VIP 15 min'] }
-    ];
+  // --- ACESSÓRIOS ---
+  { id:'p15', name:'Fusionadora de Fibra Óptica AI-9', subtitle:'Motor 6 Motores · Alinhamento Núcleo', priceStr:'450.000 Kz', priceVal:450000, category:'Acessórios', badge:'Profissional',
+    img:'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80',
+    specs:['Fusão Ultrarrápida em 5 Segundos','Aquecimento do Tubo em 15s','Mala com Ferramentas e Clivador','Bateria 7800mAh'] },
+  { id:'p16', name:'Alicate de Cravar Profissional RJ45/RJ11', subtitle:'Cat5e / Cat6 / Cat6A + Decapador', priceStr:'15.000 Kz', priceVal:15000, category:'Acessórios',
+    img:'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
+    specs:['Catraca de Pressão Regulável','Lâminas de Corte de Alta Precisão','Empunhadura Ergonómica Antiderrapante'] }
+];
 
-    /* ─── SERVIÇOS TELA INICIAL ─── */
-    const servicesList = [
-      { title: 'Internet Empresarial', desc: 'Conectividade estável e alta performance.', icon: 'fa-wifi', img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80', targetPage: 'internet' },
-      { title: 'Telecomunicações', desc: 'Soluções completas em voz, dados e comunicação.', icon: 'fa-tower-cell', img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80', targetPage: 'telecom' },
-      { title: 'Redes e Infraestrutura', desc: 'Projetos de redes estruturadas e fibra óptica.', icon: 'fa-network-wired', img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80', targetPage: 'tecnologia' },
-      { title: 'Suporte Técnico 24/7', desc: 'Atendimento especializado sempre que precisar.', icon: 'fa-headset', img: 'https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?auto=format&fit=crop&w=800&q=80', targetPage: 'telecom' },
-      { title: 'Instalação Profissional', desc: 'Instalação rápida e com padrão de qualidade.', icon: 'fa-screwdriver-wrench', img: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=800&q=80', targetPage: 'tecnologia' }
-    ];
+const internetPlans = [
+  { name:'Residencial Light', speed:'10 Mbps', price:'8.500 Kz', badge:'Popular',
+    img:'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=700&q=80',
+    features:['Download 10 Mbps simétrico','Router Wi-Fi 6 incluído','Instalação em 48h em Luanda','Suporte Técnico 24/7'] },
+  { name:'Residencial Plus', speed:'30 Mbps', price:'18.500 Kz',
+    img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80',
+    features:['30 Mbps — Streaming 4K & Gaming','Router Dual Band Gigabit AC3000','Sem taxas de instalação','Suporte Prioritário 12h'] },
+  { name:'Empresarial Pro', speed:'50 Mbps', price:'45.000 Kz', badge:'Recomendado',
+    img:'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=700&q=80',
+    features:['Banda 100% Dedicada 1:1','IP Fixo Público incluído','SLA Garantido 99.9% Uptime','Gerente de Conta Dedicado'] },
+  { name:'Corporativo Fibra', speed:'100 Mbps', price:'95.000 Kz',
+    img:'https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?auto=format&fit=crop&w=700&q=80',
+    features:['Link Simétrico 100 Mbps 1:1','Múltiplos IPs Fixos Públicos','NOC — Monitorização 24h/365d','SLA 4h — Técnico no Local'] },
+];
 
-    function App() {
-      const [page, setPage] = useState('home');
-      const [cart, setCart] = useState([]);
-      const [cartOpen, setCartOpen] = useState(false);
-      const [quoteOpen, setQuoteOpen] = useState(false);
-      const [detailProduct, setDetailProduct] = useState(null);
-      const [shopCategory, setShopCategory] = useState('ALL');
-      const [searchQuery, setSearchQuery] = useState('');
-      const [toastMsg, setToastMsg] = useState('');
-      const [mobileMenu, setMobileMenu] = useState(false);
+const telecomServices = [
+  { icon:'fa-phone-volume', title:'Centrais Telefónicas PABX IP', desc:'Sistemas de telefonia empresarial na nuvem com gravação de chamadas, IVR e ramais móveis para smartphones.', img:'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=700&q=80' },
+  { icon:'fa-network-wired', title:'Troncos SIP & VoIP Corporativo', desc:'Reduza até 60% nos custos de comunicação com chamadas nacionais e internacionais sobre IP com qualidade crystal clear.', img:'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=700&q=80' },
+  { icon:'fa-headset', title:'Call Center & IVR Inteligente', desc:'Plataforma completa de call center com distribuição automática, relatórios em tempo real e integração CRM.', img:'https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?auto=format&fit=crop&w=700&q=80' },
+  { icon:'fa-tower-cell', title:'Rádio Microondas Ponto-a-Ponto', desc:'Links de microondas de alta capacidade para conectar filiais, sites remotos e backhaul de operadoras em Angola.', img:'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80' },
+];
 
-      useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        setMobileMenu(false);
-      }, [page]);
+const techServices = [
+  { icon:'fa-video', title:'CCTV & Segurança Eletrónica IP', desc:'Instalação de câmeras de vigilância 4K com inteligência artificial para deteção de intrusos, rostos e veículos.', img:'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=700&q=80' },
+  { icon:'fa-server', title:'Servidores & Data Centers', desc:'Infraestrutura de data center com servidores HP/Dell, storages NAS/SAN, racks e sistemas UPS industriais.', img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80' },
+  { icon:'fa-sitemap', title:'Redes Estruturadas Cat6A & Fibra', desc:'Instalação de cablagem estruturada certificada, fusão de fibra óptica e redes Wi-Fi empresarial (Ubiquiti, Cisco).', img:'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=700&q=80' },
+  { icon:'fa-fire-extinguisher', title:'Controlo de Acesso & Alarmes', desc:'Sistemas de controlo de acesso biométrico, fechaduras eletrónicas, alarmes de incêndio e detecção de fumo.', img:'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=700&q=80' },
+];
 
-      const showToast = (msg) => {
-        setToastMsg(msg);
-        setTimeout(() => setToastMsg(''), 3500);
-      };
+/* ─── APP ─────────────────────────────────────────── */
+function App() {
+  const [page, setPage]             = useState('home');
+  const [cart, setCart]             = useState([]);
+  const [cartOpen, setCartOpen]     = useState(false);
+  const [quoteOpen, setQuoteOpen]   = useState(false);
+  const [detailProd, setDetailProd] = useState(null);
+  const [shopCat, setShopCat]       = useState('ALL');
+  const [search, setSearch]         = useState('');
+  const [toast, setToast]           = useState('');
+  const [mobileMenu, setMobileMenu] = useState(false);
 
-      const addToCart = (product) => {
-        setCart(prev => {
-          const found = prev.find(p => p.id === product.id);
-          if (found) {
-            return prev.map(p => p.id === product.id ? { ...p, qty: p.qty + 1 } : p);
-          }
-          return [...prev, { ...product, qty: 1 }];
-        });
-        showToast(`✓ "${product.name}" adicionado ao carrinho!`);
-      };
+  useEffect(()=>{ window.scrollTo({top:0,behavior:'smooth'}); setMobileMenu(false); },[page]);
 
-      const updateQty = (id, delta) => {
-        setCart(prev => prev.map(p => {
-          if (p.id === id) {
-            const n = p.qty + delta;
-            return n > 0 ? { ...p, qty: n } : null;
-          }
-          return p;
-        }).filter(Boolean));
-      };
+  const showToast = msg => { setToast(msg); setTimeout(()=>setToast(''),3500); };
 
-      const cartCount = cart.reduce((acc, item) => acc + item.qty, 0);
-      const totalKz = cart.reduce((acc, item) => acc + (item.priceVal || 0) * item.qty, 0);
+  const addToCart = p => {
+    setCart(prev => {
+      const f = prev.find(x=>x.id===p.id);
+      return f ? prev.map(x=>x.id===p.id?{...x,qty:x.qty+1}:x) : [...prev,{...p,qty:1}];
+    });
+    showToast(`✓ "${p.name}" adicionado ao carrinho`);
+  };
 
-      const navItems = [
-        { key: 'home', label: 'Início' },
-        { key: 'internet', label: 'Internet' },
-        { key: 'telecom', label: 'Telecomunicações' },
-        { key: 'tecnologia', label: 'Tecnologia' },
-        { key: 'loja', label: 'Loja' },
-        { key: 'sobre', label: 'Sobre Nós' },
-        { key: 'contactos', label: 'Contactos' }
-      ];
+  const updateQty = (id,d) => setCart(prev=>prev.map(p=>{
+    if(p.id===id){ const n=p.qty+d; return n>0?{...p,qty:n}:null; }
+    return p;
+  }).filter(Boolean));
 
-      return (
-        <div className="min-h-screen flex flex-col font-sans bg-gray-50 text-gray-900 selection:bg-brand-red selection:text-white">
-          
-          {/* TOAST NOTIFICATION */}
-          {toastMsg && (
-            <div className="fixed top-5 right-5 z-50 bg-[#070A10] text-white px-5 py-3 rounded-xl shadow-2xl border border-brand-red flex items-center space-x-3 text-xs font-bold animate-fade-in-scale">
-              <i className="fa-solid fa-circle-check text-brand-red text-base"></i>
-              <span>{toastMsg}</span>
+  const cartCount = cart.reduce((a,p)=>a+p.qty,0);
+  const cartTotal = cart.reduce((a,p)=>a+(p.priceVal||0)*p.qty,0);
+
+  const handleLogoError = (e) => {
+    if (e.target.src !== LOGO_PATH) {
+      e.target.onerror = null;
+      e.target.src = LOGO_PATH;
+    }
+  };
+
+  /* ── NAV ITEMS (CLEAN SINGLE TITLE ON HOVER) ── */
+  const navItems = [
+    {key:'home',        label:'Início'},
+    {key:'internet',    label:'Internet'},
+    {key:'telecom',     label:'Telecomunicações'},
+    {key:'tecnologia',  label:'Tecnologia'},
+    {key:'loja',        label:'Loja Online'},
+    {key:'sobre',       label:'Sobre Nós'},
+    {key:'contactos',   label:'Contactos'},
+  ];
+
+  /* ── TOP BAR ── */
+  const TopBar = () => (
+    <div className="bg-brand-dark text-gray-300 text-xs md:text-sm py-2.5 border-b border-gray-800 hide-mobile">
+      <div className="w-full px-4 lg:px-12 flex justify-between items-center">
+        <span className="font-body tracking-wide truncate">Angola · Luanda — Tecnologia que conecta. Soluções que impulsionam.</span>
+        <div className="flex items-center space-x-6 flex-shrink-0">
+          <span className="flex items-center space-x-2"><i className="fa-solid fa-phone text-brand-red text-xs"></i><span>(+244) 923 457 890</span></span>
+          <span className="flex items-center space-x-2"><i className="fa-solid fa-envelope text-brand-red text-xs"></i><span>geral@duplasdmp.co.ao</span></span>
+          <span className="flex items-center space-x-2"><i className="fa-solid fa-clock text-brand-red text-xs"></i><span>Seg–Sex: 08h–17h</span></span>
+          <div className="flex items-center space-x-2 ml-2 pl-3 border-l border-gray-800">
+            {['facebook-f','linkedin-in','instagram','youtube'].map(s=>(
+              <a key={s} href="#" className="w-7 h-7 rounded bg-gray-800 hover:bg-brand-red flex items-center justify-center transition-all text-xs hover:scale-110">
+                <i className={`fa-brands fa-${s}`}></i>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  /* ── HEADER ── */
+  const Header = () => (
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-md transition-all">
+      <div className="w-full px-4 lg:px-12 h-28 md:h-[125px] flex items-center justify-between">
+        
+        {/* LOGO ORIGINAL NO HEADER */}
+        <button onClick={()=>setPage('home')} className="flex-shrink-0 py-2 flex items-center space-x-3 text-left group">
+          <img
+            src={LOGO_ONLINE}
+            alt="Duplas DMP Investment"
+            style={{height:'120px', width:'auto', objectFit:'contain', maxHeight:'135px'}}
+            onError={handleLogoError}
+            className="group-hover:scale-105 transition-transform"
+          />
+        </button>
+
+        {/* DESKTOP NAV - CLEAN SINGLE TITLE ON HOVER */}
+        <nav className="hidden lg:flex items-center space-x-2 font-heading">
+          {navItems.map(item=>(
+            <button
+              key={item.key}
+              onClick={()=>setPage(item.key)}
+              className={`nav-link px-4 py-8 font-bold tracking-wider uppercase text-base lg:text-[16px] transition-colors ${page===item.key?'active text-brand-red':'text-gray-900 hover:text-brand-red'}`}
+            >
+              <span>{item.label}</span>
+            </button>
+          ))}
+        </nav>
+
+        {/* RIGHT ACTIONS */}
+        <div className="flex items-center space-x-3 md:space-x-4">
+          <button onClick={()=>setPage('loja')} className="p-2.5 text-gray-700 hover:text-brand-red hover:scale-110 transition-all hide-mobile text-lg" title="Pesquisar">
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <button onClick={()=>setCartOpen(true)} className="relative p-2.5 text-gray-800 hover:text-brand-red hover:scale-110 transition-all">
+            <i className="fa-solid fa-cart-shopping text-xl"></i>
+            {cartCount>0&&<span className="absolute -top-1 -right-1 bg-brand-red text-white text-xs font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white pulse-red">{cartCount}</span>}
+          </button>
+          <button onClick={()=>setQuoteOpen(true)} className="hidden sm:flex items-center space-x-2 bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold text-xs md:text-sm uppercase tracking-widest px-5 py-3.5 rounded-xl transition-all shadow-md glow-red-hover active:scale-95">
+            <i className="fa-solid fa-file-invoice text-xs"></i>
+            <span>Pedir Cotação</span>
+          </button>
+          <button onClick={()=>setMobileMenu(p=>!p)} className="lg:hidden p-2.5 text-gray-800 hover:text-brand-red">
+            <i className={`fa-solid ${mobileMenu?'fa-xmark':'fa-bars'} text-2xl`}></i>
+          </button>
+        </div>
+      </div>
+
+      {/* MOBILE MENU */}
+      {mobileMenu && (
+        <div className="mobile-menu open lg:hidden bg-white border-t border-gray-100 shadow-xl">
+          {navItems.map(item=>(
+            <button key={item.key} onClick={()=>setPage(item.key)}
+              className={`flex items-center space-x-3 w-full text-left px-6 py-3.5 font-heading font-semibold text-sm uppercase tracking-wide border-b border-gray-50 transition-colors ${page===item.key?'text-brand-red bg-red-50':'text-gray-800 hover:text-brand-red'}`}>
+              {page===item.key&&<i className="fa-solid fa-circle text-brand-red text-[8px]"></i>}
+              <span>{item.label}</span>
+            </button>
+          ))}
+          <div className="p-4">
+            <button onClick={()=>setQuoteOpen(true)} className="w-full bg-brand-red text-white font-heading font-semibold uppercase tracking-widest text-sm py-3 rounded-xl shadow-md">
+              Pedir Cotação
+            </button>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+
+  /* ── PAGE HERO ── */
+  const PageHero = ({tag,title,subtitle,img}) => (
+    <section className="relative text-white overflow-hidden animate-fade-in-up" style={{minHeight:'290px'}}>
+      <img src={img} className="absolute inset-0 w-full h-full object-cover animate-fade-in-scale" style={{filter:'brightness(0.28)'}}/>
+      <div className="absolute inset-0 page-hero-overlay"></div>
+      <div className="relative z-10 w-full px-4 lg:px-10 py-16 md:py-20 flex flex-col justify-end" style={{minHeight:'290px'}}>
+        <span className="inline-block badge-red text-white text-[10px] font-heading tracking-[0.2em] uppercase px-3 py-1 rounded mb-3 w-fit shadow">{tag}</span>
+        <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">{title}</h1>
+        {subtitle&&<p className="mt-3 text-gray-300 font-body max-w-3xl text-sm md:text-base leading-relaxed">{subtitle}</p>}
+      </div>
+    </section>
+  );
+
+  /* ════════════════════════════════════════
+     HOME PAGE (TELA INICIAL ORIGINAL & BONITA)
+  ════════════════════════════════════════ */
+  const HomePage = () => (
+    <div className="animate-fade-in-up">
+      {/* HERO SECTION ORIGINAL */}
+      <section className="relative text-white overflow-hidden section-full" style={{minHeight:'calc(100vh - 90px)'}}>
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2200&q=90"
+          className="absolute inset-0 w-full h-full object-cover animate-fade-in-scale" style={{filter:'brightness(0.24) contrast(1.15)'}}/>
+        <div className="absolute inset-0" style={{background:'linear-gradient(135deg,rgba(10,12,18,0.96) 0%,rgba(10,12,18,0.65) 55%,rgba(180,0,0,0.12) 100%)'}}></div>
+        
+        <div className="relative z-10 w-full px-4 lg:px-12 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center" style={{minHeight:'calc(100vh - 90px)'}}>
+          <div className="lg:col-span-7 space-y-6 md:space-y-8 animate-fade-in-left">
+            <div className="flex items-center space-x-3">
+              <div className="w-12 h-1 bg-brand-red rounded-full animate-pulse-glow"></div>
+              <span className="font-heading text-brand-red text-xs md:text-sm tracking-[0.3em] uppercase font-bold">Soluções Completas em Angola</span>
             </div>
-          )}
-
-          {/* 1. TOP BAR */}
-          <div className="bg-[#070A10] text-gray-300 text-xs py-2 px-4 border-b border-gray-800 hidden lg:block">
-            <div className="max-w-7xl mx-auto flex justify-between items-center">
-              <span className="text-gray-400">Tecnologia que conecta. Soluções que impulsionam.</span>
-              <div className="flex items-center space-x-6">
-                <span className="flex items-center"><i className="fa-solid fa-phone text-brand-red mr-2"></i>(244) 923 457 890</span>
-                <span className="flex items-center"><i className="fa-solid fa-envelope text-brand-red mr-2"></i>geral@duplasdmp.co.ao</span>
-                <span className="flex items-center"><i className="fa-solid fa-clock text-brand-red mr-2"></i>Seg - Sex: 08h - 17h</span>
-                <div className="flex items-center space-x-2 text-white ml-2">
-                  {['facebook-f','linkedin-in','instagram','youtube'].map(s=>(
-                    <a key={s} href="#" className="w-5 h-5 rounded-full bg-gray-800 flex items-center justify-center text-[10px] hover:bg-brand-red hover:scale-110 transition-all">
-                      <i className={`fa-brands fa-${s}`}></i>
-                    </a>
-                  ))}
-                </div>
-              </div>
+            <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-none tracking-tight">
+              TELECOMUNICAÇÕES,<br/>
+              <span className="text-gradient-red animate-shimmer">INTERNET</span><br/>
+              E TECNOLOGIA
+            </h1>
+            <p className="font-body text-gray-200 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl">
+              Internet de alta performance, soluções em telecom, segurança eletrónica e infraestrutura de TI para empresas e residências em Angola.
+            </p>
+            <div className="flex flex-wrap gap-4 pt-2">
+              <button onClick={()=>setPage('telecom')}
+                className="inline-flex items-center space-x-3 bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold tracking-wider uppercase text-base px-8 py-4 rounded-xl transition-all glow-red active:scale-95 shadow-lg hover:scale-105">
+                <span>Nossos Serviços</span>
+                <i className="fa-solid fa-arrow-right text-xs"></i>
+              </button>
+              <button onClick={()=>setPage('internet')}
+                className="inline-flex items-center space-x-3 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-heading font-semibold tracking-wider uppercase text-base px-8 py-4 rounded-xl transition-all backdrop-blur-sm shadow-md hover:scale-105">
+                <i className="fa-solid fa-wifi text-brand-red text-sm"></i>
+                <span>Ver Planos Internet</span>
+              </button>
             </div>
           </div>
 
-          {/* 2. HEADER WITH CLEAN SINGLE-TITLE MOUSEOVER LINKS */}
-          <header className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm transition-all">
-            <div className="max-w-7xl mx-auto px-4 lg:px-8 h-20 flex justify-between items-center">
-              
-              {/* HEADER LOGO */}
-              <button onClick={() => setPage('home')} className="flex items-center space-x-3 text-left group">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-red to-red-800 flex items-center justify-center text-white font-black text-2xl italic shadow-md shadow-brand-red/20 group-hover:scale-105 transition-transform">
-                  D
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-black text-xl text-gray-900 tracking-tight leading-none">
-                    Duplas <span className="text-brand-red font-extrabold uppercase">DMP</span>
-                  </span>
-                  <span className="text-[10px] font-bold text-gray-600 tracking-widest uppercase mt-0.5">
-                    Investment
-                  </span>
-                </div>
-              </button>
-
-              {/* NAV MENU (CLEAN SINGLE TITLE ON HOVER) */}
-              <nav className="hidden lg:flex items-center space-x-7 text-sm font-semibold text-gray-700">
-                {navItems.map(item => (
-                  <button
-                    key={item.key}
-                    onClick={() => setPage(item.key)}
-                    className={`nav-link py-2 transition-colors ${page === item.key ? 'text-brand-red active font-bold' : 'hover:text-brand-red'}`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </nav>
-
-              {/* ACTIONS */}
-              <div className="flex items-center space-x-4">
-                <button onClick={() => setPage('loja')} className="p-2 text-gray-600 hover:text-brand-red hover:scale-110 transition-all" title="Ir para a Loja">
-                  <i className="fa-solid fa-magnifying-glass text-lg"></i>
-                </button>
-
-                <button onClick={() => setCartOpen(true)} className="relative p-2 text-gray-700 hover:text-brand-red hover:scale-110 transition-all">
-                  <i className="fa-solid fa-cart-shopping text-lg"></i>
-                  {cartCount > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-brand-red text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white pulse-red">
-                      {cartCount}
-                    </span>
-                  )}
-                </button>
-
-                <button onClick={() => setQuoteOpen(true)} className="bg-brand-red hover:bg-brand-redHover text-white font-extrabold text-xs uppercase px-5 py-3 rounded-lg shadow-md shadow-brand-red/25 hover:scale-105 active:scale-95 transition-all">
-                  Pedir Cotação
-                </button>
-
-                {/* Mobile hamburger */}
-                <button onClick={() => setMobileMenu(p => !p)} className="lg:hidden p-2 text-gray-800 hover:text-brand-red">
-                  <i className={`fa-solid ${mobileMenu ? 'fa-xmark' : 'fa-bars'} text-2xl`}></i>
-                </button>
-              </div>
-
-            </div>
-
-            {/* Mobile Menu */}
-            {mobileMenu && (
-              <div className="mobile-menu open lg:hidden bg-white border-t border-gray-100 shadow-xl">
-                {navItems.map(item => (
-                  <button key={item.key} onClick={() => setPage(item.key)}
-                    className={`block w-full text-left px-6 py-3 font-semibold text-sm border-b border-gray-50 ${page === item.key ? 'text-brand-red bg-red-50 font-bold' : 'text-gray-800 hover:text-brand-red'}`}>
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            )}
-          </header>
-
-          {/* DYNAMIC PAGE RENDERER */}
-          <main className="flex-1">
-
-            {/* PAGE 1: INÍCIO (HOMEPAGE COMPLETA RESTAURADA COM ANIMAÇÕES VIVAS) */}
-            {page === 'home' && (
-              <div className="animate-fade-in-up">
-                
-                {/* HERO SECTION */}
-                <section className="relative bg-[#070A10] text-white py-16 lg:py-24 overflow-hidden">
-                  <div className="absolute inset-0 z-0">
-                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=2000&q=90" className="w-full h-full object-cover opacity-30 contrast-125 animate-fade-in-scale" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#070A10] via-[#070A10]/90 to-transparent"></div>
-                    <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none animate-float"></div>
+          <div className="lg:col-span-5 animate-fade-in-right animate-float">
+            <div className="glass rounded-3xl p-6 md:p-8 space-y-6 glow-red border border-gray-800">
+              <div className="flex items-center justify-between pb-4 border-b border-gray-800">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-xl bg-brand-red flex items-center justify-center text-white font-bold shadow-md">
+                    <i className="fa-solid fa-bolt"></i>
                   </div>
-
-                  <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    <div className="lg:col-span-7 space-y-6">
-                      <span className="inline-block text-xs font-bold uppercase tracking-wider text-white bg-brand-red/20 border border-brand-red/40 px-3 py-1 rounded-full">
-                        SOLUÇÕES COMPLETA EM
-                      </span>
-                      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
-                        TELECOMUNICAÇÕES, <br />
-                        <span className="animate-shimmer">INTERNET E</span> TECNOLOGIA
-                      </h1>
-                      <p className="text-gray-300 text-sm sm:text-base max-w-2xl leading-relaxed">
-                        Internet de alta qualidade, soluções em telecom, tecnologia avançada e suporte técnico especializado para o seu negócio ou residência.
-                      </p>
-                      <div className="flex flex-wrap items-center gap-4 pt-2">
-                        <button onClick={() => setPage('telecom')} className="bg-brand-red hover:bg-brand-redHover text-white font-black text-xs uppercase tracking-wider px-7 py-4 rounded-lg shadow-lg shadow-brand-red/35 flex items-center hover:scale-105 active:scale-95 transition-all">
-                          NOSSOS SERVIÇOS <i className="fa-solid fa-chevron-right ml-2 text-xs"></i>
-                        </button>
-                        <button onClick={() => setPage('internet')} className="bg-gray-900/90 hover:bg-gray-800 border border-gray-700 text-white font-bold text-xs uppercase tracking-wider px-7 py-4 rounded-lg flex items-center hover:scale-105 transition-all">
-                          <i className="fa-solid fa-wifi text-brand-red mr-2.5"></i> PLANOS DE INTERNET
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="lg:col-span-5 flex justify-end animate-float">
-                      <div className="w-full max-w-md glass-card rounded-2xl p-7 shadow-2xl relative overflow-hidden group hover:border-brand-red/50 transition-all">
-                        <div className="flex items-center space-x-3 mb-5 border-b border-gray-800 pb-4">
-                          <div className="w-10 h-10 rounded-xl bg-brand-red flex items-center justify-center text-white text-lg shadow-md"><i className="fa-solid fa-wifi"></i></div>
-                          <div><h3 className="font-extrabold text-sm uppercase text-white tracking-wide">INTERNET RÁPIDA</h3><p className="text-xs text-gray-400">Para empresas e residências</p></div>
-                        </div>
-                        <div className="mb-6">
-                          <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">A PARTIR DE</span>
-                          <div className="flex items-baseline space-x-2 mt-1"><span className="text-5xl font-black text-brand-red">8.500</span><span className="text-sm font-extrabold text-gray-300">Kz/mês</span></div>
-                        </div>
-                        <ul className="space-y-3 mb-7 text-xs font-semibold text-gray-200">
-                          <li className="flex items-center"><i className="fa-solid fa-circle-check text-brand-red mr-2.5 text-sm"></i> Alta velocidade</li>
-                          <li className="flex items-center"><i className="fa-solid fa-circle-check text-brand-red mr-2.5 text-sm"></i> Estabilidade garantida</li>
-                          <li className="flex items-center"><i className="fa-solid fa-circle-check text-brand-red mr-2.5 text-sm"></i> Suporte 24/7</li>
-                          <li className="flex items-center"><i className="fa-solid fa-circle-check text-brand-red mr-2.5 text-sm"></i> Instalação rápida</li>
-                        </ul>
-                        <button onClick={() => setPage('internet')} className="w-full bg-brand-red hover:bg-brand-redHover text-white font-black text-xs uppercase tracking-wider py-3.5 rounded-lg shadow-md flex items-center justify-center hover:scale-102 active:scale-95 transition-all">
-                          VER PLANOS <i className="fa-solid fa-chevron-right ml-2 text-xs"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                {/* FEATURES BAR */}
-                <div className="bg-[#090D16] border-y border-gray-800 py-5 text-white">
-                  <div className="max-w-7xl mx-auto px-4 lg:px-8 grid grid-cols-2 md:grid-cols-5 gap-4">
-                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-800/40 transition-colors"><div className="w-8 h-8 rounded-full bg-brand-red/20 flex items-center justify-center text-brand-red"><i className="fa-solid fa-bolt"></i></div><span className="text-xs font-semibold text-gray-300">Internet de Alta Performance</span></div>
-                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-800/40 transition-colors"><div className="w-8 h-8 rounded-full bg-brand-red/20 flex items-center justify-center text-brand-red"><i className="fa-solid fa-headset"></i></div><span className="text-xs font-semibold text-gray-300">Suporte Técnico 24/7</span></div>
-                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-800/40 transition-colors"><div className="w-8 h-8 rounded-full bg-brand-red/20 flex items-center justify-center text-brand-red"><i className="fa-solid fa-shield-halved"></i></div><span className="text-xs font-semibold text-gray-300">Equipamentos de Qualidade</span></div>
-                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-800/40 transition-colors"><div className="w-8 h-8 rounded-full bg-brand-red/20 flex items-center justify-center text-brand-red"><i className="fa-solid fa-screwdriver-wrench"></i></div><span className="text-xs font-semibold text-gray-300">Instalação Profissional</span></div>
-                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-800/40 transition-colors"><div className="w-8 h-8 rounded-full bg-brand-red/20 flex items-center justify-center text-brand-red"><i className="fa-solid fa-location-dot"></i></div><span className="text-xs font-semibold text-gray-300">Cobertura Nacional em Angola</span></div>
-                  </div>
-                </div>
-
-                {/* STATS BAR */}
-                <div className="bg-white border-b border-gray-200 py-8">
-                  <div className="max-w-7xl mx-auto px-4 lg:px-8 grid grid-cols-2 md:grid-cols-6 gap-6 text-center">
-                    <div className="p-3 rounded-xl hover:bg-red-50/50 transition-colors"><i className="fa-solid fa-award text-brand-red text-xl mb-1"></i><span className="text-xl font-black text-gray-900 block">+10</span><span className="text-xs text-gray-500">Anos de Experiência</span></div>
-                    <div className="p-3 rounded-xl hover:bg-red-50/50 transition-colors"><i className="fa-solid fa-square-check text-brand-red text-xl mb-1"></i><span className="text-xl font-black text-gray-900 block">+500</span><span className="text-xs text-gray-500">Projectos Concluídos</span></div>
-                    <div className="p-3 rounded-xl hover:bg-red-50/50 transition-colors"><i className="fa-solid fa-users text-brand-red text-xl mb-1"></i><span className="text-xl font-black text-gray-900 block">+300</span><span className="text-xs text-gray-500">Clientes Satisfeitos</span></div>
-                    <div className="p-3 rounded-xl hover:bg-red-50/50 transition-colors"><i className="fa-solid fa-headset text-brand-red text-xl mb-1"></i><span className="text-xl font-black text-gray-900 block">Suporte</span><span className="text-xs text-gray-500">24/7</span></div>
-                    <div className="p-3 rounded-xl hover:bg-red-50/50 transition-colors"><i className="fa-solid fa-location-dot text-brand-red text-xl mb-1"></i><span className="text-xl font-black text-gray-900 block">Cobertura</span><span className="text-xs text-gray-500">Nacional</span></div>
-                    <div className="p-3 rounded-xl hover:bg-red-50/50 transition-colors"><i className="fa-solid fa-microchip text-brand-red text-xl mb-1"></i><span className="text-xl font-black text-gray-900 block">Tecnologia</span><span className="text-xs text-gray-500">de Ponta</span></div>
-                  </div>
-                </div>
-
-                {/* FEATURED PRODUCTS ON HOMEPAGE */}
-                <section className="py-16 bg-gray-50 border-b border-gray-200">
-                  <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="text-center mb-10">
-                      <span className="text-xs font-extrabold uppercase text-brand-red tracking-widest">LOJA ONLINE</span>
-                      <h2 className="text-3xl font-black text-gray-900 tracking-tight mt-1">PRODUTOS EM DESTAQUE</h2>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-                      {productsData.slice(0, 5).map((p) => (
-                        <div key={p.id} className="bg-white rounded-2xl border border-gray-200 p-4 flex flex-col justify-between card-hover relative group">
-                          <div className="bg-gray-50 rounded-xl p-4 flex items-center justify-center h-44 relative img-zoom">
-                            <img src={p.img} alt={p.name} className="max-h-36 object-contain" />
-                            <button onClick={() => addToCart(p)} className="absolute top-2 right-2 p-2.5 text-brand-red bg-white shadow-md hover:bg-brand-red hover:text-white rounded-full transition-colors"><i className="fa-solid fa-cart-shopping text-sm"></i></button>
-                          </div>
-                          <div className="text-center my-3">
-                            <h3 className="font-bold text-sm text-gray-900 group-hover:text-brand-red transition-colors">{p.name}</h3>
-                            <p className="text-xs text-gray-500 mt-0.5">{p.subtitle}</p>
-                          </div>
-                          <div className="text-center space-y-3 mt-auto">
-                            <span className="text-base font-black text-brand-red block">{p.priceStr}</span>
-                            <button onClick={() => setDetailProduct(p)} className="w-full bg-gray-100 hover:bg-brand-red hover:text-white text-gray-800 font-extrabold text-[11px] uppercase tracking-wider py-2.5 rounded-lg transition-colors">VER DETALHES</button>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="text-center mt-10">
-                      <button onClick={() => setPage('loja')} className="bg-brand-red hover:bg-brand-redHover text-white font-extrabold text-xs uppercase tracking-wider px-8 py-3.5 rounded-lg shadow-md hover:scale-105 transition-all">
-                        VER TODOS OS PRODUTOS DESTA LOJA
-                      </button>
-                    </div>
-                  </div>
-                </section>
-
-                {/* SHOP CATEGORIES GRID ON HOMEPAGE */}
-                <section className="py-12 bg-white border-b border-gray-200">
-                  <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="text-center mb-8">
-                      <h3 className="text-xs font-black uppercase text-brand-red tracking-widest">CATEGORIAS DA LOJA</h3>
-                    </div>
-                    <div className="grid grid-cols-2 md:grid-cols-6 gap-4 text-center">
-                      <div onClick={() => { setPage('loja'); setShopCategory('Internet'); }} className="p-4 rounded-xl border border-gray-200 bg-white hover:border-brand-red card-hover cursor-pointer">
-                        <div className="w-10 h-10 rounded-full bg-red-50 text-brand-red mx-auto flex items-center justify-center mb-2"><i className="fa-solid fa-wifi"></i></div>
-                        <h4 className="font-extrabold text-xs">Internet</h4><p className="text-[10px] text-gray-500">Planos e Serviços</p>
-                      </div>
-                      <div onClick={() => { setPage('loja'); setShopCategory('Redes'); }} className="p-4 rounded-xl border border-gray-200 bg-white hover:border-brand-red card-hover cursor-pointer">
-                        <div className="w-10 h-10 rounded-full bg-red-50 text-brand-red mx-auto flex items-center justify-center mb-2"><i className="fa-solid fa-network-wired"></i></div>
-                        <h4 className="font-extrabold text-xs">Redes</h4><p className="text-[10px] text-gray-500">Equipamentos de Rede</p>
-                      </div>
-                      <div onClick={() => { setPage('loja'); setShopCategory('Segurança'); }} className="p-4 rounded-xl border border-gray-200 bg-white hover:border-brand-red card-hover cursor-pointer">
-                        <div className="w-10 h-10 rounded-full bg-red-50 text-brand-red mx-auto flex items-center justify-center mb-2"><i className="fa-solid fa-shield-halved"></i></div>
-                        <h4 className="font-extrabold text-xs">Segurança</h4><p className="text-[10px] text-gray-500">Câmeras e Alarmes</p>
-                      </div>
-                      <div onClick={() => { setPage('loja'); setShopCategory('Informática'); }} className="p-4 rounded-xl border border-gray-200 bg-white hover:border-brand-red card-hover cursor-pointer">
-                        <div className="w-10 h-10 rounded-full bg-red-50 text-brand-red mx-auto flex items-center justify-center mb-2"><i className="fa-solid fa-laptop"></i></div>
-                        <h4 className="font-extrabold text-xs">Informática</h4><p className="text-[10px] text-gray-500">Laptops e Acessórios</p>
-                      </div>
-                      <div onClick={() => { setPage('loja'); setShopCategory('Acessórios'); }} className="p-4 rounded-xl border border-gray-200 bg-white hover:border-brand-red card-hover cursor-pointer">
-                        <div className="w-10 h-10 rounded-full bg-red-50 text-brand-red mx-auto flex items-center justify-center mb-2"><i className="fa-solid fa-plug"></i></div>
-                        <h4 className="font-extrabold text-xs">Acessórios</h4><p className="text-[10px] text-gray-500">Cabos e Periféricos</p>
-                      </div>
-                      <div onClick={() => setPage('loja')} className="p-4 rounded-xl border border-brand-red bg-brand-red text-white transition-all cursor-pointer hover:bg-brand-redHover card-hover">
-                        <div className="w-10 h-10 rounded-full bg-white/20 text-white mx-auto flex items-center justify-center mb-2"><i className="fa-solid fa-border-all"></i></div>
-                        <h4 className="font-extrabold text-xs">VER TODAS</h4><p className="text-[10px] text-white/80">Categorias</p>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                {/* SERVICES SECTION ON HOMEPAGE */}
-                <section className="py-20 bg-[#070A10] text-white">
-                  <div className="max-w-7xl mx-auto px-4 lg:px-8">
-                    <div className="text-center mb-12">
-                      <span className="text-xs font-black uppercase text-brand-red">NOSSAS</span>
-                      <h2 className="text-3xl font-black mt-1">SOLUÇÕES E <span className="text-brand-red">SERVIÇOS</span></h2>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-                      {servicesList.map((s, idx) => (
-                        <div key={idx} className="bg-[#0F1626] border border-gray-800 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-brand-red card-hover group">
-                          <div className="h-36 relative overflow-hidden">
-                            <img src={s.img} alt={s.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#0F1626] to-transparent"></div>
-                            <div className="absolute top-3 left-3 w-8 h-8 rounded-lg bg-brand-red flex items-center justify-center text-white text-xs shadow-md">
-                              <i className={`fa-solid ${s.icon}`}></i>
-                            </div>
-                          </div>
-                          <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
-                            <div>
-                              <h3 className="font-extrabold text-sm text-white group-hover:text-brand-red transition-colors">{s.title}</h3>
-                              <p className="text-xs text-gray-400 mt-2 leading-relaxed">{s.desc}</p>
-                            </div>
-                            <button onClick={() => setPage(s.targetPage)} className="text-xs font-bold text-gray-300 hover:text-brand-red flex items-center pt-2">
-                              SAIBA MAIS <i className="fa-solid fa-arrow-right ml-1.5 text-xs"></i>
-                            </button>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </section>
-              </div>
-            )}
-
-            {/* PAGE 2: INTERNET */}
-            {page === 'internet' && (
-              <div className="animate-fade-in-up">
-                <section className="bg-[#070A10] text-white py-16">
-                  <div className="max-w-7xl mx-auto px-4 lg:px-8 text-center space-y-4">
-                    <span className="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase">CONECTIVIDADE ILIMITADA</span>
-                    <h1 className="text-4xl font-black">Planos de Internet Residencial & Empresarial</h1>
-                    <p className="text-gray-300 text-sm max-w-2xl mx-auto">Internet de fibra óptica de alta velocidade e links dedicados em Angola.</p>
-                  </div>
-                </section>
-
-                <section className="py-16 max-w-7xl mx-auto px-4 lg:px-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {internetPlans.map((plan, i) => (
-                      <div key={i} className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col justify-between shadow-lg relative card-hover">
-                        {plan.badge && <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-red text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow">{plan.badge}</span>}
-                        <div>
-                          <h3 className="font-extrabold text-lg text-gray-900 text-center">{plan.name}</h3>
-                          <div className="text-center my-4 border-y border-gray-100 py-3">
-                            <span className="text-3xl font-black text-brand-red">{plan.speed}</span>
-                            <div className="text-gray-600 font-extrabold text-sm mt-1">{plan.price}<span className="text-xs font-normal text-gray-400">{plan.period}</span></div>
-                          </div>
-                          <ul className="space-y-2.5 mb-6 text-xs text-gray-600">
-                            {plan.features.map((f, j) => (
-                              <li key={j} className="flex items-center"><i className="fa-solid fa-circle-check text-brand-red mr-2 text-xs"></i>{f}</li>
-                            ))}
-                          </ul>
-                        </div>
-                        <button onClick={() => setQuoteOpen(true)} className="w-full bg-brand-red hover:bg-brand-redHover text-white font-extrabold text-xs uppercase py-3 rounded-lg shadow">ADERIR AO PLANO</button>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              </div>
-            )}
-
-            {/* PAGE 3: TELECOMUNICAÇÕES */}
-            {page === 'telecom' && (
-              <div className="animate-fade-in-up">
-                <section className="bg-[#070A10] text-white py-16">
-                  <div className="max-w-7xl mx-auto px-4 lg:px-8 text-center space-y-4">
-                    <span className="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase">COMUNICAÇÃO CORPORATIVA</span>
-                    <h1 className="text-4xl font-black">Soluções de Telecomunicações Avançadas</h1>
-                    <p className="text-gray-300 text-sm max-w-2xl mx-auto">Centrais telefónicas PABX virtuais, voz sobre IP (VoIP), troncos SIP e integração de equipas em Angola.</p>
-                  </div>
-                </section>
-
-                <section className="py-16 max-w-7xl mx-auto px-4 lg:px-8">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-md card-hover">
-                      <div className="w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-xl mb-4"><i className="fa-solid fa-phone-volume"></i></div>
-                      <h3 className="font-extrabold text-lg text-gray-900 mb-2">Centrais Telefónicas PABX</h3>
-                      <p className="text-xs text-gray-600 leading-relaxed mb-4">Sistemas de telefonia empresarial inteligente na nuvem com gravação de chamadas, IVR e ramais móveis.</p>
-                      <button onClick={() => setQuoteOpen(true)} className="text-xs font-bold text-brand-red">SOLICITAR PROPOSTA →</button>
-                    </div>
-
-                    <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-md card-hover">
-                      <div className="w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-xl mb-4"><i className="fa-solid fa-network-wired"></i></div>
-                      <h3 className="font-extrabold text-lg text-gray-900 mb-2">Troncos SIP & Voz IP (VoIP)</h3>
-                      <p className="text-xs text-gray-600 leading-relaxed mb-4">Reduza até 60% os custos com chamadas telefónicas nacionais e internacionais para a sua empresa.</p>
-                      <button onClick={() => setQuoteOpen(true)} className="text-xs font-bold text-brand-red">SOLICITAR PROPOSTA →</button>
-                    </div>
-
-                    <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-md card-hover">
-                      <div className="w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-xl mb-4"><i className="fa-solid fa-headset"></i></div>
-                      <h3 className="font-extrabold text-lg text-gray-900 mb-2">Call Center & IVR Inteligente</h3>
-                      <p className="text-xs text-gray-600 leading-relaxed mb-4">Plataformas completas para atendimento ao cliente, distribuição automática de chamadas e relatórios.</p>
-                      <button onClick={() => setQuoteOpen(true)} className="text-xs font-bold text-brand-red">SOLICITAR PROPOSTA →</button>
-                    </div>
-                  </div>
-                </section>
-              </div>
-            )}
-
-            {/* PAGE 4: TECNOLOGIA */}
-            {page === 'tecnologia' && (
-              <div className="animate-fade-in-up">
-                <section className="bg-[#070A10] text-white py-16">
-                  <div className="max-w-7xl mx-auto px-4 lg:px-8 text-center space-y-4">
-                    <span className="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase">INFRAESTRUTURA & SEGURANÇA</span>
-                    <h1 className="text-4xl font-black">Tecnologia, CCTV e Redes Estruturadas</h1>
-                    <p className="text-gray-300 text-sm max-w-2xl mx-auto">Engenharia de redes de dados, fusão de fibra óptica, sistemas de segurança eletrónica e data centers.</p>
-                  </div>
-                </section>
-
-                <section className="py-16 max-w-7xl mx-auto px-4 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="bg-white p-8 rounded-2xl border border-gray-200 flex items-start space-x-5 shadow-md card-hover">
-                    <div className="w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-xl flex-shrink-0"><i className="fa-solid fa-video"></i></div>
-                    <div>
-                      <h3 className="font-extrabold text-base text-gray-900">Segurança Eletrónica (CCTV IP)</h3>
-                      <p className="text-xs text-gray-600 mt-2">Instalação de câmeras IP de alta resolução com inteligência artificial, gravação contínua NVR e monitorização remota no telemóvel.</p>
-                    </div>
-                  </div>
-
-                  <div className="bg-white p-8 rounded-2xl border border-gray-200 flex items-start space-x-5 shadow-md card-hover">
-                    <div className="w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-xl flex-shrink-0"><i className="fa-solid fa-server"></i></div>
-                    <div>
-                      <h3 className="font-extrabold text-base text-gray-900">Servidores e Racks Corporativos</h3>
-                      <p className="text-xs text-gray-600 mt-2">Organização e montagem de data centers, no-breaks industriais e servidores de arquivos de alta disponibilidade.</p>
-                    </div>
-                  </div>
-                </section>
-              </div>
-            )}
-
-            {/* PAGE 5: LOJA ONLINE */}
-            {page === 'loja' && (
-              <div className="animate-fade-in-up py-12 max-w-7xl mx-auto px-4 lg:px-8">
-                <div className="flex justify-between items-center mb-8 border-b pb-4">
                   <div>
-                    <h1 className="text-3xl font-black text-gray-900">Loja Online de Equipamentos</h1>
-                    <p className="text-xs text-gray-500 mt-1">Catálogo completo de equipamentos homologados em Angola (Kz)</p>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <input
-                      type="text"
-                      placeholder="Pesquisar produto..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="px-3.5 py-2 border rounded-lg text-xs w-60 focus:ring-1 focus:ring-brand-red"
-                    />
+                    <h3 className="font-heading font-bold text-white uppercase text-sm">Internet de Alta Velocidade</h3>
+                    <p className="font-body text-xs text-gray-400">Planos a partir de 8.500 Kz/mês</p>
                   </div>
                 </div>
-
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {['ALL', 'Internet', 'Redes', 'Segurança', 'Informática', 'Acessórios'].map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => setShopCategory(cat)}
-                      className={`px-4 py-2.5 rounded-lg text-xs font-bold uppercase transition-all ${shopCategory === cat ? 'bg-brand-red text-white shadow scale-105' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
-                    >
-                      {cat === 'ALL' ? 'Todos os Produtos' : cat}
-                    </button>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {productsData
-                    .filter(p => shopCategory === 'ALL' || p.category === shopCategory)
-                    .filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()))
-                    .map((p) => (
-                      <div key={p.id} className="bg-white rounded-2xl border border-gray-200 p-5 flex flex-col justify-between card-hover">
-                        <div className="bg-gray-50 rounded-xl p-4 flex items-center justify-center h-48 relative img-zoom">
-                          <img src={p.img} alt={p.name} className="max-h-40 object-contain" />
-                        </div>
-                        <div className="my-4">
-                          <span className="text-[10px] font-bold text-brand-red bg-red-50 px-2.5 py-1 rounded-full uppercase">{p.category}</span>
-                          <h3 className="font-bold text-sm text-gray-900 mt-2">{p.name}</h3>
-                          <p className="text-xs text-gray-500">{p.subtitle}</p>
-                          <span className="text-lg font-black text-brand-red block mt-2">{p.priceStr}</span>
-                        </div>
-                        <button onClick={() => addToCart(p)} className="w-full bg-brand-red hover:bg-brand-redHover text-white font-extrabold text-xs uppercase py-3 rounded-lg shadow">
-                          ADICIONAR AO CARRINHO
-                        </button>
-                      </div>
-                    ))}
-                </div>
+                <span className="badge-red text-white text-[10px] font-heading px-2.5 py-1 rounded uppercase tracking-wider shadow">Angola</span>
               </div>
-            )}
 
-            {/* PAGE 6: SOBRE NÓS */}
-            {page === 'sobre' && (
-              <div className="animate-fade-in-up py-16 max-w-7xl mx-auto px-4 lg:px-8 text-center space-y-6">
-                <span className="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase">QUEM SOMOS</span>
-                <h1 className="text-4xl font-black text-gray-900">Sobre a Duplas DMP Investment</h1>
-                <p className="text-sm text-gray-600 max-w-2xl mx-auto leading-relaxed">Mais de 10 anos de liderança e compromisso com o mercado Angolano em telecomunicações, internet de alta velocidade e projetos de engenharia tecnológica.</p>
-              </div>
-            )}
-
-            {/* PAGE 7: CONTACTOS */}
-            {page === 'contactos' && (
-              <div className="animate-fade-in-up py-16 max-w-7xl mx-auto px-4 lg:px-8 text-center space-y-6">
-                <span className="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase">FALE CONNOSCO</span>
-                <h1 className="text-4xl font-black text-gray-900">Contactos Comercial & Suporte</h1>
-                <p className="text-sm text-gray-600">Telefone: (244) 923 457 890 | E-mail: geral@duplasdmp.co.ao | Luanda, Angola</p>
-              </div>
-            )}
-          </main>
-
-          {/* 3. FOOTER (COM COR BRANCA APENAS EM 'Duplas' E 'Investment', E 'DMP' EM VERMELHO!) */}
-          <footer className="bg-[#070A10] text-gray-400 pt-16 pb-8 border-t border-gray-800">
-            <div className="max-w-7xl mx-auto px-4 lg:px-8">
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-gray-800/80">
-                
-                {/* FOOTER LOGO: 'Duplas' em BRANCO, 'DMP' em VERMELHO, 'Investment' em BRANCO */}
-                <div className="space-y-4 lg:col-span-1">
-                  <button onClick={() => setPage('home')} className="flex items-center space-x-3 text-left group">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-red to-red-800 flex items-center justify-center text-white font-black text-2xl italic shadow-md shadow-brand-red/30 group-hover:scale-110 transition-transform">
-                      D
+              <div className="space-y-3">
+                {[
+                  { title:'Fibra Óptica Simétrica', desc:'Download e upload na mesma velocidade' },
+                  { title:'Suporte Técnico 24/7 em Luanda', desc:'Equipa local sempre pronta a responder' },
+                  { title:'Instalação Rápida & Garantida', desc:'Sem complicações em poucas horas' },
+                ].map((f,i)=>(
+                  <div key={i} className="flex items-start space-x-3 p-3 rounded-xl bg-gray-900/60 border border-gray-800/80 hover:border-brand-red/50 transition-colors">
+                    <i className="fa-solid fa-circle-check text-brand-red text-base mt-0.5 flex-shrink-0"></i>
+                    <div>
+                      <p className="font-heading font-semibold text-xs text-white uppercase">{f.title}</p>
+                      <p className="font-body text-[11px] text-gray-400">{f.desc}</p>
                     </div>
-                    <div className="flex flex-col">
-                      <span className="font-black text-xl text-white tracking-tight leading-none">
-                        Duplas <span className="text-brand-red font-extrabold uppercase">DMP</span>
-                      </span>
-                      <span className="text-[10px] font-bold text-white tracking-widest uppercase mt-0.5">
-                        Investment
-                      </span>
-                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <button onClick={()=>setQuoteOpen(true)}
+                className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-widest text-sm py-4 rounded-xl transition-all glow-red hover:scale-102 active:scale-95">
+                Pedir Proposta Personalizada
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* STATS BAR */}
+      <section className="bg-brand-dark py-10 border-y border-gray-800">
+        <div className="w-full px-4 lg:px-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {[
+            { val:'99.9%', label:'Disponibilidade de Rede', icon:'fa-signal' },
+            { val:'10+ Anos', label:'Experiência no Mercado', icon:'fa-award' },
+            { val:'500+', label:'Projetos Executados', icon:'fa-diagram-project' },
+            { val:'24 / 7', label:'Suporte Técnico Local', icon:'fa-headset' },
+          ].map((s,i)=>(
+            <div key={i} className="bg-brand-gray/50 p-5 rounded-2xl border border-gray-800/80 stat-card hover:scale-105 transition-all">
+              <i className={`fa-solid ${s.icon} text-brand-red text-2xl mb-2 block`}></i>
+              <div className="font-heading text-2xl md:text-3xl font-extrabold text-white">{s.val}</div>
+              <div className="font-body text-xs text-gray-400 mt-1 uppercase tracking-wider">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FEATURED SERVICES */}
+      <section className="py-16 bg-gray-50">
+        <div className="w-full px-4 lg:px-12">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="font-heading text-brand-red text-xs font-bold tracking-[0.25em] uppercase">O Que Fazemos</span>
+            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2 uppercase heading-line">Nossas Soluções Principais</h2>
+            <p className="font-body text-gray-600 text-sm md:text-base mt-4">Tecnologia avançada adaptada ao mercado angolano com garantia de desempenho e fiabilidade.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title:'Internet & Conectividade', desc:'Links dedicados em fibra óptica, VSAT via satélite e redes de alta velocidade.', icon:'fa-wifi', page:'internet', img:'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=600&q=80' },
+              { title:'Telecomunicações & PABX', desc:'Centrais telefónicas virtuais PABX IP, troncos SIP e telefonia corporativa.', icon:'fa-tower-cell', page:'telecom', img:'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80' },
+              { title:'Tecnologia & Segurança CCTV', desc:'Câmeras IP 4K com inteligência artificial, redes estruturadas e data centers.', icon:'fa-shield-halved', page:'tecnologia', img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80' },
+            ].map((srv,i)=>(
+              <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 card-hover group">
+                <div className="img-zoom h-56 relative">
+                  <img src={srv.img} className="w-full h-full object-cover img-zoom-child"/>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div className="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-brand-red text-white flex items-center justify-center shadow-lg">
+                    <i className={`fa-solid ${srv.icon} text-xl`}></i>
+                  </div>
+                </div>
+                <div className="p-6 space-y-3">
+                  <h3 className="font-heading font-bold text-xl text-gray-900 uppercase group-hover:text-brand-red transition-colors">{srv.title}</h3>
+                  <p className="font-body text-sm text-gray-600 leading-relaxed">{srv.desc}</p>
+                  <button onClick={()=>setPage(srv.page)}
+                    className="inline-flex items-center space-x-2 font-heading text-xs font-bold text-brand-red hover:text-brand-redHover uppercase tracking-widest pt-2 transition-colors">
+                    <span>Saber Mais</span>
+                    <i className="fa-solid fa-arrow-right text-xs"></i>
                   </button>
-
-                  <p className="text-xs leading-relaxed text-gray-400">
-                    Tecnologia que conecta. Soluções que impulsionam. A sua parceira em telecomunicações e tecnologia em Angola.
-                  </p>
-
-                  <div className="flex items-center space-x-2 pt-2">
-                    {['facebook-f','linkedin-in','instagram','youtube'].map(s => (
-                      <a key={s} href="#" className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red hover:scale-110 transition-all">
-                        <i className={`fa-brands fa-${s} text-xs`}></i>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-
-                {/* LINKS RÁPIDOS (SINGLE TITLE ON HOVER) */}
-                <div>
-                  <h4 className="text-white text-xs font-black uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">
-                    LINKS RÁPIDOS
-                  </h4>
-                  <ul className="space-y-2.5 text-xs">
-                    <li><button onClick={() => setPage('home')} className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Início</span></button></li>
-                    <li><button onClick={() => setPage('sobre')} className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Sobre Nós</span></button></li>
-                    <li><button onClick={() => setPage('telecom')} className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Serviços</span></button></li>
-                    <li><button onClick={() => setPage('loja')} className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Loja</span></button></li>
-                    <li><button onClick={() => setPage('contactos')} className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Contactos</span></button></li>
-                    <li><button onClick={() => setQuoteOpen(true)} className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Pedir Cotação</span></button></li>
-                  </ul>
-                </div>
-
-                {/* NOSSOS SERVIÇOS (SINGLE TITLE ON HOVER) */}
-                <div>
-                  <h4 className="text-white text-xs font-black uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">
-                    NOSSOS SERVIÇOS
-                  </h4>
-                  <ul className="space-y-2.5 text-xs">
-                    <li><button onClick={() => setPage('internet')} className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Internet Residencial</span></button></li>
-                    <li><button onClick={() => setPage('internet')} className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Internet Empresarial</span></button></li>
-                    <li><button onClick={() => setPage('telecom')} className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Telecomunicações</span></button></li>
-                    <li><button onClick={() => setPage('tecnologia')} className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Redes e Infraestrutura</span></button></li>
-                    <li><button onClick={() => setPage('tecnologia')} className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Segurança Eletrónica</span></button></li>
-                    <li><button onClick={() => setPage('telecom')} className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Suporte Técnico 24/7</span></button></li>
-                  </ul>
-                </div>
-
-                {/* CONTACTE-NOS */}
-                <div>
-                  <h4 className="text-white text-xs font-black uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">
-                    CONTACTE-NOS
-                  </h4>
-                  <ul className="space-y-3 text-xs">
-                    <li className="flex items-start space-x-2.5">
-                      <i className="fa-solid fa-phone text-brand-red mt-0.5"></i>
-                      <span className="text-gray-300 font-semibold">(244) 923 457 890</span>
-                    </li>
-                    <li className="flex items-start space-x-2.5">
-                      <i className="fa-solid fa-envelope text-brand-red mt-0.5"></i>
-                      <span className="text-gray-300 font-medium">geral@duplasdmp.co.ao</span>
-                    </li>
-                    <li className="flex items-start space-x-2.5">
-                      <i className="fa-solid fa-location-dot text-brand-red mt-0.5"></i>
-                      <span>Luanda, Angola</span>
-                    </li>
-                    <li className="flex items-start space-x-2.5">
-                      <i className="fa-solid fa-clock text-brand-red mt-0.5"></i>
-                      <span>Seg - Sex: 08h - 17h</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* COBERTURA ANGOLA */}
-                <div>
-                  <h4 className="text-white text-xs font-black uppercase tracking-wider mb-4 border-b border-gray-800 pb-2 flex items-center">
-                    <i className="fa-solid fa-globe text-brand-red mr-1.5"></i>
-                    COBERTURA
-                  </h4>
-                  
-                  <div className="bg-[#0F1626] border border-gray-800 rounded-xl p-4 text-center relative overflow-hidden group hover:border-brand-red/40 transition-colors">
-                    <div className="relative w-full h-24 flex items-center justify-center">
-                      <i className="fa-solid fa-map-location-dot text-4xl text-gray-700 animate-float"></i>
-                      <span className="absolute top-6 left-12 w-2.5 h-2.5 bg-brand-red rounded-full animate-ping"></span>
-                      <span className="absolute top-6 left-12 w-2.5 h-2.5 bg-brand-red rounded-full"></span>
-                    </div>
-                    <span className="text-[11px] font-extrabold text-white block mt-1 uppercase tracking-wider">
-                      Cobertura Nacional
-                    </span>
-                  </div>
-                </div>
-
-              </div>
-
-              {/* COPYRIGHT */}
-              <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-[11px] text-gray-500">
-                <p>© 2024 Duplas DMP Investment. Todos os direitos reservados.</p>
-                <div className="flex space-x-4 mt-3 md:mt-0">
-                  <a href="#" className="hover:text-brand-red transition-colors">Política de Privacidade</a>
-                  <span>|</span>
-                  <a href="#" className="hover:text-brand-red transition-colors">Termos e Condições</a>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 
-            </div>
-          </footer>
+  /* ════ INTERNET PAGE ════ */
+  const InternetPage = () => (
+    <div className="animate-fade-in-up">
+      <PageHero tag="Soluções de Conectividade" title="Internet de Alta Performance em Angola"
+        subtitle="Conexão ultra rápida, dedicada e estável com fibra óptica e VSAT para residências e empresas."
+        img="https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=1800&q=90"/>
+      <section className="py-16 bg-gray-50">
+        <div className="w-full px-4 lg:px-10">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="font-heading text-3xl font-extrabold text-gray-900 uppercase heading-line">Planos de Internet</h2>
+            <p className="font-body text-sm text-gray-600 mt-3">Escolha o plano ideal para a sua residência ou empresa com preços transparentes em Kwanza (Kz).</p>
+          </div>
 
-          {/* CART DRAWER */}
-          {cartOpen && (
-            <div className="fixed inset-0 z-50 flex justify-end animate-fade-in-scale">
-              <div onClick={() => setCartOpen(false)} className="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-              <div className="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col z-10">
-                <div className="flex justify-between items-center p-5 border-b">
-                  <h3 className="font-extrabold text-base uppercase">Carrinho ({cartCount})</h3>
-                  <button onClick={() => setCartOpen(false)} className="p-2 hover:bg-gray-100 rounded-full"><i className="fa-solid fa-xmark"></i></button>
-                </div>
-                <div className="flex-1 overflow-y-auto p-5 space-y-3">
-                  {cart.length === 0 ? (
-                    <p className="text-center text-gray-400 text-sm py-12">O carrinho está vazio</p>
-                  ) : (
-                    cart.map(item => (
-                      <div key={item.id} className="flex space-x-3 bg-gray-50 p-3 rounded-xl border">
-                        <img src={item.img} className="w-14 h-14 object-contain" />
-                        <div className="flex-1">
-                          <p className="font-bold text-xs text-gray-900">{item.name}</p>
-                          <p className="text-brand-red font-black text-sm">{item.priceStr}</p>
-                          <div className="flex items-center space-x-2 mt-1">
-                            <button onClick={() => updateQty(item.id, -1)} className="w-6 h-6 rounded bg-gray-200 text-xs font-bold">-</button>
-                            <span className="text-xs font-bold w-4 text-center">{item.qty}</span>
-                            <button onClick={() => updateQty(item.id, 1)} className="w-6 h-6 rounded bg-gray-200 text-xs font-bold">+</button>
-                          </div>
-                        </div>
-                      </div>
-                    ))
-                  )}
-                </div>
-                {cart.length > 0 && (
-                  <div className="p-5 border-t space-y-3">
-                    <div className="flex justify-between font-extrabold text-sm">
-                      <span>Subtotal</span>
-                      <span className="text-brand-red text-lg">{totalKz.toLocaleString('pt-AO')} Kz</span>
-                    </div>
-                    <button onClick={() => { alert('Encomenda enviada!'); setCart([]); setCartOpen(false); }} className="w-full bg-brand-red text-white font-extrabold text-xs uppercase py-4 rounded-lg shadow">FINALIZAR ENCOMENDA</button>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {internetPlans.map((plan,i)=>(
+              <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-md border border-gray-200 card-hover flex flex-col justify-between relative group">
+                {plan.badge && (
+                  <span className="absolute top-3 right-3 z-10 badge-red text-white text-[10px] font-heading uppercase px-3 py-1 rounded-full shadow">{plan.badge}</span>
                 )}
-              </div>
-            </div>
-          )}
-
-          {/* QUOTE MODAL */}
-          {quoteOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-              <div onClick={() => setQuoteOpen(false)} className="fixed inset-0 bg-black/70 backdrop-blur-sm"></div>
-              <div className="relative bg-white rounded-2xl max-w-md w-full shadow-2xl z-10 overflow-hidden animate-fade-in-scale">
-                <div className="bg-[#070A10] px-6 py-4 flex justify-between items-center text-white">
-                  <h3 className="font-extrabold uppercase text-sm">PEDIR COTAÇÃO</h3>
-                  <button onClick={() => setQuoteOpen(false)} className="p-1 hover:text-brand-red"><i className="fa-solid fa-xmark"></i></button>
+                <div className="img-zoom h-40 relative">
+                  <img src={plan.img} className="w-full h-full object-cover img-zoom-child"/>
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 to-transparent"></div>
+                  <div className="absolute bottom-3 left-4 text-white">
+                    <span className="font-heading font-bold text-xs uppercase tracking-wider text-red-400">Plano</span>
+                    <h3 className="font-heading font-bold text-lg leading-none uppercase">{plan.name}</h3>
+                  </div>
                 </div>
-                <form onSubmit={e => { e.preventDefault(); showToast('✓ Pedido de cotação enviado com sucesso!'); setQuoteOpen(false); }} className="p-6 space-y-3.5">
-                  <input type="text" required placeholder="Nome Completo *" className="w-full p-3 border rounded-xl text-xs bg-gray-50" />
-                  <input type="email" required placeholder="E-mail *" className="w-full p-3 border rounded-xl text-xs bg-gray-50" />
-                  <input type="tel" required placeholder="Telefone (+244) *" className="w-full p-3 border rounded-xl text-xs bg-gray-50" />
-                  <select className="w-full p-3 border rounded-xl text-xs bg-gray-50">
-                    <option>Tipo de serviço pretendido...</option>
-                    <option>Internet Residencial</option>
-                    <option>Internet Empresarial</option>
-                    <option>Telecomunicações PABX/VoIP</option>
-                    <option>Segurança CCTV IP</option>
-                  </select>
-                  <textarea rows="3" placeholder="Detalhes do projeto..." className="w-full p-3 border rounded-xl text-xs bg-gray-50 resize-none"></textarea>
-                  <button type="submit" className="w-full bg-brand-red text-white font-extrabold text-xs uppercase py-3.5 rounded-xl shadow">ENVIAR PEDIDO</button>
-                </form>
-              </div>
-            </div>
-          )}
-
-          {/* PRODUCT DETAIL MODAL */}
-          {detailProduct && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-              <div onClick={() => setDetailProduct(null)} className="fixed inset-0 bg-black/70 backdrop-blur-sm"></div>
-              <div className="relative bg-white rounded-2xl max-w-lg w-full shadow-2xl z-10 overflow-hidden animate-fade-in-scale p-6">
-                <button onClick={() => setDetailProduct(null)} className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-900"><i className="fa-solid fa-xmark text-lg"></i></button>
-                <div className="flex justify-center h-48 bg-gray-50 rounded-xl p-4 mb-4">
-                  <img src={detailProduct.img} className="max-h-40 object-contain" />
+                <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                  <div>
+                    <div className="flex items-baseline justify-between border-b border-gray-100 pb-3 mb-3">
+                      <span className="font-heading font-bold text-2xl text-gray-900">{plan.speed}</span>
+                      <span className="font-display text-2xl text-brand-red font-bold">{plan.price}<span className="text-xs text-gray-500 font-normal">/mês</span></span>
+                    </div>
+                    <ul className="space-y-2">
+                      {plan.features.map((f,j)=>(
+                        <li key={j} className="flex items-start space-x-2 font-body text-xs text-gray-600">
+                          <i className="fa-solid fa-check text-brand-red mt-0.5 flex-shrink-0"></i>
+                          <span>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <button onClick={()=>setQuoteOpen(true)}
+                    className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-widest text-xs py-3 rounded-xl transition-all glow-red shadow">
+                    Subscrever Plano
+                  </button>
                 </div>
-                <span className="text-[10px] font-bold text-brand-red bg-red-50 px-2.5 py-1 rounded-full uppercase">{detailProduct.category}</span>
-                <h3 className="font-extrabold text-lg text-gray-900 mt-2">{detailProduct.name}</h3>
-                <p className="text-xs text-gray-500 mb-2">{detailProduct.subtitle}</p>
-                <span className="text-2xl font-black text-brand-red block mb-4">{detailProduct.priceStr}</span>
-                {detailProduct.specs && (
-                  <ul className="space-y-1.5 text-xs text-gray-600 mb-6">
-                    {detailProduct.specs.map((s, idx) => (
-                      <li key={idx} className="flex items-center"><i className="fa-solid fa-circle-check text-brand-red mr-2"></i>{s}</li>
-                    ))}
-                  </ul>
-                )}
-                <button onClick={() => { addToCart(detailProduct); setDetailProduct(null); }} className="w-full bg-brand-red text-white font-extrabold text-xs uppercase py-3.5 rounded-xl shadow">
-                  ADICIONAR AO CARRINHO
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+
+  /* ════ TELECOM PAGE ════ */
+  const TelecomPage = () => (
+    <div className="animate-fade-in-up">
+      <PageHero tag="Comunicação Empresarial" title="Telecomunicações e Centrais Telefónicas PABX"
+        subtitle="Transforme a comunicação da sua empresa com centrais virtuais PABX IP, troncos SIP e rádios microondas em Angola."
+        img="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=90"/>
+      <section className="py-16 bg-gray-50">
+        <div className="w-full px-4 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {telecomServices.map((s,i)=>(
+            <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 card-hover hover:border-brand-red transition-all">
+              <div className="img-zoom h-52 relative">
+                <img src={s.img} className="w-full h-full object-cover img-zoom-child"/>
+                <div className="absolute inset-0" style={{background:'linear-gradient(to top,rgba(10,12,18,0.85) 0%,transparent 60%)'}}></div>
+                <div className="absolute bottom-4 left-4 z-10 w-10 h-10 rounded-xl bg-brand-red flex items-center justify-center shadow-md">
+                  <i className={`fa-solid ${s.icon} text-white text-sm`}></i>
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="font-heading font-bold text-base text-gray-900 uppercase tracking-wide mb-2">{s.title}</h3>
+                <p className="font-body text-sm text-gray-600 leading-relaxed mb-4">{s.desc}</p>
+                <button onClick={()=>setQuoteOpen(true)}
+                  className="inline-flex items-center space-x-1.5 font-heading text-xs font-semibold text-brand-red hover:text-brand-redHover uppercase tracking-wider transition-colors">
+                  <span>Solicitar Proposta</span><i className="fa-solid fa-arrow-right text-[10px]"></i>
                 </button>
               </div>
             </div>
-          )}
-
-          {/* WHATSAPP FAB */}
-          <a href="https://wa.me/244923457890" target="_blank" title="Falar no WhatsApp" className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all pulse-red">
-            <i className="fa-brands fa-whatsapp text-3xl"></i>
-          </a>
-
+          ))}
         </div>
-      );
-    }
+      </section>
+    </div>
+  );
 
-    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
-  </script>
+  /* ════ TECNOLOGIA PAGE ════ */
+  const TecnologiaPage = () => (
+    <div className="animate-fade-in-up">
+      <PageHero tag="Infraestrutura & Segurança" title="Tecnologia, CCTV e Redes Estruturadas"
+        subtitle="Engenharia de redes de dados, fusão de fibra óptica, sistemas de segurança eletrónica avançada e data centers corporativos."
+        img="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1800&q=90"/>
+      <section className="py-16 bg-gray-50">
+        <div className="w-full px-4 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {techServices.map((s,i)=>(
+            <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 card-hover hover:border-brand-red transition-all">
+              <div className="img-zoom h-52 relative">
+                <img src={s.img} className="w-full h-full object-cover img-zoom-child"/>
+                <div className="absolute inset-0" style={{background:'linear-gradient(to top,rgba(10,12,18,0.85) 0%,transparent 60%)'}}></div>
+                <div className="absolute bottom-4 left-4 z-10 w-10 h-10 rounded-xl bg-brand-red flex items-center justify-center shadow-md">
+                  <i className={`fa-solid ${s.icon} text-white text-sm`}></i>
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="font-heading font-bold text-base text-gray-900 uppercase tracking-wide mb-2">{s.title}</h3>
+                <p className="font-body text-sm text-gray-600 leading-relaxed mb-4">{s.desc}</p>
+                <button onClick={()=>setQuoteOpen(true)}
+                  className="inline-flex items-center space-x-1.5 font-heading text-xs font-semibold text-brand-red hover:text-brand-redHover uppercase tracking-wider transition-colors">
+                  <span>Solicitar Proposta</span><i className="fa-solid fa-arrow-right text-[10px]"></i>
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+
+  /* ════ LOJA ONLINE PAGE ════ */
+  const LojaPage = () => {
+    const filteredProducts = productsData
+      .filter(p => shopCat === 'ALL' || p.category === shopCat)
+      .filter(p => p.name.toLowerCase().includes(search.toLowerCase()) || p.subtitle.toLowerCase().includes(search.toLowerCase()));
+
+    return (
+      <div className="py-10 bg-gray-50 min-h-screen animate-fade-in-up">
+        <div className="w-full px-4 lg:px-10">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-7 pb-5 border-b border-gray-200 gap-3">
+            <div>
+              <h1 className="font-heading font-bold text-2xl md:text-3xl text-gray-900 uppercase tracking-wide">Loja Online</h1>
+              <p className="font-body text-xs text-gray-500 mt-1">Equipamentos de telecom, redes e segurança — preços em Kwanza (Kz)</p>
+            </div>
+            <div className="relative">
+              <i className="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+              <input type="text" placeholder="Pesquisar produto..." value={search} onChange={e=>setSearch(e.target.value)}
+                className="pl-8 pr-4 py-2.5 border border-gray-200 rounded-xl font-body text-xs w-full sm:w-64 bg-white shadow-sm"/>
+            </div>
+          </div>
+
+          {/* CATEGORIAS DA LOJA */}
+          <div className="flex flex-wrap gap-2 mb-8">
+            {['ALL','Internet','Redes','Segurança','Informática','Acessórios'].map(cat=>(
+              <button key={cat} onClick={()=>setShopCat(cat)}
+                className={`px-5 py-2.5 rounded-xl font-heading font-bold text-xs uppercase tracking-wider transition-all ${shopCat===cat?'bg-brand-red text-white shadow-md glow-red scale-105':'bg-white text-gray-700 border border-gray-200 hover:border-brand-red hover:text-brand-red'}`}>
+                {cat==='ALL' ? 'Todos os Produtos' : cat}
+              </button>
+            ))}
+          </div>
+
+          {/* GRELHA DE PRODUTOS */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {filteredProducts.map(p=>(
+              <div key={p.id} className="bg-white rounded-2xl shadow-md product-card overflow-hidden flex flex-col justify-between group">
+                <div>
+                  <div className="img-zoom h-48 md:h-56 relative cursor-pointer" onClick={()=>setDetailProd(p)}>
+                    <img src={p.img} alt={p.name} className="w-full h-full object-cover img-zoom-child"/>
+                    <span className="absolute top-2.5 left-2.5 badge-red text-white text-[10px] font-heading px-2.5 py-0.5 rounded uppercase tracking-wide shadow">{p.category}</span>
+                    {p.badge && (
+                      <span className="absolute top-2.5 right-2.5 bg-gray-900/80 backdrop-blur-sm text-white text-[9px] font-heading px-2 py-0.5 rounded uppercase tracking-wide">{p.badge}</span>
+                    )}
+                  </div>
+                  <div className="p-4 space-y-2">
+                    <h3 onClick={()=>setDetailProd(p)} className="font-heading font-bold text-sm md:text-base text-gray-900 uppercase leading-tight hover:text-brand-red cursor-pointer transition-colors">{p.name}</h3>
+                    <p className="font-body text-xs text-gray-500">{p.subtitle}</p>
+                  </div>
+                </div>
+
+                <div className="p-4 pt-0 space-y-3">
+                  <div className="font-display text-2xl text-brand-red font-bold">{p.priceStr}</div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button onClick={()=>setDetailProd(p)}
+                      className="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-heading font-semibold uppercase tracking-wider text-[10px] py-2.5 rounded-xl transition-all">
+                      Detalhes
+                    </button>
+                    <button onClick={()=>addToCart(p)}
+                      className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-wider text-[10px] py-2.5 rounded-xl transition-all shadow glow-red">
+                      Comprar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {filteredProducts.length === 0 && (
+            <div className="text-center py-16 bg-white rounded-2xl border border-gray-200">
+              <i className="fa-solid fa-box-open text-4xl text-gray-400 mb-3 block"></i>
+              <p className="font-heading font-bold text-gray-700 text-lg uppercase">Nenhum produto encontrado</p>
+              <p className="font-body text-xs text-gray-500 mt-1">Tente pesquisar por outro termo ou selecione a categoria "Todos".</p>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  /* ════ SOBRE PAGE ════ */
+  const SobrePage = () => (
+    <div className="animate-fade-in-up">
+      <PageHero tag="Quem Somos" title="Sobre a Duplas DMP Investment"
+        subtitle="Mais de uma década a transformar a conectividade e infraestrutura tecnológica de empresas e famílias em Angola."
+        img="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1800&q=90"/>
+      <section className="py-16 bg-gray-50">
+        <div className="w-full px-4 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-14">
+            <div>
+              <span className="font-heading text-brand-red text-[11px] font-medium tracking-[0.3em] uppercase">A Nossa História</span>
+              <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 mt-2 mb-4 heading-line-left">Líderes em Tecnologia em Angola</h2>
+              <p className="font-body text-gray-600 leading-relaxed mb-4 text-sm md:text-base">A Duplas DMP Investment nasceu com a missão de democratizar o acesso à internet e às telecomunicações de qualidade em Angola. Desde a nossa fundação, temos crescido para nos tornar uma empresa referência no mercado angolano.</p>
+              <p className="font-body text-gray-600 leading-relaxed text-sm md:text-base">Com uma equipa de engenheiros certificados e parceiros internacionais de renome como Cisco, Huawei, Hikvision e Ubiquiti, oferecemos soluções integradas que vão desde a simples ligação à internet residencial até complexos projetos de infraestrutura para grandes corporações.</p>
+            </div>
+            <div className="img-zoom rounded-2xl overflow-hidden shadow-xl h-64 md:h-72">
+              <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80" className="w-full h-full object-cover img-zoom-child"/>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+
+  /* ════ CONTACTOS PAGE ════ */
+  const ContactosPage = () => (
+    <div className="animate-fade-in-up">
+      <PageHero tag="Fale Connosco" title="Entre em Contacto Connosco"
+        subtitle="Estamos prontos para atender a sua empresa ou residência em Luanda e em todo o território nacional."
+        img="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=90"/>
+      <section className="py-16 bg-gray-50">
+        <div className="w-full px-4 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          <div className="lg:col-span-5 space-y-4">
+            {[
+              {icon:'fa-phone',label:'Telefone',val:'(+244) 923 457 890',img:'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80'},
+              {icon:'fa-envelope',label:'E-mail Comercial',val:'geral@duplasdmp.co.ao',img:'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80'},
+              {icon:'fa-location-dot',label:'Sede Comercial',val:'Luanda, Angola',img:'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=400&q=80'},
+              {icon:'fa-clock',label:'Horário de Atendimento',val:'Seg - Sex: 08h00 - 17h00',img:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80'},
+            ].map((c,i)=>(
+              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-md flex items-stretch border border-gray-100 card-hover hover:border-brand-red transition-all">
+                <div className="w-20 flex-shrink-0 img-zoom">
+                  <img src={c.img} className="w-full h-full object-cover img-zoom-child"/>
+                </div>
+                <div className="flex items-center space-x-4 px-4 py-3">
+                  <div className="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center flex-shrink-0">
+                    <i className={`fa-solid ${c.icon} text-base`}></i>
+                  </div>
+                  <div>
+                    <p className="font-heading text-[10px] font-medium text-gray-500 uppercase tracking-widest">{c.label}</p>
+                    <p className="font-heading font-bold text-sm text-gray-900 mt-0.5">{c.val}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="lg:col-span-7 bg-white rounded-2xl shadow-md p-6 md:p-8 border border-gray-100">
+            <h3 className="font-heading font-bold text-xl text-gray-900 uppercase tracking-wide mb-1">Envie uma Mensagem</h3>
+            <p className="font-body text-xs text-gray-500 mb-5">Resposta garantida em até 4 horas em dias úteis.</p>
+            <form onSubmit={e=>{e.preventDefault();showToast('✓ Mensagem enviada! Responderemos em breve.');}} className="space-y-4">
+              <input type="text" required placeholder="Nome Completo *" className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50"/>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input type="email" required placeholder="E-mail *" className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50"/>
+                <input type="tel" required placeholder="Telefone (+244) *" className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50"/>
+              </div>
+              <select className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50">
+                <option>Seleccione o assunto...</option>
+                <option>Internet Residencial</option>
+                <option>Internet Empresarial</option>
+                <option>Telecomunicações (PABX/VoIP)</option>
+                <option>Segurança CCTV IP</option>
+                <option>Redes & Infraestrutura</option>
+                <option>Outro assunto</option>
+              </select>
+              <textarea rows="4" placeholder="Descreva o seu projeto ou necessidade..." className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50 resize-none"></textarea>
+              <button type="submit" className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-widest text-sm py-4 rounded-xl transition-all glow-red">
+                Enviar Mensagem
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+
+  /* ════ FOOTER (LOGOMARCA: "Duplas" em BRANCO, "DMP" em VERMELHO, "Investment" em BRANCO) ════ */
+  const Footer = () => (
+    <footer className="bg-brand-dark text-gray-300 border-t border-gray-800">
+      <div className="w-full px-4 lg:px-12 pt-16 pb-10">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-gray-800">
+          
+          {/* COLUMN 1: FOOTER LOGO COM "Duplas" E "Investment" EM BRANCO, E "DMP" EM VERMELHO */}
+          <div className="col-span-2 md:col-span-1 space-y-5">
+            <button onClick={()=>setPage('home')} className="flex items-center space-x-3 text-left group">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-red to-red-800 flex items-center justify-center text-white font-black text-2xl italic shadow-md shadow-brand-red/30 group-hover:scale-110 transition-transform">
+                D
+              </div>
+              <div className="flex flex-col">
+                <span className="font-black text-xl text-white tracking-tight leading-none font-heading">
+                  Duplas <span className="text-brand-red font-extrabold uppercase">DMP</span>
+                </span>
+                <span className="text-[10px] font-bold text-white tracking-widest uppercase mt-0.5 font-heading">
+                  Investment
+                </span>
+              </div>
+            </button>
+
+            <p className="font-body text-xs md:text-sm leading-relaxed text-gray-400 mt-3">
+              Tecnologia que conecta. Soluções que impulsionam. A sua parceira em telecomunicações e tecnologia em Angola.
+            </p>
+            
+            <div className="flex space-x-2.5">
+              {['facebook-f','linkedin-in','instagram','youtube'].map(s=>(
+                <a key={s} href="#" className="w-9 h-9 rounded-xl bg-gray-800 hover:bg-brand-red flex items-center justify-center transition-all text-sm text-gray-300 hover:text-white hover:scale-110">
+                  <i className={`fa-brands fa-${s}`}></i>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {[
+            {title:'NAVEGAÇÃO',links:[{l:'Início',p:'home'},{l:'Internet',p:'internet'},{l:'Telecomunicações',p:'telecom'},{l:'Tecnologia',p:'tecnologia'},{l:'Loja Online',p:'loja'},{l:'Sobre Nós',p:'sobre'},{l:'Contactos',p:'contactos'}]},
+            {title:'SERVIÇOS',links:[{l:'Internet Residencial',p:'internet'},{l:'Internet Empresarial',p:'internet'},{l:'Centrais PABX',p:'telecom'},{l:'VoIP & SIP',p:'telecom'},{l:'CCTV & Segurança',p:'tecnologia'}]},
+            {title:'SUPORTE',links:[{l:'Suporte Técnico 24/7',p:'contactos'},{l:'Pedir Cotação',p:'contactos'},{l:'Área do Cliente',p:'contactos'},{l:'Contactar Equipa',p:'contactos'}]},
+          ].map((col,i)=>(
+            <div key={i}>
+              <h4 className="font-heading font-bold text-white text-xs md:text-sm uppercase tracking-widest mb-5 pb-2.5 border-b border-gray-800">{col.title}</h4>
+              <ul className="space-y-3">
+                {col.links.map((lnk,j)=>(
+                  <li key={j}>
+                    <button onClick={()=>setPage(lnk.p)} className="font-body text-xs md:text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all flex items-center space-x-2 text-left group">
+                      <i className="fa-solid fa-angle-right text-xs text-brand-red group-hover:text-white transition-colors"></i>
+                      <span className="font-medium">{lnk.l}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          <div>
+            <h4 className="font-heading font-bold text-white text-xs md:text-sm uppercase tracking-widest mb-5 pb-2.5 border-b border-gray-800">CONTACTE-NOS</h4>
+            <ul className="space-y-3.5 text-xs md:text-sm font-body text-gray-300">
+              <li className="flex items-start space-x-2.5"><i className="fa-solid fa-phone text-brand-red mt-1 flex-shrink-0 text-xs"></i><span>(+244) 923 457 890</span></li>
+              <li className="flex items-start space-x-2.5"><i className="fa-solid fa-envelope text-brand-red mt-1 flex-shrink-0 text-xs"></i><span>geral@duplasdmp.co.ao</span></li>
+              <li className="flex items-start space-x-2.5"><i className="fa-solid fa-location-dot text-brand-red mt-1 flex-shrink-0 text-xs"></i><span>Luanda, Angola</span></li>
+              <li className="flex items-start space-x-2.5"><i className="fa-solid fa-clock text-brand-red mt-1 flex-shrink-0 text-xs"></i><span>Seg-Sex: 08h-17h</span></li>
+            </ul>
+            <div className="mt-6 bg-brand-gray border border-gray-800 rounded-2xl p-4 text-center shadow-inner">
+              <i className="fa-solid fa-globe text-brand-red text-3xl mb-2 animate-float"></i>
+              <div className="font-heading font-bold text-white text-xs md:text-sm uppercase tracking-wider">Cobertura Nacional</div>
+              <div className="font-body text-xs text-gray-400 mt-1">Todo o território angolano</div>
+            </div>
+          </div>
+        </div>
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs md:text-sm font-body text-gray-400 gap-3">
+          <p>© 2024 Duplas DMP Investment, Lda. Todos os direitos reservados.</p>
+          <div className="space-x-6">
+            <a href="#" className="hover:text-brand-red transition-colors">Política de Privacidade</a>
+            <a href="#" className="hover:text-brand-red transition-colors">Termos e Condições</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+
+  /* ════ CART DRAWER ════ */
+  const CartDrawer = () => !cartOpen ? null : (
+    <div className="fixed inset-0 z-50 flex justify-end animate-fade-in-scale">
+      <div onClick={()=>setCartOpen(false)} className="fixed inset-0 bg-black/60 backdrop-blur-sm"/>
+      <div className="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col z-10">
+        <div className="flex justify-between items-center p-5 border-b border-gray-100">
+          <h3 className="font-heading font-bold text-base uppercase tracking-wide">Carrinho ({cartCount})</h3>
+          <button onClick={()=>setCartOpen(false)} className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-sm">
+            <i className="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div className="flex-1 overflow-y-auto p-5 space-y-3">
+          {cart.length===0
+            ? <div className="text-center py-12 text-gray-400"><i className="fa-solid fa-cart-shopping text-4xl mb-4 block"></i><p className="font-body text-sm">O carrinho está vazio</p></div>
+            : cart.map(item=>(
+              <div key={item.id} className="flex space-x-3 bg-gray-50 rounded-xl p-3 border border-gray-100">
+                <img src={item.img} className="w-14 h-14 rounded-lg object-cover flex-shrink-0"/>
+                <div className="flex-1 min-w-0">
+                  <p className="font-heading font-semibold text-xs text-gray-900 uppercase truncate">{item.name}</p>
+                  <p className="font-display text-brand-red text-base">{item.priceStr}</p>
+                  <div className="flex items-center space-x-2 mt-1">
+                    <button onClick={()=>updateQty(item.id,-1)} className="w-6 h-6 rounded-full bg-gray-200 text-xs hover:bg-brand-red hover:text-white transition-colors">−</button>
+                    <span className="font-heading font-bold text-xs w-4 text-center">{item.qty}</span>
+                    <button onClick={()=>updateQty(item.id,1)} className="w-6 h-6 rounded-full bg-gray-200 text-xs hover:bg-brand-red hover:text-white transition-colors">+</button>
+                  </div>
+                </div>
+                <button onClick={()=>setCart(p=>p.filter(x=>x.id!==item.id))} className="text-gray-300 hover:text-brand-red text-xs self-start">
+                  <i className="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            ))
+          }
+        </div>
+        {cart.length>0&&(
+          <div className="p-5 border-t border-gray-100 space-y-3">
+            <div className="flex justify-between font-heading font-bold text-sm">
+              <span>Subtotal</span>
+              <span className="text-brand-red font-display text-xl">{cartTotal.toLocaleString('pt-AO')} Kz</span>
+            </div>
+            <button onClick={()=>{alert('Encomenda enviada com sucesso! Entraremos em contacto.');setCart([]);setCartOpen(false);}}
+              className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-widest text-sm py-4 rounded-xl transition-all glow-red">
+              Finalizar Encomenda
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  /* ════ QUOTE MODAL ════ */
+  const QuoteModal = () => !quoteOpen ? null : (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div onClick={()=>setQuoteOpen(false)} className="fixed inset-0 bg-black/70 backdrop-blur-sm"/>
+      <div className="relative bg-white rounded-2xl max-w-md w-full shadow-2xl z-10 overflow-hidden animate-fade-in-scale">
+        <div className="bg-brand-dark px-6 py-5 flex justify-between items-center">
+          <div className="flex items-center space-x-3">
+            <div className="w-9 h-9 rounded-lg bg-brand-red flex items-center justify-center"><i className="fa-solid fa-file-invoice text-white text-sm"></i></div>
+            <h3 className="font-heading font-bold text-white uppercase tracking-wide text-sm">PEDIR COTAÇÃO</h3>
+          </div>
+          <button onClick={()=>setQuoteOpen(false)} className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-sm">
+            <i className="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div className="p-6">
+          <form onSubmit={e=>{e.preventDefault();showToast('✓ Pedido enviado! Responderemos em menos de 4h.');setQuoteOpen(false);}} className="space-y-3.5">
+            <input type="text" required placeholder="Nome Completo *" className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50"/>
+            <input type="email" required placeholder="E-mail *" className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50"/>
+            <input type="tel" required placeholder="Telefone (+244) *" className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50"/>
+            <select className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50">
+              <option>Tipo de serviço pretendido...</option>
+              <option>Internet Residencial</option>
+              <option>Internet Empresarial</option>
+              <option>Telecomunicações PABX/VoIP</option>
+              <option>Segurança CCTV IP</option>
+              <option>Redes Estruturadas</option>
+            </select>
+            <textarea rows="3" placeholder="Detalhes do projecto..." className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50 resize-none"></textarea>
+            <button type="submit" className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-widest text-sm py-4 rounded-xl transition-all glow-red">
+              Enviar Pedido de Cotação
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+
+  /* ════ PRODUCT MODAL ════ */
+  const ProductModal = () => !detailProd ? null : (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div onClick={()=>setDetailProd(null)} className="fixed inset-0 bg-black/70 backdrop-blur-sm"/>
+      <div className="relative bg-white rounded-2xl max-w-xl w-full shadow-2xl z-10 overflow-hidden animate-fade-in-scale">
+        <div className="grid grid-cols-1 sm:grid-cols-2">
+          <div className="img-zoom h-60 sm:h-auto">
+            <img src={detailProd.img} className="w-full h-full object-cover img-zoom-child"/>
+          </div>
+          <div className="p-6 flex flex-col justify-between">
+            <div>
+              <button onClick={()=>setDetailProd(null)} className="absolute top-3 right-3 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-sm">
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+              <span className="badge-red text-white text-[10px] font-heading px-2 py-0.5 rounded uppercase">{detailProd.category}</span>
+              <h3 className="font-heading font-bold text-lg text-gray-900 mt-3 uppercase leading-tight">{detailProd.name}</h3>
+              <p className="font-body text-xs text-gray-500">{detailProd.subtitle}</p>
+              <div className="font-display text-3xl text-brand-red mt-2">{detailProd.priceStr}</div>
+              <div className="mt-4 space-y-2">
+                <p className="font-heading text-[10px] font-semibold uppercase tracking-wider text-gray-700">Especificações:</p>
+                {detailProd.specs.map((s,i)=>(
+                  <div key={i} className="flex items-start space-x-2 text-xs font-body text-gray-600">
+                    <i className="fa-solid fa-circle-check text-brand-red mt-0.5 flex-shrink-0"></i><span>{s}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <button onClick={()=>{addToCart(detailProd);setDetailProd(null);}}
+              className="mt-5 w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-widest text-sm py-3.5 rounded-xl transition-all glow-red">
+              Adicionar ao Carrinho
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  /* ════ RENDER ════ */
+  return (
+    <div className="min-h-screen flex flex-col bg-white">
+      {/* Toast */}
+      {toast && (
+        <div className="fixed top-4 right-4 z-[100] bg-brand-dark text-white px-5 py-3.5 rounded-xl shadow-2xl border border-brand-red/40 flex items-center space-x-3 font-body text-sm font-medium max-w-xs animate-fade-in-scale">
+          {toast}
+        </div>
+      )}
+
+      <TopBar/>
+      <Header/>
+
+      <main className="flex-1">
+        {page==='home'       && <HomePage/>}
+        {page==='internet'   && <InternetPage/>}
+        {page==='telecom'    && <TelecomPage/>}
+        {page==='tecnologia' && <TecnologiaPage/>}
+        {page==='loja'       && <LojaPage/>}
+        {page==='sobre'      && <SobrePage/>}
+        {page==='contactos'  && <ContactosPage/>}
+      </main>
+
+      <Footer/>
+      <CartDrawer/>
+      <QuoteModal/>
+      <ProductModal/>
+
+      {/* WhatsApp FAB */}
+      <a href="https://wa.me/244923457890" target="_blank" title="Contactar no WhatsApp"
+        className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all pulse-red">
+        <i className="fa-brands fa-whatsapp text-3xl"></i>
+      </a>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
 </body>
 </html>
