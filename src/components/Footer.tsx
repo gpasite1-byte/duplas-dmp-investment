@@ -16,17 +16,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
           {/* COLUMN 1: LOGO & ABOUT */}
           <div className="space-y-4 lg:col-span-1">
             <a href="#" className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-red to-red-800 flex items-center justify-center text-white shadow-md">
-                <span className="font-black text-xl italic">D</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-black text-lg text-white tracking-tight leading-none">
-                  Duplas <span className="text-brand-red font-extrabold uppercase">DMP</span>
-                </span>
-                <span className="text-[9px] font-bold text-gray-500 tracking-widest uppercase">
-                  Investment
-                </span>
-              </div>
+              <img 
+                src="https://i.ibb.co/XkF3VWps/DUPLAS.png" 
+                alt="Duplas DMP Investment" 
+                className="h-16 w-auto object-contain brightness-0 invert" 
+                onError={(e) => {
+                  (e.target as HTMLImageElement).onerror = null;
+                  (e.target as HTMLImageElement).src = 'logo.png';
+                }}
+              />
             </a>
 
             <p className="text-xs leading-relaxed text-gray-400">
@@ -35,16 +33,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
 
             {/* Social Icons */}
             <div className="flex items-center space-x-2 pt-2">
-              <a href="#" className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-colors" aria-label="Facebook">
+              <a href="#" className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-all hover:scale-110" aria-label="Facebook">
                 <Facebook className="w-4 h-4" />
               </a>
-              <a href="#" className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-colors" aria-label="LinkedIn">
+              <a href="#" className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-all hover:scale-110" aria-label="LinkedIn">
                 <Linkedin className="w-4 h-4" />
               </a>
-              <a href="#" className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-colors" aria-label="Instagram">
+              <a href="#" className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-all hover:scale-110" aria-label="Instagram">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-colors" aria-label="YouTube">
+              <a href="#" className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-all hover:scale-110" aria-label="YouTube">
                 <Youtube className="w-4 h-4" />
               </a>
             </div>
@@ -56,12 +54,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
               LINKS RÁPIDOS
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#inicio" className="hover:text-brand-red transition-colors">Início</a></li>
-              <li><a href="#sobre" className="hover:text-brand-red transition-colors">Sobre Nós</a></li>
-              <li><a href="#servicos" className="hover:text-brand-red transition-colors">Serviços</a></li>
-              <li><a href="#loja" className="hover:text-brand-red transition-colors">Loja</a></li>
-              <li><a href="#contactos" className="hover:text-brand-red transition-colors">Contactos</a></li>
-              <li><button onClick={onOpenQuoteModal} className="hover:text-brand-red transition-colors text-left">Pedir Cotação</button></li>
+              <li><a href="#inicio" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Início</span></a></li>
+              <li><a href="#sobre" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Sobre Nós</span></a></li>
+              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Serviços</span></a></li>
+              <li><a href="#loja" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Loja Online</span></a></li>
+              <li><a href="#contactos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Contactos</span></a></li>
+              <li><button onClick={onOpenQuoteModal} className="hover:text-white transition-colors text-left flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Pedir Cotação</span></button></li>
             </ul>
           </div>
 
@@ -71,12 +69,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
               NOSSOS SERVIÇOS
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#servicos" className="hover:text-brand-red transition-colors">Internet Residencial</a></li>
-              <li><a href="#servicos" className="hover:text-brand-red transition-colors">Internet Empresarial</a></li>
-              <li><a href="#servicos" className="hover:text-brand-red transition-colors">Telecomunicações</a></li>
-              <li><a href="#servicos" className="hover:text-brand-red transition-colors">Redes e Infraestrutura</a></li>
-              <li><a href="#servicos" className="hover:text-brand-red transition-colors">Segurança Eletrónica</a></li>
-              <li><a href="#servicos" className="hover:text-brand-red transition-colors">Suporte Técnico 24/7</a></li>
+              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Internet Residencial</span></a></li>
+              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Internet Empresarial</span></a></li>
+              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Telecomunicações</span></a></li>
+              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Redes e Infraestrutura</span></a></li>
+              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Segurança Eletrónica</span></a></li>
+              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Suporte Técnico 24/7</span></a></li>
             </ul>
           </div>
 
