@@ -38,9 +38,9 @@ git add .
 echo       OK: ficheiros adicionados.
 
 echo.
-echo [5/7] Criando commit inicial...
-git commit -m "feat: Site profissional Duplas DMP Investment - versao completa com 7 paginas"
-echo       OK: commit criado.
+echo [5/7] Criando commit de atualizacao...
+git commit -m "feat: Site Duplas DMP Investment - Logomarca ampliada, design robusto e responsivo" 2>nul
+echo       OK: commit preparado.
 
 echo.
 echo [6/7] Configurando branch e remote...
@@ -51,9 +51,7 @@ echo       OK: remote configurado.
 
 echo.
 echo [7/7] Enviando para GitHub...
-echo       (pode abrir uma janela de login - use o seu utilizador e password GitHub)
-echo.
-git push -u origin main
+git push -u origin main --force
 
 echo.
 echo  ============================================
