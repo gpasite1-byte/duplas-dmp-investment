@@ -15,16 +15,19 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
           
           {/* COLUMN 1: LOGO & ABOUT */}
           <div className="space-y-4 lg:col-span-1">
-            <a href="#" className="flex items-center space-x-3">
-              <img 
-                src="https://i.ibb.co/XkF3VWps/DUPLAS.png" 
-                alt="Duplas DMP Investment" 
-                className="h-16 w-auto object-contain brightness-0 invert" 
-                onError={(e) => {
-                  (e.target as HTMLImageElement).onerror = null;
-                  (e.target as HTMLImageElement).src = 'logo.png';
-                }}
-              />
+            {/* LOGOMARCA DO RODAPÉ: "Duplas" em BRANCO, "DMP" em VERMELHO, "Investment" em BRANCO */}
+            <a href="#" className="flex items-center space-x-3 group">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-red to-red-800 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                <span className="font-black text-xl italic">D</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-black text-lg text-white tracking-tight leading-none">
+                  Duplas <span className="text-brand-red font-extrabold uppercase">DMP</span>
+                </span>
+                <span className="text-[9px] font-bold text-white tracking-widest uppercase">
+                  Investment
+                </span>
+              </div>
             </a>
 
             <p className="text-xs leading-relaxed text-gray-400">
@@ -57,7 +60,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
               <li><a href="#inicio" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Início</span></a></li>
               <li><a href="#sobre" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Sobre Nós</span></a></li>
               <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Serviços</span></a></li>
-              <li><a href="#loja" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Loja Online</span></a></li>
+              <li><a href="#loja" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Loja</span></a></li>
               <li><a href="#contactos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Contactos</span></a></li>
               <li><button onClick={onOpenQuoteModal} className="hover:text-white transition-colors text-left flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Pedir Cotação</span></button></li>
             </ul>
@@ -110,14 +113,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
               COBERTURA
             </h4>
             
-            {/* Angola Graphic Container */}
             <div className="bg-[#0F1626] border border-gray-800 rounded-xl p-4 relative overflow-hidden group hover:border-brand-red/40 transition-colors text-center">
               <div className="relative w-full h-28 flex items-center justify-center">
-                {/* SVG Silhouette map representation of Angola */}
                 <svg viewBox="0 0 100 100" className="w-24 h-24 text-gray-700 fill-current opacity-60">
                   <path d="M30,15 Q45,10 60,18 T85,35 Q90,55 75,70 T45,85 Q20,80 15,60 T30,15 Z" />
                 </svg>
-                {/* Ping nodes */}
                 <span className="absolute top-8 left-10 w-2.5 h-2.5 bg-brand-red rounded-full animate-ping"></span>
                 <span className="absolute top-8 left-10 w-2.5 h-2.5 bg-brand-red rounded-full"></span>
 
