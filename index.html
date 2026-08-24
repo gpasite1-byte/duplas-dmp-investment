@@ -53,11 +53,13 @@
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeInScale { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
     @keyframes fadeInRight { from { opacity: 0; transform: translateX(100%); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-100%); } to { opacity: 1; transform: translateX(0); } }
     @keyframes pulseRing { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0.7); } 70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(204,0,0,0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0); } }
 
     .animate-fade-in-up { animation: fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .animate-fade-in-scale { animation: fadeInScale 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .animate-fade-in-right { animation: fadeInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-left { animation: fadeInLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .pulse-red { animation: pulseRing 2s infinite; }
 
     .glow-red { box-shadow:0 0 20px rgba(204,0,0,0.25); }
@@ -80,10 +82,6 @@
     /* Accordion styles */
     .filter-section { border-bottom:1px solid #E2E8F0; padding-bottom:14px; margin-bottom:14px; }
     .filter-section:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
-
-    /* Mega menu dropdown styles */
-    .megamenu-dropdown { display:none; position:absolute; top:100%; left:0; width:100%; background:#ffffff; box-shadow:0 20px 40px rgba(0,0,0,0.15); border-top:2px solid #CC0000; z-index:45; }
-    .megamenu-parent:hover .megamenu-dropdown { display:block; animation:fadeInUp 0.2s ease forwards; }
   </style>
 </head>
 <body class="bg-[#F8FAFC] text-gray-900 antialiased selection:bg-brand-red selection:text-white">
@@ -106,50 +104,85 @@ const LOGO_PATH   = "logo.png";
 /* ─── DEPARTAMENTOS & SUB-CATEGORIAS OFICIAIS NCR ANGOLA ─── */
 const NCR_DEPARTMENTS = [
   { 
-    id: 'ALL', 
-    name: 'Todos os Produtos', 
-    icon: 'fa-layer-group',
-    subcategories: ['Todos os Artigos', 'Novidades', 'Mais Vendidos', 'Promoções', 'Equipamentos Oficiais']
-  },
-  { 
     id: 'Informatica', 
     name: 'Informática', 
     icon: 'fa-laptop',
-    subcategories: ['Portáteis', 'Computadores de Secretária', 'Servidores & Storage', 'Switches & Redes', 'Monitores', 'Componentes & Cabos', 'Ratos & Teclados', 'Acessórios para PC']
+    badge: '21 Produtos',
+    subcategories: [
+      { name: 'Portáteis', desc: 'HP ProBook, Dell Latitude, MacBook Pro, ThinkPad' },
+      { name: 'Computadores de Secretária', desc: 'All-in-One HP 24", HP ProDesk 400 SFF' },
+      { name: 'Servidores & Storage', desc: 'HPE ProLiant ML30 Gen11, Discos Enterprise' },
+      { name: 'Switches & Redes', desc: 'Cisco Catalyst 24P PoE, D-Link Smart, Routers 4G' },
+      { name: 'Monitores', desc: 'HP 21.5" FHD, Dell 27" 4K UHD Profissional' },
+      { name: 'Componentes & Cabos', desc: 'SSD Kingston NVMe 1TB/2TB, Cabos Cat6 Furukawa' },
+      { name: 'Ratos & Teclados', desc: 'Logitech M650, HP 105, Ratos Sem Fio Gold' }
+    ]
   },
   { 
     id: 'Escritorio', 
     name: 'Escritório e Papelaria', 
     icon: 'fa-print',
-    subcategories: ['Impressoras & Multifunções', 'Impressoras POS & Caixas', 'Toners & Consumíveis', 'Destruidoras de Papel', 'Calculadoras & Acessórios', 'Material de Escritório']
+    badge: '7 Produtos',
+    subcategories: [
+      { name: 'Impressoras & Multifunções', desc: 'HP LaserJet M140w, Epson EcoTank L3250' },
+      { name: 'Impressoras POS & Caixas', desc: 'Wintec Térmica 80mm com Guilhotina AGT' },
+      { name: 'Toners & Consumíveis', desc: 'Toners Originais HP 30A e HP 78A JetIntelligence' },
+      { name: 'Destruidoras de Papel', desc: 'Rexel ProStyle+ DIN P-4 Confidencial' },
+      { name: 'Calculadoras & Acessórios', desc: 'Calculadora Financeira Casio FC-200V' }
+    ]
   },
   { 
     id: 'Electrodomesticos', 
     name: 'Electrodomésticos', 
     icon: 'fa-snowflake',
-    subcategories: ['Ar Condicionado', 'Frigoríficos & Geleiras', 'Micro-ondas & Cozinha', 'Dispensadores de Água', 'Pequenos Eletrodomésticos']
+    badge: '5 Produtos',
+    subcategories: [
+      { name: 'Ar Condicionado', desc: 'LG Dual Inverter 12000 BTU, Samsung WindFree 18000 BTU' },
+      { name: 'Frigoríficos & Geleiras', desc: 'Samsung No Frost 328L Digital Inverter' },
+      { name: 'Micro-ondas & Cozinha', desc: 'Samsung 23L com Grill Cerâmico Inox' },
+      { name: 'Dispensadores de Água', desc: 'Midea Compressor Água Quente e Fria Inox' }
+    ]
   },
   { 
     id: 'Smartphones', 
     name: 'Smartphones e Tablets', 
     icon: 'fa-mobile-screen',
-    subcategories: ['iPhones (Apple)', 'Smartphones Samsung', 'Xiaomi & Android', 'Tablets & iPads', 'Smartwatches & Acessórios', 'Carregadores & Cabos']
+    badge: '7 Produtos',
+    subcategories: [
+      { name: 'iPhones (Apple)', desc: 'iPhone 15 Pro 128GB Titânio, iPhone 14 128GB' },
+      { name: 'Smartphones Samsung', desc: 'Galaxy S24 Ultra 256GB AI, Galaxy A55 5G' },
+      { name: 'Xiaomi & Android', desc: 'Redmi Note 13 Pro+ 5G 512GB Carga 120W' },
+      { name: 'Tablets & iPads', desc: 'Apple iPad Air 11" M2 128GB Liquid Retina' },
+      { name: 'Smartwatches & Acessórios', desc: 'Apple Watch Series 9 GPS 45mm' }
+    ]
   },
   { 
     id: 'Energia', 
     name: 'Energia', 
     icon: 'fa-bolt',
-    subcategories: ['Power Stations Portáteis', 'UPS / No-Breaks Online', 'Geradores & Baterias Solares', 'Estabilizadores de Tensão']
+    badge: '5 Produtos',
+    subcategories: [
+      { name: 'Power Stations Portáteis', desc: 'Wintech 500Wh e 300Wh LiFePO4 220V' },
+      { name: 'UPS / No-Breaks Online', desc: 'APC Smart-UPS 1500VA LCD, Protect 850VA AVR' },
+      { name: 'Geradores & Baterias Solares', desc: 'Bateria Solar Lítio Pylontech 5.12kWh 48V' }
+    ]
   },
   { 
     id: 'ImagemSom', 
     name: 'Imagem e Som', 
     icon: 'fa-tv',
-    subcategories: ['Smart TVs 4K & QLED', 'Soundbars & Home Cinema', 'Colunas & Party Speakers', 'Auscultadores & Earbuds', 'Suportes de TV & Cabos', 'Acessórios de Áudio']
+    badge: '15 Produtos',
+    subcategories: [
+      { name: 'Smart TVs 4K & QLED', desc: 'Samsung 65" QLED 4K, Skyworth 43" Full HD' },
+      { name: 'Soundbars & Home Cinema', desc: 'JBL Cinema SB190 380W Atmos, Genius USB 100' },
+      { name: 'Colunas & Party Speakers', desc: 'Wintech Tchilo Party 200W, Genius SP-915BT' },
+      { name: 'Auscultadores & Earbuds', desc: 'Creative Jam V2 aptX, Apple EarPods, Xiaomi Buds 6' },
+      { name: 'Suportes de TV & Cabos', desc: 'Suporte de Tecto Manhattan 37"-70", Cabos LDNIO' }
+    ]
   }
 ];
 
-/* ─── CATÁLOGO COMPLETO DE PRODUTOS (+60 PRODUTOS REAIS EXTRAÍDOS E AMPLIADOS) ─── */
+/* ─── CATÁLOGO COMPLETO DE PRODUTOS ─── */
 const allProducts = [
   // ==========================================
   // INFORMÁTICA
@@ -1342,7 +1375,7 @@ const allProducts = [
   },
 
   // ==========================================
-  // IMAGEM E SOM (EXTRAÍDOS DO DUMP REAL NCR)
+  // IMAGEM E SOM
   // ==========================================
   {
     id: 'ims-01',
@@ -1736,7 +1769,7 @@ const allProducts = [
   }
 ];
 
-/* ─── 10 SERVIÇOS & SOLUÇÕES CORPORATIVAS OFICIAIS NCR ANGOLA ─── */
+/* ─── 10 SERVIÇOS & SOLUÇÕES CORPORATIVAS OFICIAIS ─── */
 const allServices = [
   {
     id: 's1',
@@ -1839,21 +1872,23 @@ const storesList = [
 
 /* ─── APP PRINCIPAL ─────────────────────────────────── */
 function App() {
-  const [currentTab, setCurrentTab]   = useState('loja'); // 'loja', 'servicos', 'sobre', 'contactos', 'lojas'
+  const [currentTab, setCurrentTab]   = useState('loja'); // 'loja', 'servicos', 'sobre', 'contactos'
   const [cart, setCart]               = useState([]);
   const [wishlist, setWishlist]       = useState([]);
   const [cartOpen, setCartOpen]       = useState(false);
   const [wishlistOpen, setWishlistOpen] = useState(false);
-  const [rightDrawerOpen, setRightDrawerOpen] = useState(false); // NOVO MENU LATERAL DIREITO
-  const [loginModalOpen, setLoginModalOpen] = useState(false);   // MODAL MINHA CONTA / ENTRAR
-  const [storesModalOpen, setStoresModalOpen] = useState(false); // MODAL NOSSAS LOJAS
+  const [rightDrawerOpen, setRightDrawerOpen] = useState(false);
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false); // NOVO: MEGA MENU FLUTUANTE DE "TODOS OS PRODUTOS"
+  const [hoveredDept, setHoveredDept]   = useState(NCR_DEPARTMENTS[0]);
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const [storesModalOpen, setStoresModalOpen] = useState(false);
   const [quoteOpen, setQuoteOpen]     = useState(false);
   const [selectedService, setSelectedService] = useState(null);
   const [detailProd, setDetailProd]   = useState(null);
   const [toast, setToast]             = useState('');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
-  // Estados dos Filtros (Estilo VTEX / NCR Angola)
+  // Estados dos Filtros
   const [selectedDept, setSelectedDept]       = useState('ALL');
   const [selectedCategory, setSelectedCategory] = useState('ALL');
   const [selectedBrands, setSelectedBrands]   = useState([]);
@@ -1909,14 +1944,14 @@ function App() {
   const cartCount = cart.reduce((a, p) => a + p.qty, 0);
   const cartTotal = cart.reduce((a, p) => a + (p.priceVal || 0) * p.qty, 0);
 
-  // Lista dinâmica de subcategorias dentro do departamento selecionado
+  // Subcategorias disponíveis
   const availableCategories = useMemo(() => {
     const subset = selectedDept === 'ALL' ? allProducts : allProducts.filter(p => p.department === selectedDept);
     const cats = new Set(subset.map(p => p.category).filter(Boolean));
     return Array.from(cats);
   }, [selectedDept]);
 
-  // Lista de todas as marcas com contagem de produtos
+  // Lista de marcas
   const brandFacetList = useMemo(() => {
     const subset = selectedDept === 'ALL' ? allProducts : allProducts.filter(p => p.department === selectedDept);
     const map = {};
@@ -1928,7 +1963,7 @@ function App() {
     return Object.keys(map).map(b => ({ name: b, count: map[b] })).sort((a, b) => a.name.localeCompare(b.name));
   }, [selectedDept]);
 
-  // Lista de RAMs com contagem
+  // Lista de RAMs
   const ramFacetList = useMemo(() => {
     const subset = selectedDept === 'ALL' ? allProducts : allProducts.filter(p => p.department === selectedDept);
     const map = {};
@@ -1940,7 +1975,7 @@ function App() {
     return Object.keys(map).map(r => ({ name: r, count: map[r] }));
   }, [selectedDept]);
 
-  // Lista de Polegadas com contagem
+  // Lista de Polegadas
   const screenFacetList = useMemo(() => {
     const subset = selectedDept === 'ALL' ? allProducts : allProducts.filter(p => p.department === selectedDept);
     const map = {};
@@ -2051,7 +2086,7 @@ function App() {
       <div className="w-full px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4">
         
         {/* LOGOMARCA */}
-        <button onClick={() => { setCurrentTab('loja'); setSelectedDept('ALL'); }} className="flex-shrink-0 flex items-center space-x-3 text-left">
+        <button onClick={() => { setCurrentTab('loja'); setSelectedDept('ALL'); setSelectedCategory('ALL'); }} className="flex-shrink-0 flex items-center space-x-3 text-left">
           <img
             src={LOGO_ONLINE}
             alt="Duplas DMP Investment"
@@ -2080,10 +2115,10 @@ function App() {
           )}
         </div>
 
-        {/* AÇÕES DO LADO DIREITO (IDENTICAS AO HEADER NCR ANGOLA) */}
+        {/* AÇÕES DO LADO DIREITO */}
         <div className="flex items-center space-x-2 sm:space-x-3">
           
-          {/* BOTÃO NOSSAS LOJAS / MAPA */}
+          {/* BOTÃO NOSSAS LOJAS */}
           <button
             onClick={() => setStoresModalOpen(true)}
             className="hidden md:flex items-center space-x-1.5 px-3 py-2 rounded-xl text-gray-700 hover:text-brand-red hover:bg-gray-50 text-xs font-heading font-semibold transition-all"
@@ -2127,7 +2162,7 @@ function App() {
             )}
           </button>
 
-          {/* BOTÃO DO MENU LATERAL DIREITO (DRAWER DE SERVIÇOS & ATALHOS) */}
+          {/* BOTÃO DO MENU LATERAL DIREITO */}
           <button
             onClick={() => setRightDrawerOpen(true)}
             className="p-2.5 rounded-xl bg-gray-900 hover:bg-brand-red text-white transition-all flex items-center space-x-1.5 shadow-sm"
@@ -2139,30 +2174,28 @@ function App() {
         </div>
       </div>
 
-      {/* BARRA DE DEPARTAMENTOS ESTILO NCR ANGOLA (VTEX) COM MEGA-MENU */}
-      <div className="bg-[#0A0C12] text-white text-xs border-t border-gray-800 overflow-x-auto hide-scrollbar">
-        <div className="w-full px-4 sm:px-8 flex items-center space-x-6 py-2.5 font-heading font-semibold uppercase tracking-wider whitespace-nowrap">
+      {/* BARRA DE DEPARTAMENTOS COM O BOTÃO DE 3 LINHAS QUE ABRE O MEGA MENU */}
+      <div className="bg-[#0A0C12] text-white text-xs border-t border-gray-800 relative">
+        <div className="w-full px-4 sm:px-8 flex items-center space-x-6 py-2.5 font-heading font-semibold uppercase tracking-wider whitespace-nowrap overflow-x-auto hide-scrollbar">
           
-          {/* ITEM TODOS OS PRODUTOS (MEGA MENU) */}
+          {/* BOTÃO "TODOS OS PRODUTOS" COM 3 LINHAS/PONTOS QUE ABRE O MEGA MENU */}
           <button
-            onClick={() => {
-              setSelectedDept('ALL');
-              setSelectedCategory('ALL');
-              if (currentTab !== 'loja') setCurrentTab('loja');
-            }}
-            className={`flex items-center space-x-2 text-xs font-heading font-bold py-1 px-3 rounded-lg transition-colors ${selectedDept === 'ALL' && currentTab === 'loja' ? 'bg-brand-red text-white' : 'bg-gray-800 text-gray-200 hover:bg-gray-700'}`}
+            onClick={() => setMegaMenuOpen(prev => !prev)}
+            className={`flex items-center space-x-2 text-xs font-heading font-bold py-1.5 px-3.5 rounded-lg shadow transition-all ${megaMenuOpen ? 'bg-brand-red text-white' : 'bg-red-700 hover:bg-brand-red text-white'}`}
           >
-            <i className="fa-solid fa-bars-staggered text-sm"></i>
+            <i className="fa-solid fa-bars text-sm"></i>
             <span>Todos os Produtos</span>
+            <i className={`fa-solid fa-angle-down text-[10px] ml-1 transition-transform ${megaMenuOpen ? 'rotate-180' : ''}`}></i>
           </button>
 
-          {/* LINKS DE DEPARTAMENTOS */}
-          {NCR_DEPARTMENTS.filter(d => d.id !== 'ALL').map(dept => (
+          {/* LINKS DE DEPARTAMENTOS DIRETOS */}
+          {NCR_DEPARTMENTS.map(dept => (
             <button
               key={dept.id}
               onClick={() => {
                 setSelectedDept(dept.id);
                 setSelectedCategory('ALL');
+                setMegaMenuOpen(false);
                 if (currentTab !== 'loja') setCurrentTab('loja');
               }}
               className={`hover:text-brand-red transition-colors flex items-center space-x-1.5 py-1 ${selectedDept === dept.id && currentTab === 'loja' ? 'text-brand-red font-bold' : 'text-gray-300'}`}
@@ -2174,13 +2207,120 @@ function App() {
 
           {/* LINK DIRETO SERVIÇOS */}
           <button
-            onClick={() => setCurrentTab('servicos')}
+            onClick={() => { setCurrentTab('servicos'); setMegaMenuOpen(false); }}
             className={`hover:text-brand-red transition-colors flex items-center space-x-1.5 py-1 ${currentTab === 'servicos' ? 'text-brand-red font-bold' : 'text-amber-400 font-bold'}`}
           >
             <i className="fa-solid fa-screwdriver-wrench text-[11px]"></i>
             <span>Serviços & Assistência ({allServices.length})</span>
           </button>
         </div>
+
+        {/* ════════════════════════════════════════════════════════
+           MEGA-MENU FLUTUANTE QUE ABRE AO CLICAR EM "TODOS OS PRODUTOS"
+        ════════════════════════════════════════════════════════ */}
+        {megaMenuOpen && (
+          <div className="absolute top-full left-0 w-full bg-white text-gray-900 border-b-2 border-brand-red shadow-2xl z-50 animate-fade-in-up">
+            <div className="w-full px-4 sm:px-8 py-6 grid grid-cols-1 md:grid-cols-12 gap-6 max-h-[75vh] overflow-y-auto">
+              
+              {/* COLUNA ESQUERDA: LISTA DE DEPARTAMENTOS */}
+              <div className="md:col-span-4 border-r border-gray-100 pr-4 space-y-1">
+                <p className="text-[10px] font-heading font-bold uppercase text-gray-400 tracking-wider mb-2">Departamentos Oficiais</p>
+                {NCR_DEPARTMENTS.map(dept => {
+                  const isHovered = hoveredDept.id === dept.id;
+                  return (
+                    <button
+                      key={dept.id}
+                      onMouseEnter={() => setHoveredDept(dept)}
+                      onClick={() => {
+                        setSelectedDept(dept.id);
+                        setSelectedCategory('ALL');
+                        setMegaMenuOpen(false);
+                        if (currentTab !== 'loja') setCurrentTab('loja');
+                      }}
+                      className={`w-full text-left px-3.5 py-2.5 rounded-xl flex items-center justify-between transition-all ${isHovered ? 'bg-red-50 text-brand-red font-bold shadow-sm' : 'text-gray-700 hover:bg-gray-50'}`}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <i className={`fa-solid ${dept.icon} text-sm w-4 ${isHovered ? 'text-brand-red' : 'text-gray-400'}`}></i>
+                        <span className="text-xs uppercase font-heading">{dept.name}</span>
+                      </div>
+                      <i className="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                    </button>
+                  );
+                })}
+
+                <div className="pt-3 border-t border-gray-100">
+                  <button
+                    onClick={() => { setCurrentTab('servicos'); setMegaMenuOpen(false); }}
+                    className="w-full text-left px-3.5 py-2.5 rounded-xl bg-amber-50 text-amber-900 font-bold flex items-center justify-between hover:bg-amber-100 transition-colors"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <i className="fa-solid fa-screwdriver-wrench text-sm text-amber-600"></i>
+                      <span className="text-xs uppercase font-heading">Serviços Técnicos & Soluções (10)</span>
+                    </div>
+                    <i className="fa-solid fa-arrow-right text-[10px]"></i>
+                  </button>
+                </div>
+              </div>
+
+              {/* COLUNA DIREITA: SUBCATEGORIAS DETALHADAS DO DEPARTAMENTO EM FOCO */}
+              <div className="md:col-span-8 pl-2 space-y-4">
+                <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+                  <div className="flex items-center space-x-2">
+                    <i className={`fa-solid ${hoveredDept.icon} text-brand-red`}></i>
+                    <h3 className="font-heading font-extrabold text-base uppercase text-gray-900">{hoveredDept.name}</h3>
+                    <span className="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-0.5 rounded-full">{hoveredDept.badge}</span>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setSelectedDept(hoveredDept.id);
+                      setSelectedCategory('ALL');
+                      setMegaMenuOpen(false);
+                      if (currentTab !== 'loja') setCurrentTab('loja');
+                    }}
+                    className="text-xs text-brand-red hover:underline font-heading font-bold uppercase"
+                  >
+                    Ver Todos de {hoveredDept.name} &rarr;
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {(hoveredDept.subcategories || []).map((sub, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => {
+                        setSelectedDept(hoveredDept.id);
+                        setSelectedCategory(sub.name);
+                        setMegaMenuOpen(false);
+                        if (currentTab !== 'loja') setCurrentTab('loja');
+                      }}
+                      className="p-3.5 bg-gray-50 hover:bg-red-50/70 border border-gray-200/80 hover:border-brand-red/40 rounded-2xl text-left transition-all group"
+                    >
+                      <h4 className="font-heading font-bold text-xs uppercase text-gray-900 group-hover:text-brand-red transition-colors flex items-center justify-between">
+                        <span>{sub.name}</span>
+                        <i className="fa-solid fa-arrow-right text-[10px] opacity-0 group-hover:opacity-100 text-brand-red transition-opacity"></i>
+                      </h4>
+                      <p className="font-body text-[11px] text-gray-500 mt-1 line-clamp-1">{sub.desc}</p>
+                    </button>
+                  ))}
+                </div>
+
+                {/* ATALHO DE COTAÇÃO RÁPIDA */}
+                <div className="bg-gray-900 text-white p-4 rounded-2xl flex items-center justify-between mt-4">
+                  <div>
+                    <p className="font-heading font-bold text-xs uppercase">Precisa de quantidades empresariais?</p>
+                    <p className="text-[11px] text-gray-400">Emitimos fatura pró-forma com descontos de volume.</p>
+                  </div>
+                  <button
+                    onClick={() => { setMegaMenuOpen(false); setQuoteOpen(true); }}
+                    className="bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold text-xs uppercase px-4 py-2 rounded-xl transition-all shadow"
+                  >
+                    Pedir Cotação
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );
@@ -2210,8 +2350,21 @@ function App() {
           <i className="fa-solid fa-angle-down text-gray-400 text-[10px]"></i>
         </h4>
         <div className="space-y-1">
+          <button
+            onClick={() => {
+              setSelectedDept('ALL');
+              setSelectedCategory('ALL');
+            }}
+            className={`w-full text-left px-2.5 py-1.5 rounded-lg flex items-center justify-between transition-colors ${selectedDept === 'ALL' ? 'bg-red-50 text-brand-red font-bold' : 'text-gray-700 hover:bg-gray-50'}`}
+          >
+            <div className="flex items-center space-x-2">
+              <i className="fa-solid fa-layer-group text-[10px]"></i>
+              <span>Todos os Produtos</span>
+            </div>
+            <span className="text-[10px] text-gray-400 font-normal">({allProducts.length})</span>
+          </button>
           {NCR_DEPARTMENTS.map(dept => {
-            const count = dept.id === 'ALL' ? allProducts.length : allProducts.filter(p => p.department === dept.id).length;
+            const count = allProducts.filter(p => p.department === dept.id).length;
             const isSelected = selectedDept === dept.id;
             return (
               <button
@@ -2395,7 +2548,7 @@ function App() {
   const ShopSection = () => (
     <div className="w-full px-4 sm:px-8 py-8 animate-fade-in-up">
       
-      {/* BANNER PROMOCIONAL DE SERVIÇOS TÉCNICOS & LOJA */}
+      {/* BANNER PROMOCIONAL */}
       <div className="mb-8 bg-gradient-to-r from-[#0A0C12] via-[#1A1E2E] to-[#0A0C12] rounded-3xl p-6 md:p-8 text-white border border-gray-800 flex flex-col lg:flex-row items-center justify-between gap-6">
         <div className="space-y-2 text-center lg:text-left">
           <span className="bg-brand-red text-white text-[10px] font-heading font-bold uppercase px-3 py-1 rounded-full">Assistência Técnica & Soluções Oficiais</span>
@@ -2418,7 +2571,7 @@ function App() {
           <button onClick={() => { setSelectedDept('ALL'); setSelectedCategory('ALL'); }} className="hover:text-brand-red">Início</button>
           <span>/</span>
           <span className="text-gray-900 font-bold">
-            {NCR_DEPARTMENTS.find(d => d.id === selectedDept)?.name || 'Todos os Produtos'}
+            {selectedDept === 'ALL' ? 'Todos os Produtos' : NCR_DEPARTMENTS.find(d => d.id === selectedDept)?.name}
           </span>
           {selectedCategory !== 'ALL' && (
             <>
@@ -2480,7 +2633,6 @@ function App() {
                 const isFav = wishlist.some(x => x.id === p.id);
                 return (
                   <div key={p.id} className="bg-white rounded-2xl product-card overflow-hidden flex flex-col justify-between group relative">
-                    {/* BOTÃO WISHLIST CORAÇÃO */}
                     <button
                       onClick={() => toggleWishlist(p)}
                       className={`absolute top-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all ${isFav ? 'bg-red-50 text-brand-red' : 'bg-white/80 hover:bg-white text-gray-400 hover:text-brand-red shadow-sm'}`}
@@ -2563,12 +2715,9 @@ function App() {
     </div>
   );
 
-  /* ════════════════════════════════════════════════════════
-     PÁGINA DE SERVIÇOS & SOLUÇÕES CORPORATIVAS OFICIAIS
-  ════════════════════════════════════════════════════════ */
+  /* ════ PÁGINA DE SERVIÇOS ════ */
   const ServicosSection = () => (
     <div className="animate-fade-in-up">
-      {/* HERO SERVIÇOS */}
       <section className="relative text-white overflow-hidden py-16 bg-[#0A0C12]">
         <div className="w-full px-4 sm:px-8 text-center max-w-4xl mx-auto space-y-3">
           <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Soluções Oficiais e Assistência Técnica</span>
@@ -2577,7 +2726,6 @@ function App() {
         </div>
       </section>
 
-      {/* GRELHA DOS 10 SERVIÇOS */}
       <section className="w-full px-4 sm:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {allServices.map((s, i) => (
@@ -2631,23 +2779,6 @@ function App() {
       <div className="bg-white p-8 md:p-12 rounded-3xl border border-gray-200 shadow-sm space-y-6 font-body text-sm text-gray-700 leading-relaxed">
         <p>A <strong>Duplas DMP Investment</strong> é uma empresa angolana com excelência no fornecimento de equipamentos informáticos, de telecomunicações, som e imagem, eletrodomésticos e soluções de energia no padrão das maiores retalhistas de tecnologia do país.</p>
         <p>Todos os nossos equipamentos contam com garantia de fábrica, faturação certificada e apoio laboratorial para instalação e manutenção preventiva.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-gray-100 text-center">
-          <div className="p-4 bg-gray-50 rounded-2xl">
-            <i className="fa-solid fa-award text-brand-red text-2xl mb-2"></i>
-            <h4 className="font-heading font-bold uppercase text-gray-900">Equipamentos Oficiais</h4>
-            <p className="text-xs text-gray-500 mt-1">Garantia e certificação</p>
-          </div>
-          <div className="p-4 bg-gray-50 rounded-2xl">
-            <i className="fa-solid fa-screwdriver-wrench text-brand-red text-2xl mb-2"></i>
-            <h4 className="font-heading font-bold uppercase text-gray-900">Técnicos Certificados</h4>
-            <p className="text-xs text-gray-500 mt-1">Laboratório próprio em Luanda</p>
-          </div>
-          <div className="p-4 bg-gray-50 rounded-2xl">
-            <i className="fa-solid fa-handshake text-brand-red text-2xl mb-2"></i>
-            <h4 className="font-heading font-bold uppercase text-gray-900">Faturação Certificada</h4>
-            <p className="text-xs text-gray-500 mt-1">Preços em Kwanzas com IVA</p>
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -2658,7 +2789,6 @@ function App() {
       <div className="text-center space-y-2">
         <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Fale Connosco</span>
         <h1 className="font-heading text-3xl sm:text-4xl font-extrabold uppercase text-gray-900">Contactos e Localização</h1>
-        <p className="font-body text-xs sm:text-sm text-gray-500">Estamos prontos para atender pedidos de cotação e assistência em Luanda.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -2667,8 +2797,7 @@ function App() {
             { icon: 'fa-whatsapp', label: 'WhatsApp & Vendas', val: '+244 941 950 022' },
             { icon: 'fa-phone', label: 'Atendimento Geral', val: '+244 947 077 913' },
             { icon: 'fa-envelope', label: 'E-mail Oficial', val: 'geral@duplasdmp.co.ao' },
-            { icon: 'fa-location-dot', label: 'Sede Comercial', val: 'Luanda, Angola' },
-            { icon: 'fa-clock', label: 'Horário de Funcionamento', val: 'Segunda a Sexta: 08h às 17h' }
+            { icon: 'fa-location-dot', label: 'Sede Comercial', val: 'Luanda, Angola' }
           ].map((c, i) => (
             <div key={i} className="bg-white p-5 rounded-2xl border border-gray-200 flex items-center space-x-4 shadow-sm">
               <div className="w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
@@ -2690,7 +2819,7 @@ function App() {
               <input type="email" required placeholder="Seu E-mail *" className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm" />
               <input type="tel" required placeholder="Telefone / WhatsApp *" className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm" />
             </div>
-            <textarea rows="4" placeholder="Escreva a sua mensagem ou pedido de informação..." className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm"></textarea>
+            <textarea rows="4" placeholder="Escreva a sua mensagem..." className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm"></textarea>
             <button type="submit" className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-sm py-4 rounded-xl shadow glow-red transition-all">
               Enviar Mensagem
             </button>
@@ -2700,15 +2829,11 @@ function App() {
     </div>
   );
 
-  /* ════════════════════════════════════════════════════════
-     NOVO: MENU LATERAL DIREITO (RIGHT DRAWER)
-  ════════════════════════════════════════════════════════ */
+  /* ════ MENU LATERAL DIREITO ════ */
   const RightDrawer = () => !rightDrawerOpen ? null : (
     <div className="fixed inset-0 z-50 flex justify-end">
       <div onClick={() => setRightDrawerOpen(false)} className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
       <div className="relative bg-[#0A0C12] text-white w-full max-w-sm h-full shadow-2xl z-10 flex flex-col justify-between animate-fade-in-right p-6 overflow-y-auto">
-        
-        {/* TOPO DO MENU DIREITO */}
         <div className="space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-gray-800">
             <div className="flex items-center space-x-2">
@@ -2720,7 +2845,6 @@ function App() {
             </button>
           </div>
 
-          {/* PERFIL / LOGIN CARD */}
           <div className="bg-gray-900/80 p-4 rounded-2xl border border-gray-800 flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-full bg-brand-red text-white flex items-center justify-center font-bold">
@@ -2728,13 +2852,12 @@ function App() {
               </div>
               <div>
                 <p className="font-heading font-bold text-xs uppercase text-white">Minha Conta</p>
-                <p className="text-[10px] text-gray-400">Aceder a cotações e encomendas</p>
+                <p className="text-[10px] text-gray-400">Aceder a cotações e compras</p>
               </div>
             </div>
             <button onClick={() => { setRightDrawerOpen(false); setLoginModalOpen(true); }} className="text-xs text-brand-red hover:underline font-bold uppercase">Entrar</button>
           </div>
 
-          {/* NAVEGAÇÃO PRINCIPAL */}
           <div className="space-y-1 font-heading text-xs uppercase font-semibold">
             <button onClick={() => { setCurrentTab('loja'); setRightDrawerOpen(false); }} className="w-full text-left p-3 rounded-xl hover:bg-gray-800 flex items-center justify-between">
               <div className="flex items-center space-x-3"><i className="fa-solid fa-store text-brand-red w-5"></i><span>Loja & Catálogo</span></div>
@@ -2765,30 +2888,8 @@ function App() {
               <i className="fa-solid fa-angle-right text-gray-500 text-[10px]"></i>
             </button>
           </div>
-
-          {/* DEPARTAMENTOS RÁPIDOS */}
-          <div className="pt-4 border-t border-gray-800 space-y-2">
-            <p className="text-[10px] font-heading font-bold uppercase text-gray-400 tracking-wider">Departamentos Rápidos</p>
-            <div className="grid grid-cols-2 gap-2 text-[11px] font-heading">
-              {NCR_DEPARTMENTS.filter(d => d.id !== 'ALL').map(dept => (
-                <button
-                  key={dept.id}
-                  onClick={() => {
-                    setSelectedDept(dept.id);
-                    setSelectedCategory('ALL');
-                    setCurrentTab('loja');
-                    setRightDrawerOpen(false);
-                  }}
-                  className="p-2 bg-gray-900 hover:bg-brand-red rounded-lg text-left truncate transition-colors"
-                >
-                  {dept.name}
-                </button>
-              ))}
-            </div>
-          </div>
         </div>
 
-        {/* RODAPÉ DO MENU DIREITO */}
         <div className="pt-6 border-t border-gray-800 space-y-3">
           <button
             onClick={() => { setQuoteOpen(true); setRightDrawerOpen(false); }}
@@ -2796,13 +2897,12 @@ function App() {
           >
             Solicitar Cotação Empresarial
           </button>
-          <p className="text-[10px] text-gray-500 text-center">Atendimento telefónico: +244 941 950 022</p>
         </div>
       </div>
     </div>
   );
 
-  /* ════ MODAL MINHA CONTA / ENTRAR (VTEX LOGIN) ════ */
+  /* ════ MODAL MINHA CONTA / ENTRAR ════ */
   const LoginModal = () => !loginModalOpen ? null : (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div onClick={() => setLoginModalOpen(false)} className="fixed inset-0 bg-black/70 backdrop-blur-sm" />
@@ -2830,17 +2930,12 @@ function App() {
           <button type="submit" className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-xs py-4 rounded-xl shadow glow-red transition-all">
             Entrar no Portal
           </button>
-          <div className="text-center pt-2">
-            <button type="button" onClick={() => { showToast('Instruções de recuperação enviadas para o seu e-mail.'); setLoginModalOpen(false); }} className="text-[11px] text-brand-red hover:underline font-semibold">
-              Esqueceu-se da palavra-passe?
-            </button>
-          </div>
         </form>
       </div>
     </div>
   );
 
-  /* ════ MODAL NOSSAS LOJAS & CENTROS TÉCNICOS ════ */
+  /* ════ MODAL NOSSAS LOJAS ════ */
   const StoresModal = () => !storesModalOpen ? null : (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div onClick={() => setStoresModalOpen(false)} className="fixed inset-0 bg-black/70 backdrop-blur-sm" />
@@ -3157,7 +3252,7 @@ function App() {
 
   /* ════ RENDER GERAL ════ */
   return (
-    <div className="min-h-screen flex flex-col bg-[#F8FAFC] font-body">
+    <div className="min-h-screen flex flex-col bg-[#F8FAFC] font-body" onClick={() => { if (megaMenuOpen) setMegaMenuOpen(false); }}>
       {/* Toast Notification */}
       {toast && (
         <div className="fixed top-4 right-4 z-[100] bg-[#0A0C12] text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-brand-red/40 flex items-center space-x-3 text-xs font-semibold animate-fade-in-scale">
@@ -3168,7 +3263,7 @@ function App() {
       <TopBar />
       <Header />
 
-      <main className="flex-1">
+      <main className="flex-1" onClick={() => { if (megaMenuOpen) setMegaMenuOpen(false); }}>
         {currentTab === 'loja' && <ShopSection />}
         {currentTab === 'servicos' && <ServicosSection />}
         {currentTab === 'sobre' && <SobreSection />}
