@@ -2246,32 +2246,18 @@ function App() {
     return count;
   }, [selectedDept, selectedCategory, selectedPriceRange, selectedBrands, selectedRAMs, selectedScreens, selectedFeatures, searchQuery]);
 
-  /* ════ TOP NOTICE BAR ════ */
-  const TopBar = () => (
-    <div className="bg-[#0A0C12] text-gray-300 text-xs py-2 border-b border-gray-800">
-      <div className="w-full px-4 sm:px-8 flex justify-between items-center">
-        <span className="truncate">Angola · Luanda — Equipamentos Oficiais, Serviços Técnicos e Soluções Corporativas</span>
-        <div className="hidden lg:flex items-center space-x-6 flex-shrink-0">
-          <span className="flex items-center space-x-1.5"><i className="fa-brands fa-whatsapp text-emerald-400"></i><span>+244 941 950 022</span></span>
-          <span className="flex items-center space-x-1.5"><i className="fa-solid fa-phone text-brand-red"></i><span>+244 947 077 913</span></span>
-          <span className="flex items-center space-x-1.5"><i className="fa-solid fa-envelope text-brand-red"></i><span>geral@duplasdmp.co.ao</span></span>
-        </div>
-      </div>
-    </div>
-  );
-
   /* ════ HEADER PRINCIPAL VTEX / NCR ANGOLA ════ */
   const Header = () => (
     <header className="sticky top-0 z-40 bg-white border-b border-[#E2E8F0] shadow-sm">
       {/* CONTAINER PRINCIPAL NA RESOLUÇÃO EXATA DA NCR (MAX-W 1440PX) */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-4">
         
-        {/* LOGOMARCA */}
-        <button onClick={() => { setCurrentTab('loja'); setSelectedDept('ALL'); setSelectedCategory('ALL'); }} className="flex-shrink-0 flex items-center space-x-3 text-left">
+        {/* LOGOMARCA MUITO GRANDE E BEM VISÍVEL */}
+        <button onClick={() => { setCurrentTab('loja'); setSelectedDept('ALL'); setSelectedCategory('ALL'); }} className="flex-shrink-0 flex items-center py-1 text-left transition-transform hover:scale-105">
           <img
             src={LOGO_ONLINE}
             alt="Duplas DMP Investment"
-            style={{ height: '72px', width: 'auto', objectFit: 'contain' }}
+            style={{ height: '105px', width: 'auto', maxHeight: '115px', objectFit: 'contain' }}
             onError={(e) => { e.target.src = LOGO_PATH; }}
           />
         </button>
@@ -2287,16 +2273,16 @@ function App() {
                 setSearchQuery(e.target.value);
                 if (currentTab !== 'loja') setCurrentTab('loja');
               }}
-              className="w-full pl-5 pr-12 py-2.5 text-sm bg-[#F4F6F8] focus:bg-white border border-[#D1D5DB] focus:border-brand-red rounded-lg font-body transition-all placeholder:text-gray-400"
+              className="w-full pl-5 pr-12 py-3 text-sm bg-[#F4F6F8] focus:bg-white border border-[#D1D5DB] focus:border-brand-red rounded-xl font-body transition-all placeholder:text-gray-400 shadow-inner"
             />
             <button
               onClick={() => { if (currentTab !== 'loja') setCurrentTab('loja'); }}
               className="absolute right-0 top-0 bottom-0 px-4 text-gray-500 hover:text-brand-red flex items-center justify-center"
             >
-              <i className="fa-solid fa-magnifying-glass text-sm"></i>
+              <i className="fa-solid fa-magnifying-glass text-base"></i>
             </button>
             {searchQuery && (
-              <button onClick={() => setSearchQuery('')} className="absolute right-10 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+              <button onClick={() => setSearchQuery('')} className="absolute right-11 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
                 <i className="fa-solid fa-xmark text-xs"></i>
               </button>
             )}
@@ -3470,7 +3456,6 @@ function App() {
         </div>
       )}
 
-      <TopBar />
       <Header />
 
       <main className="flex-1" onClick={() => { if (megaMenuOpen) setMegaMenuOpen(false); }}>
