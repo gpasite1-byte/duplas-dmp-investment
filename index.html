@@ -2262,69 +2262,77 @@ function App() {
 
   /* ════ HEADER PRINCIPAL VTEX / NCR ANGOLA ════ */
   const Header = () => (
-    <header className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
-      <div className="w-full px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 bg-white border-b border-[#E2E8F0] shadow-sm">
+      {/* CONTAINER PRINCIPAL NA RESOLUÇÃO EXATA DA NCR (MAX-W 1440PX) */}
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
         
         {/* LOGOMARCA */}
         <button onClick={() => { setCurrentTab('loja'); setSelectedDept('ALL'); setSelectedCategory('ALL'); }} className="flex-shrink-0 flex items-center space-x-3 text-left">
           <img
             src={LOGO_ONLINE}
             alt="Duplas DMP Investment"
-            style={{ height: '75px', width: 'auto', objectFit: 'contain' }}
+            style={{ height: '72px', width: 'auto', objectFit: 'contain' }}
             onError={(e) => { e.target.src = LOGO_PATH; }}
           />
         </button>
 
-        {/* BARRA DE PESQUISA CENTRAL (O que procuras?) */}
+        {/* BARRA DE PESQUISA CENTRAL VTEX */}
         <div className="flex-1 max-w-2xl relative">
-          <input
-            type="text"
-            placeholder="O que procuras? (ex: Portátil HP, Smart TV, Auscultadores, Ar Condicionado, UPS, Cabos...)"
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              if (currentTab !== 'loja') setCurrentTab('loja');
-            }}
-            className="w-full pl-11 pr-10 py-3 text-xs sm:text-sm bg-gray-100 focus:bg-white border border-gray-200 rounded-full font-body transition-all"
-          />
-          <i className="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
-          {searchQuery && (
-            <button onClick={() => setSearchQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
-              <i className="fa-solid fa-xmark"></i>
+          <div className="relative flex items-center">
+            <input
+              type="text"
+              placeholder="O que procuras?"
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                if (currentTab !== 'loja') setCurrentTab('loja');
+              }}
+              className="w-full pl-5 pr-12 py-2.5 text-sm bg-[#F4F6F8] focus:bg-white border border-[#D1D5DB] focus:border-brand-red rounded-lg font-body transition-all placeholder:text-gray-400"
+            />
+            <button
+              onClick={() => { if (currentTab !== 'loja') setCurrentTab('loja'); }}
+              className="absolute right-0 top-0 bottom-0 px-4 text-gray-500 hover:text-brand-red flex items-center justify-center"
+            >
+              <i className="fa-solid fa-magnifying-glass text-sm"></i>
             </button>
-          )}
+            {searchQuery && (
+              <button onClick={() => setSearchQuery('')} className="absolute right-10 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                <i className="fa-solid fa-xmark text-xs"></i>
+              </button>
+            )}
+          </div>
         </div>
 
         {/* AÇÕES DO LADO DIREITO */}
-        <div className="flex items-center space-x-2 sm:space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-4">
           
           {/* BOTÃO NOSSAS LOJAS */}
           <button
             onClick={() => setStoresModalOpen(true)}
-            className="hidden md:flex items-center space-x-1.5 px-3 py-2 rounded-xl text-gray-700 hover:text-brand-red hover:bg-gray-50 text-xs font-heading font-semibold transition-all"
-            title="Ver Nossas Lojas e Centros Técnicos"
+            className="flex items-center space-x-2 px-2.5 py-2 rounded-lg text-gray-700 hover:text-brand-red hover:bg-gray-50 text-xs font-heading font-semibold transition-all"
+            title="Nossas Lojas"
           >
-            <i className="fa-solid fa-location-dot text-brand-red text-sm"></i>
-            <span className="hidden lg:inline">Nossas Lojas</span>
+            <i className="fa-solid fa-location-dot text-brand-red text-base"></i>
+            <span className="hidden xl:inline">Nossas Lojas</span>
           </button>
 
           {/* BOTÃO MINHA CONTA / ENTRAR */}
           <button
             onClick={() => setLoginModalOpen(true)}
-            className="flex items-center space-x-1.5 px-3 py-2 rounded-xl text-gray-700 hover:text-brand-red hover:bg-gray-50 text-xs font-heading font-semibold transition-all"
-            title="Minha Conta / Entrar"
+            className="flex items-center space-x-2 px-2.5 py-2 rounded-lg text-gray-700 hover:text-brand-red hover:bg-gray-50 text-xs font-heading font-semibold transition-all"
+            title="Minha Conta"
           >
             <i className="fa-regular fa-user text-base text-gray-600"></i>
-            <span className="hidden lg:inline">Entrar</span>
+            <span className="hidden xl:inline">Entrar</span>
           </button>
 
           {/* BOTÃO WISHLIST / FAVORITOS */}
           <button
             onClick={() => setWishlistOpen(true)}
-            className="relative p-2.5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-brand-red transition-all"
+            className="relative p-2.5 rounded-full hover:bg-gray-100 text-gray-700 hover:text-brand-red transition-all"
             title="Favoritos"
           >
-            <i className="fa-regular fa-heart text-base"></i>
+            <i className="fa-regular fa-heart text-lg"></i>
             {wishlist.length > 0 && (
               <span className="absolute -top-1 -right-1 bg-brand-red text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border-2 border-white">{wishlist.length}</span>
             )}
@@ -2333,20 +2341,20 @@ function App() {
           {/* BOTÃO CARRINHO / MINICART */}
           <button
             onClick={() => setCartOpen(true)}
-            className="relative p-2.5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-900 transition-all"
+            className="relative p-2.5 rounded-full hover:bg-gray-100 text-gray-900 hover:text-brand-red transition-all"
             title="Ver Carrinho"
           >
-            <i className="fa-solid fa-cart-shopping text-base"></i>
+            <i className="fa-solid fa-cart-shopping text-lg"></i>
             {cartCount > 0 && (
               <span className="absolute -top-1 -right-1 bg-brand-red text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white pulse-red">{cartCount}</span>
             )}
           </button>
 
-          {/* BOTÃO DO MENU LATERAL DIREITO */}
+          {/* BOTÃO MENU LATERAL */}
           <button
             onClick={() => setRightDrawerOpen(true)}
-            className="p-2.5 rounded-xl bg-gray-900 hover:bg-brand-red text-white transition-all flex items-center space-x-1.5 shadow-sm"
-            title="Abrir Menu Lateral de Serviços & Opções"
+            className="p-2.5 rounded-lg bg-gray-900 hover:bg-brand-red text-white transition-all flex items-center space-x-1.5 shadow-sm"
+            title="Menu Geral"
           >
             <i className="fa-solid fa-bars text-sm"></i>
             <span className="hidden sm:inline text-xs font-heading font-bold uppercase">Menu</span>
@@ -2354,21 +2362,21 @@ function App() {
         </div>
       </div>
 
-      {/* BARRA DE DEPARTAMENTOS COM O BOTÃO DE 3 LINHAS QUE ABRE O MEGA MENU */}
-      <div className="bg-[#0A0C12] text-white text-xs border-t border-gray-800 relative">
-        <div className="w-full px-4 sm:px-8 flex items-center space-x-6 py-2.5 font-heading font-semibold uppercase tracking-wider whitespace-nowrap overflow-x-auto hide-scrollbar">
+      {/* BARRA DE NAVEGAÇÃO DE DEPARTAMENTOS (ESTILO NCR ANGOLA) */}
+      <div className="bg-[#FFFFFF] border-t border-[#E5E7EB] text-gray-800 text-xs font-heading font-semibold shadow-inner relative">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center space-x-6 py-2.5 whitespace-nowrap overflow-x-auto hide-scrollbar">
           
-          {/* BOTÃO "TODOS OS PRODUTOS" COM 3 LINHAS/PONTOS QUE ABRE O MEGA MENU */}
+          {/* BOTÃO LATERAL ESQUERDO: "TODOS OS PRODUTOS" COM 3 LINHAS */}
           <button
             onClick={() => setMegaMenuOpen(prev => !prev)}
-            className={`flex items-center space-x-2 text-xs font-heading font-bold py-1.5 px-3.5 rounded-lg shadow transition-all ${megaMenuOpen ? 'bg-brand-red text-white' : 'bg-red-700 hover:bg-brand-red text-white'}`}
+            className={`flex items-center space-x-2 text-xs font-heading font-bold py-1.5 px-3.5 rounded-lg transition-all ${megaMenuOpen ? 'bg-brand-red text-white shadow' : 'bg-gray-100 hover:bg-gray-200 text-gray-900 border border-gray-300'}`}
           >
-            <i className="fa-solid fa-bars text-sm"></i>
-            <span>Todos os Produtos</span>
+            <i className="fa-solid fa-bars text-sm text-brand-red"></i>
+            <span className="uppercase">Todos os Produtos</span>
             <i className={`fa-solid fa-angle-down text-[10px] ml-1 transition-transform ${megaMenuOpen ? 'rotate-180' : ''}`}></i>
           </button>
 
-          {/* LINKS DE DEPARTAMENTOS DIRETOS */}
+          {/* DEPARTAMENTOS HORIZONTAIS */}
           {NCR_DEPARTMENTS.map(dept => (
             <button
               key={dept.id}
@@ -2378,122 +2386,148 @@ function App() {
                 setMegaMenuOpen(false);
                 if (currentTab !== 'loja') setCurrentTab('loja');
               }}
-              className={`hover:text-brand-red transition-colors flex items-center space-x-1.5 py-1 ${selectedDept === dept.id && currentTab === 'loja' ? 'text-brand-red font-bold' : 'text-gray-300'}`}
+              className={`hover:text-brand-red transition-colors flex items-center space-x-1.5 py-1 uppercase ${selectedDept === dept.id && currentTab === 'loja' ? 'text-brand-red font-extrabold border-b-2 border-brand-red' : 'text-gray-700'}`}
             >
-              <i className={`fa-solid ${dept.icon} text-[11px]`}></i>
               <span>{dept.name}</span>
             </button>
           ))}
 
-          {/* LINK DIRETO SERVIÇOS */}
+          {/* LINK SERVIÇOS & ASSISTÊNCIA */}
           <button
             onClick={() => { setCurrentTab('servicos'); setMegaMenuOpen(false); }}
-            className={`hover:text-brand-red transition-colors flex items-center space-x-1.5 py-1 ${currentTab === 'servicos' ? 'text-brand-red font-bold' : 'text-amber-400 font-bold'}`}
+            className={`hover:text-brand-red transition-colors flex items-center space-x-1.5 py-1 uppercase ${currentTab === 'servicos' ? 'text-brand-red font-extrabold border-b-2 border-brand-red' : 'text-amber-600 font-bold'}`}
           >
             <i className="fa-solid fa-screwdriver-wrench text-[11px]"></i>
             <span>Serviços & Assistência ({allServices.length})</span>
           </button>
         </div>
 
-        {/* ════ MEGA-MENU FLUTUANTE ════ */}
+        {/* ════ GAVETA LATERAL ESQUERDA MEGA-MENU (EXTAMENTE ONDE FICA O BOTÃO) ════ */}
         {megaMenuOpen && (
-          <div className="absolute top-full left-0 w-full bg-white text-gray-900 border-b-2 border-brand-red shadow-2xl z-50 animate-fade-in-up">
-            <div className="w-full px-4 sm:px-8 py-6 grid grid-cols-1 md:grid-cols-12 gap-6 max-h-[75vh] overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex">
+            {/* OVERLAY ESCURO */}
+            <div onClick={() => setMegaMenuOpen(false)} className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
+            
+            {/* PAINEL LATERAL ESQUERDO NA RESOLUÇÃO DA NCR */}
+            <div className="relative bg-white w-full max-w-2xl h-full shadow-2xl z-10 flex flex-col justify-between animate-fade-in-right p-0 overflow-hidden text-gray-900">
               
-              {/* COLUNA ESQUERDA: LISTA DE DEPARTAMENTOS */}
-              <div className="md:col-span-4 border-r border-gray-100 pr-4 space-y-1">
-                <p className="text-[10px] font-heading font-bold uppercase text-gray-400 tracking-wider mb-2">Departamentos Oficiais</p>
-                {NCR_DEPARTMENTS.map(dept => {
-                  const isHovered = hoveredDept.id === dept.id;
-                  return (
+              {/* CABEÇALHO DO MENU LATERAL */}
+              <div className="bg-[#0A0C12] text-white p-5 flex items-center justify-between border-b-2 border-brand-red">
+                <div className="flex items-center space-x-3">
+                  <i className="fa-solid fa-bars text-brand-red text-lg"></i>
+                  <div>
+                    <h3 className="font-heading font-extrabold text-sm uppercase tracking-wide">Todos os Departamentos</h3>
+                    <p className="text-[10px] text-gray-400">Selecione uma categoria para explorar</p>
+                  </div>
+                </div>
+                <button onClick={() => setMegaMenuOpen(false)} className="p-2 text-gray-400 hover:text-white rounded-lg">
+                  <i className="fa-solid fa-xmark text-lg"></i>
+                </button>
+              </div>
+
+              {/* CORPO DE DUAS COLUNAS DO MENU LATERAL */}
+              <div className="flex-1 grid grid-cols-1 md:grid-cols-12 overflow-hidden h-[calc(100vh-140px)]">
+                
+                {/* COLUNA 1 (ESQUERDA): DEPARTAMENTOS */}
+                <div className="md:col-span-5 bg-[#F8FAFC] border-r border-gray-200 overflow-y-auto p-3 space-y-1">
+                  <p className="text-[10px] font-heading font-bold uppercase text-gray-400 px-2 py-1">Departamentos</p>
+                  {NCR_DEPARTMENTS.map(dept => {
+                    const isHovered = hoveredDept.id === dept.id;
+                    const count = allProducts.filter(p => p.department === dept.id).length;
+                    return (
+                      <button
+                        key={dept.id}
+                        onMouseEnter={() => setHoveredDept(dept)}
+                        onClick={() => {
+                          setHoveredDept(dept);
+                        }}
+                        className={`w-full text-left px-3 py-2.5 rounded-xl flex items-center justify-between transition-all ${isHovered ? 'bg-white text-brand-red font-bold shadow-sm border border-red-100' : 'text-gray-700 hover:bg-gray-200/60'}`}
+                      >
+                        <div className="flex items-center space-x-2.5 truncate">
+                          <i className={`fa-solid ${dept.icon} text-xs w-4 ${isHovered ? 'text-brand-red' : 'text-gray-400'}`}></i>
+                          <span className="text-xs uppercase font-heading truncate">{dept.name}</span>
+                        </div>
+                        <span className="text-[10px] text-gray-400 font-normal">({count})</span>
+                      </button>
+                    );
+                  })}
+
+                  <div className="pt-3 border-t border-gray-200">
                     <button
-                      key={dept.id}
-                      onMouseEnter={() => setHoveredDept(dept)}
+                      onClick={() => { setCurrentTab('servicos'); setMegaMenuOpen(false); }}
+                      className="w-full text-left px-3 py-2.5 rounded-xl bg-amber-50 text-amber-900 font-bold flex items-center justify-between hover:bg-amber-100 transition-colors border border-amber-200"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <i className="fa-solid fa-screwdriver-wrench text-xs text-amber-600"></i>
+                        <span className="text-xs uppercase font-heading">Serviços Técnicos (10)</span>
+                      </div>
+                      <i className="fa-solid fa-arrow-right text-[10px]"></i>
+                    </button>
+                  </div>
+                </div>
+
+                {/* COLUNA 2 (DIREITA): SUBCATEGORIAS DETALHADAS */}
+                <div className="md:col-span-7 bg-white overflow-y-auto p-5 space-y-4">
+                  <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+                    <div>
+                      <h4 className="font-heading font-extrabold text-sm uppercase text-gray-900">{hoveredDept.name}</h4>
+                      <p className="text-[11px] text-gray-500 font-body">Subcategorias e linhas de produtos</p>
+                    </div>
+                    <button
                       onClick={() => {
-                        setSelectedDept(dept.id);
+                        setSelectedDept(hoveredDept.id);
                         setSelectedCategory('ALL');
                         setMegaMenuOpen(false);
                         if (currentTab !== 'loja') setCurrentTab('loja');
                       }}
-                      className={`w-full text-left px-3.5 py-2.5 rounded-xl flex items-center justify-between transition-all ${isHovered ? 'bg-red-50 text-brand-red font-bold shadow-sm' : 'text-gray-700 hover:bg-gray-50'}`}
+                      className="text-xs text-brand-red font-heading font-bold uppercase hover:underline"
                     >
-                      <div className="flex items-center space-x-3">
-                        <i className={`fa-solid ${dept.icon} text-sm w-4 ${isHovered ? 'text-brand-red' : 'text-gray-400'}`}></i>
-                        <span className="text-xs uppercase font-heading">{dept.name}</span>
-                      </div>
-                      <i className="fa-solid fa-chevron-right text-[10px] text-gray-400"></i>
+                      Ver Todos &rarr;
                     </button>
-                  );
-                })}
+                  </div>
 
-                <div className="pt-3 border-t border-gray-100">
-                  <button
-                    onClick={() => { setCurrentTab('servicos'); setMegaMenuOpen(false); }}
-                    className="w-full text-left px-3.5 py-2.5 rounded-xl bg-amber-50 text-amber-900 font-bold flex items-center justify-between hover:bg-amber-100 transition-colors"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <i className="fa-solid fa-screwdriver-wrench text-sm text-amber-600"></i>
-                      <span className="text-xs uppercase font-heading">Serviços Técnicos & Soluções (10)</span>
-                    </div>
-                    <i className="fa-solid fa-arrow-right text-[10px]"></i>
-                  </button>
+                  <div className="space-y-2">
+                    {(hoveredDept.subcategories || []).map((sub, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          setSelectedDept(hoveredDept.id);
+                          setSelectedCategory(sub.name);
+                          setMegaMenuOpen(false);
+                          if (currentTab !== 'loja') setCurrentTab('loja');
+                        }}
+                        className="w-full p-3 bg-gray-50 hover:bg-red-50/70 border border-gray-200/80 hover:border-brand-red/40 rounded-xl text-left transition-all group block"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="font-heading font-bold text-xs uppercase text-gray-900 group-hover:text-brand-red transition-colors">{sub.name}</span>
+                          <i className="fa-solid fa-angle-right text-gray-400 group-hover:text-brand-red text-xs transition-colors"></i>
+                        </div>
+                        <p className="font-body text-[11px] text-gray-500 mt-0.5 line-clamp-1">{sub.desc}</p>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              {/* COLUNA DIREITA: SUBCATEGORIAS DETALHADAS */}
-              <div className="md:col-span-8 pl-2 space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-gray-100">
-                  <div className="flex items-center space-x-2">
-                    <i className={`fa-solid ${hoveredDept.icon} text-brand-red`}></i>
-                    <h3 className="font-heading font-extrabold text-base uppercase text-gray-900">{hoveredDept.name}</h3>
-                    <span className="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-0.5 rounded-full">{hoveredDept.badge}</span>
-                  </div>
-                  <button
-                    onClick={() => {
-                      setSelectedDept(hoveredDept.id);
-                      setSelectedCategory('ALL');
-                      setMegaMenuOpen(false);
-                      if (currentTab !== 'loja') setCurrentTab('loja');
-                    }}
-                    className="text-xs text-brand-red hover:underline font-heading font-bold uppercase"
-                  >
-                    Ver Todos de {hoveredDept.name} &rarr;
-                  </button>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {(hoveredDept.subcategories || []).map((sub, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => {
-                        setSelectedDept(hoveredDept.id);
-                        setSelectedCategory(sub.name);
-                        setMegaMenuOpen(false);
-                        if (currentTab !== 'loja') setCurrentTab('loja');
-                      }}
-                      className="p-3.5 bg-gray-50 hover:bg-red-50/70 border border-gray-200/80 hover:border-brand-red/40 rounded-2xl text-left transition-all group"
-                    >
-                      <h4 className="font-heading font-bold text-xs uppercase text-gray-900 group-hover:text-brand-red transition-colors flex items-center justify-between">
-                        <span>{sub.name}</span>
-                        <i className="fa-solid fa-arrow-right text-[10px] opacity-0 group-hover:opacity-100 text-brand-red transition-opacity"></i>
-                      </h4>
-                      <p className="font-body text-[11px] text-gray-500 mt-1 line-clamp-1">{sub.desc}</p>
-                    </button>
-                  ))}
-                </div>
-
-                <div className="bg-gray-900 text-white p-4 rounded-2xl flex items-center justify-between mt-4">
-                  <div>
-                    <p className="font-heading font-bold text-xs uppercase">Precisa de quantidades empresariais?</p>
-                    <p className="text-[11px] text-gray-400">Emitimos fatura pró-forma com descontos de volume.</p>
-                  </div>
-                  <button
-                    onClick={() => { setMegaMenuOpen(false); setQuoteOpen(true); }}
-                    className="bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold text-xs uppercase px-4 py-2 rounded-xl transition-all shadow"
-                  >
-                    Pedir Cotação
-                  </button>
-                </div>
+              {/* RODAPÉ DO MENU LATERAL */}
+              <div className="p-4 bg-gray-100 border-t border-gray-200 flex items-center justify-between">
+                <button
+                  onClick={() => {
+                    setSelectedDept('ALL');
+                    setSelectedCategory('ALL');
+                    setMegaMenuOpen(false);
+                    if (currentTab !== 'loja') setCurrentTab('loja');
+                  }}
+                  className="text-xs font-heading font-bold text-gray-700 hover:text-brand-red uppercase"
+                >
+                  <i className="fa-solid fa-layer-group mr-1.5"></i>Ver Catálogo Completo
+                </button>
+                <button
+                  onClick={() => { setMegaMenuOpen(false); setQuoteOpen(true); }}
+                  className="bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold text-xs uppercase px-4 py-2 rounded-xl shadow glow-red"
+                >
+                  Cotação Empresa
+                </button>
               </div>
             </div>
           </div>
@@ -2723,21 +2757,21 @@ function App() {
 
   /* ════ PÁGINA DA LOJA & PRODUTOS ════ */
   const ShopSection = () => (
-    <div className="w-full px-4 sm:px-8 py-8 animate-fade-in-up">
+    <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 animate-fade-in-up">
       
       {/* BANNER PROMOCIONAL */}
-      <div className="mb-8 bg-gradient-to-r from-[#0A0C12] via-[#1A1E2E] to-[#0A0C12] rounded-3xl p-6 md:p-8 text-white border border-gray-800 flex flex-col lg:flex-row items-center justify-between gap-6">
-        <div className="space-y-2 text-center lg:text-left">
-          <span className="bg-brand-red text-white text-[10px] font-heading font-bold uppercase px-3 py-1 rounded-full">Assistência Técnica & Soluções Oficiais</span>
-          <h2 className="font-heading font-extrabold text-xl sm:text-2xl text-white uppercase">Precisa de Reparação, Instalação ou Redes para a sua Empresa?</h2>
-          <p className="font-body text-xs sm:text-sm text-gray-300 max-w-2xl">Dispomos de laboratório técnico próprio, engenheiros certificados e contratos SLA em Luanda.</p>
+      <div className="mb-6 bg-gradient-to-r from-[#0A0C12] via-[#1A1E2E] to-[#0A0C12] rounded-2xl p-5 md:p-7 text-white border border-gray-800 flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div className="space-y-1.5 text-center lg:text-left">
+          <span className="bg-brand-red text-white text-[10px] font-heading font-bold uppercase px-3 py-0.5 rounded-full">Assistência Técnica & Soluções Oficiais</span>
+          <h2 className="font-heading font-extrabold text-lg sm:text-xl text-white uppercase">Precisa de Reparação, Instalação ou Redes para a sua Empresa?</h2>
+          <p className="font-body text-xs text-gray-300 max-w-2xl">Dispomos de laboratório técnico próprio, engenheiros certificados e contratos SLA em Luanda.</p>
         </div>
         <div className="flex items-center space-x-3">
-          <button onClick={() => setQuoteOpen(true)} className="bg-white hover:bg-gray-100 text-gray-900 font-heading font-bold text-xs uppercase px-5 py-3.5 rounded-xl shadow transition-all">
+          <button onClick={() => setQuoteOpen(true)} className="bg-white hover:bg-gray-100 text-gray-900 font-heading font-bold text-xs uppercase px-4 py-3 rounded-xl shadow transition-all">
             Pedir Cotação Rápida
           </button>
-          <button onClick={() => setCurrentTab('servicos')} className="bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold text-xs uppercase px-6 py-3.5 rounded-xl shadow glow-red whitespace-nowrap transition-all">
-            Ver Todos os 10 Serviços
+          <button onClick={() => setCurrentTab('servicos')} className="bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold text-xs uppercase px-5 py-3 rounded-xl shadow glow-red whitespace-nowrap transition-all">
+            Ver 10 Serviços
           </button>
         </div>
       </div>
