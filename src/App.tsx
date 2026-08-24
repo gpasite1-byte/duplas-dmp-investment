@@ -17,6 +17,7 @@ import { ProductDetailModal } from './components/ProductDetailModal';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { productsData } from './data/products';
 import { Product, CartItem } from './types';
+import { Phone, Mail, MapPin, MessageCircle, Facebook, Instagram, Linkedin, ShieldCheck, CheckCircle2, Award, Truck } from 'lucide-react';
 
 export type PageType = 'home' | 'internet' | 'telecom' | 'tecnologia' | 'loja' | 'sobre' | 'contactos';
 
@@ -89,12 +90,12 @@ export const App: React.FC = () => {
             <HeroBanner onOpenQuoteModal={() => setIsQuoteModalOpen(true)} />
             <FeaturesBar />
             <StatsBar />
+            <ShopCategories />
             <FeaturedProducts
               products={productsData}
               onAddToCart={handleAddToCart}
               onSelectProduct={(product) => setSelectedProduct(product)}
             />
-            <ShopCategories />
             <ServicesSection onOpenQuoteModal={() => setIsQuoteModalOpen(true)} />
             <WhyChooseUs />
             <TestimonialsSection />
@@ -104,39 +105,44 @@ export const App: React.FC = () => {
 
         {currentPage === 'internet' && (
           <div className="py-16 max-w-7xl mx-auto px-4 lg:px-8 space-y-12">
-            <div className="text-center space-y-3 bg-[#070A10] text-white py-12 rounded-3xl p-6">
-              <span className="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase">CONECTIVIDADE ILIMITADA</span>
-              <h1 className="text-4xl font-black">Planos de Internet Residencial & Empresarial</h1>
-              <p className="text-gray-300 text-sm max-w-2xl mx-auto">Internet de fibra óptica de alta velocidade e links dedicados em Angola.</p>
+            <div className="text-center space-y-3 bg-[#070A10] text-white py-14 px-6 rounded-3xl relative overflow-hidden">
+              <span className="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">CONECTIVIDADE EMPRESARIAL & RESIDENCIAL</span>
+              <h1 className="text-3xl sm:text-4xl font-black">Soluções de Internet Dedicada & Satélite em Angola</h1>
+              <p className="text-gray-300 text-sm max-w-2xl mx-auto">Fibra óptica dedicada 1:1, conectividade Starlink e enlaces de rádio com alta estabilidade e suporte 24/7.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-2xl border shadow-md space-y-4">
-                <h3 className="font-extrabold text-lg">Residencial Light</h3>
-                <div className="text-3xl font-black text-brand-red">8.500 Kz<span className="text-xs text-gray-500 font-normal">/mês</span></div>
-                <p className="text-xs text-gray-600">Download ilimitado, velocidade 10 Mbps, Router Wi-Fi 6.</p>
-                <button onClick={() => setIsQuoteModalOpen(true)} className="w-full bg-brand-red text-white text-xs font-extrabold py-3 rounded-lg uppercase">Aderir Agora</button>
+              <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-4 hover:border-brand-red/40 transition-all">
+                <span className="text-[10px] font-black uppercase text-brand-red bg-red-50 px-2 py-0.5 rounded">Residencial</span>
+                <h3 className="font-extrabold text-lg">Internet Residencial Estável</h3>
+                <div className="text-sm font-bold text-emerald-700 bg-emerald-50 p-2 rounded-lg">Cotação Sob Medida</div>
+                <p className="text-xs text-gray-600">Navegação sem limites para streaming, home office e jogos com Router Wi-Fi 6 incluído.</p>
+                <button onClick={() => setIsQuoteModalOpen(true)} className="w-full bg-brand-red hover:bg-brand-redHover text-white text-xs font-extrabold py-3 rounded-lg uppercase transition-all">Pedir Cotação</button>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border shadow-md space-y-4">
-                <h3 className="font-extrabold text-lg">Residencial Plus</h3>
-                <div className="text-3xl font-black text-brand-red">18.500 Kz<span className="text-xs text-gray-500 font-normal">/mês</span></div>
-                <p className="text-xs text-gray-600">Ideal para streaming 4K, 30 Mbps, Suporte 24/7.</p>
-                <button onClick={() => setIsQuoteModalOpen(true)} className="w-full bg-brand-red text-white text-xs font-extrabold py-3 rounded-lg uppercase">Aderir Agora</button>
+              <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-4 hover:border-brand-red/40 transition-all">
+                <span className="text-[10px] font-black uppercase text-brand-red bg-red-50 px-2 py-0.5 rounded">PME & Escritórios</span>
+                <h3 className="font-extrabold text-lg">Internet Empresarial Plus</h3>
+                <div className="text-sm font-bold text-emerald-700 bg-emerald-50 p-2 rounded-lg">Cotação Sob Medida</div>
+                <p className="text-xs text-gray-600">Garantia de banda, múltiplos pontos de acesso e prioridade de tráfego para empresas.</p>
+                <button onClick={() => setIsQuoteModalOpen(true)} className="w-full bg-brand-red hover:bg-brand-redHover text-white text-xs font-extrabold py-3 rounded-lg uppercase transition-all">Pedir Cotação</button>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border shadow-md space-y-4 border-brand-red">
-                <h3 className="font-extrabold text-lg">Empresarial Pro</h3>
-                <div className="text-3xl font-black text-brand-red">45.000 Kz<span className="text-xs text-gray-500 font-normal">/mês</span></div>
-                <p className="text-xs text-gray-600">Banda 100% Dedicada 1:1, IP Fixo, SLA 99.9%.</p>
-                <button onClick={() => setIsQuoteModalOpen(true)} className="w-full bg-brand-red text-white text-xs font-extrabold py-3 rounded-lg uppercase">Aderir Agora</button>
+              <div className="bg-white p-6 rounded-2xl border-2 border-brand-red shadow-md space-y-4 relative">
+                <span className="absolute -top-3 right-4 bg-brand-red text-white text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase">Destaque</span>
+                <span className="text-[10px] font-black uppercase text-brand-red bg-red-50 px-2 py-0.5 rounded">Corporativo</span>
+                <h3 className="font-extrabold text-lg">Link Dedicado Fibra 1:1</h3>
+                <div className="text-sm font-bold text-emerald-700 bg-emerald-50 p-2 rounded-lg">Cotação Sob Medida</div>
+                <p className="text-xs text-gray-600">Simetria de upload e download, IP Fixo público, SLA de 99.9% e monitorização ininterrupta.</p>
+                <button onClick={() => setIsQuoteModalOpen(true)} className="w-full bg-brand-red hover:bg-brand-redHover text-white text-xs font-extrabold py-3 rounded-lg uppercase transition-all">Pedir Cotação</button>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border shadow-md space-y-4">
-                <h3 className="font-extrabold text-lg">Corporativo Fibra</h3>
-                <div className="text-3xl font-black text-brand-red">95.000 Kz<span className="text-xs text-gray-500 font-normal">/mês</span></div>
-                <p className="text-xs text-gray-600">Link Simétrico 100 Mbps, IPs Fixos, Monitorização 24h.</p>
-                <button onClick={() => setIsQuoteModalOpen(true)} className="w-full bg-brand-red text-white text-xs font-extrabold py-3 rounded-lg uppercase">Aderir Agora</button>
+              <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-4 hover:border-brand-red/40 transition-all">
+                <span className="text-[10px] font-black uppercase text-brand-red bg-red-50 px-2 py-0.5 rounded">Remoto & Fazendas</span>
+                <h3 className="font-extrabold text-lg">Satélite Starlink Pro</h3>
+                <div className="text-sm font-bold text-emerald-700 bg-emerald-50 p-2 rounded-lg">Cotação Sob Medida</div>
+                <p className="text-xs text-gray-600">Cobertura total em qualquer ponto de Angola, baixa latência e instalação completa com mastro.</p>
+                <button onClick={() => setIsQuoteModalOpen(true)} className="w-full bg-brand-red hover:bg-brand-redHover text-white text-xs font-extrabold py-3 rounded-lg uppercase transition-all">Pedir Cotação</button>
               </div>
             </div>
           </div>
@@ -144,25 +150,29 @@ export const App: React.FC = () => {
 
         {currentPage === 'telecom' && (
           <div className="py-16 max-w-7xl mx-auto px-4 lg:px-8 space-y-8">
-            <div className="bg-[#070A10] text-white p-10 rounded-3xl text-center">
-              <h1 className="text-4xl font-black">Telecomunicações Avançadas</h1>
-              <p className="text-sm text-gray-300 mt-2">Centrais Telefónicas PABX Virtuais, Troncos SIP e Telefonia IP para Empresas em Angola.</p>
+            <div className="bg-[#070A10] text-white p-12 rounded-3xl text-center space-y-3">
+              <span className="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase">VOZ & DADOS</span>
+              <h1 className="text-3xl sm:text-4xl font-black">Telecomunicações Avançadas & Telefonia IP</h1>
+              <p className="text-sm text-gray-300 max-w-2xl mx-auto">Centrais Telefónicas PABX Virtuais, Troncos SIP, Intercomunicadores e Soluções Integradas para Empresas em Angola.</p>
             </div>
+            <ServicesSection onOpenQuoteModal={() => setIsQuoteModalOpen(true)} />
           </div>
         )}
 
         {currentPage === 'tecnologia' && (
           <div className="py-16 max-w-7xl mx-auto px-4 lg:px-8 space-y-8">
-            <div className="bg-[#070A10] text-white p-10 rounded-3xl text-center">
-              <h1 className="text-4xl font-black">Tecnologia & Segurança Eletrónica</h1>
-              <p className="text-sm text-gray-300 mt-2">CCTV IP, Data Centers, Fusão de Fibra Óptica e Projetos de TI.</p>
+            <div className="bg-[#070A10] text-white p-12 rounded-3xl text-center space-y-3">
+              <span className="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase">INFRAESTRUTURA & SEGURANÇA</span>
+              <h1 className="text-3xl sm:text-4xl font-black">Tecnologia, CFTV 4K & Data Centers</h1>
+              <p className="text-sm text-gray-300 max-w-2xl mx-auto">Sistemas de vídeo-vigilância inteligente com IA Hikvision, biometria ZKTeco, fusão de fibra óptica e montagem de racks de servidores.</p>
             </div>
+            <ServicesSection onOpenQuoteModal={() => setIsQuoteModalOpen(true)} />
           </div>
         )}
 
         {currentPage === 'loja' && (
-          <div className="py-12 max-w-7xl mx-auto px-4 lg:px-8">
-            <h1 className="text-3xl font-black text-gray-900 mb-6">Catálogo Completo da Loja</h1>
+          <div className="py-8 max-w-7xl mx-auto px-4 lg:px-8">
+            <ShopCategories />
             <FeaturedProducts
               products={productsData}
               onAddToCart={handleAddToCart}
@@ -172,16 +182,147 @@ export const App: React.FC = () => {
         )}
 
         {currentPage === 'sobre' && (
-          <div className="py-16 max-w-7xl mx-auto px-4 lg:px-8 text-center space-y-6">
-            <h1 className="text-4xl font-black text-gray-900">Sobre a Duplas DMP Investment</h1>
-            <p className="text-sm text-gray-600 max-w-2xl mx-auto">Mais de 10 anos de liderança e compromisso com o mercado Angolano em telecomunicações e tecnologia.</p>
+          <div className="py-16 max-w-7xl mx-auto px-4 lg:px-8 space-y-12">
+            <div className="bg-[#070A10] text-white p-12 rounded-3xl text-center space-y-4">
+              <span className="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase">A NOSSA HISTÓRIA & MISSÃO</span>
+              <h1 className="text-3xl sm:text-4xl font-black">Sobre a Duplas DMP Investment</h1>
+              <p className="text-sm text-gray-300 max-w-2xl mx-auto">
+                Mais de uma década de dedicação e liderança no setor de telecomunicações, redes, informática e segurança eletrónica em Angola.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm space-y-3">
+                <div className="w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-black text-gray-900">Missão</h3>
+                <p className="text-xs text-gray-600 leading-relaxed">
+                  Fornecer equipamentos de informática de alta qualidade no padrão das maiores lojas de retalho de Angola, associados a serviços de telecomunicações estáveis que impulsionam o crescimento das empresas nacionais.
+                </p>
+              </div>
+
+              <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm space-y-3">
+                <div className="w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center">
+                  <Award className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-black text-gray-900">Visão</h3>
+                <p className="text-xs text-gray-600 leading-relaxed">
+                  Ser reconhecida como a parceira de tecnologia mais confiável e completa em Angola, garantindo inovação contínua, atendimento humanizado e assistência técnica local qualificada.
+                </p>
+              </div>
+
+              <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm space-y-3">
+                <div className="w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center">
+                  <Truck className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-black text-gray-900">Compromisso Angola</h3>
+                <p className="text-xs text-gray-600 leading-relaxed">
+                  Presentes em Luanda com capacidade técnica de atendimento e entrega em todas as 18 províncias do país, com equipas de engenharia e suporte helpdesk 24/7.
+                </p>
+              </div>
+            </div>
+
+            <WhyChooseUs />
+            <TestimonialsSection />
           </div>
         )}
 
         {currentPage === 'contactos' && (
-          <div className="py-16 max-w-7xl mx-auto px-4 lg:px-8 text-center space-y-6">
-            <h1 className="text-4xl font-black text-gray-900">Contacte-nos</h1>
-            <p className="text-sm text-gray-600">Telefone: (244) 923 457 890 | E-mail: geral@duplasdmp.co.ao | Luanda, Angola</p>
+          <div className="py-16 max-w-7xl mx-auto px-4 lg:px-8 space-y-12">
+            <div className="bg-[#070A10] text-white p-12 rounded-3xl text-center space-y-4">
+              <span className="bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase">ATENDIMENTO OFICIAL</span>
+              <h1 className="text-3xl sm:text-4xl font-black">Entre em Contacto com a Duplas DMP</h1>
+              <p className="text-sm text-gray-300 max-w-2xl mx-auto">
+                Estamos prontos para atender a sua empresa, preparar orçamentos personalizados e tirar todas as suas dúvidas técnicas.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* WhatsApp & Call 1 */}
+              <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm space-y-4 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-black text-gray-900">WhatsApp & Loja</h3>
+                  <p className="text-xs text-gray-500">Recepção de clientes, cotações rápidas e encomendas da loja.</p>
+                  <p className="text-lg font-black text-gray-900">+244 941 950 022</p>
+                </div>
+                <a
+                  href="https://wa.me/244941950022"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs uppercase py-3 rounded-lg text-center transition-all"
+                >
+                  Falar no WhatsApp
+                </a>
+              </div>
+
+              {/* Call 2 & Suporte */}
+              <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm space-y-4 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center">
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-black text-gray-900">Atendimento & Suporte</h3>
+                  <p className="text-xs text-gray-500">Linha telefónica direta para assistência técnica e projetos.</p>
+                  <p className="text-lg font-black text-gray-900">+244 947 077 913</p>
+                </div>
+                <a
+                  href="tel:+244947077913"
+                  className="w-full bg-gray-900 hover:bg-black text-white font-extrabold text-xs uppercase py-3 rounded-lg text-center transition-all"
+                >
+                  Ligar Agora
+                </a>
+              </div>
+
+              {/* Email & Redes Sociais */}
+              <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm space-y-4 flex flex-col justify-between">
+                <div className="space-y-3">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                    <Mail className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-black text-gray-900">E-mail & Redes Sociais</h3>
+                  <p className="text-xs text-gray-500">geral@duplasdmp.co.ao</p>
+                  <div className="flex items-center space-x-3 pt-2">
+                    <a
+                      href="https://www.facebook.com/DUPLASDMP/?locale=pt_BR"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 bg-gray-100 hover:bg-brand-red hover:text-white rounded-lg transition-colors"
+                      title="Facebook"
+                    >
+                      <Facebook className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://ao.linkedin.com/company/duplas-dmp-insvestment"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 bg-gray-100 hover:bg-brand-red hover:text-white rounded-lg transition-colors"
+                      title="LinkedIn"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/duplasdmp/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 bg-gray-100 hover:bg-brand-red hover:text-white rounded-lg transition-colors"
+                      title="Instagram"
+                    >
+                      <Instagram className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setIsQuoteModalOpen(true)}
+                  className="w-full bg-brand-red hover:bg-brand-redHover text-white font-extrabold text-xs uppercase py-3 rounded-lg text-center transition-all"
+                >
+                  Pedir Cotação Formal
+                </button>
+              </div>
+            </div>
           </div>
         )}
       </main>

@@ -3,12 +3,11 @@ export interface Product {
   name: string;
   subtitle: string;
   category: string;
-  price: number | null; // null if "Sob consulta"
-  formattedPrice: string;
-  oldPrice?: string;
+  brand?: string;
+  partNumber?: string;
   image: string;
   badge?: string;
-  rating: number;
+  rating?: number;
   specs: string[];
   inStock: boolean;
   featured?: boolean;

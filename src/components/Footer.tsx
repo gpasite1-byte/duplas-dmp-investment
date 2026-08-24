@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Youtube, Globe } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, MessageCircle, Globe } from 'lucide-react';
 
 interface FooterProps {
   onOpenQuoteModal: () => void;
@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
           
           {/* COLUMN 1: LOGO & ABOUT */}
           <div className="space-y-4 lg:col-span-1">
-            {/* LOGOMARCA DO RODAPÉ: "Duplas" em BRANCO, "DMP" em VERMELHO, "Investment" em BRANCO */}
+            {/* LOGOMARCA DO RODAPÉ */}
             <a href="#" className="flex items-center space-x-3 group">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-red to-red-800 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
                 <span className="font-black text-xl italic">D</span>
@@ -31,22 +31,46 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
             </a>
 
             <p className="text-xs leading-relaxed text-gray-400">
-              Tecnologia que conecta. Soluções que impulsionam. A sua parceira em telecomunicações e tecnologia em Angola.
+              Tecnologia que conecta. Soluções que impulsionam. A sua parceira de referência em telecomunicações, redes e informática em Angola.
             </p>
 
             {/* Social Icons */}
             <div className="flex items-center space-x-2 pt-2">
-              <a href="#" className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-all hover:scale-110" aria-label="Facebook">
+              <a
+                href="https://www.facebook.com/DUPLASDMP/?locale=pt_BR"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-all hover:scale-110"
+                aria-label="Facebook Duplas DMP"
+              >
                 <Facebook className="w-4 h-4" />
               </a>
-              <a href="#" className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-all hover:scale-110" aria-label="LinkedIn">
+              <a
+                href="https://ao.linkedin.com/company/duplas-dmp-insvestment"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-all hover:scale-110"
+                aria-label="LinkedIn Duplas DMP"
+              >
                 <Linkedin className="w-4 h-4" />
               </a>
-              <a href="#" className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-all hover:scale-110" aria-label="Instagram">
+              <a
+                href="https://www.instagram.com/duplasdmp/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-all hover:scale-110"
+                aria-label="Instagram Duplas DMP"
+              >
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-red transition-all hover:scale-110" aria-label="YouTube">
-                <Youtube className="w-4 h-4" />
+              <a
+                href="https://wa.me/244941950022"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-emerald-600 transition-all hover:scale-110"
+                aria-label="WhatsApp Duplas DMP"
+              >
+                <MessageCircle className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -58,26 +82,26 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
             </h4>
             <ul className="space-y-2 text-xs">
               <li><a href="#inicio" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Início</span></a></li>
+              <li><a href="#loja" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Loja Online</span></a></li>
+              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Nossos Serviços</span></a></li>
               <li><a href="#sobre" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Sobre Nós</span></a></li>
-              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Serviços</span></a></li>
-              <li><a href="#loja" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Loja</span></a></li>
-              <li><a href="#contactos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Contactos</span></a></li>
+              <li><a href="#contactos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Contactos Oficiais</span></a></li>
               <li><button onClick={onOpenQuoteModal} className="hover:text-white transition-colors text-left flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Pedir Cotação</span></button></li>
             </ul>
           </div>
 
-          {/* COLUMN 3: NOSSOS SERVIÇOS */}
+          {/* COLUMN 3: CATEGORIAS EM DESTAQUE */}
           <div>
             <h4 className="text-white text-xs font-black uppercase tracking-wider mb-4 border-b border-gray-800 pb-2">
-              NOSSOS SERVIÇOS
+              EQUIPAMENTOS & TI
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Internet Residencial</span></a></li>
-              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Internet Empresarial</span></a></li>
-              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Telecomunicações</span></a></li>
-              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Redes e Infraestrutura</span></a></li>
-              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Segurança Eletrónica</span></a></li>
-              <li><a href="#servicos" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Suporte Técnico 24/7</span></a></li>
+              <li><a href="#loja" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Computadores & Portáteis</span></a></li>
+              <li><a href="#loja" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Impressão & Consumíveis</span></a></li>
+              <li><a href="#loja" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Servidores & Bastidores</span></a></li>
+              <li><a href="#loja" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Redes, Wi-Fi 6 & Fibra</span></a></li>
+              <li><a href="#loja" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>Segurança & CFTV 4K</span></a></li>
+              <li><a href="#loja" className="hover:text-white transition-colors flex items-center space-x-1.5"><span className="text-brand-red">›</span><span>UPS & Proteção Elétrica</span></a></li>
             </ul>
           </div>
 
@@ -88,8 +112,22 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
             </h4>
             <ul className="space-y-3 text-xs">
               <li className="flex items-start space-x-2.5">
+                <MessageCircle className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                <div>
+                  <a href="https://wa.me/244941950022" target="_blank" rel="noopener noreferrer" className="text-white font-bold hover:text-emerald-400 transition-colors">
+                    +244 941 950 022
+                  </a>
+                  <span className="block text-[10px] text-gray-500">WhatsApp Comercial & Loja</span>
+                </div>
+              </li>
+              <li className="flex items-start space-x-2.5">
                 <Phone className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300 font-semibold">(244) 923 457 890</span>
+                <div>
+                  <a href="tel:+244947077913" className="text-white font-bold hover:text-brand-red transition-colors">
+                    +244 947 077 913
+                  </a>
+                  <span className="block text-[10px] text-gray-500">Atendimento & Suporte</span>
+                </div>
               </li>
               <li className="flex items-start space-x-2.5">
                 <Mail className="w-4 h-4 text-brand-red flex-shrink-0 mt-0.5" />
@@ -110,7 +148,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
           <div>
             <h4 className="text-white text-xs font-black uppercase tracking-wider mb-4 border-b border-gray-800 pb-2 flex items-center">
               <Globe className="w-3.5 h-3.5 text-brand-red mr-1.5" />
-              COBERTURA
+              COBERTURA ANGOLA
             </h4>
             
             <div className="bg-[#0F1626] border border-gray-800 rounded-xl p-4 relative overflow-hidden group hover:border-brand-red/40 transition-colors text-center">
@@ -125,7 +163,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
                 <span className="absolute top-12 right-12 w-2 h-2 bg-brand-red rounded-full"></span>
               </div>
               <span className="text-[11px] font-extrabold text-white block mt-1 uppercase tracking-wider">
-                Cobertura Nacional
+                Luanda & Províncias
               </span>
             </div>
           </div>
@@ -134,7 +172,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuoteModal }) => {
 
         {/* BOTTOM COPYRIGHT BAR */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-[11px] text-gray-500">
-          <p>© 2024 Duplas DMP Investment. Todos os direitos reservados.</p>
+          <p>© 2024 Duplas DMP Investment. Todos os direitos reservados. Angola.</p>
           <div className="flex space-x-4 mt-3 md:mt-0">
             <a href="#" className="hover:text-brand-red transition-colors">Política de Privacidade</a>
             <span>|</span>

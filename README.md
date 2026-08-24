@@ -41,12 +41,14 @@ Site institucional completo da **Duplas DMP Investment**, empresa angolana de te
 - ✅ Design responsivo (Mobile + Desktop)
 - ✅ Logo Duplas DMP SVG fiel à marca
 
-## 📞 Contactos
+## 📞 Contactos Oficiais
 
-- **Telefone:** (+244) 923 457 890
+- **WhatsApp & Loja:** +244 941 950 022
+- **Atendimento Telefónico:** +244 947 077 913
 - **Email:** geral@duplasdmp.co.ao
 - **Localização:** Luanda, Angola
 - **Horário:** Seg–Sex: 08h–17h
+- **Redes Sociais:** [Facebook](https://www.facebook.com/DUPLASDMP/?locale=pt_BR) | [LinkedIn](https://ao.linkedin.com/company/duplas-dmp-insvestment) | [Instagram](https://www.instagram.com/duplasdmp/)
 
 ---
 *© 2024 Duplas DMP Investment, Lda. Todos os direitos reservados.*

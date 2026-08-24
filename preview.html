@@ -21,17 +21,20 @@
             }
           },
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            sans: ['Barlow', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            heading: ['Oswald', 'Impact', 'sans-serif'],
+            body: ['Barlow', 'system-ui', 'sans-serif'],
+            display: ['Bebas Neue', 'Impact', 'sans-serif'],
           }
         }
       }
     }
   </script>
 
-  <!-- Google Fonts Inter -->
+  <!-- Google Fonts: Oswald, Barlow, Bebas Neue -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
 
   <!-- React 18 & Babel -->
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
@@ -43,6 +46,9 @@
 
   <style>
     html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
+    h1,h2,h3,h4,h5,h6,.font-heading { font-family:'Oswald',Impact,sans-serif; letter-spacing:0.02em; }
+    .font-display { font-family:'Bebas Neue',Impact,sans-serif; letter-spacing:0.03em; }
     .glass-card {
       background: rgba(15, 22, 38, 0.95);
       backdrop-filter: blur(16px);
@@ -260,16 +266,15 @@
           {/* 1. TOP BAR */}
           <div className="bg-[#0B0F19] text-gray-300 text-xs py-2 px-4 border-b border-gray-800 hidden lg:block">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
-              <span className="text-gray-400">Tecnologia que conecta. Soluções que impulsionam.</span>
+              <span className="text-gray-400">Tecnologia que conecta. Soluções que impulsionam. Angola.</span>
               <div className="flex items-center space-x-6">
-                <span className="flex items-center"><i className="fa-solid fa-phone text-brand-red mr-2"></i>(244) 923 457 890</span>
+                <a href="https://wa.me/244941950022" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-emerald-400"><i className="fa-brands fa-whatsapp text-emerald-400 mr-2"></i><span className="font-bold text-white">+244 941 950 022</span></a>
+                <a href="tel:+244947077913" className="flex items-center hover:text-brand-red"><i className="fa-solid fa-phone text-brand-red mr-2"></i>+244 947 077 913</a>
                 <span className="flex items-center"><i className="fa-solid fa-envelope text-brand-red mr-2"></i>geral@duplasdmp.co.ao</span>
-                <span className="flex items-center"><i className="fa-solid fa-clock text-brand-red mr-2"></i>Seg - Sex: 08h - 17h</span>
                 <div className="flex items-center space-x-2 text-white ml-2">
-                  <a href="#" className="w-5 h-5 rounded-full bg-gray-800 flex items-center justify-center text-[10px] hover:bg-brand-red transition-colors"><i className="fa-brands fa-facebook-f"></i></a>
-                  <a href="#" className="w-5 h-5 rounded-full bg-gray-800 flex items-center justify-center text-[10px] hover:bg-brand-red transition-colors"><i className="fa-brands fa-linkedin-in"></i></a>
-                  <a href="#" className="w-5 h-5 rounded-full bg-gray-800 flex items-center justify-center text-[10px] hover:bg-brand-red transition-colors"><i className="fa-brands fa-instagram"></i></a>
-                  <a href="#" className="w-5 h-5 rounded-full bg-gray-800 flex items-center justify-center text-[10px] hover:bg-brand-red transition-colors"><i className="fa-brands fa-youtube"></i></a>
+                  <a href="https://www.facebook.com/DUPLASDMP/?locale=pt_BR" target="_blank" rel="noopener noreferrer" className="w-5 h-5 rounded-full bg-gray-800 flex items-center justify-center text-[10px] hover:bg-brand-red transition-colors"><i className="fa-brands fa-facebook-f"></i></a>
+                  <a href="https://ao.linkedin.com/company/duplas-dmp-insvestment" target="_blank" rel="noopener noreferrer" className="w-5 h-5 rounded-full bg-gray-800 flex items-center justify-center text-[10px] hover:bg-brand-red transition-colors"><i className="fa-brands fa-linkedin-in"></i></a>
+                  <a href="https://www.instagram.com/duplasdmp/" target="_blank" rel="noopener noreferrer" className="w-5 h-5 rounded-full bg-gray-800 flex items-center justify-center text-[10px] hover:bg-brand-red transition-colors"><i className="fa-brands fa-instagram"></i></a>
                 </div>
               </div>
             </div>
@@ -789,8 +794,13 @@
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                   <div className="lg:col-span-5 space-y-6">
                     <div className="bg-white p-6 rounded-2xl border shadow-md flex items-center space-x-4">
+                      <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl"><i className="fa-brands fa-whatsapp"></i></div>
+                      <div><h4 className="font-bold text-xs text-gray-500 uppercase">WhatsApp & Loja</h4><p className="font-black text-sm text-gray-900">+244 941 950 022</p></div>
+                    </div>
+
+                    <div className="bg-white p-6 rounded-2xl border shadow-md flex items-center space-x-4">
                       <div className="w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-xl"><i className="fa-solid fa-phone"></i></div>
-                      <div><h4 className="font-bold text-xs text-gray-500 uppercase">Telefone</h4><p className="font-black text-sm text-gray-900">(244) 923 457 890</p></div>
+                      <div><h4 className="font-bold text-xs text-gray-500 uppercase">Atendimento & Suporte</h4><p className="font-black text-sm text-gray-900">+244 947 077 913</p></div>
                     </div>
 
                     <div className="bg-white p-6 rounded-2xl border shadow-md flex items-center space-x-4">
@@ -858,7 +868,8 @@
               <div>
                 <h4 className="text-white text-xs font-black uppercase mb-4 border-b border-gray-800 pb-1">CONTACTE-NOS</h4>
                 <ul className="space-y-2.5 text-xs">
-                  <li className="flex items-center"><i className="fa-solid fa-phone text-brand-red mr-2"></i>(244) 923 457 890</li>
+                  <li className="flex items-center"><i className="fa-brands fa-whatsapp text-emerald-400 mr-2"></i>+244 941 950 022 (WhatsApp)</li>
+                  <li className="flex items-center"><i className="fa-solid fa-phone text-brand-red mr-2"></i>+244 947 077 913 (Voz)</li>
                   <li className="flex items-center"><i className="fa-solid fa-envelope text-brand-red mr-2"></i>geral@duplasdmp.co.ao</li>
                   <li className="flex items-center"><i className="fa-solid fa-location-dot text-brand-red mr-2"></i>Luanda, Angola</li>
                   <li className="flex items-center"><i className="fa-solid fa-clock text-brand-red mr-2"></i>Seg - Sex: 08h - 17h</li>
@@ -977,8 +988,8 @@
             </div>
           )}
 
-          {/* WHATSAPP FLOATING BUTTON */}
-          <a href="https://wa.me/244923457890" target="_blank" className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all">
+          {/* WhatsApp FAB */}
+          <a href="https://wa.me/244941950022" target="_blank" className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all">
             <i className="fa-brands fa-whatsapp text-3xl"></i>
           </a>
 
