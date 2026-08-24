@@ -553,6 +553,60 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* PRODUTOS DO MÊS */}
+      <section className="py-16 bg-white border-t border-gray-100">
+        <div className="w-full px-4 sm:px-7 lg:px-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-gray-200 gap-4">
+            <div>
+              <div className="flex items-center space-x-2 text-brand-red font-bold text-xs uppercase tracking-widest mb-1">
+                <i className="fa-solid fa-fire text-sm"></i>
+                <span>Ofertas Selecionadas</span>
+              </div>
+              <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-gray-900 uppercase">PRODUTOS DO MÊS</h2>
+              <p className="font-body text-xs sm:text-sm text-gray-500 mt-1">Equipamentos de alta tecnologia com entrega rápida em Luanda e em todo o país</p>
+            </div>
+            <button onClick={()=>setPage('loja')} className="inline-flex items-center space-x-2 text-brand-red hover:text-brand-redHover font-heading font-bold text-xs sm:text-sm uppercase tracking-wider transition-colors">
+              <span>Ver Todos os Produtos</span>
+              <i className="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {productsData.slice(0, 8).map(p=>(
+              <div key={p.id} className="bg-white rounded-2xl shadow-md product-card overflow-hidden flex flex-col justify-between border border-gray-100 group">
+                <div>
+                  <div className="img-zoom h-52 relative cursor-pointer" onClick={()=>setDetailProd(p)}>
+                    <img src={p.img} alt={p.name} className="w-full h-full object-cover img-zoom-child"/>
+                    <span className="absolute top-2.5 left-2.5 badge-red text-white text-[10px] font-heading px-2.5 py-0.5 rounded uppercase tracking-wide shadow">{p.category}</span>
+                    {p.badge && (
+                      <span className="absolute top-2.5 right-2.5 bg-gray-900/80 backdrop-blur-sm text-white text-[9px] font-heading px-2 py-0.5 rounded uppercase tracking-wide">{p.badge}</span>
+                    )}
+                  </div>
+                  <div className="p-4 space-y-1.5">
+                    <h3 onClick={()=>setDetailProd(p)} className="font-heading font-bold text-sm md:text-base text-gray-900 uppercase leading-tight hover:text-brand-red cursor-pointer transition-colors">{p.name}</h3>
+                    <p className="font-body text-xs text-gray-500">{p.subtitle}</p>
+                  </div>
+                </div>
+
+                <div className="p-4 pt-0 space-y-3">
+                  <div className="font-display text-2xl text-brand-red font-bold">{p.priceStr}</div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button onClick={()=>setDetailProd(p)}
+                      className="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-heading font-semibold uppercase tracking-wider text-[10px] py-2.5 rounded-xl transition-all">
+                      Detalhes
+                    </button>
+                    <button onClick={()=>addToCart(p)}
+                      className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-wider text-[10px] py-2.5 rounded-xl transition-all shadow glow-red">
+                      Comprar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 
@@ -786,6 +840,7 @@ function App() {
       <section className="py-16 bg-gray-50">
         <div className="w-full px-4 sm:px-7 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           <div className="lg:col-span-5 space-y-4">
+            {[
               {icon:'fa-whatsapp',label:'WhatsApp & Loja',val:'+244 941 950 022',img:'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80'},
               {icon:'fa-phone',label:'Atendimento & Suporte',val:'+244 947 077 913',img:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'},
               {icon:'fa-envelope',label:'E-mail Comercial',val:'geral@duplasdmp.co.ao',img:'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80'},
