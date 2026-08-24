@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Duplas DMP Investment | Soluções em Tecnologia, Telecomunicações e Loja Online</title>
-  <meta name="description" content="Duplas DMP Investment — Catálogo completo em Informática, Telecomunicações, Smartphones, Energia, Imagem e Som, Climatização e Serviços em Angola.">
+  <title>Duplas DMP Investment | Loja Online & Soluções em Tecnologia Angola</title>
+  <meta name="description" content="Duplas DMP Investment — Catálogo oficial e loja online com produtos em Informática, Telecomunicações, Smartphones, Energia, Imagem e Som e Climatização em Luanda, Angola.">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -13,7 +13,7 @@
       theme: {
         extend: {
           colors: {
-            brand: { red:'#CC0000', redHover:'#AA0000', dark:'#0A0C12', gray:'#1A1E2E', lightBg:'#F4F6F9' }
+            brand: { red:'#CC0000', redHover:'#AA0000', dark:'#0A0C12', gray:'#1A1E2E', lightBg:'#F4F6F9', border:'#E5E7EB' }
           },
           fontFamily: {
             sans:    ['Poppins', 'system-ui', 'sans-serif'],
@@ -37,74 +37,56 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.10/babel.min.js"></script>
-  <script>
-    window.addEventListener('error', function(e) {
-      console.error('Global error:', e);
-      var root = document.getElementById('root');
-      if (root && root.innerText.indexOf('Carregando') !== -1) {
-        root.innerHTML = '<div style="padding:40px;text-align:center;font-family:Poppins,sans-serif;color:#ffffff;background:#0A0C12;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;"><h2 style="color:#CC0000;font-size:24px;margin-bottom:12px;">Falha ao carregar componentes</h2><p style="color:#8A95A5;font-size:14px;max-width:500px;margin-bottom:20px;">' + (e.message || 'Verifique a sua ligação à internet.') + '</p><button onclick="location.reload()" style="padding:12px 28px;background:#CC0000;color:#fff;border:none;border-radius:10px;font-weight:700;cursor:pointer;">Tentar Novamente</button></div>';
-      }
-    });
-  </script>
 
   <style>
-    body { font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; margin:0; padding:0; box-sizing:border-box; font-weight:400; }
-    h1,h2,h3,h4,h5,h6,.font-heading { font-family:'Poppins',sans-serif; font-weight:800; }
+    body { font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; margin:0; padding:0; box-sizing:border-box; font-weight:400; background:#F8FAFC; }
+    h1,h2,h3,h4,h5,h6,.font-heading { font-family:'Poppins',sans-serif; font-weight:700; }
     .font-display { font-family:'Poppins',sans-serif; font-weight:700; }
     .font-body { font-family:'Poppins',sans-serif; }
     html { scroll-behavior:smooth; }
 
-    ::-webkit-scrollbar { width:6px; }
-    ::-webkit-scrollbar-track { background:#0A0C12; }
+    ::-webkit-scrollbar { width:6px; height:6px; }
+    ::-webkit-scrollbar-track { background:#F1F5F9; }
     ::-webkit-scrollbar-thumb { background:#CC0000; border-radius:4px; }
 
     /* ── ANIMATIONS ── */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeInScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-    @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-25px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes fadeInRight { from { opacity: 0; transform: translateX(25px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInScale { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+    @keyframes fadeInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
     @keyframes pulseRing { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0.7); } 70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(204,0,0,0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0); } }
 
-    .animate-fade-in-up { animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .animate-fade-in-scale { animation: fadeInScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .animate-fade-in-left { animation: fadeInLeft 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .animate-fade-in-right { animation: fadeInRight 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-up { animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-scale { animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-right { animation: fadeInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .pulse-red { animation: pulseRing 2s infinite; }
 
-    .glass { background:rgba(10,12,18,0.92); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.08); }
-    .glow-red { box-shadow:0 0 25px rgba(204,0,0,0.3); }
-    
+    .glow-red { box-shadow:0 0 20px rgba(204,0,0,0.25); }
     .img-zoom { overflow:hidden; }
-    .img-zoom img, .img-zoom-child { transition:transform 0.4s ease; }
-    .img-zoom:hover img, .img-zoom:hover .img-zoom-child { transform:scale(1.06); }
+    .img-zoom img, .img-zoom-child { transition:transform 0.35s ease; }
+    .img-zoom:hover img, .img-zoom:hover .img-zoom-child { transform:scale(1.05); }
     
-    .card-hover { transition:all 0.3s ease; }
-    .card-hover:hover { transform:translateY(-6px); box-shadow:0 18px 30px -8px rgba(0,0,0,0.15); }
-    
-    .heading-line::after { content:''; display:block; width:50px; height:3px; background:#CC0000; margin:10px auto 0; border-radius:2px; }
-    .heading-line-left::after { content:''; display:block; width:50px; height:3px; background:#CC0000; margin:10px 0 0; border-radius:2px; }
-    
-    .nav-link { position:relative; }
-    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#CC0000; transition:width 0.25s ease; }
-    .nav-link:hover::after,.nav-link.active::after { width:100%; }
-    .nav-link.active { color:#CC0000; }
+    .card-hover { transition:all 0.25s ease; }
+    .card-hover:hover { transform:translateY(-4px); box-shadow:0 12px 24px -6px rgba(0,0,0,0.08); }
     
     .badge-red { background:linear-gradient(135deg,#CC0000,#E30613); }
-    .product-card { border-bottom:3px solid transparent; transition:all 0.3s ease; }
-    .product-card:hover { border-bottom-color:#CC0000; transform:translateY(-5px); box-shadow:0 14px 28px rgba(0,0,0,0.1); }
+    .product-card { border:1px solid #E2E8F0; transition:all 0.25s ease; }
+    .product-card:hover { border-color:#CC0000; transform:translateY(-4px); box-shadow:0 12px 24px rgba(0,0,0,0.07); }
     
     input:focus, textarea:focus, select:focus { outline:none; border-color:#CC0000!important; box-shadow:0 0 0 3px rgba(204,0,0,0.12)!important; }
-    
-    @media (max-width:768px){
-      .hide-mobile { display:none!important; }
-    }
+
+    .hide-scrollbar::-webkit-scrollbar { display:none; }
+    .hide-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
+
+    /* Accordion styles */
+    .filter-section { border-bottom:1px solid #E2E8F0; padding-bottom:14px; margin-bottom:14px; }
+    .filter-section:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 antialiased selection:bg-brand-red selection:text-white">
+<body class="bg-[#F8FAFC] text-gray-900 antialiased selection:bg-brand-red selection:text-white">
 <div id="root">
   <div style="display:flex;min-height:100vh;flex-direction:column;align-items:center;justify-content:center;background:#0A0C12;color:#ffffff;font-family:'Poppins',sans-serif;">
     <div style="font-size:32px;font-weight:900;letter-spacing:1px;color:#CC0000;margin-bottom:12px;">DUPLAS DMP</div>
-    <div style="font-size:14px;color:#8A95A5;margin-bottom:24px;">Carregando Catálogo Completo & Serviços...</div>
+    <div style="font-size:14px;color:#8A95A5;margin-bottom:24px;">A carregar Sistema de Loja & Catálogo Oficial...</div>
     <div style="width:40px;height:40px;border:3px solid rgba(204,0,0,0.2);border-top-color:#CC0000;border-radius:50%;animation:spin 0.8s linear infinite;"></div>
     <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
   </div>
@@ -117,30 +99,30 @@ const { useState, useEffect, useMemo } = React;
 const LOGO_ONLINE = "https://i.ibb.co/XkF3VWps/DUPLAS.png";
 const LOGO_PATH   = "logo.png";
 
-/* ─── CATEGORIAS PADRÃO NCR ANGOLA ─────────────────── */
-const NCR_CATEGORIES = [
+/* ─── CATEGORIAS / DEPARTAMENTOS PADRÃO NCR ANGOLA ─── */
+const NCR_DEPARTMENTS = [
   { id: 'ALL', name: 'Todos os Produtos', icon: 'fa-layer-group' },
-  { id: 'Informatica', name: 'Informática', icon: 'fa-laptop', subcategories: ['Portáteis', 'Computadores de Secretária & All-in-One', 'Servidores & Storage', 'Switches & Redes', 'Impressoras & POS', 'Monitores', 'Componentes & Cabos', 'Ratos & Teclados'] },
-  { id: 'Escritorio', name: 'Escritório e Papelaria', icon: 'fa-print', subcategories: ['Impressoras & Multifunções', 'Impressoras POS & Caixas', 'Toners & Consumíveis', 'Destruidoras de Papel', 'Calculadoras & Acessórios'] },
-  { id: 'Electrodomesticos', name: 'Electrodomésticos', icon: 'fa-snowflake', subcategories: ['Ar Condicionado', 'Frigoríficos & Geleiras', 'Micro-ondas & Cozinha', 'Dispensadores de Água'] },
-  { id: 'Smartphones', name: 'Smartphones e Tablets', icon: 'fa-mobile-screen', subcategories: ['iPhones (Apple)', 'Smartphones Samsung', 'Xiaomi & Android', 'Tablets & iPads', 'Smartwatches & Acessórios'] },
-  { id: 'Energia', name: 'Energia', icon: 'fa-bolt', subcategories: ['UPS / No-Breaks Online', 'Power Stations Portáteis', 'Estabilizadores AVR Industriais', 'Geradores & Baterias Solares'] },
-  { id: 'ImagemSom', name: 'Imagem e Som', icon: 'fa-tv', subcategories: ['Smart TVs 4K & QLED', 'Soundbars & Home Cinema', 'Colunas Bluetooth & Party Speakers', 'Auscultadores & Earbuds', 'Suportes de TV & Cabos'] },
+  { id: 'Informatica', name: 'Informática', icon: 'fa-laptop' },
+  { id: 'Escritorio', name: 'Escritório e Papelaria', icon: 'fa-print' },
+  { id: 'Electrodomesticos', name: 'Electrodomésticos', icon: 'fa-snowflake' },
+  { id: 'Smartphones', name: 'Smartphones e Tablets', icon: 'fa-mobile-screen' },
+  { id: 'Energia', name: 'Energia', icon: 'fa-bolt' },
+  { id: 'ImagemSom', name: 'Imagem e Som', icon: 'fa-tv' },
 ];
 
-/* ─── CATÁLOGO MASSIVO COM +45 PRODUTOS REAIS EXTRAÍDOS DA NCR ANGOLA ─── */
-const productsData = [
-  // =========================================================================
-  // 1. INFORMÁTICA & COMPUTADORES
-  // =========================================================================
+/* ─── CATÁLOGO COMPLETO COM +45 PRODUTOS REAIS EXTRAÍDOS DA NCR ANGOLA ─── */
+const allProducts = [
+  // ==========================================
+  // INFORMÁTICA
+  // ==========================================
   {
     id: 'inf-01',
     sku: 'HP-PB450G10',
     mpn: '7X024ES',
     name: 'Portátil HP ProBook 450 G10 15.6" FHD',
     subtitle: 'Intel Core i5-1335U · 16GB RAM · 512GB SSD NVMe · Windows 11 Pro',
-    category: 'Informatica',
-    subCategory: 'Portáteis',
+    department: 'Informatica',
+    category: 'Portáteis',
     brand: 'HP',
     priceVal: 958360,
     priceStr: '958.360,00 AKZ',
@@ -157,7 +139,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '65W',
     weight: '1.74 kg',
-    specs: ['Processador Intel Core i5 13ª Geração até 4.6GHz', '16GB RAM DDR4 3200MHz de alta performance', 'Armazenamento SSD 512GB M.2 PCIe NVMe', 'Ecrã 15.6" Full HD IPS Anti-reflexo com micro-bordas', 'Wi-Fi 6E + Bluetooth 5.3 + Porta LAN Gigabit', 'Segurança empresarial HP Wolf Security integrada']
+    specs: ['Processador Intel Core i5 13ª Geração até 4.6GHz', '16GB RAM DDR4 3200MHz', 'SSD 512GB M.2 PCIe NVMe', 'Ecrã 15.6" Full HD IPS Anti-reflexo', 'Wi-Fi 6E + Bluetooth 5.3 + Porta LAN Gigabit', 'Segurança empresarial HP Wolf Security']
   },
   {
     id: 'inf-02',
@@ -165,8 +147,8 @@ const productsData = [
     mpn: 'LAT5440-I7',
     name: 'Portátil Dell Latitude 5440 14" FHD',
     subtitle: 'Intel Core i7-1355U · 16GB DDR5 · 512GB SSD · VPro Empresarial',
-    category: 'Informatica',
-    subCategory: 'Portáteis',
+    department: 'Informatica',
+    category: 'Portáteis',
     brand: 'DELL',
     priceVal: 1250000,
     priceStr: '1.250.000,00 AKZ',
@@ -183,7 +165,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '65W',
     weight: '1.36 kg',
-    specs: ['Intel Core i7-1355U vPro 10 Cores até 5.0GHz', '16GB RAM DDR5 4800MHz Ultra Rápida', 'SSD 512GB NVMe PCIe Gen4 Classe 35', 'Ecrã 14" FHD ComfortView Plus Anti-glare', 'Garantia oficial Dell ProSupport 3 Anos', 'Portas Thunderbolt 4, HDMI e RJ45 LAN Gigabit']
+    specs: ['Intel Core i7-1355U vPro 10 Cores', '16GB RAM DDR5 4800MHz Ultra Rápida', 'SSD 512GB NVMe PCIe Gen4', 'Ecrã 14" FHD ComfortView Plus', 'Garantia Dell ProSupport 3 Anos']
   },
   {
     id: 'inf-03',
@@ -191,8 +173,8 @@ const productsData = [
     mpn: '21JR0018GP',
     name: 'Portátil Lenovo ThinkPad E14 Gen 5',
     subtitle: 'AMD Ryzen 7 7730U · 16GB RAM · 512GB SSD · Chassi Militar Mil-Spec',
-    category: 'Informatica',
-    subCategory: 'Portáteis',
+    department: 'Informatica',
+    category: 'Portáteis',
     brand: 'LENOVO',
     priceVal: 1180000,
     priceStr: '1.180.000,00 AKZ',
@@ -209,7 +191,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '65W',
     weight: '1.41 kg',
-    specs: ['AMD Ryzen 7 7730U (8 Núcleos / 16 Threads)', '16GB RAM DDR4 3200MHz', 'SSD 512GB M.2 2242 PCIe', 'Certificação Militar Mil-STD-810H contra quedas e poeira', 'Teclado ergonómico retroiluminado com TrackPoint', 'Câmara FHD com obturador de privacidade']
+    specs: ['AMD Ryzen 7 7730U 8 Núcleos / 16 Threads', '16GB RAM DDR4 3200MHz', 'SSD 512GB M.2 PCIe', 'Certificação Militar Mil-STD-810H', 'Teclado retroiluminado com TrackPoint']
   },
   {
     id: 'inf-04',
@@ -217,8 +199,8 @@ const productsData = [
     mpn: 'MRX33PO',
     name: 'Apple MacBook Pro 14" M3 Pro',
     subtitle: 'Chip M3 Pro 11-Core · 18GB RAM · 512GB SSD · Liquid Retina XDR',
-    category: 'Informatica',
-    subCategory: 'Portáteis',
+    department: 'Informatica',
+    category: 'Portáteis',
     brand: 'APPLE',
     priceVal: 2650000,
     priceStr: '2.650.000,00 AKZ',
@@ -235,7 +217,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '70W MagSafe',
     weight: '1.61 kg',
-    specs: ['Chip Apple M3 Pro com GPU de 14 núcleos', '18GB Memória Unificada de Alta Velocidade', 'SSD 512GB PCIe de Alta Performance', 'Ecrã Liquid Retina XDR 120Hz ProMotion', 'Sistema de som de 6 altifalantes com subwoofers', 'Bateria com autonomia até 18 horas']
+    specs: ['Chip Apple M3 Pro 11 Cores CPU / 14 Cores GPU', '18GB Memória Unificada de Alta Velocidade', 'SSD 512GB PCIe', 'Ecrã Liquid Retina XDR 120Hz ProMotion', 'Bateria até 18 horas']
   },
   {
     id: 'inf-05',
@@ -243,8 +225,8 @@ const productsData = [
     mpn: 'HP-24-CB100',
     name: 'Desktop All-in-One HP 24" Core i5',
     subtitle: 'Intel Core i5-1335U · 16GB RAM · 512GB SSD · Ecrã 23.8" FHD IPS',
-    category: 'Informatica',
-    subCategory: 'Computadores de Secretária & All-in-One',
+    department: 'Informatica',
+    category: 'Computadores de Secretária',
     brand: 'HP',
     priceVal: 961990,
     priceStr: '961.990,00 AKZ',
@@ -261,7 +243,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '90W',
     weight: '5.3 kg',
-    specs: ['Computador Tudo-em-Um elegante para escritório moderno', 'Ecrã 23.8" Full HD IPS sem molduras', '16GB RAM DDR4 e SSD NVMe 512GB', 'Câmara retrátil com microfone duplo integrado', 'Inclui teclado e rato sem fios HP']
+    specs: ['Computador Tudo-em-Um elegante para escritório', 'Ecrã 23.8" Full HD IPS sem molduras', '16GB RAM DDR4 e SSD NVMe 512GB', 'Câmara retrátil com microfone integrado', 'Teclado e rato sem fios HP incluídos']
   },
   {
     id: 'inf-06',
@@ -269,8 +251,8 @@ const productsData = [
     mpn: '400G9-SFF',
     name: 'Desktop HP ProDesk 400 G9 SFF',
     subtitle: 'Intel Core i5-13500 · 16GB RAM · 512GB SSD · Inclui Rato e Teclado',
-    category: 'Informatica',
-    subCategory: 'Computadores de Secretária & All-in-One',
+    department: 'Informatica',
+    category: 'Computadores de Secretária',
     brand: 'HP',
     priceVal: 870000,
     priceStr: '870.000,00 AKZ',
@@ -287,7 +269,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '180W',
     weight: '4.2 kg',
-    specs: ['Intel Core i5-13500 14 Cores / 20 Threads', '16GB RAM DDR4 3200MHz', 'SSD 512GB NVMe M.2', 'Portas USB-C, DisplayPort, HDMI, RJ45 LAN', 'Gabinete Small Form Factor económico e silencioso', 'Windows 11 Pro 64-bit']
+    specs: ['Intel Core i5-13500 14 Cores / 20 Threads', '16GB RAM DDR4 3200MHz', 'SSD 512GB NVMe M.2', 'Portas USB-C, DisplayPort, HDMI, RJ45 LAN', 'Windows 11 Pro 64-bit']
   },
   {
     id: 'inf-07',
@@ -295,8 +277,8 @@ const productsData = [
     mpn: 'ML30-G11-XEON',
     name: 'Servidor HPE ProLiant ML30 Gen11 Torre',
     subtitle: 'Intel Xeon E-2434 · 32GB RAM ECC · 2x 2TB SATA Enterprise RAID',
-    category: 'Informatica',
-    subCategory: 'Servidores & Storage',
+    department: 'Informatica',
+    category: 'Servidores & Storage',
     brand: 'HPE',
     priceVal: 3850000,
     priceStr: '3.850.000,00 AKZ',
@@ -313,7 +295,7 @@ const productsData = [
     hasMountSupport: true,
     powerWatts: '500W Redundante',
     weight: '15.6 kg',
-    specs: ['Processador Intel Xeon E-2434 4 Cores / 8 Threads', '32GB Memória DDR5 ECC Registada', '2 Discos 2TB SATA 7.2K Enterprise em RAID 1', 'Controlador HPE Smart Array & Gestão Remota iLO 6', 'Dupla Fonte de Alimentação Redundante', '4 Portas Gigabit LAN integradas']
+    specs: ['Intel Xeon E-2434 4 Cores / 8 Threads', '32GB Memória DDR5 ECC Registada', '2 Discos 2TB SATA Enterprise RAID 1', 'Gestão Remota iLO 6 e Dupla Fonte Redundante']
   },
   {
     id: 'inf-08',
@@ -321,8 +303,8 @@ const productsData = [
     mpn: 'C1000-24P-4G-L',
     name: 'Switch Cisco Catalyst 1000 24P PoE+',
     subtitle: '24 Portas Gigabit PoE+ · 4x SFP 1G Uplink · 195W Power Budget',
-    category: 'Informatica',
-    subCategory: 'Switches & Redes',
+    department: 'Informatica',
+    category: 'Switches & Redes',
     brand: 'CISCO',
     priceVal: 990000,
     priceStr: '990.000,00 AKZ',
@@ -332,14 +314,14 @@ const productsData = [
     screenSize: null,
     screenType: null,
     resolution: null,
-    hasBluetooth: true,
+    hasBluetooth: false,
     hasLAN: true,
     hasNetflix: false,
     hasSubwoofer: false,
     hasMountSupport: true,
     powerWatts: '195W PoE',
     weight: '3.8 kg',
-    specs: ['24 Portas 10/100/1000 Gigabit Ethernet PoE+', '4 Slots SFP 1G para Fibra Óptica', 'Orçamento PoE total de 195W', 'Gestão avançada VLANs, QoS, IGMP Snooping', 'Montagem em Bastidor / Rack 19"', 'Cisco IOS Software com interface Web intuitiva']
+    specs: ['24 Portas 10/100/1000 Gigabit PoE+', '4 Slots SFP 1G para Fibra Óptica', 'Orçamento PoE total de 195W', 'Montagem em Bastidor 19"']
   },
   {
     id: 'inf-09',
@@ -347,8 +329,8 @@ const productsData = [
     mpn: 'DGS-1210-28',
     name: 'Switch D-Link 24 Portas Gigabit Smart Managed',
     subtitle: '24 Portas 10/100/1000 · 4 Slots SFP Fibra · Gestão Web Smart',
-    category: 'Informatica',
-    subCategory: 'Switches & Redes',
+    department: 'Informatica',
+    category: 'Switches & Redes',
     brand: 'D-LINK',
     priceVal: 185000,
     priceStr: '185.000,00 AKZ',
@@ -365,7 +347,7 @@ const productsData = [
     hasMountSupport: true,
     powerWatts: '30W',
     weight: '2.4 kg',
-    specs: ['24 Portas Gigabit 10/100/1000 RJ45', '4 Portas SFP para interligação de fibra óptica', 'Suporte a VLANs 802.1Q, QoS e IGMP', 'Gabinete metálico para bastidor de 19 polegadas']
+    specs: ['24 Portas Gigabit 10/100/1000 RJ45', '4 Portas SFP para interligação de fibra óptica', 'Suporte a VLANs 802.1Q e QoS']
   },
   {
     id: 'inf-10',
@@ -373,8 +355,8 @@ const productsData = [
     mpn: 'DS-3E0508-E',
     name: 'Switch 8 Portas Gigabit Metal Hikvision',
     subtitle: '8 Portas 10/100/1000 Mbps · Plug & Play · Chassi Metálico',
-    category: 'Informatica',
-    subCategory: 'Switches & Redes',
+    department: 'Informatica',
+    category: 'Switches & Redes',
     brand: 'HIKVISION',
     priceVal: 32713,
     priceStr: '32.713,00 AKZ',
@@ -391,7 +373,7 @@ const productsData = [
     hasMountSupport: true,
     powerWatts: '5W',
     weight: '0.45 kg',
-    specs: ['8 Portas RJ45 Gigabit automáticas 10/100/1000', 'Construção metálica reforçada anti-interferência', 'Design silencioso sem ventoinhas', 'Instalação imediata sem necessidade de configuração']
+    specs: ['8 Portas RJ45 Gigabit automáticas', 'Construção metálica reforçada', 'Design silencioso sem ventoinhas']
   },
   {
     id: 'inf-11',
@@ -399,8 +381,8 @@ const productsData = [
     mpn: 'DWR-921-4G',
     name: 'Router Wi-Fi 4G LTE Dual SIM Gigabit',
     subtitle: 'Cat 6 · 300Mbps · 4x Portas RJ45 · Bateria de Backup Integrada',
-    category: 'Informatica',
-    subCategory: 'Switches & Redes',
+    department: 'Informatica',
+    category: 'Switches & Redes',
     brand: 'D-LINK',
     priceVal: 57482.22,
     priceStr: '57.482,22 AKZ',
@@ -417,7 +399,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '12W',
     weight: '350 g',
-    specs: ['Compatível com cartões Unitel e Africell', 'Failover automático entre 4G e ligação de cabo', '4 Portas LAN RJ45 para computadores e terminais', 'Wi-Fi com cobertura até 150 metros quadrados']
+    specs: ['Compatível com Unitel e Africell', 'Failover automático entre 4G e cabo', '4 Portas LAN RJ45']
   },
   {
     id: 'inf-12',
@@ -425,8 +407,8 @@ const productsData = [
     mpn: 'DVB4230GL',
     name: 'Router Xiaomi Mi Wifi 4A AC1200 Gigabit',
     subtitle: 'Dual Band 2.4/5GHz · 4 Antenas de Alto Ganho · Velocidade 1167Mbps',
-    category: 'Informatica',
-    subCategory: 'Switches & Redes',
+    department: 'Informatica',
+    category: 'Switches & Redes',
     brand: 'XIAOMI',
     priceVal: 42990,
     priceStr: '42.990,00 AKZ',
@@ -443,7 +425,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '12W',
     weight: '240 g',
-    specs: ['Velocidade combinada de 1167 Mbps (300Mbps 2.4GHz + 867Mbps 5GHz)', '4 Antenas externas omnidirecionais de 5dBi', 'Suporta até 64 dispositivos simultâneos conectados', 'Gestão através da aplicação Mi WiFi']
+    specs: ['1167 Mbps Dual Band', '4 Antenas externas de 5dBi', 'Suporta até 64 dispositivos simultâneos']
   },
   {
     id: 'inf-13',
@@ -451,8 +433,8 @@ const productsData = [
     mpn: 'P22-G5-FHD',
     name: 'Monitor HP P22 G5 21.5" Full HD',
     subtitle: '1920x1080 · Painel IPS 75Hz · HDMI & VGA · Low Blue Light',
-    category: 'Informatica',
-    subCategory: 'Monitores',
+    department: 'Informatica',
+    category: 'Monitores',
     brand: 'HP',
     priceVal: 183194,
     priceStr: '183.194,00 AKZ',
@@ -469,7 +451,7 @@ const productsData = [
     hasMountSupport: true,
     powerWatts: '20W',
     weight: '2.8 kg',
-    specs: ['Resolução Full HD 1920 x 1080 a 75Hz', 'Painel IPS com ângulos de visualização de 178°', 'Entradas HDMI 1.4, DisplayPort 1.2 e VGA', 'Suporte VESA 100x100mm para fixação em parede', 'Filtro HP Eye Ease contra fadiga ocular']
+    specs: ['Full HD 1920x1080 a 75Hz', 'Painel IPS 178°', 'HDMI, DisplayPort e VGA', 'Suporte VESA 100x100mm']
   },
   {
     id: 'inf-14',
@@ -477,8 +459,8 @@ const productsData = [
     mpn: 'DELL-4K-27',
     name: 'Monitor Dell 27" 4K UHD IPS USB-C',
     subtitle: '3840x2160 · 99% sRGB · USB-C 65W Power Delivery · Colunas Integradas',
-    category: 'Informatica',
-    subCategory: 'Monitores',
+    department: 'Informatica',
+    category: 'Monitores',
     brand: 'DELL',
     priceVal: 340000,
     priceStr: '340.000,00 AKZ',
@@ -487,7 +469,7 @@ const productsData = [
     ram: null,
     screenSize: '27"',
     screenType: 'IPS 4K',
-    resolution: '4K Ultra HD (3840x2160)',
+    resolution: '4K Ultra HD',
     hasBluetooth: false,
     hasLAN: false,
     hasNetflix: false,
@@ -495,7 +477,7 @@ const productsData = [
     hasMountSupport: true,
     powerWatts: '28W',
     weight: '5.1 kg',
-    specs: ['Resolução 4K Ultra HD de máxima nitidez e precisão de cor', 'Cabo USB-C único que transmite vídeo e carrega o portátil com 65W', 'Dois altifalantes estéreo de 3W integrados', 'Base ajustável em altura, inclinação e rotação pivot 90°']
+    specs: ['Resolução 4K Ultra HD 3840x2160', 'USB-C com carregamento 65W', 'Colunas estéreo integradas', 'Base com ajuste de altura e rotação 90°']
   },
   {
     id: 'inf-15',
@@ -503,8 +485,8 @@ const productsData = [
     mpn: 'SXS2000-2T',
     name: 'Disco Externo SSD 2TB Kingston XS2000 USB-C',
     subtitle: 'Velocidade até 2000 MB/s · USB 3.2 Gen 2x2 · Resistente a Água e Poeira',
-    category: 'Informatica',
-    subCategory: 'Componentes & Cabos',
+    department: 'Informatica',
+    category: 'Componentes & Cabos',
     brand: 'KINGSTON',
     priceVal: 583391.58,
     priceStr: '583.391,58 AKZ',
@@ -521,7 +503,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: 'USB-C',
     weight: '29 g',
-    specs: ['Capacidade massiva de 2TB em formato de bolso', 'Velocidades ultrarrápidas de leitura/escrita até 2.000 MB/s', 'Capa de borracha removível com proteção IP55 contra água e quedas', 'Compatível com Mac, Windows, Linux e consolas']
+    specs: ['Capacidade 2TB em formato de bolso', 'Velocidades até 2.000 MB/s', 'Proteção IP55 contra água e poeira']
   },
   {
     id: 'inf-16',
@@ -529,8 +511,8 @@ const productsData = [
     mpn: 'SNV2S/1000G',
     name: 'Disco SSD M.2 NVMe PCIe 4.0 1TB Kingston NV2',
     subtitle: 'Leitura 3500 MB/s · Escrita 2100 MB/s · Formato M.2 2280',
-    category: 'Informatica',
-    subCategory: 'Componentes & Cabos',
+    department: 'Informatica',
+    category: 'Componentes & Cabos',
     brand: 'KINGSTON',
     priceVal: 290450.34,
     priceStr: '290.450,34 AKZ',
@@ -547,7 +529,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: 'M.2 PCIe',
     weight: '7 g',
-    specs: ['SSD interno PCIe 4.0 NVMe para portáteis e computadores desktop', 'Velocidades até 3.500 MB/s para carregamento instantâneo', 'Baixo consumo e baixa emissão de calor', 'Capacidade de 1TB (1000GB)']
+    specs: ['SSD interno PCIe 4.0 NVMe', 'Velocidade 3.500 MB/s', 'Capacidade 1TB (1000GB)']
   },
   {
     id: 'inf-17',
@@ -555,8 +537,8 @@ const productsData = [
     mpn: '910-006233',
     name: 'Rato sem Fio Logitech PEBBLE M650 Grafite',
     subtitle: 'SmartWheel Scrolling · Cliques Silenciosos SilentTouch · Bluetooth & Logi Bolt',
-    category: 'Informatica',
-    subCategory: 'Ratos & Teclados',
+    department: 'Informatica',
+    category: 'Ratos & Teclados',
     brand: 'LOGITECH',
     priceVal: 54327.84,
     priceStr: '54.327,84 AKZ',
@@ -571,9 +553,9 @@ const productsData = [
     hasNetflix: false,
     hasSubwoofer: false,
     hasMountSupport: false,
-    powerWatts: 'Pilha AA 24 Meses',
+    powerWatts: 'Pilha AA',
     weight: '101 g',
-    specs: ['Roda de scroll inteligente SmartWheel com precisão linha a linha e super rápida', 'Tecnologia SilentTouch que reduz 90% do ruído de clique', 'Ligação dupla via Bluetooth Low Energy ou recetor USB Logi Bolt', 'Autonomia de até 2 anos com uma única pilha AA']
+    specs: ['Scroll SmartWheel preciso', 'Tecnologia SilentTouch silenciosa', 'Bluetooth e receptor Logi Bolt', 'Até 24 meses de bateria']
   },
   {
     id: 'inf-18',
@@ -581,8 +563,8 @@ const productsData = [
     mpn: 'NN105AA',
     name: 'Rato USB HP 105 1600 DPI Preto',
     subtitle: 'Sensor Óptico de Alta Precisão 1600 DPI · Cabo USB 1.5m · Ambidestro',
-    category: 'Informatica',
-    subCategory: 'Ratos & Teclados',
+    department: 'Informatica',
+    category: 'Ratos & Teclados',
     brand: 'HP',
     priceVal: 10320.42,
     priceStr: '10.320,42 AKZ',
@@ -599,7 +581,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: 'USB',
     weight: '80 g',
-    specs: ['Sensor óptico de 1600 DPI para movimentos suaves em qualquer superfície', 'Formato ergonómico e confortável para destros e esquerdinos', 'Ligação com fio USB Plug and Play sem necessidade de drivers', 'Construção durável para uso intenso diário no escritório']
+    specs: ['Sensor 1600 DPI', 'Design ambidestro confortável', 'Plug and Play USB']
   },
   {
     id: 'inf-19',
@@ -607,8 +589,8 @@ const productsData = [
     mpn: 'X7Q43AA',
     name: 'Rato Sem Fio HP Z3700 Ouro',
     subtitle: 'Design Ultra Fino e Elegante · Conexão Sem Fios 2.4GHz · Sensor Azul',
-    category: 'Informatica',
-    subCategory: 'Ratos & Teclados',
+    department: 'Informatica',
+    category: 'Ratos & Teclados',
     brand: 'HP',
     priceVal: 19719.72,
     priceStr: '19.719,72 AKZ',
@@ -623,9 +605,9 @@ const productsData = [
     hasNetflix: false,
     hasSubwoofer: false,
     hasMountSupport: false,
-    powerWatts: 'Pilha AA 16 Meses',
+    powerWatts: 'Pilha AA',
     weight: '50 g',
-    specs: ['Design slim elegante com acabamento dourado premium', 'Tecnologia LED azul que funciona em praticamente qualquer superfície', 'Nano recetor sem fios 2.4GHz incluído', 'Autonomia de até 16 meses de bateria']
+    specs: ['Design ultrafino dourado', 'Sensor LED azul', 'Autonomia até 16 meses']
   },
   {
     id: 'inf-20',
@@ -633,8 +615,8 @@ const productsData = [
     mpn: '286J4AA',
     name: 'Adaptador USB 3.0 Para Gigabit RJ45 G2 HP',
     subtitle: 'Converte USB 3.0 em Porta LAN Gigabit 10/100/1000 · Alumínio',
-    category: 'Informatica',
-    subCategory: 'Componentes & Cabos',
+    department: 'Informatica',
+    category: 'Componentes & Cabos',
     brand: 'HP',
     priceVal: 40871.00,
     priceStr: '40.871,00 AKZ',
@@ -651,7 +633,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: 'USB',
     weight: '35 g',
-    specs: ['Adiciona uma porta de rede Ethernet Gigabit com fio a portáteis sem porta RJ45', 'Velocidades de transmissão de rede até 1000 Mbps', 'Suporta Wake-on-LAN e inicialização PXE em ambientes corporativos', 'Acabamento resistente em alumínio']
+    specs: ['Porta LAN Gigabit 1000 Mbps', 'Corpo em alumínio', 'Compatível Windows e macOS']
   },
   {
     id: 'inf-21',
@@ -659,8 +641,8 @@ const productsData = [
     mpn: '23400105',
     name: 'Cabo de Rede Cat6 UTP Furukawa 305m',
     subtitle: '100% Cobre Puro 23AWG · Homologado 250MHz · Capa LSZH Anti-Chama',
-    category: 'Informatica',
-    subCategory: 'Componentes & Cabos',
+    department: 'Informatica',
+    category: 'Componentes & Cabos',
     brand: 'FURUKAWA',
     priceVal: 55000,
     priceStr: '55.000,00 AKZ',
@@ -677,20 +659,20 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: null,
     weight: '12.5 kg',
-    specs: ['Caixa de puxar com 305 metros lineares', 'Condutores 100% Cobre Puro 23AWG', 'Capa LSZH sem emissão de fumos tóxicos em caso de incêndio', 'Testado e certificado para redes Gigabit Ethernet 1000BASE-T']
+    specs: ['Caixa 305m', '100% Cobre 23AWG', 'Capa LSZH não-tóxica']
   },
 
-  // =========================================================================
-  // 2. ESCRITÓRIO E PAPELARIA
-  // =========================================================================
+  // ==========================================
+  // ESCRITÓRIO E PAPELARIA
+  // ==========================================
   {
     id: 'esc-01',
     sku: 'HP-M140W',
     mpn: 'HP-LJ-M140W',
     name: 'Impressora Multifunções HP LaserJet M140w',
     subtitle: 'Laser Monocromática · Cópia & Scanner · Wi-Fi & USB',
-    category: 'Escritorio',
-    subCategory: 'Impressoras & Multifunções',
+    department: 'Escritorio',
+    category: 'Impressoras & Multifunções',
     brand: 'HP',
     priceVal: 163209,
     priceStr: '163.209,00 AKZ',
@@ -707,7 +689,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '350W',
     weight: '5.4 kg',
-    specs: ['Impressão, digitalização e fotocópia em formato compacto', 'Velocidade até 21 páginas por minuto', 'Conectividade Wi-Fi sem fios com app HP Smart', 'Toner HP 141A de alto rendimento incluído']
+    specs: ['Impressão, cópia e scanner', 'Velocidade até 21 ppm', 'Wi-Fi com app HP Smart']
   },
   {
     id: 'esc-02',
@@ -715,8 +697,8 @@ const productsData = [
     mpn: 'EPSON-L3250',
     name: 'Impressora Epson EcoTank L3250 Wi-Fi',
     subtitle: 'Tanque de Tinta Contínuo · Cópia/Scan · 4.500 págs Preto',
-    category: 'Escritorio',
-    subCategory: 'Impressoras & Multifunções',
+    department: 'Escritorio',
+    category: 'Impressoras & Multifunções',
     brand: 'EPSON',
     priceVal: 285000,
     priceStr: '285.000,00 AKZ',
@@ -733,7 +715,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '12W',
     weight: '3.9 kg',
-    specs: ['Sistema EcoTank 100% sem cartuchos', 'Imprime até 4.500 páginas a preto ou 7.500 a cores por kit', 'Conexão Wi-Fi e Wi-Fi Direct para telemóveis', 'Tecnologia Heat-Free sem aquecimento']
+    specs: ['Sistema EcoTank sem cartuchos', 'Imprime 4.500 págs preto', 'Wi-Fi e Wi-Fi Direct']
   },
   {
     id: 'esc-03',
@@ -741,8 +723,8 @@ const productsData = [
     mpn: 'WINTEC-POS80',
     name: 'Impressora POS Térmica Wintec 80mm',
     subtitle: 'Impressão de Faturas e Talões · USB + LAN · Corte Automático',
-    category: 'Escritorio',
-    subCategory: 'Impressoras POS & Caixas',
+    department: 'Escritorio',
+    category: 'Impressoras POS & Caixas',
     brand: 'WINTECH',
     priceVal: 119794,
     priceStr: '119.794,00 AKZ',
@@ -759,7 +741,7 @@ const productsData = [
     hasMountSupport: true,
     powerWatts: '30W',
     weight: '1.2 kg',
-    specs: ['Velocidade ultra rápida 250 mm/s', 'Papel térmico 80mm standard', 'Guilhotina automática com 1.5 milhões de cortes', 'Compatível com softwares certificados pela AGT em Angola']
+    specs: ['Velocidade 250 mm/s', 'Papel térmico 80mm', 'Guilhotina de corte automático', 'Compatível software AGT']
   },
   {
     id: 'esc-04',
@@ -767,8 +749,8 @@ const productsData = [
     mpn: 'REXEL-P4-11',
     name: 'Destruidora de Documentos Rexel ProStyle+',
     subtitle: 'Corte Cruzado DIN P-4 · Destrói 11 Folhas, Cartões e Agrafos',
-    category: 'Escritorio',
-    subCategory: 'Destruidoras de Papel',
+    department: 'Escritorio',
+    category: 'Destruidoras de Papel',
     brand: 'REXEL',
     priceVal: 95000,
     priceStr: '95.000,00 AKZ',
@@ -785,7 +767,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '200W',
     weight: '6.8 kg',
-    specs: ['Nível de segurança confidencial DIN P-4 (4x35mm)', 'Capacidade para 11 folhas simultâneas', 'Destrói cartões de crédito, clipes e agrafos', 'Cesto de 20 litros com visor transparente']
+    specs: ['Corte cruzado confidencial DIN P-4', 'Capacidade 11 folhas simultâneas', 'Destrói cartões de crédito e agrafos']
   },
   {
     id: 'esc-05',
@@ -793,8 +775,8 @@ const productsData = [
     mpn: 'CF230A',
     name: 'Toner HP 30A Preto LaserJet Original',
     subtitle: 'Para HP LaserJet Pro M203 / MFP M227 · Rendimento 1.600 Páginas',
-    category: 'Escritorio',
-    subCategory: 'Toners & Consumíveis',
+    department: 'Escritorio',
+    category: 'Toners & Consumíveis',
     brand: 'HP',
     priceVal: 110748.72,
     priceStr: '110.748,72 AKZ',
@@ -811,7 +793,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: null,
     weight: '0.8 kg',
-    specs: ['Cartucho de toner original HP LaserJet com tecnologia JetIntelligence', 'Rendimento médio de 1.600 páginas normais', 'Texto preto nítido e profissional de alta definição', 'Compatível com HP LaserJet Pro M203d, M203dn, M203dw, MFP M227fdw']
+    specs: ['Cartucho de toner original HP 30A', 'Rendimento 1.600 páginas', 'Qualidade nítida JetIntelligence']
   },
   {
     id: 'esc-06',
@@ -819,8 +801,8 @@ const productsData = [
     mpn: 'CE278A',
     name: 'Toner HP 78A Preto LaserJet Original',
     subtitle: 'Para HP LaserJet Pro P1606dn / M1536dnf · Rendimento 2.100 Páginas',
-    category: 'Escritorio',
-    subCategory: 'Toners & Consumíveis',
+    department: 'Escritorio',
+    category: 'Toners & Consumíveis',
     brand: 'HP',
     priceVal: 122098.56,
     priceStr: '122.098,56 AKZ',
@@ -837,7 +819,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: null,
     weight: '0.9 kg',
-    specs: ['Cartucho de toner genuíno HP 78A', 'Capacidade de até 2.100 páginas com cobertura standard de 5%', 'Garante impressões sem manchas nem falhas', 'Garantia oficial de fábrica HP']
+    specs: ['Cartucho de toner original HP 78A', 'Rendimento 2.100 páginas', 'Garantia de fábrica HP']
   },
   {
     id: 'esc-07',
@@ -845,8 +827,8 @@ const productsData = [
     mpn: 'FC-200V-2',
     name: 'Calculadora Financeira Casio FC-200V',
     subtitle: 'Ecrã 4 Linhas com Matriz de Pontos · Juros Compostos, Amortização e VPL',
-    category: 'Escritorio',
-    subCategory: 'Calculadoras & Acessórios',
+    department: 'Escritorio',
+    category: 'Calculadoras & Acessórios',
     brand: 'CASIO',
     priceVal: 38500,
     priceStr: '38.500,00 AKZ',
@@ -863,20 +845,20 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: 'Solar + Pilha',
     weight: '105 g',
-    specs: ['Cálculo financeiro completo: juros compostos, fluxo de caixa, VPL, TIR e depreciação', 'Ecrã de 4 linhas com exibição natural de parâmetros', 'Alimentação dupla: bateria e energia solar', 'Estojo rígido deslizante de proteção']
+    specs: ['Cálculo de juros, VPL, TIR e fluxo de caixa', 'Ecrã de 4 linhas', 'Alimentação dupla solar e pilha']
   },
 
-  // =========================================================================
-  // 3. ELECTRODOMÉSTICOS & CLIMATIZAÇÃO
-  // =========================================================================
+  // ==========================================
+  // ELECTRODOMÉSTICOS & CLIMATIZAÇÃO
+  // ==========================================
   {
     id: 'elec-01',
     sku: 'LG-12K-INV',
     mpn: 'LG-DUAL-INV-12',
     name: 'Ar Condicionado Split Inverter LG Dual Inverter 12000 BTU',
     subtitle: 'Inverter Económico · Refrigeração Rápida · Filtro Anti-Bactérias',
-    category: 'Electrodomesticos',
-    subCategory: 'Ar Condicionado',
+    department: 'Electrodomesticos',
+    category: 'Ar Condicionado',
     brand: 'LG',
     priceVal: 385000,
     priceStr: '385.000,00 AKZ',
@@ -893,7 +875,7 @@ const productsData = [
     hasMountSupport: true,
     powerWatts: '1080W',
     weight: '31 kg (Conjunto)',
-    specs: ['Capacidade 12.000 BTUs/h Refrigeração', 'Tecnologia Dual Inverter com até 70% de poupança elétrica', 'Gás ecológico R410A de alto rendimento', 'Controlo remoto digital com funções Sleep e Turbo', 'Garantia de 10 anos no compressor']
+    specs: ['12.000 BTUs/h Refrigeração', 'Dual Inverter com até 70% de poupança', 'Gás ecológico R410A', 'Garantia 10 anos compressor']
   },
   {
     id: 'elec-02',
@@ -901,8 +883,8 @@ const productsData = [
     mpn: 'SAM-WINDFREE-18',
     name: 'Ar Condicionado Split Samsung WindFree 18000 BTU',
     subtitle: 'Refrigeração sem Vento Direto · Wi-Fi SmartThings · Inverter',
-    category: 'Electrodomesticos',
-    subCategory: 'Ar Condicionado',
+    department: 'Electrodomesticos',
+    category: 'Ar Condicionado',
     brand: 'SAMSUNG',
     priceVal: 540000,
     priceStr: '540.000,00 AKZ',
@@ -919,7 +901,7 @@ const productsData = [
     hasMountSupport: true,
     powerWatts: '1600W',
     weight: '38 kg',
-    specs: ['18.000 BTUs ideal para salas amplas e escritórios', 'Tecnologia exclusiva WindFree com 23.000 microfuros', 'Controlo pelo smartphone via Wi-Fi SmartThings', 'Filtro lavável que retém 99% de poeira e bactérias']
+    specs: ['18.000 BTUs', 'Tecnologia WindFree sem correntes de ar', 'Wi-Fi SmartThings', 'Filtro lavável 99% antibacteriano']
   },
   {
     id: 'elec-03',
@@ -927,8 +909,8 @@ const productsData = [
     mpn: 'RB34T602FSA',
     name: 'Frigorífico Combinado No Frost Samsung 328L Inox',
     subtitle: 'Compressor Digital Inverter · All-Around Cooling · Não Cria Gelo',
-    category: 'Electrodomesticos',
-    subCategory: 'Frigoríficos & Geleiras',
+    department: 'Electrodomesticos',
+    category: 'Frigoríficos & Geleiras',
     brand: 'SAMSUNG',
     priceVal: 495000,
     priceStr: '495.000,00 AKZ',
@@ -945,7 +927,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '140W',
     weight: '66 kg',
-    specs: ['Capacidade total de 328 Litros', 'Tecnologia No Frost total (sem formação de gelo)', 'Sistema All-Around Cooling para temperatura uniforme', 'Gaveta Fresh Zone para conservação prolongada de alimentos']
+    specs: ['Capacidade 328 Litros', 'No Frost total', 'All-Around Cooling para temperatura uniforme']
   },
   {
     id: 'elec-04',
@@ -953,8 +935,8 @@ const productsData = [
     mpn: 'MG23K3515AS',
     name: 'Micro-ondas Digital Samsung 23L com Grill Inox',
     subtitle: 'Potência 800W / Grill 1100W · Interior Cerâmico Anti-Bacteriano',
-    category: 'Electrodomesticos',
-    subCategory: 'Micro-ondas & Cozinha',
+    department: 'Electrodomesticos',
+    category: 'Micro-ondas & Cozinha',
     brand: 'SAMSUNG',
     priceVal: 145000,
     priceStr: '145.000,00 AKZ',
@@ -962,7 +944,7 @@ const productsData = [
     badge: 'Grill Inox',
     ram: null,
     screenSize: null,
-    screenType: 'Display LED Azul',
+    screenType: 'Display LED',
     resolution: null,
     hasBluetooth: false,
     hasLAN: false,
@@ -971,7 +953,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '1100W',
     weight: '13 kg',
-    specs: ['Capacidade de 23 Litros com função Grill para dourar e gratinar', 'Revestimento interior em Cerâmica Enamel resistente a riscos e fácil de limpar', 'Função de descongelação rápida Quick Defrost', 'Modo ECO de poupança de energia em standby']
+    specs: ['Capacidade 23L com Grill', 'Interior em Cerâmica fácil de limpar', 'Função Quick Defrost']
   },
   {
     id: 'elec-05',
@@ -979,8 +961,8 @@ const productsData = [
     mpn: 'MYL1031S',
     name: 'Dispensador de Água Quente e Fria Midea Inox',
     subtitle: 'Compressor de Alta Eficiência · Torneiras de Água Quente, Fria e Natural',
-    category: 'Electrodomesticos',
-    subCategory: 'Dispensadores de Água',
+    department: 'Electrodomesticos',
+    category: 'Dispensadores de Água',
     brand: 'MIDEA',
     priceVal: 88000,
     priceStr: '88.000,00 AKZ',
@@ -997,20 +979,20 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '500W Quente / 85W Frio',
     weight: '14.5 kg',
-    specs: ['Refrigeração por compressor potente que gela a água rapidamente', 'Torneira com trava de segurança infantil na água quente', 'Compartimento inferior de arrumação', 'Design elegante em inox ideal para escritórios e residências']
+    specs: ['Refrigeração por compressor potente', 'Torneira com trava de segurança infantil', 'Acabamento elegante em inox']
   },
 
-  // =========================================================================
-  // 4. SMARTPHONES E TABLETS
-  // =========================================================================
+  // ==========================================
+  // SMARTPHONES E TABLETS
+  // ==========================================
   {
     id: 'smp-01',
     sku: 'IPH15P-128',
     mpn: 'APPLE-A2848',
     name: 'Apple iPhone 15 Pro 128GB Titânio Natural',
     subtitle: 'Chip A17 Pro · Ecrã Super Retina XDR 6.1" 120Hz · USB-C 3.0',
-    category: 'Smartphones',
-    subCategory: 'iPhones (Apple)',
+    department: 'Smartphones',
+    category: 'iPhones (Apple)',
     brand: 'APPLE',
     priceVal: 1290000,
     priceStr: '1.290.000,00 AKZ',
@@ -1027,7 +1009,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '20W Fast Charge',
     weight: '187 g',
-    specs: ['Design inovador em Titânio de grau aeroespacial', 'Câmara principal de 48MP com teleobjetiva 3x', 'Dynamic Island interactiva com notificações em tempo real', 'Conexão 5G e USB-C com velocidade USB 3']
+    specs: ['Estrutura em Titânio aeroespacial', 'Câmara de 48MP com teleobjetiva', 'Dynamic Island interactiva', 'USB-C com velocidades USB 3']
   },
   {
     id: 'smp-02',
@@ -1035,8 +1017,8 @@ const productsData = [
     mpn: 'MPUF3QL/A',
     name: 'Apple iPhone 14 128GB Meia-Noite',
     subtitle: 'Chip A15 Bionic · Ecrã Super Retina XDR 6.1" · Modo Ação em Vídeo',
-    category: 'Smartphones',
-    subCategory: 'iPhones (Apple)',
+    department: 'Smartphones',
+    category: 'iPhones (Apple)',
     brand: 'APPLE',
     priceVal: 890000,
     priceStr: '890.000,00 AKZ',
@@ -1053,7 +1035,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '20W',
     weight: '172 g',
-    specs: ['Chip A15 Bionic com GPU de 5 núcleos ultrarrápida', 'Sistema avançado de duas câmaras de 12MP com modo Noite', 'Deteção de acidente e SOS de emergência', 'Bateria para um dia inteiro com até 20 horas de reprodução de vídeo']
+    specs: ['Chip A15 Bionic com GPU 5 núcleos', 'Dupla câmara 12MP com modo Noite', 'Autonomia até 20 horas de vídeo']
   },
   {
     id: 'smp-03',
@@ -1061,8 +1043,8 @@ const productsData = [
     mpn: 'SM-S928B',
     name: 'Samsung Galaxy S24 Ultra 256GB Titanium Gray',
     subtitle: 'Snapdragon 8 Gen 3 · Galaxy AI · S-Pen Integrada · Câmara 200MP',
-    category: 'Smartphones',
-    subCategory: 'Smartphones Samsung',
+    department: 'Smartphones',
+    category: 'Smartphones Samsung',
     brand: 'SAMSUNG',
     priceVal: 1350000,
     priceStr: '1.350.000,00 AKZ',
@@ -1079,7 +1061,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '45W Fast Charge',
     weight: '232 g',
-    specs: ['Ecrã plano 6.8" 120Hz com vidro Corning Gorilla Armor', 'Câmara principal de 200MP com zoom óptico de até 5x e 100x Space Zoom', 'Recursos Galaxy AI: tradução simultânea e Circle to Search', 'Bateria duradoura de 5000mAh']
+    specs: ['Ecrã plano 6.8" 120Hz Gorilla Armor', 'Câmara de 200MP e zoom óptico 5x', 'Galaxy AI e caneta S-Pen integrada']
   },
   {
     id: 'smp-04',
@@ -1087,8 +1069,8 @@ const productsData = [
     mpn: 'SM-A556B',
     name: 'Samsung Galaxy A55 5G 256GB Awesome Navy',
     subtitle: 'Exynos 1480 · 8GB RAM · Ecrã Super AMOLED 6.6" 120Hz · IP67',
-    category: 'Smartphones',
-    subCategory: 'Smartphones Samsung',
+    department: 'Smartphones',
+    category: 'Smartphones Samsung',
     brand: 'SAMSUNG',
     priceVal: 365000,
     priceStr: '365.000,00 AKZ',
@@ -1105,7 +1087,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '25W Fast Charge',
     weight: '213 g',
-    specs: ['Design elegante com laterais em metal e vidro Gorilla Glass Victus+', 'Câmara tripla de 50MP com estabilização óptica OIS', 'Proteção IP67 resistente à água e poeira', 'Bateria massiva de 5000mAh para 2 dias de uso']
+    specs: ['Corpo em metal e vidro Victus+', 'Câmara tripla 50MP com OIS', 'Resistência à água IP67 e bateria 5000mAh']
   },
   {
     id: 'smp-05',
@@ -1113,8 +1095,8 @@ const productsData = [
     mpn: '23090RA98G',
     name: 'Xiaomi Redmi Note 13 Pro+ 5G 512GB',
     subtitle: 'MediaTek Dimensity 7200 · 12GB RAM · Câmara 200MP · Carga 120W',
-    category: 'Smartphones',
-    subCategory: 'Xiaomi & Android',
+    department: 'Smartphones',
+    category: 'Xiaomi & Android',
     brand: 'XIAOMI',
     priceVal: 395000,
     priceStr: '395.000,00 AKZ',
@@ -1131,7 +1113,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '120W HyperCharge',
     weight: '204 g',
-    specs: ['Ecrã AMOLED curvo 120Hz com brilho de pico de 1800 nits', 'Câmara de 200MP de nível topo de gama com OIS', 'Carregamento ultrarrápido HyperCharge de 120W (100% em 19 min)', 'Certificação IP68 de resistência à água e poeira']
+    specs: ['Ecrã AMOLED 120Hz 1800 nits', 'Câmara 200MP com OIS', 'Carregamento 120W (100% em 19 min)']
   },
   {
     id: 'smp-06',
@@ -1139,8 +1121,8 @@ const productsData = [
     mpn: 'MU9D3TY/A',
     name: 'Apple iPad Air 11" M2 Wi-Fi 128GB',
     subtitle: 'Chip Apple M2 · Liquid Retina · Compatível com Apple Pencil Pro',
-    category: 'Smartphones',
-    subCategory: 'Tablets & iPads',
+    department: 'Smartphones',
+    category: 'Tablets & iPads',
     brand: 'APPLE',
     priceVal: 780000,
     priceStr: '780.000,00 AKZ',
@@ -1157,7 +1139,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '30W Fast Charge',
     weight: '462 g',
-    specs: ['Chip Apple M2 de alta velocidade gráfica e inteligência', 'Ecrã Liquid Retina com revestimento anti-reflexo', 'Câmara frontal ultra grande-angular de 12MP em formato horizontal', 'Suporta Magic Keyboard e Apple Pencil Pro']
+    specs: ['Chip Apple M2', 'Ecrã Liquid Retina anti-reflexo', 'Câmara frontal horizontal 12MP']
   },
   {
     id: 'smp-07',
@@ -1165,8 +1147,8 @@ const productsData = [
     mpn: 'MR993TY/A',
     name: 'Apple Watch Series 9 GPS 45mm Meia-Noite',
     subtitle: 'Chip S9 SiP · Ecrã Always-On 2000 nits · Gesto Duplo Toque · ECG',
-    category: 'Smartphones',
-    subCategory: 'Smartwatches & Acessórios',
+    department: 'Smartphones',
+    category: 'Smartwatches & Acessórios',
     brand: 'APPLE',
     priceVal: 460000,
     priceStr: '460.000,00 AKZ',
@@ -1183,20 +1165,20 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: 'Carga Rápida Magnética',
     weight: '38.7 g',
-    specs: ['Inovador gesto de duplo toque para atender chamadas sem tocar no ecrã', 'Monitorização avançada de saúde: ECG, oxigénio no sangue e fases de sono', 'Caixa em alumínio aeroespacial com resistência à água até 50 metros', 'Bateria com autonomia para até 18 horas ou 36 horas em modo de baixo consumo']
+    specs: ['Gesto Duplo Toque', 'ECG e oxigénio no sangue', 'Resistente à água 50m']
   },
 
-  // =========================================================================
-  // 5. ENERGIA & UPS
-  // =========================================================================
+  // ==========================================
+  // ENERGIA & UPS
+  // ==========================================
   {
     id: 'ene-01',
     sku: 'WIN-PS500',
     mpn: 'WINTEC-PS500',
     name: 'Power Station Portátil Wintech 500Wh',
     subtitle: '500Wh / 600W · Tomadas AC 220V + USB-C PD 100W · Lítio LiFePO4',
-    category: 'Energia',
-    subCategory: 'Power Stations Portáteis',
+    department: 'Energia',
+    category: 'Power Stations Portáteis',
     brand: 'WINTECH',
     priceVal: 554781,
     priceStr: '554.781,00 AKZ',
@@ -1213,7 +1195,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '600W (Pico 1000W)',
     weight: '5.8 kg',
-    specs: ['Capacidade de 500Wh com células de bateria LiFePO4 (3000+ ciclos)', '2 Tomadas AC 220V com onda senoidal pura para computadores', 'Porta USB-C Power Delivery de 100W e saídas 12V para viatura', 'Pode ser carregado via painéis solares, tomada de parede ou automóvel']
+    specs: ['Bateria LiFePO4 500Wh (3000+ ciclos)', '2 Tomadas AC 220V senoidais', 'USB-C PD 100W', 'Carregamento solar ou tomada']
   },
   {
     id: 'ene-02',
@@ -1221,8 +1203,8 @@ const productsData = [
     mpn: 'SMT1500IC',
     name: 'UPS APC Smart-UPS 1500VA LCD 230V',
     subtitle: '1500VA / 1000W · Onda Senoidal Pura · Estabilizador AVR Integrado',
-    category: 'Energia',
-    subCategory: 'UPS / No-Breaks Online',
+    department: 'Energia',
+    category: 'UPS / No-Breaks Online',
     brand: 'APC',
     priceVal: 210000,
     priceStr: '210.000,00 AKZ',
@@ -1230,7 +1212,7 @@ const productsData = [
     badge: 'Proteção Máxima',
     ram: null,
     screenSize: null,
-    screenType: 'Display LCD Diagnóstico',
+    screenType: 'Display LCD',
     resolution: null,
     hasBluetooth: false,
     hasLAN: true,
@@ -1239,7 +1221,7 @@ const productsData = [
     hasMountSupport: true,
     powerWatts: '1000W',
     weight: '24.1 kg',
-    specs: ['Proteção de alimentação de nível empresarial para servidores e redes', 'Regulação Automática de Tensão (AVR) contra picos e quebras', 'Ecrã LCD com dados de carga, voltagem e autonomia', 'Entrada SmartSlot para placa de gestão em rede']
+    specs: ['Proteção corporativa para servidores', 'Regulação Automática de Tensão (AVR)', 'Ecrã LCD de diagnóstico', 'Entrada SmartSlot para rede']
   },
   {
     id: 'ene-03',
@@ -1247,8 +1229,8 @@ const productsData = [
     mpn: 'WINTEC-PS300',
     name: 'Power Station Portátil Wintech 300Wh',
     subtitle: '300Wh / 300W · Compacta para Routers, Laptops e Iluminação',
-    category: 'Energia',
-    subCategory: 'Power Stations Portáteis',
+    department: 'Energia',
+    category: 'Power Stations Portáteis',
     brand: 'WINTECH',
     priceVal: 308426,
     priceStr: '308.426,00 AKZ',
@@ -1265,7 +1247,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '300W',
     weight: '3.6 kg',
-    specs: ['Capacidade 300Wh fornecendo até 8h de autonomia para internet e portátil', 'Múltiplas portas USB Fast Charge e tomada 220V', 'Lanterna LED integrada com modo SOS', 'Proteção avançada BMS contra curto-circuitos']
+    specs: ['Autonomia até 8h para router e portátil', 'Múltiplas saídas USB e 220V', 'Lanterna LED de emergência']
   },
   {
     id: 'ene-04',
@@ -1273,8 +1255,8 @@ const productsData = [
     mpn: 'PRO-850VA',
     name: 'UPS Protect 850VA / 480W com Estabilizador AVR',
     subtitle: 'Proteção contra Picos e Quebras de Energia · 4 Tomadas Schuko',
-    category: 'Energia',
-    subCategory: 'UPS / No-Breaks Online',
+    department: 'Energia',
+    category: 'UPS / No-Breaks Online',
     brand: 'PROTECT',
     priceVal: 65000,
     priceStr: '65.000,00 AKZ',
@@ -1291,7 +1273,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '480W',
     weight: '4.8 kg',
-    specs: ['Capacidade 850VA ideal para proteger 1 computador de secretária ou router', 'Estabilizador de tensão automático AVR integrado', 'Autonomia de 15 a 25 minutos em corte de energia', 'Alarme sonoro de bateria fraca e sobrecarga']
+    specs: ['Capacidade 850VA com AVR', '4 Tomadas Schuko protegidas', 'Autonomia 15-25 minutos']
   },
   {
     id: 'ene-05',
@@ -1299,8 +1281,8 @@ const productsData = [
     mpn: 'US5000-48V',
     name: 'Bateria de Lítio Solar LiFePO4 48V 100Ah 5.12kWh Pylontech',
     subtitle: '6000 Ciclos a 95% DoD · 48V Nominal · Comunicação CAN/RS485 com Inversores',
-    category: 'Energia',
-    subCategory: 'Geradores & Baterias Solares',
+    department: 'Energia',
+    category: 'Geradores & Baterias Solares',
     brand: 'PYLONTECH',
     priceVal: 1850000,
     priceStr: '1.850.000,00 AKZ',
@@ -1317,20 +1299,20 @@ const productsData = [
     hasMountSupport: true,
     powerWatts: '5120Wh Armazenamento',
     weight: '39 kg',
-    specs: ['Células LiFePO4 de alta durabilidade com vida útil superior a 15 anos', 'Capacidade útil de 5.12kWh com profundidade de descarga de 95%', 'Compatível com inversores solares Growatt, Deye, Victron e Must', 'BMS inteligente integrado com proteção total contra sobrecarga']
+    specs: ['Células LiFePO4 com vida útil > 15 anos', 'Capacidade 5.12kWh a 95% DoD', 'Compatível com inversores solares']
   },
 
-  // =========================================================================
-  // 6. IMAGEM E SOM (EXTRAÍDOS DO DUMP REAL WWW.NCRANGOLA.COM)
-  // =========================================================================
+  // ==========================================
+  // IMAGEM E SOM (EXTRAÍDOS DO DUMP REAL NCR)
+  // ==========================================
   {
     id: 'ims-01',
     sku: '4086',
     mpn: 'CBD15H1',
     name: 'Coluna Party Speaker Tchilo Party 200W Preto',
     subtitle: '200W Potência Real · Bluetooth · USB/SD · Iluminação LED Multicolor',
-    category: 'ImagemSom',
-    subCategory: 'Colunas Bluetooth & Party Speakers',
+    department: 'ImagemSom',
+    category: 'Colunas & Party Speakers',
     brand: 'WINTECH',
     priceVal: 155714.88,
     priceStr: '155.714,88 AKZ',
@@ -1347,13 +1329,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '200W',
     weight: '8.4 kg',
-    specs: [
-      '200W de potência real com graves profundos e nítidos',
-      'Iluminação LED multicolor que acompanha o ritmo da música',
-      'Conectividade Bluetooth, entradas USB, Cartão SD e AUX 3.5mm',
-      'Rádio FM integrado e entrada para microfone de karaoke',
-      'Bateria recarregável de longa duração com alça e rodas para transporte'
-    ]
+    specs: ['200W de potência real com graves profundos', 'Iluminação LED multicolor rítmica', 'Bluetooth, USB, SD e AUX', 'Bateria recarregável com rodas de transporte']
   },
   {
     id: 'ims-02',
@@ -1361,8 +1337,8 @@ const productsData = [
     mpn: '43E2000H',
     name: 'TV 43" LED Full HD Skyworth',
     subtitle: 'Painel Full HD 1080p · HDMI & USB · Design Slim Elegante',
-    category: 'ImagemSom',
-    subCategory: 'Smart TVs 4K & QLED',
+    department: 'ImagemSom',
+    category: 'Smart TVs 4K & QLED',
     brand: 'SKYWORTH',
     priceVal: 196586.16,
     priceStr: '196.586,16 AKZ',
@@ -1379,13 +1355,7 @@ const productsData = [
     hasMountSupport: true,
     powerWatts: '75W',
     weight: '7.8 kg',
-    specs: [
-      'Resolução Full HD 1080p (1920x1080) com cores vivas',
-      'Design Slim e molduras finas para qualquer ambiente',
-      'Entradas HDMI, USB Multimédia, Áudio Óptico e AV',
-      'Compatível com suporte de parede padrão VESA',
-      'Baixo consumo de energia e áudio estéreo com Dolby Digital'
-    ]
+    specs: ['Resolução Full HD 1080p', 'Molduras finas e elegantes', 'HDMI, USB, Áudio Óptico', 'Suporte VESA para parede']
   },
   {
     id: 'ims-03',
@@ -1393,8 +1363,8 @@ const productsData = [
     mpn: '435430618006',
     name: 'Auscultador USB STEREO VOX505USB',
     subtitle: 'Ligação USB Direta · Microfone Flexível com Cancelamento de Ruído',
-    category: 'ImagemSom',
-    subCategory: 'Auscultadores & Earbuds',
+    department: 'ImagemSom',
+    category: 'Auscultadores & Earbuds',
     brand: 'NGS',
     priceVal: 13929.66,
     priceStr: '13.929,66 AKZ',
@@ -1411,12 +1381,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: 'USB 5V',
     weight: '180 g',
-    specs: [
-      'Auscultadores estéreo de alta fidelidade para chamadas e multimédia',
-      'Almofadas acolchoadas ultra confortáveis para uso prolongado',
-      'Microfone ajustável de alta sensibilidade para comunicação clara',
-      'Controlo de volume e mute integrados no cabo USB'
-    ]
+    specs: ['Áudio estéreo de alta fidelidade', 'Microfone ajustável com cancelador de ruído', 'Controlo de volume e mute no cabo USB']
   },
   {
     id: 'ims-04',
@@ -1424,8 +1389,8 @@ const productsData = [
     mpn: '51EF0950AA000',
     name: 'Hs Sound Blaster Jam V2 Bluetooth',
     subtitle: 'Bluetooth 5.0 · Codec aptX HD · Bass Boost · Autonomia 22 Horas',
-    category: 'ImagemSom',
-    subCategory: 'Auscultadores & Earbuds',
+    department: 'ImagemSom',
+    category: 'Auscultadores & Earbuds',
     brand: 'CREATIVE',
     priceVal: 45706.02,
     priceStr: '45.706,02 AKZ',
@@ -1442,12 +1407,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: 'Bateria USB-C',
     weight: '84 g',
-    specs: [
-      'Drivers Neodímio de 32mm para áudio cristalino e potente',
-      'Botão Bass Boost para reforço instantâneo de graves',
-      'Dois microfones integrados com cancelamento de ruído Qualcomm cVc 8.0',
-      'Bateria com até 22 horas de reprodução contínua e carga rápida USB-C'
-    ]
+    specs: ['Drivers Neodímio 32mm', 'Botão Bass Boost para reforço de graves', 'Cancelamento de ruído cVc 8.0', 'Autonomia 22 horas']
   },
   {
     id: 'ims-05',
@@ -1455,8 +1415,8 @@ const productsData = [
     mpn: 'MWTY3ZM/A',
     name: 'Auscultadores EARPODS Com Connector Lightning Apple',
     subtitle: 'Áudio Digital Original Apple · Microfone & Controlo Remoto Integrados',
-    category: 'ImagemSom',
-    subCategory: 'Auscultadores & Earbuds',
+    department: 'ImagemSom',
+    category: 'Auscultadores & Earbuds',
     brand: 'APPLE',
     priceVal: 31330.62,
     priceStr: '31.330,62 AKZ',
@@ -1473,12 +1433,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: 'Lightning Port',
     weight: '25 g',
-    specs: [
-      'Design ergonómico geométrico adaptado à geometria do ouvido',
-      'Altifalantes concebidos para maximizar a potência sonora e minimizar perdas',
-      'Controlo integrado para ajustar volume, atender chamadas e ativar a Siri',
-      'Compatível com iPhone, iPad e iPod com conector Lightning'
-    ]
+    specs: ['Design ergonómico original Apple', 'Controlo de volume e chamadas', 'Conexão Lightning']
   },
   {
     id: 'ims-06',
@@ -1486,8 +1441,8 @@ const productsData = [
     mpn: 'BHR8391GL',
     name: 'Auscultadores BUDS 6 Active Branco Xiaomi',
     subtitle: 'True Wireless TWS · Bluetooth 5.4 · Driver 14.2mm · Autonomia 30h',
-    category: 'ImagemSom',
-    subCategory: 'Auscultadores & Earbuds',
+    department: 'ImagemSom',
+    category: 'Auscultadores & Earbuds',
     brand: 'XIAOMI',
     priceVal: 28386.00,
     priceStr: '28.386,00 AKZ',
@@ -1504,12 +1459,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: 'Estojo USB-C',
     weight: '36 g',
-    specs: [
-      'Driver dinâmico de 14.2 mm com afinação acústica Xiaomi Acoustic Lab',
-      'Conectividade Bluetooth 5.4 com emparelhamento instantâneo Google Fast Pair',
-      'Cancelamento de ruído de microfone duplo para chamadas sem eco',
-      'Até 6 horas nos auriculares e 30 horas com o estojo de carregamento'
-    ]
+    specs: ['Driver dinâmico 14.2mm', 'Bluetooth 5.4 Google Fast Pair', 'Microfone duplo anti-eco', 'Até 30h de reprodução']
   },
   {
     id: 'ims-07',
@@ -1517,8 +1467,8 @@ const productsData = [
     mpn: '462204',
     name: 'Suporte De Tecto Para Tv 37" À 70" Ajustável 180º',
     subtitle: 'Suporte Articulado de Tecto · Inclinação e Rotação 360° · Aço Robusto',
-    category: 'ImagemSom',
-    subCategory: 'Suportes de TV & Cabos',
+    department: 'ImagemSom',
+    category: 'Suportes de TV & Cabos',
     brand: 'MANHATTAN',
     priceVal: 59497.74,
     priceStr: '59.497,74 AKZ',
@@ -1534,13 +1484,8 @@ const productsData = [
     hasSubwoofer: false,
     hasMountSupport: true,
     powerWatts: null,
-    weight: '50 kg Carga Máxima',
-    specs: [
-      'Suporta televisores de 37 a 70 polegadas com até 50 kg de peso',
-      'Haste extensível com ajuste de altura e passagem interna de cabos',
-      'Rotação de 360 graus e inclinação de -25° a 0° para o melhor ângulo',
-      'Compatível com padrões VESA 200x200 até 600x400'
-    ]
+    weight: '50 kg Carga',
+    specs: ['Suporta ecrãs de 37 a 70 polegadas', 'Carga máxima de 50 kg', 'Rotação 360° e inclinação -25°', 'Padrão VESA até 600x400']
   },
   {
     id: 'ims-08',
@@ -1548,8 +1493,8 @@ const productsData = [
     mpn: '31730024400',
     name: 'Barra De Som USB Soundbar 100 6W Genius',
     subtitle: 'Soundbar Compacta para PC e TV · Alimentação USB · Áudio 3D',
-    category: 'ImagemSom',
-    subCategory: 'Soundbars & Home Cinema',
+    department: 'ImagemSom',
+    category: 'Soundbars & Home Cinema',
     brand: 'GENIUS',
     priceVal: 11239.26,
     priceStr: '11.239,26 AKZ',
@@ -1566,12 +1511,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '6W RMS',
     weight: '476 g',
-    specs: [
-      'Potência de 6W RMS com som nítido e envolvente',
-      'Alimentação prática via porta USB (Plug and Play sem fonte externa)',
-      'Controlo de volume no cabo e entrada de áudio padrão 3.5mm AUX',
-      'Design ultra compacto ideal para colocar debaixo do monitor ou da TV'
-    ]
+    specs: ['Potência 6W RMS', 'Alimentação USB Plug and Play', 'Entrada áudio 3.5mm AUX']
   },
   {
     id: 'ims-09',
@@ -1579,8 +1519,8 @@ const productsData = [
     mpn: 'QN65Q60DAFXZA',
     name: 'Smart TV Samsung 65" QLED 4K Q60D',
     subtitle: 'Quantum Dot 100% Cor · HDR10+ · Dolby Atmos · Tizen OS Netflix/YouTube',
-    category: 'ImagemSom',
-    subCategory: 'Smart TVs 4K & QLED',
+    department: 'ImagemSom',
+    category: 'Smart TVs 4K & QLED',
     brand: 'SAMSUNG',
     priceVal: 890000,
     priceStr: '890.000,00 AKZ',
@@ -1597,12 +1537,7 @@ const productsData = [
     hasMountSupport: true,
     powerWatts: '145W',
     weight: '21.3 kg',
-    specs: [
-      'Resolução 4K Ultra HD com 100% de volume de cor Quantum Dot',
-      'Processador Quantum Lite 4K com Upscaling inteligente para imagens nítidas',
-      'Sistema Tizen OS com Netflix, Prime Video, YouTube, Spotify e Apple TV',
-      'Design AirSlim ultra fino com suporte de parede padrão VESA'
-    ]
+    specs: ['4K Ultra HD Quantum Dot 100% cor', 'Processador Quantum Lite 4K', 'Tizen OS com Netflix, YouTube, Prime', 'Design AirSlim com suporte VESA']
   },
   {
     id: 'ims-10',
@@ -1610,8 +1545,8 @@ const productsData = [
     mpn: 'JBLSB190BLKEP',
     name: 'Soundbar JBL Cinema SB190 380W com Subwoofer Sem Fios',
     subtitle: 'Virtual Dolby Atmos · Subwoofer Wireless 6.5" · Bluetooth & HDMI eARC',
-    category: 'ImagemSom',
-    subCategory: 'Soundbars & Home Cinema',
+    department: 'ImagemSom',
+    category: 'Soundbars & Home Cinema',
     brand: 'JBL',
     priceVal: 275000,
     priceStr: '275.000,00 AKZ',
@@ -1628,12 +1563,7 @@ const productsData = [
     hasMountSupport: true,
     powerWatts: '380W RMS',
     weight: '7.5 kg',
-    specs: [
-      'Potência total de 380 Watts RMS com som surround cinematográfico',
-      'Subwoofer sem fios de 6.5" com graves profundos e impactantes',
-      'Tecnologia Virtual Dolby Atmos para efeito áudio tridimensional 3D',
-      'Entrada HDMI eARC e conectividade Bluetooth 5.1 sem fios'
-    ]
+    specs: ['Potência 380W RMS', 'Subwoofer sem fios 6.5"', 'Virtual Dolby Atmos 3D', 'HDMI eARC e Bluetooth']
   },
   {
     id: 'ims-11',
@@ -1641,8 +1571,8 @@ const productsData = [
     mpn: 'LSY91A',
     name: 'Cabo Aux Audio 3.5mm 1M Preto LDNIO',
     subtitle: 'Conectores Banhados a Ouro · Cabo Trançado Reforçado Anti-nó',
-    category: 'ImagemSom',
-    subCategory: 'Suportes de TV & Cabos',
+    department: 'ImagemSom',
+    category: 'Suportes de TV & Cabos',
     brand: 'LDNIO',
     priceVal: 2250.36,
     priceStr: '2.250,36 AKZ',
@@ -1659,12 +1589,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: null,
     weight: '30 g',
-    specs: [
-      'Cabo Auxiliar P2 3.5mm macho-macho de 1 metro',
-      'Conectores banhados a ouro para máxima condução sem interferências',
-      'Revestimento em nylon reforçado de alta durabilidade',
-      'Compatível com smartphones, computadores, colunas e sistemas de som'
-    ]
+    specs: ['Cabo P2 3.5mm de 1 metro', 'Conectores banhados a ouro', 'Revestimento trançado anti-nó']
   },
   {
     id: 'ims-12',
@@ -1672,8 +1597,8 @@ const productsData = [
     mpn: '908285',
     name: 'Auscultadores EB-95 Blush Maxell',
     subtitle: 'Auriculares Estéreo Leves com Fio · Isolamento Passivo',
-    category: 'ImagemSom',
-    subCategory: 'Auscultadores & Earbuds',
+    department: 'ImagemSom',
+    category: 'Auscultadores & Earbuds',
     brand: 'MAXELL',
     priceVal: 1990.00,
     priceStr: '1.990,00 AKZ',
@@ -1690,12 +1615,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: 'Jack 3.5mm',
     weight: '15 g',
-    specs: [
-      'Auriculares intra-auriculares leves e confortáveis',
-      'Cabo de 1.2 metros com conector standard de 3.5 mm',
-      'Cor Blush moderna e acabamento suave',
-      'Compatível com todos os leitores e telemóveis com entrada de auscultadores'
-    ]
+    specs: ['Auriculares intra-auriculares leves', 'Cabo de 1.2m com conector 3.5mm', 'Isolamento passivo de ruído']
   },
   {
     id: 'ims-13',
@@ -1703,8 +1623,8 @@ const productsData = [
     mpn: '31710045100',
     name: 'Auscultadores HS-04SU com Microfone Genius',
     subtitle: 'Headset para Videoconferência e Chamadas · Almofadas em Espuma Macia',
-    category: 'ImagemSom',
-    subCategory: 'Auscultadores & Earbuds',
+    department: 'ImagemSom',
+    category: 'Auscultadores & Earbuds',
     brand: 'GENIUS',
     priceVal: 10947.42,
     priceStr: '10.947,42 AKZ',
@@ -1719,14 +1639,9 @@ const productsData = [
     hasNetflix: false,
     hasSubwoofer: false,
     hasMountSupport: false,
-    powerWatts: 'Jack 3.5mm Duplo',
+    powerWatts: 'Jack 3.5mm',
     weight: '150 g',
-    specs: [
-      'Microfone cancelador de ruído flexível',
-      'Arco de cabeça ajustável para máximo conforto',
-      'Controlo de volume integrado no cabo',
-      'Conector duplo de 3.5 mm (áudio + microfone)'
-    ]
+    specs: ['Microfone flexível cancelador de ruído', 'Arco ajustável acolchoado', 'Controlo de volume no cabo']
   },
   {
     id: 'ims-14',
@@ -1734,8 +1649,8 @@ const productsData = [
     mpn: '31730052403',
     name: 'Coluna SP-915BT Bluetooth 5W Vermelho Genius',
     subtitle: 'Coluna Sem Fios Portátil · Som Estéreo Claro · Bateria Recarregável',
-    category: 'ImagemSom',
-    subCategory: 'Colunas Bluetooth & Party Speakers',
+    department: 'ImagemSom',
+    category: 'Colunas & Party Speakers',
     brand: 'GENIUS',
     priceVal: 13177.26,
     priceStr: '13.177,26 AKZ',
@@ -1752,12 +1667,7 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: '5W RMS',
     weight: '210 g',
-    specs: [
-      'Potência de 5W RMS com som equilibrado',
-      'Conexão Bluetooth rápida compatível com smartphones e tablets',
-      'Bateria interna recarregável com autonomia até 6 horas',
-      'Cor vermelha vibrante e tamanho compacto'
-    ]
+    specs: ['Potência 5W RMS', 'Bluetooth de ligação rápida', 'Bateria com autonomia até 6 horas']
   },
   {
     id: 'ims-15',
@@ -1765,8 +1675,8 @@ const productsData = [
     mpn: '31710058101',
     name: 'Auscultadores HS-505X Head Full Size Genius',
     subtitle: 'Design Fechado Circumaural · Graves Profundos · Ajuste Ergonómico',
-    category: 'ImagemSom',
-    subCategory: 'Auscultadores & Earbuds',
+    department: 'ImagemSom',
+    category: 'Auscultadores & Earbuds',
     brand: 'GENIUS',
     priceVal: 9935.10,
     priceStr: '9.935,10 AKZ',
@@ -1783,17 +1693,12 @@ const productsData = [
     hasMountSupport: false,
     powerWatts: 'Jack 3.5mm',
     weight: '200 g',
-    specs: [
-      'Almofadas de grandes dimensões que cobrem toda a orelha',
-      'Drivers de 40mm para reprodução potente de frequências baixas',
-      'Microfone ajustável de alta fidelidade para conversação',
-      'Cabo reforçado de 1.8 metros'
-    ]
+    specs: ['Almofadas grandes circumaurais', 'Drivers 40mm para graves profundos', 'Microfone integrado']
   }
 ];
 
-/* ─── 8 SERVIÇOS TÉCNICOS OFICIAIS DUPLAS DMP & NCR ANGOLA ─── */
-const servicesData = [
+/* ─── 8 SERVIÇOS OFICIAIS DUPLAS DMP & NCR ANGOLA ─── */
+const allServices = [
   {
     id: 's1',
     title: 'Internet Dedicada, Fibra Óptica & Satélite Starlink',
@@ -1862,32 +1767,30 @@ const servicesData = [
 
 /* ─── APP PRINCIPAL ─────────────────────────────────── */
 function App() {
-  const [page, setPage]             = useState('home');
-  const [cart, setCart]             = useState([]);
-  const [cartOpen, setCartOpen]     = useState(false);
-  const [quoteOpen, setQuoteOpen]   = useState(false);
-  const [detailProd, setDetailProd] = useState(null);
-  const [toast, setToast]           = useState('');
-  const [mobileMenu, setMobileMenu] = useState(false);
+  const [currentTab, setCurrentTab]   = useState('loja'); // 'loja', 'servicos', 'sobre', 'contactos'
+  const [cart, setCart]               = useState([]);
+  const [cartOpen, setCartOpen]       = useState(false);
+  const [quoteOpen, setQuoteOpen]     = useState(false);
+  const [detailProd, setDetailProd]   = useState(null);
+  const [toast, setToast]             = useState('');
+  const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
-  // Estados dos Filtros da Loja
-  const [selectedCat, setSelectedCat]       = useState('ALL');
-  const [selectedSubCat, setSelectedSubCat] = useState('ALL');
-  const [searchQuery, setSearchQuery]       = useState('');
-  const [priceRange, setPriceRange]         = useState('ALL');
-  const [selectedBrand, setSelectedBrand]   = useState('ALL');
-  const [filterRAM, setFilterRAM]           = useState('ALL');
-  const [filterScreen, setFilterScreen]     = useState('ALL');
-  const [filterBluetooth, setFilterBluetooth] = useState(false);
-  const [filterLAN, setFilterLAN]           = useState(false);
-  const [filterNetflix, setFilterNetflix]   = useState(false);
-  const [filterSubwoofer, setFilterSubwoofer] = useState(false);
-  const [sortBy, setSortBy]                 = useState('featured');
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setMobileMenu(false);
-  }, [page]);
+  // Estados dos Filtros (Estilo VTEX / NCR Angola)
+  const [selectedDept, setSelectedDept]       = useState('ALL');
+  const [selectedCategory, setSelectedCategory] = useState('ALL');
+  const [selectedBrands, setSelectedBrands]   = useState([]);
+  const [selectedPriceRange, setSelectedPriceRange] = useState('ALL');
+  const [selectedRAMs, setSelectedRAMs]       = useState([]);
+  const [selectedScreens, setSelectedScreens] = useState([]);
+  const [selectedFeatures, setSelectedFeatures] = useState({
+    bluetooth: false,
+    lan: false,
+    netflix: false,
+    subwoofer: false,
+    mount: false
+  });
+  const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy]           = useState('featured');
 
   const showToast = msg => {
     setToast(msg);
@@ -1915,56 +1818,110 @@ function App() {
   const cartCount = cart.reduce((a, p) => a + p.qty, 0);
   const cartTotal = cart.reduce((a, p) => a + (p.priceVal || 0) * p.qty, 0);
 
-  // Lista única de marcas para os filtros
-  const availableBrands = useMemo(() => {
-    const brands = new Set(productsData.map(p => p.brand).filter(Boolean));
-    return ['ALL', ...Array.from(brands)];
-  }, []);
+  // Lista dinâmica de subcategorias dentro do departamento selecionado
+  const availableCategories = useMemo(() => {
+    const subset = selectedDept === 'ALL' ? allProducts : allProducts.filter(p => p.department === selectedDept);
+    const cats = new Set(subset.map(p => p.category).filter(Boolean));
+    return Array.from(cats);
+  }, [selectedDept]);
 
-  // Lista de RAMs disponíveis
-  const availableRAMs = useMemo(() => {
-    const rams = new Set(productsData.map(p => p.ram).filter(Boolean));
-    return ['ALL', ...Array.from(rams)];
-  }, []);
+  // Lista de todas as marcas com contagem de produtos
+  const brandFacetList = useMemo(() => {
+    const subset = selectedDept === 'ALL' ? allProducts : allProducts.filter(p => p.department === selectedDept);
+    const map = {};
+    subset.forEach(p => {
+      if (p.brand) {
+        map[p.brand] = (map[p.brand] || 0) + 1;
+      }
+    });
+    return Object.keys(map).map(b => ({ name: b, count: map[b] })).sort((a, b) => a.name.localeCompare(b.name));
+  }, [selectedDept]);
 
-  // Lista de tamanhos de ecrã disponíveis
-  const availableScreens = useMemo(() => {
-    const screens = new Set(productsData.map(p => p.screenSize).filter(Boolean));
-    return ['ALL', ...Array.from(screens)];
-  }, []);
+  // Lista de RAMs com contagem
+  const ramFacetList = useMemo(() => {
+    const subset = selectedDept === 'ALL' ? allProducts : allProducts.filter(p => p.department === selectedDept);
+    const map = {};
+    subset.forEach(p => {
+      if (p.ram) {
+        map[p.ram] = (map[p.ram] || 0) + 1;
+      }
+    });
+    return Object.keys(map).map(r => ({ name: r, count: map[r] }));
+  }, [selectedDept]);
 
-  // Filtragem e Ordenação dos Produtos
+  // Lista de Polegadas com contagem
+  const screenFacetList = useMemo(() => {
+    const subset = selectedDept === 'ALL' ? allProducts : allProducts.filter(p => p.department === selectedDept);
+    const map = {};
+    subset.forEach(p => {
+      if (p.screenSize) {
+        map[p.screenSize] = (map[p.screenSize] || 0) + 1;
+      }
+    });
+    return Object.keys(map).map(s => ({ name: s, count: map[s] }));
+  }, [selectedDept]);
+
+  // Toggle de filtros multi-seleção
+  const toggleBrand = brand => {
+    setSelectedBrands(prev => prev.includes(brand) ? prev.filter(b => b !== brand) : [...prev, brand]);
+  };
+
+  const toggleRAM = ram => {
+    setSelectedRAMs(prev => prev.includes(ram) ? prev.filter(r => r !== ram) : [...prev, ram]);
+  };
+
+  const toggleScreen = screen => {
+    setSelectedScreens(prev => prev.includes(screen) ? prev.filter(s => s !== screen) : [...prev, screen]);
+  };
+
+  const toggleFeature = key => {
+    setSelectedFeatures(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const clearAllFilters = () => {
+    setSelectedDept('ALL');
+    setSelectedCategory('ALL');
+    setSelectedBrands([]);
+    setSelectedPriceRange('ALL');
+    setSelectedRAMs([]);
+    setSelectedScreens([]);
+    setSelectedFeatures({ bluetooth: false, lan: false, netflix: false, subwoofer: false, mount: false });
+    setSearchQuery('');
+  };
+
+  // Filtragem dos Produtos
   const filteredProducts = useMemo(() => {
-    return productsData.filter(p => {
-      // Categoria
-      if (selectedCat !== 'ALL' && p.category !== selectedCat) return false;
-      // Subcategoria
-      if (selectedSubCat !== 'ALL' && p.subCategory !== selectedSubCat) return false;
-      // Marca
-      if (selectedBrand !== 'ALL' && p.brand !== selectedBrand) return false;
-      // Faixa de Preço
-      if (priceRange === 'under50k' && p.priceVal >= 50000) return false;
-      if (priceRange === '50k-200k' && (p.priceVal < 50000 || p.priceVal > 200000)) return false;
-      if (priceRange === '200k-1000k' && (p.priceVal < 200000 || p.priceVal > 1000000)) return false;
-      if (priceRange === 'over1000k' && p.priceVal <= 1000000) return false;
-      // RAM
-      if (filterRAM !== 'ALL' && p.ram !== filterRAM) return false;
-      // Polegadas
-      if (filterScreen !== 'ALL' && p.screenSize !== filterScreen) return false;
-      // Especificações booleanas
-      if (filterBluetooth && !p.hasBluetooth) return false;
-      if (filterLAN && !p.hasLAN) return false;
-      if (filterNetflix && !p.hasNetflix) return false;
-      if (filterSubwoofer && !p.hasSubwoofer) return false;
-      // Pesquisa por texto
+    return allProducts.filter(p => {
+      // 1. Departamento
+      if (selectedDept !== 'ALL' && p.department !== selectedDept) return false;
+      // 2. Subcategoria
+      if (selectedCategory !== 'ALL' && p.category !== selectedCategory) return false;
+      // 3. Marcas selecionadas (se houver alguma selecionada)
+      if (selectedBrands.length > 0 && !selectedBrands.includes(p.brand)) return false;
+      // 4. Faixa de Preço
+      if (selectedPriceRange === 'under50k' && p.priceVal >= 50000) return false;
+      if (selectedPriceRange === '50k-200k' && (p.priceVal < 50000 || p.priceVal > 200000)) return false;
+      if (selectedPriceRange === '200k-1000k' && (p.priceVal < 200000 || p.priceVal > 1000000)) return false;
+      if (selectedPriceRange === 'over1000k' && p.priceVal <= 1000000) return false;
+      // 5. Memória RAM
+      if (selectedRAMs.length > 0 && (!p.ram || !selectedRAMs.includes(p.ram))) return false;
+      // 6. Tamanho de Ecrã
+      if (selectedScreens.length > 0 && (!p.screenSize || !selectedScreens.includes(p.screenSize))) return false;
+      // 7. Recursos & Conectividade
+      if (selectedFeatures.bluetooth && !p.hasBluetooth) return false;
+      if (selectedFeatures.lan && !p.hasLAN) return false;
+      if (selectedFeatures.netflix && !p.hasNetflix) return false;
+      if (selectedFeatures.subwoofer && !p.hasSubwoofer) return false;
+      if (selectedFeatures.mount && !p.hasMountSupport) return false;
+      // 8. Pesquisa
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase();
         const matchesName = p.name.toLowerCase().includes(q);
-        const matchesSubtitle = p.subtitle.toLowerCase().includes(q);
+        const matchesSub = p.subtitle.toLowerCase().includes(q);
         const matchesBrand = (p.brand || '').toLowerCase().includes(q);
-        const matchesSpecs = (p.specs || []).some(s => s.toLowerCase().includes(q));
         const matchesSKU = (p.sku || '').toLowerCase().includes(q);
-        if (!matchesName && !matchesSubtitle && !matchesBrand && !matchesSpecs && !matchesSKU) return false;
+        const matchesSpecs = (p.specs || []).some(s => s.toLowerCase().includes(q));
+        if (!matchesName && !matchesSub && !matchesBrand && !matchesSKU && !matchesSpecs) return false;
       }
       return true;
     }).sort((a, b) => {
@@ -1973,499 +1930,399 @@ function App() {
       if (sortBy === 'nameAsc') return a.name.localeCompare(b.name);
       return 0; // featured
     });
-  }, [selectedCat, selectedSubCat, selectedBrand, priceRange, filterRAM, filterScreen, filterBluetooth, filterLAN, filterNetflix, filterSubwoofer, searchQuery, sortBy]);
+  }, [selectedDept, selectedCategory, selectedBrands, selectedPriceRange, selectedRAMs, selectedScreens, selectedFeatures, searchQuery, sortBy]);
 
-  const clearAllFilters = () => {
-    setSelectedCat('ALL');
-    setSelectedSubCat('ALL');
-    setSelectedBrand('ALL');
-    setPriceRange('ALL');
-    setFilterRAM('ALL');
-    setFilterScreen('ALL');
-    setFilterBluetooth(false);
-    setFilterLAN(false);
-    setFilterNetflix(false);
-    setFilterSubwoofer(false);
-    setSearchQuery('');
-  };
+  // Contagem ativa de filtros selecionados
+  const activeFiltersCount = useMemo(() => {
+    let count = 0;
+    if (selectedDept !== 'ALL') count++;
+    if (selectedCategory !== 'ALL') count++;
+    if (selectedPriceRange !== 'ALL') count++;
+    count += selectedBrands.length;
+    count += selectedRAMs.length;
+    count += selectedScreens.length;
+    if (selectedFeatures.bluetooth) count++;
+    if (selectedFeatures.lan) count++;
+    if (selectedFeatures.netflix) count++;
+    if (selectedFeatures.subwoofer) count++;
+    if (selectedFeatures.mount) count++;
+    if (searchQuery.trim()) count++;
+    return count;
+  }, [selectedDept, selectedCategory, selectedPriceRange, selectedBrands, selectedRAMs, selectedScreens, selectedFeatures, searchQuery]);
 
-  /* ── TOP BAR ── */
+  /* ════ TOP NOTICE BAR ════ */
   const TopBar = () => (
-    <div className="bg-brand-dark text-gray-300 text-xs md:text-sm py-2.5 border-b border-gray-800 hide-mobile">
-      <div className="w-full px-4 sm:px-7 lg:px-10 flex justify-between items-center">
-        <span className="font-body tracking-wide truncate">Angola · Luanda — Equipamentos Originais, Soluções de TI, Telecomunicações e Climatização</span>
-        <div className="flex items-center space-x-6 flex-shrink-0">
-          <span className="flex items-center space-x-2"><i className="fa-brands fa-whatsapp text-emerald-400 text-xs"></i><span>+244 941 950 022</span></span>
-          <span className="flex items-center space-x-2"><i className="fa-solid fa-phone text-brand-red text-xs"></i><span>+244 947 077 913</span></span>
-          <span className="flex items-center space-x-2"><i className="fa-solid fa-envelope text-brand-red text-xs"></i><span>geral@duplasdmp.co.ao</span></span>
-          <span className="flex items-center space-x-2"><i className="fa-solid fa-clock text-brand-red text-xs"></i><span>Seg–Sex: 08h–17h</span></span>
+    <div className="bg-[#0A0C12] text-gray-300 text-xs py-2 border-b border-gray-800">
+      <div className="w-full px-4 sm:px-8 flex justify-between items-center">
+        <span className="truncate">Angola · Luanda — Equipamentos Originais, Assistência Técnica e Telecomunicações</span>
+        <div className="hidden lg:flex items-center space-x-6 flex-shrink-0">
+          <span className="flex items-center space-x-1.5"><i className="fa-brands fa-whatsapp text-emerald-400"></i><span>+244 941 950 022</span></span>
+          <span className="flex items-center space-x-1.5"><i className="fa-solid fa-phone text-brand-red"></i><span>+244 947 077 913</span></span>
+          <span className="flex items-center space-x-1.5"><i className="fa-solid fa-envelope text-brand-red"></i><span>geral@duplasdmp.co.ao</span></span>
         </div>
       </div>
     </div>
   );
 
-  /* ── HEADER COM DEPARTAMENTOS & NAVEGAÇÃO ── */
+  /* ════ HEADER PRINCIPAL COM BARRA DE PESQUISA E CARRINHO ════ */
   const Header = () => (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm transition-all">
-      <div className="w-full px-4 sm:px-7 lg:px-10 h-24 md:h-28 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
+      <div className="w-full px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4">
         
         {/* LOGOMARCA */}
-        <button onClick={() => setPage('home')} className="flex-shrink-0 py-2 flex items-center space-x-3 text-left group">
+        <button onClick={() => { setCurrentTab('loja'); setSelectedDept('ALL'); }} className="flex-shrink-0 flex items-center space-x-3 text-left">
           <img
             src={LOGO_ONLINE}
             alt="Duplas DMP Investment"
-            style={{ height: '95px', width: 'auto', objectFit: 'contain', maxHeight: '115px' }}
+            style={{ height: '75px', width: 'auto', objectFit: 'contain' }}
             onError={(e) => { e.target.src = LOGO_PATH; }}
-            className="group-hover:scale-105 transition-transform"
           />
         </button>
 
-        {/* BARRA DE PESQUISA RÁPIDA */}
-        <div className="hidden md:flex flex-1 max-w-xl relative">
+        {/* BARRA DE PESQUISA CENTRAL ESTILO VTEX */}
+        <div className="flex-1 max-w-2xl relative">
           <input
             type="text"
-            placeholder="Pesquisar portáteis, TVs, auscultadores, impressoras, ar condicionado..."
+            placeholder="O que procura? (ex: Portátil HP, Smart TV, Auscultadores, Ar Condicionado, UPS...)"
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
-              if (page !== 'loja') setPage('loja');
+              if (currentTab !== 'loja') setCurrentTab('loja');
             }}
-            className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-full font-body text-xs md:text-sm bg-gray-50 focus:bg-white shadow-inner"
+            className="w-full pl-11 pr-10 py-3 text-xs sm:text-sm bg-gray-100 focus:bg-white border border-gray-200 rounded-full font-body transition-all"
           />
           <i className="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+          {searchQuery && (
+            <button onClick={() => setSearchQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+          )}
         </div>
 
-        {/* NAVEGAÇÃO PRINCIPAL */}
-        <nav className="hidden xl:flex items-center space-x-6 font-heading">
-          <button onClick={() => setPage('home')} className={`nav-link font-bold uppercase text-sm ${page === 'home' ? 'text-brand-red active' : 'text-gray-800 hover:text-brand-red'}`}>Início</button>
-          <button onClick={() => setPage('loja')} className={`nav-link font-bold uppercase text-sm ${page === 'loja' ? 'text-brand-red active' : 'text-gray-800 hover:text-brand-red'}`}>Loja Online</button>
-          <button onClick={() => setPage('servicos')} className={`nav-link font-bold uppercase text-sm ${page === 'servicos' ? 'text-brand-red active' : 'text-gray-800 hover:text-brand-red'}`}>Serviços</button>
-          <button onClick={() => setPage('sobre')} className={`nav-link font-bold uppercase text-sm ${page === 'sobre' ? 'text-brand-red active' : 'text-gray-800 hover:text-brand-red'}`}>Sobre Nós</button>
-          <button onClick={() => setPage('contactos')} className={`nav-link font-bold uppercase text-sm ${page === 'contactos' ? 'text-brand-red active' : 'text-gray-800 hover:text-brand-red'}`}>Contactos</button>
-        </nav>
+        {/* NAVEGAÇÃO & AÇÕES */}
+        <div className="flex items-center space-x-3 sm:space-x-4">
+          <nav className="hidden xl:flex items-center space-x-5 font-heading text-xs uppercase font-bold text-gray-800">
+            <button onClick={() => setCurrentTab('loja')} className={`hover:text-brand-red ${currentTab === 'loja' ? 'text-brand-red' : ''}`}>Loja & Produtos</button>
+            <button onClick={() => setCurrentTab('servicos')} className={`hover:text-brand-red ${currentTab === 'servicos' ? 'text-brand-red' : ''}`}>Serviços Oficiais</button>
+            <button onClick={() => setCurrentTab('sobre')} className={`hover:text-brand-red ${currentTab === 'sobre' ? 'text-brand-red' : ''}`}>Sobre Nós</button>
+            <button onClick={() => setCurrentTab('contactos')} className={`hover:text-brand-red ${currentTab === 'contactos' ? 'text-brand-red' : ''}`}>Contactos</button>
+          </nav>
 
-        {/* AÇÕES (CARRINHO, COTAÇÃO, MENU MOBILE) */}
-        <div className="flex items-center space-x-3 md:space-x-4">
-          <button onClick={() => setCartOpen(true)} className="relative p-3 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-900 transition-all hover:scale-105" title="Carrinho">
-            <i className="fa-solid fa-cart-shopping text-lg"></i>
+          <button onClick={() => setCartOpen(true)} className="relative p-2.5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-900 transition-all" title="Ver Carrinho">
+            <i className="fa-solid fa-cart-shopping text-base"></i>
             {cartCount > 0 && (
               <span className="absolute -top-1 -right-1 bg-brand-red text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white pulse-red">{cartCount}</span>
             )}
           </button>
-          <button onClick={() => setQuoteOpen(true)} className="hidden sm:flex items-center space-x-2 bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold text-xs md:text-sm uppercase tracking-widest px-5 py-3 rounded-full transition-all shadow glow-red active:scale-95">
+
+          <button onClick={() => setQuoteOpen(true)} className="hidden sm:flex items-center space-x-2 bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold text-xs uppercase px-4 py-2.5 rounded-full shadow glow-red transition-all">
             <i className="fa-solid fa-file-invoice text-xs"></i>
             <span>Pedir Cotação</span>
           </button>
-          <button onClick={() => setMobileMenu(p => !p)} className="xl:hidden p-2.5 text-gray-800 hover:text-brand-red">
-            <i className={`fa-solid ${mobileMenu ? 'fa-xmark' : 'fa-bars'} text-2xl`}></i>
-          </button>
         </div>
       </div>
 
-      {/* SUB-BARRA DE DEPARTAMENTOS / CATEGORIAS (PADRÃO NCR ANGOLA) */}
-      <div className="bg-brand-dark text-white text-xs border-t border-gray-800 overflow-x-auto hide-scrollbar">
-        <div className="w-full px-4 sm:px-7 lg:px-10 flex items-center space-x-6 py-2.5 font-heading font-semibold uppercase tracking-wider whitespace-nowrap">
-          <span className="text-brand-red flex items-center space-x-2 mr-2">
+      {/* BARRA DE DEPARTAMENTOS ESTILO NCR ANGOLA (VTEX) */}
+      <div className="bg-[#0A0C12] text-white text-xs border-t border-gray-800 overflow-x-auto hide-scrollbar">
+        <div className="w-full px-4 sm:px-8 flex items-center space-x-6 py-2.5 font-heading font-semibold uppercase tracking-wider whitespace-nowrap">
+          <span className="text-brand-red flex items-center space-x-1.5 mr-2">
             <i className="fa-solid fa-bars-staggered"></i>
             <span>Departamentos:</span>
           </span>
-          {NCR_CATEGORIES.map(cat => (
+          {NCR_DEPARTMENTS.map(dept => (
             <button
-              key={cat.id}
+              key={dept.id}
               onClick={() => {
-                setSelectedCat(cat.id);
-                setSelectedSubCat('ALL');
-                setPage('loja');
+                setSelectedDept(dept.id);
+                setSelectedCategory('ALL');
+                if (currentTab !== 'loja') setCurrentTab('loja');
               }}
-              className={`hover:text-brand-red transition-colors flex items-center space-x-1.5 ${selectedCat === cat.id && page === 'loja' ? 'text-brand-red font-bold' : 'text-gray-300'}`}
+              className={`hover:text-brand-red transition-colors flex items-center space-x-1.5 ${selectedDept === dept.id && currentTab === 'loja' ? 'text-brand-red font-bold' : 'text-gray-300'}`}
             >
-              <i className={`fa-solid ${cat.icon} text-[11px]`}></i>
-              <span>{cat.name}</span>
+              <i className={`fa-solid ${dept.icon} text-[11px]`}></i>
+              <span>{dept.name}</span>
             </button>
           ))}
         </div>
       </div>
-
-      {/* MOBILE MENU */}
-      {mobileMenu && (
-        <div className="xl:hidden bg-white border-t border-gray-200 shadow-2xl p-6 space-y-4 animate-fade-in-up">
-          <div className="space-y-2">
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Navegação</p>
-            {['home', 'loja', 'servicos', 'sobre', 'contactos'].map(p => (
-              <button
-                key={p}
-                onClick={() => setPage(p)}
-                className={`block w-full text-left font-heading font-bold text-base py-2 uppercase border-b border-gray-100 ${page === p ? 'text-brand-red' : 'text-gray-800'}`}
-              >
-                {p === 'home' ? 'Início' : p === 'loja' ? 'Loja Online' : p === 'servicos' ? 'Serviços' : p === 'sobre' ? 'Sobre Nós' : 'Contactos'}
-              </button>
-            ))}
-          </div>
-          <button onClick={() => setQuoteOpen(true)} className="w-full bg-brand-red text-white font-heading font-bold uppercase py-3.5 rounded-xl shadow glow-red">
-            Pedir Cotação
-          </button>
-        </div>
-      )}
     </header>
   );
 
-  /* ════════════════════════════════════════
-     PÁGINA INICIAL (HOMEPAGE)
-  ════════════════════════════════════════ */
-  const HomePage = () => (
-    <div className="animate-fade-in-up space-y-16 pb-16">
-      {/* HERO BANNER */}
-      <section className="relative text-white overflow-hidden" style={{ minHeight: '520px' }}>
-        <img
-          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2200&q=90"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: 'brightness(0.24) contrast(1.1)' }}
-        />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg,rgba(10,12,18,0.96) 0%,rgba(10,12,18,0.7) 60%,rgba(180,0,0,0.15) 100%)' }}></div>
-        
-        <div className="relative z-10 w-full px-4 sm:px-7 lg:px-10 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center" style={{ minHeight: '520px' }}>
-          <div className="lg:col-span-8 space-y-6">
-            <div className="inline-flex items-center space-x-2 bg-brand-red/20 border border-brand-red/40 px-3.5 py-1.5 rounded-full">
-              <i className="fa-solid fa-bolt text-brand-red text-xs"></i>
-              <span className="font-heading text-white text-xs tracking-wider uppercase font-semibold">Tecnologia · Telecomunicações · Catálogo Oficial NCR Angola</span>
-            </div>
-            <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight uppercase">
-              O Seu Parceiro em <span className="text-brand-red">Tecnologia</span> & Equipamentos em Angola
-            </h1>
-            <p className="font-body text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed">
-              Catálogo completo em informática, áudio, smartphones, electrodomésticos, energia e redes com preços oficiais em Kwanzas (AKZ) e suporte em Luanda.
-            </p>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <button onClick={() => setPage('loja')} className="bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold text-sm uppercase px-8 py-4 rounded-xl shadow-lg glow-red transition-all hover:scale-105">
-                <span>Ver Loja Online ({productsData.length} Itens)</span>
-                <i className="fa-solid fa-arrow-right ml-2 text-xs"></i>
-              </button>
-              <button onClick={() => setPage('servicos')} className="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-heading font-bold text-sm uppercase px-8 py-4 rounded-xl backdrop-blur-sm transition-all hover:scale-105">
-                <span>Nossos 8 Serviços</span>
-              </button>
-            </div>
-          </div>
+  /* ════════════════════════════════════════════════════════
+     BARRA LATERAL DE FILTROS FACETADOS (ESTILO VTEX / NCR)
+  ════════════════════════════════════════════════════════ */
+  const FilterSidebar = () => (
+    <aside className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm space-y-5 font-body text-xs">
+      
+      {/* CABEÇALHO DE FILTROS */}
+      <div className="flex items-center justify-between pb-3 border-b border-gray-200">
+        <div className="flex items-center space-x-2">
+          <i className="fa-solid fa-sliders text-brand-red"></i>
+          <h3 className="font-heading font-extrabold text-sm uppercase text-gray-900">Filtros</h3>
+          {activeFiltersCount > 0 && (
+            <span className="bg-brand-red text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">{activeFiltersCount}</span>
+          )}
         </div>
-      </section>
-
-      {/* BANNER DE VANTAGENS */}
-      <section className="w-full px-4 sm:px-7 lg:px-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { icon: 'fa-truck-fast', title: 'Entrega Rápida', desc: 'Em Luanda e envios para todas as províncias' },
-            { icon: 'fa-shield-check', title: 'Garantia Oficial', desc: 'Equipamentos certificados com garantia' },
-            { icon: 'fa-file-invoice-dollar', title: 'Faturação Certificada', desc: 'Faturas oficiais em Kwanzas com IVA' },
-            { icon: 'fa-headset', title: 'Suporte Técnico 24/7', desc: 'Equipa de engenheiros e técnicos qualificados' },
-          ].map((v, i) => (
-            <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 flex items-center space-x-4">
-              <div className="w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
-                <i className={`fa-solid ${v.icon}`}></i>
-              </div>
-              <div>
-                <h4 className="font-heading font-bold text-sm text-gray-900 uppercase">{v.title}</h4>
-                <p className="font-body text-xs text-gray-500 mt-0.5">{v.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* PRODUTOS DO MÊS */}
-      <section className="w-full px-4 sm:px-7 lg:px-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-gray-200 gap-4">
-          <div>
-            <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Destaques da Loja</span>
-            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-gray-900 uppercase mt-1">PRODUTOS DO MÊS</h2>
-            <p className="font-body text-xs sm:text-sm text-gray-500 mt-1">Ofertas em equipamentos com imagens originais e preços oficiais em Kwanzas (AKZ)</p>
-          </div>
-          <button onClick={() => setPage('loja')} className="inline-flex items-center space-x-2 text-brand-red font-heading font-bold text-sm uppercase tracking-wider hover:text-brand-redHover">
-            <span>Ver Todos os Produtos ({productsData.length})</span>
-            <i className="fa-solid fa-arrow-right text-xs"></i>
+        {activeFiltersCount > 0 && (
+          <button onClick={clearAllFilters} className="text-[11px] text-brand-red hover:underline font-heading font-semibold uppercase">
+            Limpar Todos
           </button>
-        </div>
+        )}
+      </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {productsData.slice(0, 8).map(p => (
-            <div key={p.id} className="bg-white rounded-2xl shadow-sm product-card overflow-hidden flex flex-col justify-between border border-gray-200 group">
-              <div>
-                <div className="img-zoom h-52 relative cursor-pointer bg-gray-100 flex items-center justify-center p-2" onClick={() => setDetailProd(p)}>
-                  <img src={p.img} alt={p.name} className="w-full h-full object-contain img-zoom-child" />
-                  <span className="absolute top-2.5 left-2.5 badge-red text-white text-[10px] font-heading px-2.5 py-0.5 rounded uppercase tracking-wide shadow">{p.brand || 'Original'}</span>
-                  {p.badge && (
-                    <span className="absolute top-2.5 right-2.5 bg-gray-900/85 text-white text-[9px] font-heading px-2 py-0.5 rounded uppercase tracking-wide">{p.badge}</span>
-                  )}
+      {/* 1. DEPARTAMENTOS */}
+      <div className="filter-section">
+        <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-2.5 flex items-center justify-between">
+          <span>Departamentos</span>
+          <i className="fa-solid fa-angle-down text-gray-400 text-[10px]"></i>
+        </h4>
+        <div className="space-y-1">
+          {NCR_DEPARTMENTS.map(dept => {
+            const count = dept.id === 'ALL' ? allProducts.length : allProducts.filter(p => p.department === dept.id).length;
+            const isSelected = selectedDept === dept.id;
+            return (
+              <button
+                key={dept.id}
+                onClick={() => {
+                  setSelectedDept(dept.id);
+                  setSelectedCategory('ALL');
+                }}
+                className={`w-full text-left px-2.5 py-1.5 rounded-lg flex items-center justify-between transition-colors ${isSelected ? 'bg-red-50 text-brand-red font-bold' : 'text-gray-700 hover:bg-gray-50'}`}
+              >
+                <div className="flex items-center space-x-2">
+                  <i className={`fa-solid ${dept.icon} text-[10px]`}></i>
+                  <span>{dept.name}</span>
                 </div>
-                <div className="p-4 space-y-1.5">
-                  <h3 onClick={() => setDetailProd(p)} className="font-heading font-bold text-sm md:text-base text-gray-900 uppercase leading-tight hover:text-brand-red cursor-pointer transition-colors line-clamp-2">{p.name}</h3>
-                  <p className="font-body text-xs text-gray-500 line-clamp-1">{p.subtitle}</p>
-                </div>
-              </div>
-
-              <div className="p-4 pt-0 space-y-3">
-                <div className="font-display text-2xl text-brand-red font-bold">{p.priceStr}</div>
-                <div className="grid grid-cols-2 gap-2">
-                  <button onClick={() => setDetailProd(p)} className="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-heading font-semibold uppercase text-xs py-2.5 rounded-xl transition-all">
-                    Detalhes
-                  </button>
-                  <button onClick={() => addToCart(p)} className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase text-xs py-2.5 rounded-xl transition-all shadow glow-red">
-                    Comprar
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* DEPARTAMENTOS EM DESTAQUE */}
-      <section className="w-full px-4 sm:px-7 lg:px-10">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <h2 className="font-heading text-3xl font-extrabold text-gray-900 uppercase heading-line">Departamentos Principais</h2>
-          <p className="font-body text-xs sm:text-sm text-gray-500 mt-2">Explore as categorias organizadas pelo padrão NCR Angola</p>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {NCR_CATEGORIES.filter(c => c.id !== 'ALL').map(cat => (
-            <button
-              key={cat.id}
-              onClick={() => {
-                setSelectedCat(cat.id);
-                setSelectedSubCat('ALL');
-                setPage('loja');
-              }}
-              className="bg-white p-6 rounded-2xl border border-gray-200 text-center hover:border-brand-red hover:shadow-md transition-all group card-hover"
-            >
-              <div className="w-14 h-14 mx-auto rounded-2xl bg-red-50 text-brand-red flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition-transform">
-                <i className={`fa-solid ${cat.icon}`}></i>
-              </div>
-              <h4 className="font-heading font-bold text-xs sm:text-sm text-gray-900 uppercase group-hover:text-brand-red">{cat.name}</h4>
-              <p className="text-[10px] text-gray-400 mt-1 font-body">
-                {productsData.filter(p => p.category === cat.id).length} Produtos
-              </p>
-            </button>
-          ))}
-        </div>
-      </section>
-
-      {/* SEÇÃO DE SERVIÇOS TÉCNICOS NA HOMEPAGE */}
-      <section className="w-full px-4 sm:px-7 lg:px-10 bg-brand-dark py-16 rounded-3xl text-white">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Engenharia & Suporte Técnico</span>
-          <h2 className="font-heading text-3xl font-extrabold text-white uppercase mt-1">Serviços Especializados</h2>
-          <p className="font-body text-xs sm:text-sm text-gray-400 mt-2">Instalação, reparação laboratorial e suporte em telecomunicações em Luanda</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {servicesData.slice(0, 4).map((s, i) => (
-            <div key={i} className="bg-gray-900/90 border border-gray-800 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-red transition-all">
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-brand-red text-white flex items-center justify-center text-xl shadow">
-                  <i className={`fa-solid ${s.icon}`}></i>
-                </div>
-                <div>
-                  <span className="text-[10px] font-heading font-bold text-brand-red uppercase">{s.tag}</span>
-                  <h3 className="font-heading font-bold text-base text-white uppercase mt-1 leading-snug">{s.title}</h3>
-                  <p className="font-body text-xs text-gray-400 mt-2 line-clamp-3 leading-relaxed">{s.desc}</p>
-                </div>
-              </div>
-              <button onClick={() => setQuoteOpen(true)} className="mt-6 w-full bg-white/10 hover:bg-brand-red text-white font-heading font-bold uppercase text-xs py-2.5 rounded-xl transition-all">
-                Pedir Proposta
+                <span className="text-[10px] text-gray-400 font-normal">({count})</span>
               </button>
-            </div>
-          ))}
-        </div>
-      </section>
-    </div>
-  );
-
-  /* ════════════════════════════════════════
-     LOJA ONLINE COMPLETA COM FILTROS NCR
-  ════════════════════════════════════════ */
-  const LojaPage = () => (
-    <div className="w-full px-4 sm:px-7 lg:px-10 py-10 animate-fade-in-up">
-      {/* CABEÇALHO DA LOJA */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 mb-8 border-b border-gray-200 gap-4">
-        <div>
-          <h1 className="font-heading font-extrabold text-3xl text-gray-900 uppercase">Loja Online & Catálogo</h1>
-          <p className="font-body text-xs text-gray-500 mt-1">
-            A exibir <strong className="text-gray-900">{filteredProducts.length}</strong> produtos de um catálogo total de <strong className="text-brand-red">{productsData.length}</strong> itens disponíveis em Kwanzas (AKZ)
-          </p>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-3">
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            className="p-3 border border-gray-300 rounded-xl font-heading text-xs uppercase bg-white font-semibold shadow-sm"
-          >
-            <option value="featured">Mais Relevantes</option>
-            <option value="priceAsc">Menor Preço</option>
-            <option value="priceDesc">Maior Preço</option>
-            <option value="nameAsc">Nome (A - Z)</option>
-          </select>
-          <button
-            onClick={clearAllFilters}
-            className="p-3 border border-gray-300 hover:border-brand-red hover:text-brand-red text-gray-700 rounded-xl font-heading text-xs uppercase font-semibold transition-all bg-white"
-          >
-            <i className="fa-solid fa-rotate-left mr-1.5"></i>
-            <span>Limpar Filtros</span>
-          </button>
+            );
+          })}
         </div>
       </div>
 
-      {/* LAYOUT: SIDEBAR FILTROS + GRELHA DE PRODUTOS */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        {/* ── BARRA LATERAL DE FILTROS FACETADOS (PADRÃO NCR ANGOLA) ── */}
-        <div className="lg:col-span-3 space-y-6">
-          <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm space-y-6">
-            
-            {/* 1. DEPARTAMENTOS / CATEGORIAS */}
-            <div>
-              <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-3 pb-2 border-b border-gray-100 flex items-center justify-between">
-                <span>Departamentos</span>
-                <i className="fa-solid fa-list text-gray-400"></i>
-              </h3>
-              <div className="space-y-1">
-                {NCR_CATEGORIES.map(cat => (
-                  <button
-                    key={cat.id}
-                    onClick={() => {
-                      setSelectedCat(cat.id);
-                      setSelectedSubCat('ALL');
-                    }}
-                    className={`w-full text-left px-3 py-2 rounded-lg text-xs font-heading font-medium flex items-center justify-between transition-colors ${selectedCat === cat.id ? 'bg-red-50 text-brand-red font-bold' : 'text-gray-700 hover:bg-gray-50'}`}
-                  >
-                    <span>{cat.name}</span>
-                    <span className="text-[10px] text-gray-400 font-normal">
-                      {cat.id === 'ALL' ? productsData.length : productsData.filter(p => p.category === cat.id).length}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* 2. FAIXA DE PREÇO */}
-            <div>
-              <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-3 pb-2 border-b border-gray-100">
-                Faixa de Preço (AKZ)
-              </h3>
-              <div className="space-y-2 text-xs font-body">
-                {[
-                  { id: 'ALL', label: 'Todos os Preços' },
-                  { id: 'under50k', label: 'Até 50.000 AKZ' },
-                  { id: '50k-200k', label: '50.000 a 200.000 AKZ' },
-                  { id: '200k-1000k', label: '200.000 a 1.000.000 AKZ' },
-                  { id: 'over1000k', label: 'Acima de 1.000.000 AKZ' },
-                ].map(r => (
-                  <label key={r.id} className="flex items-center space-x-2.5 cursor-pointer text-gray-700 hover:text-brand-red">
-                    <input
-                      type="radio"
-                      name="priceRange"
-                      checked={priceRange === r.id}
-                      onChange={() => setPriceRange(r.id)}
-                      className="text-brand-red focus:ring-brand-red"
-                    />
-                    <span>{r.label}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            {/* 3. MARCAS */}
-            <div>
-              <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-3 pb-2 border-b border-gray-100">
-                Marcas
-              </h3>
-              <div className="space-y-1.5 max-h-48 overflow-y-auto pr-1">
-                {availableBrands.map(b => (
-                  <label key={b} className="flex items-center justify-between text-xs font-body cursor-pointer text-gray-700 hover:text-brand-red">
-                    <div className="flex items-center space-x-2">
-                      <input
-                        type="radio"
-                        name="brandFilter"
-                        checked={selectedBrand === b}
-                        onChange={() => setSelectedBrand(b)}
-                        className="text-brand-red focus:ring-brand-red"
-                      />
-                      <span>{b === 'ALL' ? 'Todas as Marcas' : b}</span>
-                    </div>
-                    <span className="text-[10px] text-gray-400">
-                      {b === 'ALL' ? productsData.length : productsData.filter(p => p.brand === b).length}
-                    </span>
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            {/* 4. MEMÓRIA RAM */}
-            <div>
-              <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-3 pb-2 border-b border-gray-100">
-                Memória RAM
-              </h3>
-              <div className="flex flex-wrap gap-1.5">
-                {availableRAMs.map(ram => (
-                  <button
-                    key={ram}
-                    onClick={() => setFilterRAM(ram)}
-                    className={`px-3 py-1 rounded-md text-[11px] font-heading font-semibold border transition-all ${filterRAM === ram ? 'bg-brand-red text-white border-brand-red' : 'bg-gray-50 text-gray-700 border-gray-200 hover:border-brand-red'}`}
-                  >
-                    {ram === 'ALL' ? 'Todas' : ram}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* 5. POLEGADAS / TAMANHO DO ECRÃ */}
-            <div>
-              <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-3 pb-2 border-b border-gray-100">
-                Polegadas / Ecrã
-              </h3>
-              <div className="flex flex-wrap gap-1.5">
-                {availableScreens.map(scr => (
-                  <button
-                    key={scr}
-                    onClick={() => setFilterScreen(scr)}
-                    className={`px-3 py-1 rounded-md text-[11px] font-heading font-semibold border transition-all ${filterScreen === scr ? 'bg-brand-red text-white border-brand-red' : 'bg-gray-50 text-gray-700 border-gray-200 hover:border-brand-red'}`}
-                  >
-                    {scr === 'ALL' ? 'Todos' : scr}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* 6. CONECTIVIDADE & RECURSOS */}
-            <div>
-              <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-3 pb-2 border-b border-gray-100">
-                Recursos & Conectividade
-              </h3>
-              <div className="space-y-2 text-xs font-body">
-                <label className="flex items-center space-x-2.5 cursor-pointer text-gray-700 hover:text-brand-red">
-                  <input type="checkbox" checked={filterBluetooth} onChange={e => setFilterBluetooth(e.target.checked)} className="rounded text-brand-red focus:ring-brand-red" />
-                  <span>Bluetooth</span>
-                </label>
-                <label className="flex items-center space-x-2.5 cursor-pointer text-gray-700 hover:text-brand-red">
-                  <input type="checkbox" checked={filterLAN} onChange={e => setFilterLAN(e.target.checked)} className="rounded text-brand-red focus:ring-brand-red" />
-                  <span>Porta LAN / RJ45</span>
-                </label>
-                <label className="flex items-center space-x-2.5 cursor-pointer text-gray-700 hover:text-brand-red">
-                  <input type="checkbox" checked={filterNetflix} onChange={e => setFilterNetflix(e.target.checked)} className="rounded text-brand-red focus:ring-brand-red" />
-                  <span>Netflix / Smart TV</span>
-                </label>
-                <label className="flex items-center space-x-2.5 cursor-pointer text-gray-700 hover:text-brand-red">
-                  <input type="checkbox" checked={filterSubwoofer} onChange={e => setFilterSubwoofer(e.target.checked)} className="rounded text-brand-red focus:ring-brand-red" />
-                  <span>Subwoofer / Bass Boost</span>
-                </label>
-              </div>
-            </div>
-
+      {/* 2. CATEGORIAS / SUBCATEGORIAS */}
+      {availableCategories.length > 0 && (
+        <div className="filter-section">
+          <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-2.5 flex items-center justify-between">
+            <span>Categoria / Tipo</span>
+            <i className="fa-solid fa-angle-down text-gray-400 text-[10px]"></i>
+          </h4>
+          <div className="space-y-1">
+            <button
+              onClick={() => setSelectedCategory('ALL')}
+              className={`w-full text-left px-2.5 py-1.5 rounded-lg flex items-center justify-between ${selectedCategory === 'ALL' ? 'bg-red-50 text-brand-red font-bold' : 'text-gray-700 hover:bg-gray-50'}`}
+            >
+              <span>Todas as Categorias</span>
+            </button>
+            {availableCategories.map(cat => {
+              const count = allProducts.filter(p => p.category === cat && (selectedDept === 'ALL' || p.department === selectedDept)).length;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`w-full text-left px-2.5 py-1.5 rounded-lg flex items-center justify-between ${selectedCategory === cat ? 'bg-red-50 text-brand-red font-bold' : 'text-gray-700 hover:bg-gray-50'}`}
+                >
+                  <span className="truncate">{cat}</span>
+                  <span className="text-[10px] text-gray-400 font-normal">({count})</span>
+                </button>
+              );
+            })}
           </div>
         </div>
+      )}
 
-        {/* ── GRELHA DE PRODUTOS ── */}
+      {/* 3. FAIXA DE PREÇO (AKZ) */}
+      <div className="filter-section">
+        <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-2.5 flex items-center justify-between">
+          <span>Faixas de Preço (AKZ)</span>
+          <i className="fa-solid fa-angle-down text-gray-400 text-[10px]"></i>
+        </h4>
+        <div className="space-y-1.5">
+          {[
+            { id: 'ALL', label: 'Todos os Preços' },
+            { id: 'under50k', label: 'Até 50.000 AKZ' },
+            { id: '50k-200k', label: '50.000 a 200.000 AKZ' },
+            { id: '200k-1000k', label: '200.000 a 1.000.000 AKZ' },
+            { id: 'over1000k', label: 'Acima de 1.000.000 AKZ' },
+          ].map(r => (
+            <label key={r.id} className="flex items-center space-x-2.5 cursor-pointer text-gray-700 hover:text-brand-red py-0.5">
+              <input
+                type="radio"
+                name="priceFilter"
+                checked={selectedPriceRange === r.id}
+                onChange={() => setSelectedPriceRange(r.id)}
+                className="text-brand-red focus:ring-brand-red"
+              />
+              <span>{r.label}</span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      {/* 4. MARCAS (COM CHECKBOXES E CONTADORES) */}
+      {brandFacetList.length > 0 && (
+        <div className="filter-section">
+          <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-2.5 flex items-center justify-between">
+            <span>Marcas</span>
+            <i className="fa-solid fa-angle-down text-gray-400 text-[10px]"></i>
+          </h4>
+          <div className="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+            {brandFacetList.map(b => (
+              <label key={b.name} className="flex items-center justify-between cursor-pointer text-gray-700 hover:text-brand-red py-0.5">
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    checked={selectedBrands.includes(b.name)}
+                    onChange={() => toggleBrand(b.name)}
+                    className="rounded text-brand-red focus:ring-brand-red"
+                  />
+                  <span>{b.name}</span>
+                </div>
+                <span className="text-[10px] text-gray-400 font-normal">({b.count})</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 5. MEMÓRIA RAM (COM CHECKBOXES) */}
+      {ramFacetList.length > 0 && (
+        <div className="filter-section">
+          <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-2.5 flex items-center justify-between">
+            <span>Memória RAM</span>
+            <i className="fa-solid fa-angle-down text-gray-400 text-[10px]"></i>
+          </h4>
+          <div className="grid grid-cols-2 gap-1.5">
+            {ramFacetList.map(r => (
+              <button
+                key={r.name}
+                onClick={() => toggleRAM(r.name)}
+                className={`px-2 py-1 rounded border text-[11px] font-heading font-semibold flex items-center justify-between transition-all ${selectedRAMs.includes(r.name) ? 'bg-brand-red text-white border-brand-red' : 'bg-gray-50 text-gray-700 border-gray-200 hover:border-brand-red'}`}
+              >
+                <span>{r.name}</span>
+                <span className={`text-[9px] ${selectedRAMs.includes(r.name) ? 'text-white/80' : 'text-gray-400'}`}>({r.count})</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 6. POLEGADAS / ECRÃ (COM CHECKBOXES) */}
+      {screenFacetList.length > 0 && (
+        <div className="filter-section">
+          <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-2.5 flex items-center justify-between">
+            <span>Polegadas / Tamanho do Ecrã</span>
+            <i className="fa-solid fa-angle-down text-gray-400 text-[10px]"></i>
+          </h4>
+          <div className="grid grid-cols-2 gap-1.5">
+            {screenFacetList.map(s => (
+              <button
+                key={s.name}
+                onClick={() => toggleScreen(s.name)}
+                className={`px-2 py-1 rounded border text-[11px] font-heading font-semibold flex items-center justify-between transition-all ${selectedScreens.includes(s.name) ? 'bg-brand-red text-white border-brand-red' : 'bg-gray-50 text-gray-700 border-gray-200 hover:border-brand-red'}`}
+              >
+                <span>{s.name}</span>
+                <span className={`text-[9px] ${selectedScreens.includes(s.name) ? 'text-white/80' : 'text-gray-400'}`}>({s.count})</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 7. RECURSOS & CONECTIVIDADE */}
+      <div className="filter-section">
+        <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-2.5 flex items-center justify-between">
+          <span>Recursos & Conectividade</span>
+          <i className="fa-solid fa-angle-down text-gray-400 text-[10px]"></i>
+        </h4>
+        <div className="space-y-2">
+          {[
+            { key: 'bluetooth', label: 'Bluetooth Integrado' },
+            { key: 'lan', label: 'Porta LAN RJ45' },
+            { key: 'netflix', label: 'Netflix / Smart TV' },
+            { key: 'subwoofer', label: 'Subwoofer / Bass Boost' },
+            { key: 'mount', label: 'Suporte de TV / Parede VESA' },
+          ].map(f => (
+            <label key={f.key} className="flex items-center space-x-2.5 cursor-pointer text-gray-700 hover:text-brand-red">
+              <input
+                type="checkbox"
+                checked={selectedFeatures[f.key]}
+                onChange={() => toggleFeature(f.key)}
+                className="rounded text-brand-red focus:ring-brand-red"
+              />
+              <span>{f.label}</span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+    </aside>
+  );
+
+  /* ════════════════════════════════════════════════════════
+     PÁGINA PRINCIPAL DA LOJA & CATÁLOGO (ESTILO VTEX / NCR)
+  ════════════════════════════════════════════════════════ */
+  const ShopSection = () => (
+    <div className="w-full px-4 sm:px-8 py-8 animate-fade-in-up">
+      
+      {/* BREADCRUMB & TÍTULO DA GALERIA */}
+      <div className="mb-6 space-y-1">
+        <div className="flex items-center space-x-2 text-xs text-gray-500 font-heading uppercase">
+          <button onClick={() => { setSelectedDept('ALL'); setSelectedCategory('ALL'); }} className="hover:text-brand-red">Início</button>
+          <span>/</span>
+          <span className="text-gray-900 font-bold">
+            {NCR_DEPARTMENTS.find(d => d.id === selectedDept)?.name || 'Todos os Produtos'}
+          </span>
+          {selectedCategory !== 'ALL' && (
+            <>
+              <span>/</span>
+              <span className="text-brand-red font-bold">{selectedCategory}</span>
+            </>
+          )}
+        </div>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+          <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-gray-900 uppercase">
+            {selectedDept === 'ALL' ? 'Catálogo Geral de Produtos' : NCR_DEPARTMENTS.find(d => d.id === selectedDept)?.name}
+          </h1>
+          
+          <div className="flex items-center space-x-3">
+            <button
+              onClick={() => setMobileFilterOpen(true)}
+              className="lg:hidden flex items-center space-x-2 px-4 py-2.5 bg-white border border-gray-300 rounded-xl font-heading font-bold text-xs uppercase text-gray-800 shadow-sm"
+            >
+              <i className="fa-solid fa-sliders text-brand-red"></i>
+              <span>Filtros {activeFiltersCount > 0 && `(${activeFiltersCount})`}</span>
+            </button>
+
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="px-3.5 py-2.5 bg-white border border-gray-300 rounded-xl font-heading font-semibold text-xs uppercase text-gray-800 shadow-sm"
+            >
+              <option value="featured">Mais Relevantes</option>
+              <option value="priceAsc">Menor Preço</option>
+              <option value="priceDesc">Maior Preço</option>
+              <option value="nameAsc">Nome (A - Z)</option>
+            </select>
+          </div>
+        </div>
+        <p className="text-xs text-gray-500 font-body">
+          A exibir <strong className="text-gray-900 font-bold">{filteredProducts.length}</strong> produtos de um total de <strong className="text-brand-red font-bold">{allProducts.length}</strong> disponíveis
+        </p>
+      </div>
+
+      {/* LAYOUT: SIDEBAR ESQUERDA + GRELHA DE PRODUTOS DIREITA */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        {/* FILTROS DESKTOP */}
+        <div className="hidden lg:block lg:col-span-3">
+          <FilterSidebar />
+        </div>
+
+        {/* GRELHA DE PRODUTOS */}
         <div className="lg:col-span-9">
           {filteredProducts.length === 0 ? (
-            <div className="bg-white p-12 rounded-2xl border border-gray-200 text-center space-y-4">
+            <div className="bg-white p-12 rounded-2xl border border-gray-200 text-center space-y-4 shadow-sm">
               <i className="fa-solid fa-box-open text-5xl text-gray-300"></i>
               <h3 className="font-heading font-bold text-lg text-gray-800 uppercase">Nenhum produto encontrado</h3>
               <p className="font-body text-xs text-gray-500">Tente ajustar a sua pesquisa ou limpe os filtros para visualizar todo o catálogo.</p>
@@ -2476,36 +2333,41 @@ function App() {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
               {filteredProducts.map(p => (
-                <div key={p.id} className="bg-white rounded-2xl shadow-sm product-card overflow-hidden flex flex-col justify-between border border-gray-200 group">
+                <div key={p.id} className="bg-white rounded-2xl product-card overflow-hidden flex flex-col justify-between group">
                   <div>
-                    <div className="img-zoom h-56 relative cursor-pointer bg-gray-50 flex items-center justify-center p-3" onClick={() => setDetailProd(p)}>
+                    {/* IMAGEM DO PRODUTO */}
+                    <div className="img-zoom h-56 relative cursor-pointer bg-[#F8FAFC] flex items-center justify-center p-4 border-b border-gray-100" onClick={() => setDetailProd(p)}>
                       <img src={p.img} alt={p.name} className="w-full h-full object-contain img-zoom-child" />
-                      <span className="absolute top-3 left-3 badge-red text-white text-[10px] font-heading px-2.5 py-0.5 rounded uppercase tracking-wide shadow">{p.brand || 'Original'}</span>
+                      <span className="absolute top-3 left-3 badge-red text-white text-[10px] font-heading px-2.5 py-0.5 rounded uppercase tracking-wide shadow">{p.brand}</span>
                       {p.badge && (
                         <span className="absolute top-3 right-3 bg-gray-900/85 text-white text-[9px] font-heading px-2 py-0.5 rounded uppercase tracking-wide">{p.badge}</span>
                       )}
                     </div>
+
+                    {/* DADOS DO PRODUTO */}
                     <div className="p-5 space-y-2">
                       <div className="flex justify-between items-center text-[10px] font-heading text-gray-400 uppercase tracking-wider">
-                        <span>{p.subCategory || p.category}</span>
+                        <span>{p.category}</span>
                         {p.sku && <span>SKU: {p.sku}</span>}
                       </div>
-                      <h3 onClick={() => setDetailProd(p)} className="font-heading font-bold text-sm md:text-base text-gray-900 uppercase leading-snug hover:text-brand-red cursor-pointer transition-colors line-clamp-2">
+
+                      <h3 onClick={() => setDetailProd(p)} className="font-heading font-bold text-sm text-gray-900 uppercase leading-snug hover:text-brand-red cursor-pointer transition-colors line-clamp-2">
                         {p.name}
                       </h3>
                       <p className="font-body text-xs text-gray-500 line-clamp-2">{p.subtitle}</p>
-                      
-                      {/* BADGES DE SPECS RÁPIDAS */}
-                      <div className="flex flex-wrap gap-1 pt-1">
-                        {p.ram && <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">RAM: {p.ram}</span>}
-                        {p.screenSize && <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold">Ecrã: {p.screenSize}</span>}
-                        {p.powerWatts && <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded font-semibold"><i className="fa-solid fa-bolt text-[9px] mr-1 text-amber-500"></i>{p.powerWatts}</span>}
-                        {p.hasLAN && <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded"><i className="fa-solid fa-network-wired mr-1"></i>LAN</span>}
-                        {p.hasBluetooth && <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded"><i className="fa-brands fa-bluetooth-b mr-1 text-blue-500"></i>BT</span>}
+
+                      {/* BADGES RÁPIDAS DE ESPECIFICAÇÕES */}
+                      <div className="flex flex-wrap gap-1 pt-1.5">
+                        {p.ram && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded font-semibold">RAM: {p.ram}</span>}
+                        {p.screenSize && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded font-semibold">Ecrã: {p.screenSize}</span>}
+                        {p.powerWatts && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded font-semibold"><i className="fa-solid fa-bolt text-[9px] mr-1 text-amber-500"></i>{p.powerWatts}</span>}
+                        {p.hasLAN && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i className="fa-solid fa-network-wired mr-1"></i>LAN</span>}
+                        {p.hasBluetooth && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i className="fa-brands fa-bluetooth-b mr-1 text-blue-500"></i>BT</span>}
                       </div>
                     </div>
                   </div>
 
+                  {/* PREÇO E AÇÕES */}
                   <div className="p-5 pt-0 space-y-3">
                     <div className="font-display text-2xl text-brand-red font-bold">{p.priceStr}</div>
                     <div className="grid grid-cols-2 gap-2">
@@ -2524,25 +2386,48 @@ function App() {
         </div>
 
       </div>
+
+      {/* MODAL DE FILTROS MOBILE */}
+      {mobileFilterOpen && (
+        <div className="fixed inset-0 z-50 flex justify-end lg:hidden">
+          <div onClick={() => setMobileFilterOpen(false)} className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
+          <div className="relative bg-white w-full max-w-xs h-full shadow-2xl z-10 flex flex-col justify-between animate-fade-in-right p-5 overflow-y-auto">
+            <div>
+              <div className="flex items-center justify-between pb-4 border-b border-gray-200 mb-4">
+                <h3 className="font-heading font-bold text-base uppercase text-gray-900">Filtros da Loja</h3>
+                <button onClick={() => setMobileFilterOpen(false)} className="p-2 text-gray-500 hover:text-gray-900">
+                  <i className="fa-solid fa-xmark text-lg"></i>
+                </button>
+              </div>
+              <FilterSidebar />
+            </div>
+            <div className="pt-4 border-t border-gray-200">
+              <button onClick={() => setMobileFilterOpen(false)} className="w-full bg-brand-red text-white font-heading font-bold uppercase text-xs py-3.5 rounded-xl shadow glow-red">
+                Ver {filteredProducts.length} Produtos
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 
-  /* ════════════════════════════════════════
-     PÁGINA DE SERVIÇOS TÉCNICOS
-  ════════════════════════════════════════ */
-  const ServicosPage = () => (
+  /* ════════════════════════════════════════════════════════
+     PÁGINA DE SERVIÇOS TÉCNICOS & ENGENHARIA
+  ════════════════════════════════════════════════════════ */
+  const ServicosSection = () => (
     <div className="animate-fade-in-up">
-      <section className="relative text-white overflow-hidden py-20 bg-brand-dark">
-        <div className="w-full px-4 sm:px-7 lg:px-10 text-center max-w-3xl mx-auto space-y-3">
+      <section className="relative text-white overflow-hidden py-16 bg-[#0A0C12]">
+        <div className="w-full px-4 sm:px-8 text-center max-w-3xl mx-auto space-y-3">
           <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Soluções Corporativas & Residenciais</span>
-          <h1 className="font-heading text-4xl sm:text-5xl font-extrabold uppercase">Nossos Serviços Especializados</h1>
-          <p className="font-body text-gray-300 text-sm md:text-base">Engenharia, suporte técnico, telecomunicações e climatização profissional em Angola.</p>
+          <h1 className="font-heading text-3xl sm:text-5xl font-extrabold uppercase">Serviços Técnicos e de Engenharia</h1>
+          <p className="font-body text-gray-300 text-xs sm:text-base">Apoio técnico, manutenção laboratorial, climatização e telecomunicações em Angola.</p>
         </div>
       </section>
 
-      <section className="w-full px-4 sm:px-7 lg:px-10 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {servicesData.map((s, i) => (
+      <section className="w-full px-4 sm:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {allServices.map((s, i) => (
             <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 card-hover group flex flex-col justify-between">
               <div>
                 <div className="img-zoom h-48 relative">
@@ -2570,47 +2455,47 @@ function App() {
     </div>
   );
 
-  /* ════════════════════════════════════════
+  /* ════════════════════════════════════════════════════════
      PÁGINA SOBRE NÓS
-  ════════════════════════════════════════ */
-  const SobrePage = () => (
-    <div className="animate-fade-in-up py-16 w-full px-4 sm:px-7 lg:px-10 max-w-5xl mx-auto space-y-12">
-      <div className="text-center space-y-3">
+  ════════════════════════════════════════════════════════ */
+  const SobreSection = () => (
+    <div className="animate-fade-in-up py-14 w-full px-4 sm:px-8 max-w-5xl mx-auto space-y-10">
+      <div className="text-center space-y-2">
         <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Sobre a Duplas DMP</span>
-        <h1 className="font-heading text-4xl font-extrabold uppercase text-gray-900">Soluções em Telecomunicações e Tecnologia</h1>
+        <h1 className="font-heading text-3xl sm:text-4xl font-extrabold uppercase text-gray-900">Soluções em Telecomunicações e Tecnologia</h1>
       </div>
-      <div className="bg-white p-8 md:p-12 rounded-3xl border border-gray-200 shadow-sm space-y-6 font-body text-sm sm:text-base text-gray-700 leading-relaxed">
-        <p>A <strong>Duplas DMP Investment</strong> é uma empresa de referência em Angola, focada na prestação de serviços e fornecimento de equipamentos de ponta nas áreas de telecomunicações, redes informáticas, segurança eletrónica, energia e comércio de eletrodomésticos e tecnologia.</p>
-        <p>Com uma vasta gama de produtos inspirada nos mais altos padrões do mercado angolano (como a NCR Angola), disponibilizamos equipamentos originais com garantia, faturação certificada e apoio técnico contínuo para clientes residenciais e grandes empresas.</p>
+      <div className="bg-white p-8 md:p-12 rounded-3xl border border-gray-200 shadow-sm space-y-6 font-body text-sm text-gray-700 leading-relaxed">
+        <p>A <strong>Duplas DMP Investment</strong> é uma empresa angolana com excelência no fornecimento de equipamentos informáticos, de telecomunicações, som e imagem, eletrodomésticos e soluções de energia no padrão das maiores retalhistas de tecnologia do país.</p>
+        <p>Todos os nossos equipamentos contam com garantia de fábrica, faturação certificada e apoio laboratorial para instalação e manutenção preventiva.</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-gray-100 text-center">
           <div className="p-4 bg-gray-50 rounded-2xl">
             <i className="fa-solid fa-award text-brand-red text-2xl mb-2"></i>
-            <h4 className="font-heading font-bold uppercase text-gray-900">Qualidade Garantida</h4>
-            <p className="text-xs text-gray-500 mt-1">Equipamentos originais e certificados</p>
+            <h4 className="font-heading font-bold uppercase text-gray-900">Equipamentos Oficiais</h4>
+            <p className="text-xs text-gray-500 mt-1">Garantia e certificação</p>
           </div>
           <div className="p-4 bg-gray-50 rounded-2xl">
             <i className="fa-solid fa-screwdriver-wrench text-brand-red text-2xl mb-2"></i>
-            <h4 className="font-heading font-bold uppercase text-gray-900">Técnicos Locais</h4>
-            <p className="text-xs text-gray-500 mt-1">Instalação e reparação em Luanda</p>
+            <h4 className="font-heading font-bold uppercase text-gray-900">Técnicos Certificados</h4>
+            <p className="text-xs text-gray-500 mt-1">Laboratório próprio em Luanda</p>
           </div>
           <div className="p-4 bg-gray-50 rounded-2xl">
             <i className="fa-solid fa-handshake text-brand-red text-2xl mb-2"></i>
-            <h4 className="font-heading font-bold uppercase text-gray-900">Transparência</h4>
-            <p className="text-xs text-gray-500 mt-1">Preços justos e faturação oficial</p>
+            <h4 className="font-heading font-bold uppercase text-gray-900">Faturação Certificada</h4>
+            <p className="text-xs text-gray-500 mt-1">Preços em Kwanzas com IVA</p>
           </div>
         </div>
       </div>
     </div>
   );
 
-  /* ════════════════════════════════════════
+  /* ════════════════════════════════════════════════════════
      PÁGINA DE CONTACTOS
-  ════════════════════════════════════════ */
-  const ContactosPage = () => (
-    <div className="animate-fade-in-up py-16 w-full px-4 sm:px-7 lg:px-10 max-w-6xl mx-auto space-y-10">
+  ════════════════════════════════════════════════════════ */
+  const ContactosSection = () => (
+    <div className="animate-fade-in-up py-14 w-full px-4 sm:px-8 max-w-6xl mx-auto space-y-10">
       <div className="text-center space-y-2">
         <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Fale Connosco</span>
-        <h1 className="font-heading text-4xl font-extrabold uppercase text-gray-900">Entre em Contacto</h1>
+        <h1 className="font-heading text-3xl sm:text-4xl font-extrabold uppercase text-gray-900">Contactos e Localização</h1>
         <p className="font-body text-xs sm:text-sm text-gray-500">Estamos prontos para atender pedidos de cotação e assistência em Luanda.</p>
       </div>
 
@@ -2815,10 +2700,10 @@ function App() {
 
   /* ════ FOOTER ════ */
   const Footer = () => (
-    <footer className="bg-brand-dark text-white border-t border-gray-800 pt-16 pb-8 font-body">
-      <div className="w-full px-4 sm:px-7 lg:px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+    <footer className="bg-[#0A0C12] text-white border-t border-gray-800 pt-16 pb-8 font-body">
+      <div className="w-full px-4 sm:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
         <div className="space-y-4">
-          <img src={LOGO_ONLINE} alt="Duplas DMP" style={{ height: '80px', objectFit: 'contain' }} onError={(e) => { e.target.src = LOGO_PATH; }} />
+          <img src={LOGO_ONLINE} alt="Duplas DMP" style={{ height: '75px', objectFit: 'contain' }} onError={(e) => { e.target.src = LOGO_PATH; }} />
           <p className="text-xs text-gray-400 leading-relaxed">
             Soluções completas em Tecnologia, Informática, Telecomunicações, Energia, Climatização e Segurança em Angola.
           </p>
@@ -2827,22 +2712,22 @@ function App() {
         <div className="space-y-3">
           <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Departamentos</h4>
           <ul className="space-y-2 text-xs text-gray-400 font-heading uppercase">
-            <li><button onClick={() => { setSelectedCat('Informatica'); setPage('loja'); }} className="hover:text-brand-red">Informática & Laptops</button></li>
-            <li><button onClick={() => { setSelectedCat('ImagemSom'); setPage('loja'); }} className="hover:text-brand-red">Imagem e Som / Áudio</button></li>
-            <li><button onClick={() => { setSelectedCat('Smartphones'); setPage('loja'); }} className="hover:text-brand-red">Smartphones & Tablets</button></li>
-            <li><button onClick={() => { setSelectedCat('Energia'); setPage('loja'); }} className="hover:text-brand-red">Energia & UPS</button></li>
-            <li><button onClick={() => { setSelectedCat('Electrodomesticos'); setPage('loja'); }} className="hover:text-brand-red">Electrodomésticos & AC</button></li>
+            <li><button onClick={() => { setSelectedDept('Informatica'); setCurrentTab('loja'); }} className="hover:text-brand-red">Informática & Laptops</button></li>
+            <li><button onClick={() => { setSelectedDept('ImagemSom'); setCurrentTab('loja'); }} className="hover:text-brand-red">Imagem e Som / Áudio</button></li>
+            <li><button onClick={() => { setSelectedDept('Smartphones'); setCurrentTab('loja'); }} className="hover:text-brand-red">Smartphones & Tablets</button></li>
+            <li><button onClick={() => { setSelectedDept('Energia'); setCurrentTab('loja'); }} className="hover:text-brand-red">Energia & UPS</button></li>
+            <li><button onClick={() => { setSelectedDept('Electrodomesticos'); setCurrentTab('loja'); }} className="hover:text-brand-red">Electrodomésticos & AC</button></li>
           </ul>
         </div>
 
         <div className="space-y-3">
           <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Serviços Técnicos</h4>
           <ul className="space-y-2 text-xs text-gray-400 font-heading uppercase">
-            <li><button onClick={() => setPage('servicos')} className="hover:text-brand-red">Internet Dedicada & Satélite</button></li>
-            <li><button onClick={() => setPage('servicos')} className="hover:text-brand-red">Centrais PABX IP & Telefonia</button></li>
-            <li><button onClick={() => setPage('servicos')} className="hover:text-brand-red">Vídeo-vigilância CCTV 4K</button></li>
-            <li><button onClick={() => setPage('servicos')} className="hover:text-brand-red">Redes Estruturadas & Fibra</button></li>
-            <li><button onClick={() => setPage('servicos')} className="hover:text-brand-red">Assistência & Reparação</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Internet Dedicada & Satélite</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Centrais PABX IP & Telefonia</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Vídeo-vigilância CCTV 4K</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Redes Estruturadas & Fibra</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Assistência & Reparação</button></li>
           </ul>
         </div>
 
@@ -2855,7 +2740,7 @@ function App() {
         </div>
       </div>
 
-      <div className="w-full px-4 sm:px-7 lg:px-10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+      <div className="w-full px-4 sm:px-8 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
         <span>© 2026 Duplas DMP Investment, Lda. Todos os direitos reservados.</span>
         <span>Estrutura e Catálogo Oficial Integrado no Padrão NCR Angola</span>
       </div>
@@ -2864,10 +2749,10 @@ function App() {
 
   /* ════ RENDER GERAL ════ */
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 font-body">
+    <div className="min-h-screen flex flex-col bg-[#F8FAFC] font-body">
       {/* Toast Notification */}
       {toast && (
-        <div className="fixed top-4 right-4 z-[100] bg-brand-dark text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-brand-red/40 flex items-center space-x-3 text-xs font-semibold animate-fade-in-scale">
+        <div className="fixed top-4 right-4 z-[100] bg-[#0A0C12] text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-brand-red/40 flex items-center space-x-3 text-xs font-semibold animate-fade-in-scale">
           <span>{toast}</span>
         </div>
       )}
@@ -2876,11 +2761,10 @@ function App() {
       <Header />
 
       <main className="flex-1">
-        {page === 'home' && <HomePage />}
-        {page === 'loja' && <LojaPage />}
-        {page === 'servicos' && <ServicosPage />}
-        {page === 'sobre' && <SobrePage />}
-        {page === 'contactos' && <ContactosPage />}
+        {currentTab === 'loja' && <ShopSection />}
+        {currentTab === 'servicos' && <ServicosSection />}
+        {currentTab === 'sobre' && <SobreSection />}
+        {currentTab === 'contactos' && <ContactosSection />}
       </main>
 
       <Footer />
@@ -2888,11 +2772,11 @@ function App() {
       <QuoteModal />
       <ProductModal />
 
-      {/* WHATSAPP FAB */}
+      {/* WHATSAPP FLOAT BUTTON */}
       <a
         href="https://wa.me/244941950022"
         target="_blank"
-        title="Contactar no WhatsApp"
+        title="Falar no WhatsApp"
         className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all pulse-red"
       >
         <i className="fa-brands fa-whatsapp text-3xl"></i>
