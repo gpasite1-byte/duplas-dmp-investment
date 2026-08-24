@@ -37,6 +37,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.10/babel.min.js"></script>
+  <script>
+    window.addEventListener('error', function(e) {
+      console.error('Global error:', e);
+      var root = document.getElementById('root');
+      if (root && root.innerText.indexOf('Carregando') !== -1) {
+        root.innerHTML = '<div style="padding:40px;text-align:center;font-family:Poppins,sans-serif;color:#ffffff;background:#0A0C12;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;"><h2 style="color:#CC0000;font-size:24px;margin-bottom:12px;">Falha ao carregar componentes</h2><p style="color:#8A95A5;font-size:14px;max-width:500px;margin-bottom:20px;">' + (e.message || 'Verifique a sua ligação à internet para carregamento dos recursos visuais.') + '</p><button onclick="location.reload()" style="padding:12px 28px;background:#CC0000;color:#fff;border:none;border-radius:10px;font-weight:700;cursor:pointer;">Tentar Novamente</button></div>';
+      }
+    });
+  </script>
 
   <style>
     body { font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; margin:0; padding:0; box-sizing:border-box; font-weight: 400; }
@@ -163,7 +172,7 @@
   </div>
 </div>
 
-<script type="text/babel" data-presets="react,env">
+<script type="text/babel">
 const { useState, useEffect, useRef } = React;
 
 /* ─── DATA ─────────────────────────────────────────── */
