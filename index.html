@@ -180,63 +180,89 @@ const LOGO_ONLINE = "https://i.ibb.co/XkF3VWps/DUPLAS.png";
 const LOGO_PATH   = "logo.png";
 
 const productsData = [
-  // --- INTERNET ---
-  { id:'p1', name:'Router Wi-Fi 6 AX3000', subtitle:'Dual Band · 4 Antenas High Gain', priceStr:'45.000 Kz', priceVal:45000, category:'Internet', badge:'Mais Vendido',
-    img:'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=600&q=80',
-    specs:['Dual Band 2.4GHz & 5GHz','Velocidade até 3000 Mbps','4 Antenas Alto Ganho','MU-MIMO & OFDMA'] },
-  { id:'p2', name:'Antena Ubiquiti LiteBeam 5AC Gen2', subtitle:'23dBi · 5GHz AirMax', priceStr:'85.000 Kz', priceVal:85000, category:'Internet', badge:'Longo Alcance',
-    img:'https://images.unsplash.com/photo-1533228876829-65c94e7b5025?auto=format&fit=crop&w=600&q=80',
-    specs:['Frequência 5GHz de Alta Performance','Ganho 23dBi Enlaces 15km+','Imunidade Ruído AirMax','Alimentação PoE Incluída'] },
-  { id:'p3', name:'Router 4G/5G LTE Dual SIM', subtitle:'Cat 6 · 300Mbps · 4x RJ45', priceStr:'65.000 Kz', priceVal:65000, category:'Internet',
-    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    specs:['Suporta Cartão SIM Unitel & Movicel','Failover Automático Dual SIM','Bateria Backup 4 Horas','Wi-Fi Cobertura 150m²'] },
-  { id:'p4', name:'ONU GPON Fibra Huawei HG8310M', subtitle:'1x Port Gigabit GPON', priceStr:'25.000 Kz', priceVal:25000, category:'Internet',
-    img:'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80',
-    specs:['Compatível OLT Huawei & ZTE','1 Porta RJ45 Gigabit 10/100/1000','Baixo Consumo Energia','Plug and Play'] },
-  { id:'p5', name:'Router Mikrotik hEX S Gigabit', subtitle:'5x RJ45 · 1x SFP · IPsec Hardware', priceStr:'58.000 Kz', priceVal:58000, category:'Internet', badge:'Profissional',
-    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    specs:['Processador Dual-Core 880MHz','5 Portas Gigabit + SFP Port','Aceleração IPsec Hardware','RouterOS Nível 4'] },
-
-  // --- REDES ---
-  { id:'p6', name:'Switch PoE+ 24 Portas Gigabit Managed', subtitle:'24x PoE+ · 4x SFP · 370W', priceStr:'120.000 Kz', priceVal:120000, category:'Redes', badge:'Gestão Web',
-    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    specs:['24 Portas RJ45 Gigabit PoE+','4 Slots SFP 1G/10G','Power Budget 370W Total','Chassi Metálico Rack 19"'] },
-  { id:'p7', name:'Switch Mikrotik CRS326 24P SFP+', subtitle:'24x Gigabit · 2x SFP+ 10G', priceStr:'180.000 Kz', priceVal:180000, category:'Redes', badge:'Dual Boot',
-    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    specs:['24 Portas Gigabit RJ45','2 Portas SFP+ 10G High Speed','Dual Boot (RouterOS / SwOS)','Consumo Ultra Eficiente'] },
-  { id:'p8', name:'Cabo Fibra Óptica GYFTY 24F (1000m)', subtitle:'Monomodo OS2 · 24 Fibras', priceStr:'68.000 Kz', priceVal:68000, category:'Redes',
-    img:'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80',
-    specs:['24 Fibras Monomodo OS2','Rolo 1000 Metros','Proteção UV e Antiroedores','Certificação ITU-T G.652D'] },
-  { id:'p9', name:'Cabo de Rede Cat6 UTP 305m', subtitle:'100% Cobre Puro · Homologado', priceStr:'55.000 Kz', priceVal:55000, category:'Redes',
-    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    specs:['Caixa de 305 Metros','Condutores 100% Cobre 23AWG','Frequência 250MHz Gigabit','Capa LSZH Anti-Chama'] },
-
-  // --- SEGURANÇA ---
-  { id:'p10', name:'Câmera IP 4K Dome AI Hikvision ColorVu', subtitle:'4K 8MP · Visão Noturna 40m · IP67', priceStr:'75.000 Kz', priceVal:75000, category:'Segurança', badge:'AI Deteção',
-    img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80',
-    specs:['Resolução 4K Ultra HD 8MP','ColorVu Imagem Colorida 24/7','Deteção IA Pessoas & Veículos','Proteção Impermeável IP67 + IK10'] },
-  { id:'p11', name:'Câmera PTZ Speed Dome IP 4K 30x Zoom', subtitle:'Auto-Tracking · IR 150m · PoE+', priceStr:'240.000 Kz', priceVal:240000, category:'Segurança', badge:'360° PTZ',
-    img:'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80',
-    specs:['30x Zoom Óptico de Precisão','Rotação Pan 360° Contínua','Rastreamento Automático Alvos','Visão Noturna IR até 150 metros'] },
-  { id:'p12', name:'NVR 16 Canais 4K Dahua 2x HDD', subtitle:'Gravador IP 16P · 4K UHD · H.265+', priceStr:'160.000 Kz', priceVal:160000, category:'Segurança',
-    img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80',
-    specs:['Suporta até 16 Câmeras 4K','2 Baias SATA (Até 20TB Total)','Compressão de Vídeo H.265+','Acesso Remoto via Smartphone'] },
-
-  // --- INFORMÁTICA ---
-  { id:'p13', name:'Laptop Dell Latitude 5540 Core i7', subtitle:'i7 13ª Gen · 16GB RAM · 512GB SSD', priceStr:'Sob Consulta', priceVal:0, isCustom:true, category:'Informática', badge:'Empresarial',
+  // --- COMPUTADORES & PORTÁTEIS (NCR ANGOLA) ---
+  { id:'p1', name:'Portátil HP ProBook 450 G10 15.6"', subtitle:'Intel Core i5-1335U · 16GB RAM · 512GB SSD NVMe', priceStr:'958.360,00 AKZ', priceVal:958360, category:'Computadores & Portáteis', badge:'Mais Vendido',
+    img:'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=600&q=80',
+    specs:['Processador Intel Core i5 13ª Geração','16GB RAM DDR4 3200MHz','SSD 512GB PCIe NVMe High Speed','Ecrã 15.6" Full HD IPS Anti-reflexo'] },
+  { id:'p2', name:'Portátil Dell Latitude 5440 14"', subtitle:'Intel Core i7-1355U · 16GB DDR5 · 512GB SSD', priceStr:'1.250.000,00 AKZ', priceVal:1250000, category:'Computadores & Portáteis', badge:'Empresarial',
     img:'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80',
-    specs:['Intel Core i7-1355U vPro','16GB RAM DDR5 4800MHz','SSD M.2 NVMe 512GB High Speed','Tela 15.6" Full HD IPS Anti-reflexo'] },
-  { id:'p14', name:'UPS / No-Break APC Smart 1500VA', subtitle:'1500VA / 1000W · LCD 230V', priceStr:'210.000 Kz', priceVal:210000, category:'Informática',
-    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    specs:['Capacidade 1500VA / 1000 Watts','Onda Senoidal Pura','Proteção Surto e Estabilizador AVR','Display LCD'] },
+    specs:['Processador Intel Core i7 vPro 5.0GHz','16GB RAM DDR5 4800MHz','SSD 512GB M.2 NVMe Classe 35','Garantia ProSupport Dell Oficial'] },
+  { id:'p3', name:'Portátil Lenovo ThinkPad E14 Gen 5', subtitle:'AMD Ryzen 7 7730U · 16GB RAM · 512GB SSD', priceStr:'1.180.000,00 AKZ', priceVal:1180000, category:'Computadores & Portáteis', badge:'Ultra Robusto',
+    img:'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=600&q=80',
+    specs:['Processador AMD Ryzen 7 8 Cores / 16 Threads','16GB RAM DDR4','Chassi Militar Mil-Spec STD-810H','Teclado Ergonómico ThinkPad'] },
+  { id:'p4', name:'Desktop HP ProDesk 400 G9 SFF', subtitle:'Intel Core i5-13500 · 16GB RAM · 512GB SSD', priceStr:'870.000,00 AKZ', priceVal:870000, category:'Computadores & Portáteis', badge:'Desktop Corporativo',
+    img:'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=600&q=80',
+    specs:['Processador Intel Core i5 14 Cores','16GB RAM DDR4','SSD 512GB PCIe NVMe','Inclui Teclado e Rato HP'] },
+  { id:'p5', name:'Apple MacBook Pro 14" M3 Pro', subtitle:'Apple M3 Pro 11-Core · 18GB RAM · 512GB SSD', priceStr:'2.650.000,00 AKZ', priceVal:2650000, category:'Computadores & Portáteis', badge:'Apple Oficial',
+    img:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80',
+    specs:['Chip Apple M3 Pro com GPU 14-Core','18GB Memória Unificada','Ecrã Liquid Retina XDR 120Hz ProMotion','Bateria até 18 horas de autonomia'] },
 
-  // --- ACESSÓRIOS ---
-  { id:'p15', name:'Fusionadora de Fibra Óptica AI-9', subtitle:'Motor 6 Motores · Alinhamento Núcleo', priceStr:'450.000 Kz', priceVal:450000, category:'Acessórios', badge:'Profissional',
+  // --- IMPRESSÃO & POS ---
+  { id:'p6', name:'Impressora HP LaserJet Mono M111A SFP', subtitle:'Laser Mono · USB · Compacta 20 ppm', priceStr:'163.209,00 AKZ', priceVal:163209, category:'Impressão & POS', badge:'Laser HP',
+    img:'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=600&q=80',
+    specs:['Velocidade até 20 páginas por minuto','Resolução de impressão 600x600 dpi','Toner HP LaserJet Original de alto rendimento','Design compacto para escritório'] },
+  { id:'p7', name:'Impressora Multifunções Epson EcoTank L3250', subtitle:'Tanque de Tinta · Wi-Fi Direct · Bivolt', priceStr:'285.000,00 AKZ', priceVal:285000, category:'Impressão & POS', badge:'EcoTank',
+    img:'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=600&q=80',
+    specs:['Sistema EcoTank sem tinteiros','Imprime até 4.500 páginas a preto','Conectividade Wi-Fi e Wi-Fi Direct','App Epson Smart Panel'] },
+  { id:'p8', name:'Impressora POS Térmica Wintec 80mm', subtitle:'Térmica Direta · USB + LAN · Corte Auto', priceStr:'119.794,00 AKZ', priceVal:119794, category:'Impressão & POS', badge:'Para POS & Caixa',
+    img:'https://images.unsplash.com/photo-1556742049-0a67e557224f?auto=format&fit=crop&w=600&q=80',
+    specs:['Papel térmico standard 80mm','Guilhotina de corte automático','Portas USB e Ethernet LAN','Compatível com softwares de faturação em Angola'] },
+  { id:'p9', name:'Impressora Deskjet HP 2976 E-AIO', subtitle:'Jato de Tinta Multifuncional · Wi-Fi', priceStr:'61.814,00 AKZ', priceVal:61814, category:'Impressão & POS', badge:'Económica',
+    img:'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=600&q=80',
+    specs:['Impressão, Cópia e Scanner','Conexão sem fios Wi-Fi integrada','Compatível com cartuchos HP originais','Ideal para uso pessoal e home office'] },
+
+  // --- REDES & SERVIDORES ---
+  { id:'p10', name:'Switch Cisco Catalyst 1000 24P PoE+', subtitle:'24x Gigabit PoE+ · 4x SFP · 195W', priceStr:'990.000,00 AKZ', priceVal:990000, category:'Redes & Servidores', badge:'Cisco Oficial',
+    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    specs:['24 Portas Gigabit RJ45 PoE+','4 Portas SFP 1G Uplink','Power Budget PoE de 195 Watts','Gestão Web UI e Linha de Comandos Cisco IOS'] },
+  { id:'p11', name:'Servidor HPE ProLiant ML30 Gen11', subtitle:'Intel Xeon E-2434 · 32GB RAM · 2x 2TB SATA', priceStr:'3.850.000,00 AKZ', priceVal:3850000, category:'Redes & Servidores', badge:'Servidor Torre',
+    img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80',
+    specs:['Processador Intel Xeon E-2434 4 Cores','32GB Memória DDR5 ECC Registada','2x Discos 2TB SATA Enterprise RAID 1','Controlador HPE iLO 6 de Gestão Remota'] },
+  { id:'p12', name:'Switch D-Link 24 Portas Gigabit Managed', subtitle:'24x 10/100/1000 · 4x SFP · VLAN', priceStr:'185.000,00 AKZ', priceVal:185000, category:'Redes & Servidores', badge:'D-Link',
+    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    specs:['24 Portas Gigabit RJ45','4 Slots SFP para Fibra Óptica','Gestão Web Smart com suporte a VLANs','Chassi metálico para montagem em Rack 19"'] },
+  { id:'p13', name:'Switch Hikvision 8 Portas Gigabit', subtitle:'8 Portas 10/100/1000 Mbps · Plug & Play', priceStr:'32.713,00 AKZ', priceVal:32713, category:'Redes & Servidores',
+    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    specs:['8 Portas RJ45 Gigabit automáticas','Construção metálica reforçada','Design silencioso sem ventoinha','Instalação Plug and Play sem configuração'] },
+  { id:'p14', name:'Router Wi-Fi 6 AX3000 Dual Band Gigabit', subtitle:'Dual Band 2.4/5GHz · 4 Antenas High-Gain', priceStr:'45.000,00 AKZ', priceVal:45000, category:'Redes & Servidores', badge:'Wi-Fi 6',
+    img:'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=600&q=80',
+    specs:['Velocidade combinada até 3000 Mbps','Tecnologia OFDMA & MU-MIMO','4 Antenas externas de alto ganho','Segurança WPA3 de última geração'] },
+  { id:'p15', name:'Cabo de Rede Cat6 UTP Furukawa 305m', subtitle:'100% Cobre Puro · Homologado 250MHz', priceStr:'55.000,00 AKZ', priceVal:55000, category:'Redes & Servidores',
+    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    specs:['Caixa de puxar com 305 Metros','Condutores 100% Cobre Puro 23AWG','Capa LSZH Anti-chama sem emissão de gases','Certificado internacional Gigabit'] },
+
+  // --- SEGURANÇA & CFTV ---
+  { id:'p16', name:'Câmara Dome IP 4K Hikvision ColorVu', subtitle:'4K 8MP · Cor 24/7 · Áudio Integrado · IP67', priceStr:'75.000,00 AKZ', priceVal:75000, category:'Segurança & CFTV', badge:'ColorVu 24/7',
+    img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80',
+    specs:['Resolução 4K Ultra HD (3840x2160)','Tecnologia ColorVu com imagem colorida no escuro','Deteção de pessoas e veículos por Inteligência Artificial','Microfone integrado e proteção impermeável IP67'] },
+  { id:'p17', name:'Câmara Fixed Turret Hikvision HD-TVI', subtitle:'2MP 1080p · Visão Noturna IR 20m · Exterior', priceStr:'17.201,00 AKZ', priceVal:17201, category:'Segurança & CFTV',
+    img:'https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&w=600&q=80',
+    specs:['Resolução Full HD 1080p','Infravermelhos Smart IR até 20 metros','Chassi resistente para montagem exterior','Compatível com todos os DVRs HD'] },
+  { id:'p18', name:'Câmara PTZ Speed Dome D-Link 4K UHD', subtitle:'Zoom Óptico 30x · Rotação 360° · IR 150m', priceStr:'2.653.920,00 AKZ', priceVal:2653920, category:'Segurança & CFTV', badge:'Industrial',
+    img:'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80',
+    specs:['Zoom Óptico profissional de 30x','Rotação panorâmica contínua de 360°','Auto-tracking com seguimento automático de alvos','Alcance de visão noturna até 150 metros'] },
+  { id:'p19', name:'DVR Gravador Hikvision HD-TVI 32 Canais', subtitle:'32 Canais · 4x SATA até 40TB · H.265+', priceStr:'827.675,00 AKZ', priceVal:827675, category:'Segurança & CFTV', badge:'32 Canais',
+    img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80',
+    specs:['Suporta até 32 câmaras em simultâneo','4 Entradas SATA para discos rígidos até 40TB','Compressão de vídeo H.265+ de alta eficiência','Acesso remoto via telemóvel Hik-Connect'] },
+
+  // --- ENERGIA & UPS ---
+  { id:'p20', name:'Power Station Portátil Wintech 500Wh', subtitle:'500Wh / 600W · Saída AC 220V + USB-C PD', priceStr:'554.781,00 AKZ', priceVal:554781, category:'Energia & UPS', badge:'Energia Portátil',
+    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    specs:['Capacidade da bateria 500Wh (Lítio de longa vida)','Tomadas AC 220V com onda senoidal pura','Carregamento solar, tomada ou tomada de carro','Display digital informativo'] },
+  { id:'p21', name:'Power Station Portátil Wintech 300Wh', subtitle:'300Wh / 300W · Bateria Backup para Escritório', priceStr:'308.426,00 AKZ', priceVal:308426, category:'Energia & UPS',
+    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    specs:['Capacidade 300Wh ideal para routers e portáteis','Saídas USB, Type-C Fast Charge e AC 220V','Compacta e fácil de transportar','Proteção contra sobretensão e curto-circuito'] },
+  { id:'p22', name:'UPS APC Smart-UPS 1500VA LCD 230V', subtitle:'1500VA / 1000W · Onda Senoidal · AVR', priceStr:'210.000,00 AKZ', priceVal:210000, category:'Energia & UPS', badge:'Proteção Top',
+    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    specs:['Potência nominal de 1500VA / 1000 Watts','Onda senoidal pura protegendo servidores e PCs','Estabilização automática de tensão AVR','Ecrã LCD com diagnóstico em tempo real'] },
+
+  // --- ACESSÓRIOS & MONITORES ---
+  { id:'p23', name:'Monitor HP 21.5" Full HD VGA/HDMI', subtitle:'1920x1080 · Painel IPS 75Hz · Anti-reflexo', priceStr:'183.194,00 AKZ', priceVal:183194, category:'Acessórios & Monitores', badge:'Monitor HP',
+    img:'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80',
+    specs:['Resolução Full HD 1080p (1920x1080)','Entradas HDMI e VGA com cabo incluído','Ângulos de visão amplos de 178° IPS','Filtro de luz azul Low Blue Light'] },
+  { id:'p24', name:'Fusionadora de Fibra Óptica AI-9', subtitle:'6 Motores de Precisão · Aquecimento 15s', priceStr:'450.000,00 AKZ', priceVal:450000, category:'Acessórios & Monitores', badge:'Ferramenta Pro',
     img:'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80',
-    specs:['Fusão Ultrarrápida em 5 Segundos','Aquecimento do Tubo em 15s','Mala com Ferramentas e Clivador','Bateria 7800mAh'] },
-  { id:'p16', name:'Alicate de Cravar Profissional RJ45/RJ11', subtitle:'Cat5e / Cat6 / Cat6A + Decapador', priceStr:'15.000 Kz', priceVal:15000, category:'Acessórios',
-    img:'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
-    specs:['Catraca de Pressão Regulável','Lâminas de Corte de Alta Precisão','Empunhadura Ergonómica Antiderrapante'] }
+    specs:['Alinhamento por núcleo em 5 segundos','Mala completa com clivador e ferramentas','Bateria de alta capacidade 7800mAh','Display LCD a cores com zoom 300x'] }
 ];
 
 const internetPlans = [
@@ -741,7 +767,7 @@ function App() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-7 pb-5 border-b border-gray-200 gap-3">
             <div>
               <h1 className="font-heading font-bold text-2xl md:text-3xl text-gray-900 uppercase tracking-wide">Loja Online</h1>
-              <p className="font-body text-xs text-gray-500 mt-1">Equipamentos de telecom, redes e segurança — preços em Kwanza (Kz)</p>
+              <p className="font-body text-xs text-gray-500 mt-1">Equipamentos de informática, redes, telecom, CCTV e energia — preços oficiais em Kwanzas (AKZ)</p>
             </div>
             <div className="relative">
               <i className="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
@@ -752,7 +778,7 @@ function App() {
 
           {/* CATEGORIAS DA LOJA */}
           <div className="flex flex-wrap gap-2 mb-8">
-            {['ALL','Internet','Redes','Segurança','Informática','Acessórios'].map(cat=>(
+            {['ALL', 'Computadores & Portáteis', 'Redes & Servidores', 'Segurança & CFTV', 'Impressão & POS', 'Energia & UPS', 'Acessórios & Monitores'].map(cat=>(
               <button key={cat} onClick={()=>setShopCat(cat)}
                 className={`px-5 py-2.5 rounded-xl font-heading font-bold text-xs uppercase tracking-wider transition-all ${shopCat===cat?'bg-brand-red text-white shadow-md glow-red scale-105':'bg-white text-gray-700 border border-gray-200 hover:border-brand-red hover:text-brand-red'}`}>
                 {cat==='ALL' ? 'Todos os Produtos' : cat}
