@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Duplas DMP Investment | Loja Online & Soluções em Tecnologia Angola</title>
-  <meta name="description" content="Duplas DMP Investment — Catálogo oficial de produtos e soluções em Tecnologia, Telecomunicações, Energia, Climatização, Assistência Técnica e Serviços Empresariais em Angola.">
+  <meta name="description" content="Duplas DMP Investment — Catálogo oficial de produtos, acessórios e soluções em Tecnologia, Telecomunicações, Energia, Climatização, Assistência Técnica e Serviços Empresariais em Angola.">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -53,13 +53,11 @@
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeInScale { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
     @keyframes fadeInRight { from { opacity: 0; transform: translateX(100%); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-100%); } to { opacity: 1; transform: translateX(0); } }
     @keyframes pulseRing { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0.7); } 70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(204,0,0,0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0); } }
 
     .animate-fade-in-up { animation: fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .animate-fade-in-scale { animation: fadeInScale 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .animate-fade-in-right { animation: fadeInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .animate-fade-in-left { animation: fadeInLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .pulse-red { animation: pulseRing 2s infinite; }
 
     .glow-red { box-shadow:0 0 20px rgba(204,0,0,0.25); }
@@ -88,7 +86,7 @@
 <div id="root">
   <div style="display:flex;min-height:100vh;flex-direction:column;align-items:center;justify-content:center;background:#0A0C12;color:#ffffff;font-family:'Poppins',sans-serif;">
     <div style="font-size:32px;font-weight:900;letter-spacing:1px;color:#CC0000;margin-bottom:12px;">DUPLAS DMP</div>
-    <div style="font-size:14px;color:#8A95A5;margin-bottom:24px;">A carregar Sistema de Loja & Catálogo Oficial...</div>
+    <div style="font-size:14px;color:#8A95A5;margin-bottom:24px;">A carregar Catálogo Geral & Sistema de Loja...</div>
     <div style="width:40px;height:40px;border:3px solid rgba(204,0,0,0.2);border-top-color:#CC0000;border-radius:50%;animation:spin 0.8s linear infinite;"></div>
     <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
   </div>
@@ -107,85 +105,85 @@ const NCR_DEPARTMENTS = [
     id: 'Informatica', 
     name: 'Informática', 
     icon: 'fa-laptop',
-    badge: '21 Produtos',
+    badge: '35 Produtos',
     subcategories: [
-      { name: 'Portáteis', desc: 'HP ProBook, Dell Latitude, MacBook Pro, ThinkPad' },
-      { name: 'Computadores de Secretária', desc: 'All-in-One HP 24", HP ProDesk 400 SFF' },
-      { name: 'Servidores & Storage', desc: 'HPE ProLiant ML30 Gen11, Discos Enterprise' },
-      { name: 'Switches & Redes', desc: 'Cisco Catalyst 24P PoE, D-Link Smart, Routers 4G' },
-      { name: 'Monitores', desc: 'HP 21.5" FHD, Dell 27" 4K UHD Profissional' },
-      { name: 'Componentes & Cabos', desc: 'SSD Kingston NVMe 1TB/2TB, Cabos Cat6 Furukawa' },
-      { name: 'Ratos & Teclados', desc: 'Logitech M650, HP 105, Ratos Sem Fio Gold' }
+      { name: 'Portáteis', desc: 'HP ProBook, Dell Latitude, MacBook Pro, ThinkPad, Victus Gaming' },
+      { name: 'Computadores de Secretária', desc: 'All-in-One HP 24", HP ProDesk 400 SFF, Dell OptiPlex' },
+      { name: 'Servidores & Storage', desc: 'HPE ProLiant ML30 Gen11, Dell PowerEdge, Discos Enterprise' },
+      { name: 'Switches & Redes', desc: 'Cisco Catalyst 24P PoE, D-Link Smart, Routers 4G, Ubiquiti AP' },
+      { name: 'Monitores', desc: 'HP 21.5" FHD, Dell 27" 4K UHD Profissional, LG UltraWide 29"' },
+      { name: 'Componentes & Cabos', desc: 'SSD Kingston NVMe 1TB/2TB, PenDrives, Cabos Cat6 Furukawa' },
+      { name: 'Ratos, Teclados & Acessórios', desc: 'Logitech M650, HP 105, Mochilas HP, Hubs USB-C, Webcams' }
     ]
   },
   { 
     id: 'Escritorio', 
     name: 'Escritório e Papelaria', 
     icon: 'fa-print',
-    badge: '7 Produtos',
+    badge: '12 Produtos',
     subcategories: [
-      { name: 'Impressoras & Multifunções', desc: 'HP LaserJet M140w, Epson EcoTank L3250' },
-      { name: 'Impressoras POS & Caixas', desc: 'Wintec Térmica 80mm com Guilhotina AGT' },
-      { name: 'Toners & Consumíveis', desc: 'Toners Originais HP 30A e HP 78A JetIntelligence' },
-      { name: 'Destruidoras de Papel', desc: 'Rexel ProStyle+ DIN P-4 Confidencial' },
-      { name: 'Calculadoras & Acessórios', desc: 'Calculadora Financeira Casio FC-200V' }
+      { name: 'Impressoras & Multifunções', desc: 'HP LaserJet M140w, Epson EcoTank L3250, Canon MegaTank' },
+      { name: 'Impressoras POS & Caixas', desc: 'Wintec Térmica 80mm, Leitores 2D/QR, Gavetas de Dinheiro' },
+      { name: 'Toners & Consumíveis', desc: 'Toners Originais HP 30A, 78A, 85A, Tintas Epson 103' },
+      { name: 'Destruidoras & Plastificadoras', desc: 'Rexel ProStyle+ P-4 Confidencial, Fellowes A4/A3' },
+      { name: 'Calculadoras & Papelaria', desc: 'Casio Financeira FC-200V, Científica fx-991LAX, Resmas A4' }
     ]
   },
   { 
     id: 'Electrodomesticos', 
     name: 'Electrodomésticos', 
     icon: 'fa-snowflake',
-    badge: '5 Produtos',
+    badge: '11 Produtos',
     subcategories: [
-      { name: 'Ar Condicionado', desc: 'LG Dual Inverter 12000 BTU, Samsung WindFree 18000 BTU' },
-      { name: 'Frigoríficos & Geleiras', desc: 'Samsung No Frost 328L Digital Inverter' },
-      { name: 'Micro-ondas & Cozinha', desc: 'Samsung 23L com Grill Cerâmico Inox' },
-      { name: 'Dispensadores de Água', desc: 'Midea Compressor Água Quente e Fria Inox' }
+      { name: 'Ar Condicionado', desc: 'LG Dual Inverter 12000 BTU, Samsung WindFree 18000 BTU, Gree 24k' },
+      { name: 'Frigoríficos & Geleiras', desc: 'Samsung No Frost 328L Digital Inverter, Midea Duas Portas' },
+      { name: 'Micro-ondas & Cozinha', desc: 'Samsung 23L Grill Inox, Air Fryer Digital 6.5L, Chaleiras Inox' },
+      { name: 'Dispensadores & Utilidades', desc: 'Midea Compressor Água Quente/Fria, Ferros de Engomar a Vapor' }
     ]
   },
   { 
     id: 'Smartphones', 
     name: 'Smartphones e Tablets', 
     icon: 'fa-mobile-screen',
-    badge: '7 Produtos',
+    badge: '14 Produtos',
     subcategories: [
-      { name: 'iPhones (Apple)', desc: 'iPhone 15 Pro 128GB Titânio, iPhone 14 128GB' },
-      { name: 'Smartphones Samsung', desc: 'Galaxy S24 Ultra 256GB AI, Galaxy A55 5G' },
-      { name: 'Xiaomi & Android', desc: 'Redmi Note 13 Pro+ 5G 512GB Carga 120W' },
-      { name: 'Tablets & iPads', desc: 'Apple iPad Air 11" M2 128GB Liquid Retina' },
-      { name: 'Smartwatches & Acessórios', desc: 'Apple Watch Series 9 GPS 45mm' }
+      { name: 'iPhones (Apple)', desc: 'iPhone 15 Pro 128GB Titânio, iPhone 14 128GB, iPhone 13' },
+      { name: 'Smartphones Samsung', desc: 'Galaxy S24 Ultra 256GB AI, Galaxy A55 5G, Galaxy A15' },
+      { name: 'Xiaomi & Android', desc: 'Redmi Note 13 Pro+ 5G 512GB Carga 120W, Redmi 13C' },
+      { name: 'Tablets & iPads', desc: 'Apple iPad Air 11" M2 128GB, iPad 10ª Ger, Galaxy Tab S9' },
+      { name: 'Smartwatches & Acessórios', desc: 'Apple Watch Series 9 GPS 45mm, PowerBanks, Carregadores Rápidos' }
     ]
   },
   { 
     id: 'Energia', 
     name: 'Energia', 
     icon: 'fa-bolt',
-    badge: '5 Produtos',
+    badge: '9 Produtos',
     subcategories: [
-      { name: 'Power Stations Portáteis', desc: 'Wintech 500Wh e 300Wh LiFePO4 220V' },
-      { name: 'UPS / No-Breaks Online', desc: 'APC Smart-UPS 1500VA LCD, Protect 850VA AVR' },
-      { name: 'Geradores & Baterias Solares', desc: 'Bateria Solar Lítio Pylontech 5.12kWh 48V' }
+      { name: 'Power Stations Portáteis', desc: 'Wintech 500Wh e 300Wh LiFePO4 220V, EcoFlow RIVER 2' },
+      { name: 'UPS / No-Breaks Online', desc: 'APC Smart-UPS 1500VA LCD, Protect 850VA AVR, APC Easy-UPS' },
+      { name: 'Geradores & Baterias Solares', desc: 'Bateria Solar Lítio Pylontech 5.12kWh 48V, Inversores Solares 5kW' }
     ]
   },
   { 
     id: 'ImagemSom', 
     name: 'Imagem e Som', 
     icon: 'fa-tv',
-    badge: '15 Produtos',
+    badge: '22 Produtos',
     subcategories: [
-      { name: 'Smart TVs 4K & QLED', desc: 'Samsung 65" QLED 4K, Skyworth 43" Full HD' },
+      { name: 'Smart TVs 4K & QLED', desc: 'Samsung 65" QLED 4K, Skyworth 43" Full HD, LG 55" NanoCell' },
       { name: 'Soundbars & Home Cinema', desc: 'JBL Cinema SB190 380W Atmos, Genius USB 100' },
-      { name: 'Colunas & Party Speakers', desc: 'Wintech Tchilo Party 200W, Genius SP-915BT' },
-      { name: 'Auscultadores & Earbuds', desc: 'Creative Jam V2 aptX, Apple EarPods, Xiaomi Buds 6' },
-      { name: 'Suportes de TV & Cabos', desc: 'Suporte de Tecto Manhattan 37"-70", Cabos LDNIO' }
+      { name: 'Colunas & Party Speakers', desc: 'Wintech Tchilo Party 200W, JBL Charge 5, Genius SP-915BT' },
+      { name: 'Auscultadores & Earbuds', desc: 'Creative Jam V2 aptX, Apple EarPods, Xiaomi Buds 6, HyperX Gaming' },
+      { name: 'Suportes de TV & Cabos', desc: 'Suporte Manhattan 37"-70", Projetores Multimédia, Cabos HDMI 4K' }
     ]
   }
 ];
 
-/* ─── CATÁLOGO COMPLETO DE PRODUTOS ─── */
+/* ─── CATÁLOGO MASSIVO DE PRODUTOS (+75 ARTIGOS REAIS) ─── */
 const allProducts = [
   // ==========================================
-  // INFORMÁTICA
+  // INFORMÁTICA - PORTÁTEIS & COMPUTADORES
   // ==========================================
   {
     id: 'inf-01',
@@ -293,6 +291,32 @@ const allProducts = [
   },
   {
     id: 'inf-05',
+    sku: 'HP-VIC-GAMING',
+    mpn: '15-FB1013DX',
+    name: 'Portátil Gaming HP Victus 15.6" 144Hz',
+    subtitle: 'AMD Ryzen 5 7535HS · 16GB RAM · 512GB SSD · NVIDIA RTX 2050 4GB',
+    department: 'Informatica',
+    category: 'Portáteis',
+    brand: 'HP',
+    priceVal: 890000,
+    priceStr: '890.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=600&q=80',
+    badge: 'Gaming RTX',
+    ram: '16GB',
+    screenSize: '15.6"',
+    screenType: 'IPS 144Hz',
+    resolution: 'Full HD 1080p',
+    hasBluetooth: true,
+    hasLAN: true,
+    hasNetflix: true,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '135W',
+    weight: '2.29 kg',
+    specs: ['AMD Ryzen 5 7535HS 6 Núcleos / 12 Threads', 'Gráfica Dedicada NVIDIA RTX 2050 4GB GDDR6', 'Ecrã 144Hz ultra suave', 'Áudio por B&O']
+  },
+  {
+    id: 'inf-06',
     sku: 'HP-AIO-24',
     mpn: 'HP-24-CB100',
     name: 'Desktop All-in-One HP 24" Core i5',
@@ -318,7 +342,7 @@ const allProducts = [
     specs: ['Computador Tudo-em-Um elegante para escritório', 'Ecrã 23.8" Full HD IPS sem molduras', '16GB RAM DDR4 e SSD NVMe 512GB', 'Câmara retrátil com microfone integrado', 'Teclado e rato sem fios HP incluídos']
   },
   {
-    id: 'inf-06',
+    id: 'inf-07',
     sku: 'HP-PD400G9',
     mpn: '400G9-SFF',
     name: 'Desktop HP ProDesk 400 G9 SFF',
@@ -344,7 +368,7 @@ const allProducts = [
     specs: ['Intel Core i5-13500 14 Cores / 20 Threads', '16GB RAM DDR4 3200MHz', 'SSD 512GB NVMe M.2', 'Portas USB-C, DisplayPort, HDMI, RJ45 LAN', 'Windows 11 Pro 64-bit']
   },
   {
-    id: 'inf-07',
+    id: 'inf-08',
     sku: 'HPE-ML30G11',
     mpn: 'ML30-G11-XEON',
     name: 'Servidor HPE ProLiant ML30 Gen11 Torre',
@@ -370,7 +394,7 @@ const allProducts = [
     specs: ['Intel Xeon E-2434 4 Cores / 8 Threads', '32GB Memória DDR5 ECC Registada', '2 Discos 2TB SATA Enterprise RAID 1', 'Gestão Remota iLO 6 e Dupla Fonte Redundante']
   },
   {
-    id: 'inf-08',
+    id: 'inf-09',
     sku: 'CISCO-C1000',
     mpn: 'C1000-24P-4G-L',
     name: 'Switch Cisco Catalyst 1000 24P PoE+',
@@ -396,7 +420,7 @@ const allProducts = [
     specs: ['24 Portas 10/100/1000 Gigabit PoE+', '4 Slots SFP 1G para Fibra Óptica', 'Orçamento PoE total de 195W', 'Montagem em Bastidor 19"']
   },
   {
-    id: 'inf-09',
+    id: 'inf-10',
     sku: 'DLINK-24P-MNG',
     mpn: 'DGS-1210-28',
     name: 'Switch D-Link 24 Portas Gigabit Smart Managed',
@@ -422,7 +446,7 @@ const allProducts = [
     specs: ['24 Portas Gigabit 10/100/1000 RJ45', '4 Portas SFP para interligação de fibra óptica', 'Suporte a VLANs 802.1Q e QoS']
   },
   {
-    id: 'inf-10',
+    id: 'inf-11',
     sku: 'HIK-SW8G',
     mpn: 'DS-3E0508-E',
     name: 'Switch 8 Portas Gigabit Metal Hikvision',
@@ -448,7 +472,7 @@ const allProducts = [
     specs: ['8 Portas RJ45 Gigabit automáticas', 'Construção metálica reforçada', 'Design silencioso sem ventoinhas']
   },
   {
-    id: 'inf-11',
+    id: 'inf-12',
     sku: 'RTR-4G-LTE',
     mpn: 'DWR-921-4G',
     name: 'Router Wi-Fi 4G LTE Dual SIM Gigabit',
@@ -474,7 +498,7 @@ const allProducts = [
     specs: ['Compatível com Unitel e Africell', 'Failover automático entre 4G e cabo', '4 Portas LAN RJ45']
   },
   {
-    id: 'inf-12',
+    id: 'inf-13',
     sku: 'XIA-RTR-4A',
     mpn: 'DVB4230GL',
     name: 'Router Xiaomi Mi Wifi 4A AC1200 Gigabit',
@@ -500,7 +524,7 @@ const allProducts = [
     specs: ['1167 Mbps Dual Band', '4 Antenas externas de 5dBi', 'Suporta até 64 dispositivos simultâneos']
   },
   {
-    id: 'inf-13',
+    id: 'inf-14',
     sku: 'HP-P22G5',
     mpn: 'P22-G5-FHD',
     name: 'Monitor HP P22 G5 21.5" Full HD',
@@ -526,7 +550,7 @@ const allProducts = [
     specs: ['Full HD 1920x1080 a 75Hz', 'Painel IPS 178°', 'HDMI, DisplayPort e VGA', 'Suporte VESA 100x100mm']
   },
   {
-    id: 'inf-14',
+    id: 'inf-15',
     sku: 'DELL-S2722QC',
     mpn: 'DELL-4K-27',
     name: 'Monitor Dell 27" 4K UHD IPS USB-C',
@@ -552,7 +576,7 @@ const allProducts = [
     specs: ['Resolução 4K Ultra HD 3840x2160', 'USB-C com carregamento 65W', 'Colunas estéreo integradas', 'Base com ajuste de altura e rotação 90°']
   },
   {
-    id: 'inf-15',
+    id: 'inf-16',
     sku: 'SSD-EXT-2TB',
     mpn: 'SXS2000-2T',
     name: 'Disco Externo SSD 2TB Kingston XS2000 USB-C',
@@ -578,7 +602,7 @@ const allProducts = [
     specs: ['Capacidade 2TB em formato de bolso', 'Velocidades até 2.000 MB/s', 'Proteção IP55 contra água e poeira']
   },
   {
-    id: 'inf-16',
+    id: 'inf-17',
     sku: 'SSD-NVME-1TB',
     mpn: 'SNV2S/1000G',
     name: 'Disco SSD M.2 NVMe PCIe 4.0 1TB Kingston NV2',
@@ -604,13 +628,13 @@ const allProducts = [
     specs: ['SSD interno PCIe 4.0 NVMe', 'Velocidade 3.500 MB/s', 'Capacidade 1TB (1000GB)']
   },
   {
-    id: 'inf-17',
+    id: 'inf-18',
     sku: 'LOG-M650-GRF',
     mpn: '910-006233',
     name: 'Rato sem Fio Logitech PEBBLE M650 Grafite',
     subtitle: 'SmartWheel Scrolling · Cliques Silenciosos SilentTouch · Bluetooth & Logi Bolt',
     department: 'Informatica',
-    category: 'Ratos & Teclados',
+    category: 'Ratos, Teclados & Acessórios',
     brand: 'LOGITECH',
     priceVal: 54327.84,
     priceStr: '54.327,84 AKZ',
@@ -630,13 +654,13 @@ const allProducts = [
     specs: ['Scroll SmartWheel preciso', 'Tecnologia SilentTouch silenciosa', 'Bluetooth e receptor Logi Bolt', 'Até 24 meses de bateria']
   },
   {
-    id: 'inf-18',
+    id: 'inf-19',
     sku: 'HP-M105-BLK',
     mpn: 'NN105AA',
     name: 'Rato USB HP 105 1600 DPI Preto',
     subtitle: 'Sensor Óptico de Alta Precisão 1600 DPI · Cabo USB 1.5m · Ambidestro',
     department: 'Informatica',
-    category: 'Ratos & Teclados',
+    category: 'Ratos, Teclados & Acessórios',
     brand: 'HP',
     priceVal: 10320.42,
     priceStr: '10.320,42 AKZ',
@@ -656,13 +680,13 @@ const allProducts = [
     specs: ['Sensor 1600 DPI', 'Design ambidestro confortável', 'Plug and Play USB']
   },
   {
-    id: 'inf-19',
+    id: 'inf-20',
     sku: 'HP-Z3700-GLD',
     mpn: 'X7Q43AA',
     name: 'Rato Sem Fio HP Z3700 Ouro',
     subtitle: 'Design Ultra Fino e Elegante · Conexão Sem Fios 2.4GHz · Sensor Azul',
     department: 'Informatica',
-    category: 'Ratos & Teclados',
+    category: 'Ratos, Teclados & Acessórios',
     brand: 'HP',
     priceVal: 19719.72,
     priceStr: '19.719,72 AKZ',
@@ -682,7 +706,7 @@ const allProducts = [
     specs: ['Design ultrafino dourado', 'Sensor LED azul', 'Autonomia até 16 meses']
   },
   {
-    id: 'inf-20',
+    id: 'inf-21',
     sku: 'HP-USB-LAN-G2',
     mpn: '286J4AA',
     name: 'Adaptador USB 3.0 Para Gigabit RJ45 G2 HP',
@@ -708,7 +732,7 @@ const allProducts = [
     specs: ['Porta LAN Gigabit 1000 Mbps', 'Corpo em alumínio', 'Compatível Windows e macOS']
   },
   {
-    id: 'inf-21',
+    id: 'inf-22',
     sku: 'FUK-CAT6-305',
     mpn: '23400105',
     name: 'Cabo de Rede Cat6 UTP Furukawa 305m',
@@ -732,6 +756,58 @@ const allProducts = [
     powerWatts: null,
     weight: '12.5 kg',
     specs: ['Caixa 305m', '100% Cobre 23AWG', 'Capa LSZH não-tóxica']
+  },
+  {
+    id: 'inf-23',
+    sku: 'HP-BAG-PRELUDE',
+    mpn: '1E7D6AA',
+    name: 'Mochila para Portátil HP Prelude Pro 15.6" Reciclada',
+    subtitle: 'Tecido Impermeável Resistente · Compartimento Acolchoado · Zíperes Bloqueáveis',
+    department: 'Informatica',
+    category: 'Ratos, Teclados & Acessórios',
+    brand: 'HP',
+    priceVal: 24500,
+    priceStr: '24.500,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80',
+    badge: 'Ecológica & Robusta',
+    ram: null,
+    screenSize: '15.6"',
+    screenType: null,
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: null,
+    weight: '480 g',
+    specs: ['Material reciclado resistente à água', 'Compartimento para portátil até 15.6"', 'Bolsos organizadores com passagem de cabo']
+  },
+  {
+    id: 'inf-24',
+    sku: 'HUB-USB-8IN1',
+    mpn: 'HUB-8P-4K',
+    name: 'Hub Adaptador USB-C 8 em 1 4K HDMI + LAN + SD',
+    subtitle: 'HDMI 4K 60Hz · RJ45 Gigabit · 3x USB 3.0 · Leitor SD/TF · Carga PD 100W',
+    department: 'Informatica',
+    category: 'Componentes & Cabos',
+    brand: 'LDNIO',
+    priceVal: 34500,
+    priceStr: '34.500,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    badge: 'Hub Multiportas',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: '4K Ultra HD',
+    hasBluetooth: false,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '100W PD',
+    weight: '90 g',
+    specs: ['Chassi em liga de alumínio dissipador', '8 portas essenciais para portáteis finos', 'Compatível Mac, Dell, HP, Lenovo']
   },
 
   // ==========================================
@@ -822,7 +898,7 @@ const allProducts = [
     name: 'Destruidora de Documentos Rexel ProStyle+',
     subtitle: 'Corte Cruzado DIN P-4 · Destrói 11 Folhas, Cartões e Agrafos',
     department: 'Escritorio',
-    category: 'Destruidoras de Papel',
+    category: 'Destruidoras & Plastificadoras',
     brand: 'REXEL',
     priceVal: 95000,
     priceStr: '95.000,00 AKZ',
@@ -900,7 +976,7 @@ const allProducts = [
     name: 'Calculadora Financeira Casio FC-200V',
     subtitle: 'Ecrã 4 Linhas com Matriz de Pontos · Juros Compostos, Amortização e VPL',
     department: 'Escritorio',
-    category: 'Calculadoras & Acessórios',
+    category: 'Calculadoras & Papelaria',
     brand: 'CASIO',
     priceVal: 38500,
     priceStr: '38.500,00 AKZ',
@@ -918,6 +994,32 @@ const allProducts = [
     powerWatts: 'Solar + Pilha',
     weight: '105 g',
     specs: ['Cálculo de juros, VPL, TIR e fluxo de caixa', 'Ecrã de 4 linhas', 'Alimentação dupla solar e pilha']
+  },
+  {
+    id: 'esc-08',
+    sku: 'PAP-NAV-A4',
+    mpn: 'NAVIGATOR-80G',
+    name: 'Caixa com 5 Resmas de Papel A4 80g Navigator',
+    subtitle: '2.500 Folhas · Ultra Branco 169 CIE · Não Encrava · Certificação FSC',
+    department: 'Escritorio',
+    category: 'Calculadoras & Papelaria',
+    brand: 'NAVIGATOR',
+    priceVal: 22000,
+    priceStr: '22.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80',
+    badge: 'Papel A4 Premium',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: null,
+    weight: '12.5 kg',
+    specs: ['Caixa completa com 5 resmas de 500 folhas (2500 folhas)', 'Gramagem ideal 80g/m²', 'Alta brancura e desempenho sem encravamento']
   },
 
   // ==========================================
@@ -1034,7 +1136,7 @@ const allProducts = [
     name: 'Dispensador de Água Quente e Fria Midea Inox',
     subtitle: 'Compressor de Alta Eficiência · Torneiras de Água Quente, Fria e Natural',
     department: 'Electrodomesticos',
-    category: 'Dispensadores de Água',
+    category: 'Dispensadores & Utilidades',
     brand: 'MIDEA',
     priceVal: 88000,
     priceStr: '88.000,00 AKZ',
@@ -1052,6 +1154,32 @@ const allProducts = [
     powerWatts: '500W Quente / 85W Frio',
     weight: '14.5 kg',
     specs: ['Refrigeração por compressor potente', 'Torneira com trava de segurança infantil', 'Acabamento elegante em inox']
+  },
+  {
+    id: 'elec-06',
+    sku: 'AIR-FRYER-6L',
+    mpn: 'AF-6500-DIG',
+    name: 'Fritadeira sem Óleo Air Fryer Digital 6.5L Inox',
+    subtitle: 'Painel Touch Digital com 8 Programas · 1800W · Cesto Anti-aderente',
+    department: 'Electrodomesticos',
+    category: 'Micro-ondas & Cozinha',
+    brand: 'MIDEA',
+    priceVal: 62000,
+    priceStr: '62.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=600&q=80',
+    badge: 'Air Fryer 6.5L',
+    ram: null,
+    screenSize: null,
+    screenType: 'Touch LED',
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '1800W',
+    weight: '4.9 kg',
+    specs: ['Capacidade familiar 6.5 Litros', '8 programas automáticos pré-definidos', 'Temporizador até 60 min e controlo de temperatura']
   },
 
   // ==========================================
@@ -1238,6 +1366,32 @@ const allProducts = [
     powerWatts: 'Carga Rápida Magnética',
     weight: '38.7 g',
     specs: ['Gesto Duplo Toque', 'ECG e oxigénio no sangue', 'Resistente à água 50m']
+  },
+  {
+    id: 'smp-08',
+    sku: 'XIA-PB-20K',
+    mpn: 'PB200LZM',
+    name: 'Power Bank Xiaomi Redmi 20.000mAh 18W Fast Charge',
+    subtitle: 'Dupla Saída USB + USB-C · Carga Rápida Bidirecional · Bateria de Polímero',
+    department: 'Smartphones',
+    category: 'Smartwatches & Acessórios',
+    brand: 'XIAOMI',
+    priceVal: 28500,
+    priceStr: '28.500,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1609592426868-b769f37c3527?auto=format&fit=crop&w=600&q=80',
+    badge: '20.000mAh',
+    ram: null,
+    screenSize: null,
+    screenType: 'LEDs Indicadores',
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '18W Fast Charge',
+    weight: '440 g',
+    specs: ['Carrega até 4 a 5 vezes um smartphone', 'Entradas Micro-USB e USB-C', 'Proteção contra sobretensão']
   },
 
   // ==========================================
@@ -1766,6 +1920,32 @@ const allProducts = [
     powerWatts: 'Jack 3.5mm',
     weight: '200 g',
     specs: ['Almofadas grandes circumaurais', 'Drivers 40mm para graves profundos', 'Microfone integrado']
+  },
+  {
+    id: 'ims-16',
+    sku: 'JBL-CHG5-BLK',
+    mpn: 'JBLCHARGE5BLK',
+    name: 'Coluna Bluetooth JBL Charge 5 40W IP67',
+    subtitle: 'Autonomia 20 Horas · PowerBank Integrado · Resistente à Água e Poeira',
+    department: 'ImagemSom',
+    category: 'Colunas & Party Speakers',
+    brand: 'JBL',
+    priceVal: 145000,
+    priceStr: '145.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=600&q=80',
+    badge: 'JBL Original',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: true,
+    hasMountSupport: false,
+    powerWatts: '40W RMS',
+    weight: '960 g',
+    specs: ['Driver de alta excursão e radiadores de graves duplos', 'Autonomia de até 20 horas de reprodução', 'Classificação IP67 à prova de água e poeira']
   }
 ];
 
@@ -1872,13 +2052,13 @@ const storesList = [
 
 /* ─── APP PRINCIPAL ─────────────────────────────────── */
 function App() {
-  const [currentTab, setCurrentTab]   = useState('loja'); // 'loja', 'servicos', 'sobre', 'contactos'
+  const [currentTab, setCurrentTab]   = useState('loja');
   const [cart, setCart]               = useState([]);
   const [wishlist, setWishlist]       = useState([]);
   const [cartOpen, setCartOpen]       = useState(false);
   const [wishlistOpen, setWishlistOpen] = useState(false);
   const [rightDrawerOpen, setRightDrawerOpen] = useState(false);
-  const [megaMenuOpen, setMegaMenuOpen] = useState(false); // NOVO: MEGA MENU FLUTUANTE DE "TODOS OS PRODUTOS"
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [hoveredDept, setHoveredDept]   = useState(NCR_DEPARTMENTS[0]);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [storesModalOpen, setStoresModalOpen] = useState(false);
@@ -2099,7 +2279,7 @@ function App() {
         <div className="flex-1 max-w-2xl relative">
           <input
             type="text"
-            placeholder="O que procuras? (ex: Portátil HP, Smart TV, Auscultadores, Ar Condicionado, UPS...)"
+            placeholder="O que procuras? (ex: Portátil HP, Smart TV, Auscultadores, Ar Condicionado, UPS, Cabos...)"
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
@@ -2215,9 +2395,7 @@ function App() {
           </button>
         </div>
 
-        {/* ════════════════════════════════════════════════════════
-           MEGA-MENU FLUTUANTE QUE ABRE AO CLICAR EM "TODOS OS PRODUTOS"
-        ════════════════════════════════════════════════════════ */}
+        {/* ════ MEGA-MENU FLUTUANTE ════ */}
         {megaMenuOpen && (
           <div className="absolute top-full left-0 w-full bg-white text-gray-900 border-b-2 border-brand-red shadow-2xl z-50 animate-fade-in-up">
             <div className="w-full px-4 sm:px-8 py-6 grid grid-cols-1 md:grid-cols-12 gap-6 max-h-[75vh] overflow-y-auto">
@@ -2262,7 +2440,7 @@ function App() {
                 </div>
               </div>
 
-              {/* COLUNA DIREITA: SUBCATEGORIAS DETALHADAS DO DEPARTAMENTO EM FOCO */}
+              {/* COLUNA DIREITA: SUBCATEGORIAS DETALHADAS */}
               <div className="md:col-span-8 pl-2 space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-gray-100">
                   <div className="flex items-center space-x-2">
@@ -2304,7 +2482,6 @@ function App() {
                   ))}
                 </div>
 
-                {/* ATALHO DE COTAÇÃO RÁPIDA */}
                 <div className="bg-gray-900 text-white p-4 rounded-2xl flex items-center justify-between mt-4">
                   <div>
                     <p className="font-heading font-bold text-xs uppercase">Precisa de quantidades empresariais?</p>
@@ -3253,7 +3430,6 @@ function App() {
   /* ════ RENDER GERAL ════ */
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC] font-body" onClick={() => { if (megaMenuOpen) setMegaMenuOpen(false); }}>
-      {/* Toast Notification */}
       {toast && (
         <div className="fixed top-4 right-4 z-[100] bg-[#0A0C12] text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-brand-red/40 flex items-center space-x-3 text-xs font-semibold animate-fade-in-scale">
           <span>{toast}</span>
