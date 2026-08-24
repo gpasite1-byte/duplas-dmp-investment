@@ -2743,14 +2743,14 @@ function App() {
 
   /* ════ PÁGINA DA LOJA & PRODUTOS ════ */
   const ShopSection = () => (
-    <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 animate-fade-in-up">
+    <div className="w-full animate-fade-in-up">
       
-      {/* BANNER PRINCIPAL GRANDE E LIMPO (ESTILO NCR ANGOLA - APENAS A IMAGEM) */}
-      <div className="mb-6 sm:mb-8 rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-[#E2E8F0] bg-white group cursor-pointer" onClick={() => { setSelectedDept('ALL'); setSelectedCategory('ALL'); }}>
+      {/* BANNER PRINCIPAL FULL-WIDTH DE PONTA A PONTA (ESTILO EXATO NCR ANGOLA) */}
+      <div className="w-full bg-[#0A0C12] overflow-hidden cursor-pointer" onClick={() => { setSelectedDept('ALL'); setSelectedCategory('ALL'); }}>
         <img
           src="imagem principal/imagem principal.jpg"
           alt="Banner Principal Duplas DMP"
-          className="w-full h-auto max-h-[500px] object-cover object-center transition-transform duration-500 group-hover:scale-[1.01]"
+          className="w-full h-auto max-h-[650px] object-cover object-center block"
           onError={(e) => {
             if (e.target.src.indexOf('imagem_principal.jpg') === -1) {
               e.target.src = 'imagem_principal.jpg';
@@ -2758,6 +2758,9 @@ function App() {
           }}
         />
       </div>
+
+      {/* CONTEÚDO DA LOJA COM CONTAINER CENTRALIZADO */}
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
       {/* BREADCRUMB & TÍTULO DA GALERIA */}
       <div className="mb-6 space-y-1">
@@ -2906,6 +2909,7 @@ function App() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 
