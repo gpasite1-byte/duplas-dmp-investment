@@ -16,21 +16,21 @@
             brand: { red:'#CC0000', redHover:'#AA0000', dark:'#0A0C12', gray:'#1A1E2E', lightBg:'#F4F6F9', border:'#E5E7EB' }
           },
           fontFamily: {
-            sans:    ['Poppins', 'system-ui', 'sans-serif'],
-            heading: ['Poppins', 'system-ui', 'sans-serif'],
-            body:    ['Poppins', 'system-ui', 'sans-serif'],
-            display: ['Poppins', 'system-ui', 'sans-serif'],
-            poppins: ['Poppins', 'sans-serif'],
+            sans:    ['Roboto', 'Poppins', 'system-ui', 'sans-serif'],
+            heading: ['Roboto', 'Poppins', 'system-ui', 'sans-serif'],
+            body:    ['Roboto', 'Poppins', 'system-ui', 'sans-serif'],
+            display: ['Roboto', 'Poppins', 'system-ui', 'sans-serif'],
+            roboto:  ['Roboto', 'sans-serif'],
           }
         }
       }
     }
   </script>
 
-  <!-- Google Fonts: Poppins (300 a 900) -->
+  <!-- Google Fonts: Roboto (300, 400, 500, 700, 900) & Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500;1,700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- React 18 & Babel (Cloudflare CDN) -->
@@ -39,10 +39,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.10/babel.min.js"></script>
 
   <style>
-    body { font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; margin:0; padding:0; box-sizing:border-box; font-weight:400; background:#F8FAFC; }
-    h1,h2,h3,h4,h5,h6,.font-heading { font-family:'Poppins',sans-serif; font-weight:700; }
-    .font-display { font-family:'Poppins',sans-serif; font-weight:700; }
-    .font-body { font-family:'Poppins',sans-serif; }
+    body { font-family:'Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; margin:0; padding:0; box-sizing:border-box; font-weight:400; background:#F8FAFC; font-size:14px; color:#3F3F40; }
+    h1,h2,h3,h4,h5,h6,.font-heading { font-family:'Roboto',sans-serif; font-weight:700; }
+    .font-display { font-family:'Roboto',sans-serif; font-weight:700; }
+    .font-body { font-family:'Roboto',sans-serif; }
     html { scroll-behavior:smooth; }
 
     ::-webkit-scrollbar { width:6px; height:6px; }
@@ -3401,8 +3401,8 @@ function App() {
 
   /* ════ FOOTER ════ */
   const Footer = () => (
-    <footer className="bg-[#0A0C12] text-white border-t border-gray-800 pt-14 pb-8 font-body">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+    <footer className="bg-[#0A0C12] text-white border-t border-gray-800 pt-12 pb-8 font-body">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-gray-800">
         <div className="space-y-4">
           
           {/* LOGOMARCA EM CARD BRANCO DE ALTO CONTRASTE */}
@@ -3415,43 +3415,43 @@ function App() {
             />
           </div>
 
-          <p className="text-xs text-gray-400 leading-relaxed">
+          <p className="text-[13px] text-gray-300 leading-relaxed font-body">
             Soluções completas em Tecnologia, Informática, Telecomunicações, Energia, Climatização, Assistência Técnica e Segurança em Angola.
           </p>
         </div>
 
         <div className="space-y-3">
-          <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Departamentos</h4>
-          <ul className="space-y-2 text-xs text-gray-400 font-heading uppercase">
-            <li><button onClick={() => { setSelectedDept('Informatica'); setCurrentTab('loja'); }} className="hover:text-brand-red">Informática & Laptops</button></li>
-            <li><button onClick={() => { setSelectedDept('ImagemSom'); setCurrentTab('loja'); }} className="hover:text-brand-red">Imagem e Som / Áudio</button></li>
-            <li><button onClick={() => { setSelectedDept('Smartphones'); setCurrentTab('loja'); }} className="hover:text-brand-red">Smartphones & Tablets</button></li>
-            <li><button onClick={() => { setSelectedDept('Energia'); setCurrentTab('loja'); }} className="hover:text-brand-red">Energia & UPS</button></li>
-            <li><button onClick={() => { setSelectedDept('Electrodomesticos'); setCurrentTab('loja'); }} className="hover:text-brand-red">Electrodomésticos & AC</button></li>
+          <h4 className="font-heading font-bold text-[14px] uppercase text-white tracking-wider">Departamentos</h4>
+          <ul className="space-y-2.5 text-[13px] text-gray-300 font-body">
+            <li><button onClick={() => { setSelectedDept('Informatica'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Informática & Laptops</button></li>
+            <li><button onClick={() => { setSelectedDept('ImagemSom'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Imagem e Som / Áudio</button></li>
+            <li><button onClick={() => { setSelectedDept('Smartphones'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Smartphones & Tablets</button></li>
+            <li><button onClick={() => { setSelectedDept('Energia'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Energia & UPS</button></li>
+            <li><button onClick={() => { setSelectedDept('Electrodomesticos'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Electrodomésticos & AC</button></li>
           </ul>
         </div>
 
         <div className="space-y-3">
-          <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Serviços Oficiais</h4>
-          <ul className="space-y-2 text-xs text-gray-400 font-heading uppercase">
-            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Centro Técnico & Reparação</button></li>
-            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Instalação de Redes & Fibra</button></li>
-            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Sistemas POS & Faturação AGT</button></li>
-            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">CCTV 4K & Biometria</button></li>
-            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Contratos Corporativos SLA</button></li>
+          <h4 className="font-heading font-bold text-[14px] uppercase text-white tracking-wider">Serviços Oficiais</h4>
+          <ul className="space-y-2.5 text-[13px] text-gray-300 font-body">
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red transition-colors">Centro Técnico & Reparação</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red transition-colors">Instalação de Redes & Fibra</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red transition-colors">Sistemas POS & Faturação AGT</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red transition-colors">CCTV 4K & Biometria</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red transition-colors">Contratos Corporativos SLA</button></li>
           </ul>
         </div>
 
         <div className="space-y-3">
-          <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Contactos Luanda</h4>
-          <p className="text-xs text-gray-400"><i className="fa-solid fa-location-dot text-brand-red mr-2"></i>Luanda, Angola</p>
-          <p className="text-xs text-gray-400"><i className="fa-brands fa-whatsapp text-emerald-400 mr-2"></i>+244 941 950 022</p>
-          <p className="text-xs text-gray-400"><i className="fa-solid fa-phone text-brand-red mr-2"></i>+244 947 077 913</p>
-          <p className="text-xs text-gray-400"><i className="fa-solid fa-envelope text-brand-red mr-2"></i>geral@duplasdmp.co.ao</p>
+          <h4 className="font-heading font-bold text-[14px] uppercase text-white tracking-wider">Contactos Luanda</h4>
+          <p className="text-[13px] text-gray-300"><i className="fa-solid fa-location-dot text-brand-red mr-2"></i>Luanda, Angola</p>
+          <p className="text-[13px] text-gray-300"><i className="fa-brands fa-whatsapp text-emerald-400 mr-2"></i>+244 941 950 022</p>
+          <p className="text-[13px] text-gray-300"><i className="fa-solid fa-phone text-brand-red mr-2"></i>+244 947 077 913</p>
+          <p className="text-[13px] text-gray-300"><i className="fa-solid fa-envelope text-brand-red mr-2"></i>geral@duplasdmp.co.ao</p>
         </div>
       </div>
 
-      <div className="w-full px-4 sm:px-8 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-[12px] text-gray-400 gap-4">
         <span>© 2026 Duplas DMP Investment, Lda. Todos os direitos reservados.</span>
         <span>Estrutura e Catálogo Oficial Integrado no Padrão NCR Angola</span>
       </div>
