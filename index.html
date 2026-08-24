@@ -3401,10 +3401,20 @@ function App() {
 
   /* ════ FOOTER ════ */
   const Footer = () => (
-    <footer className="bg-[#0A0C12] text-white border-t border-gray-800 pt-16 pb-8 font-body">
-      <div className="w-full px-4 sm:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+    <footer className="bg-[#0A0C12] text-white border-t border-gray-800 pt-14 pb-8 font-body">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
         <div className="space-y-4">
-          <img src={LOGO_ONLINE} alt="Duplas DMP" style={{ height: '75px', objectFit: 'contain' }} onError={(e) => { e.target.src = LOGO_PATH; }} />
+          
+          {/* LOGOMARCA EM CARD BRANCO DE ALTO CONTRASTE */}
+          <div className="bg-white p-3.5 rounded-2xl inline-block shadow-md border border-gray-100">
+            <img
+              src={LOGO_ONLINE}
+              alt="Duplas DMP"
+              style={{ height: '85px', width: 'auto', objectFit: 'contain' }}
+              onError={(e) => { e.target.src = LOGO_PATH; }}
+            />
+          </div>
+
           <p className="text-xs text-gray-400 leading-relaxed">
             Soluções completas em Tecnologia, Informática, Telecomunicações, Energia, Climatização, Assistência Técnica e Segurança em Angola.
           </p>
