@@ -2355,8 +2355,25 @@ function App() {
       {/* CONTAINER PRINCIPAL NA RESOLUÇÃO EXATA DA NCR (MAX-W 1440PX) */}
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex items-center justify-between gap-4">
         
-        {/* LOGOMARCA MUITO GRANDE E BEM VISÍVEL (125PX - 135PX) */}
-        <button onClick={() => { setCurrentTab('loja'); setSelectedDept('ALL'); setSelectedCategory('ALL'); }} className="flex-shrink-0 flex items-center py-1 text-left transition-transform hover:scale-105">
+        {/* LOGOMARCA MUITO GRANDE E BEM VISÍVEL (125PX - 135PX) - CLIQUE LEVA AO TOPO DA PÁGINA INICIAL */}
+        <button
+          onClick={() => {
+            setCurrentTab('loja');
+            setSelectedDept('ALL');
+            setSelectedCategory('ALL');
+            setSelectedBrands([]);
+            setSelectedRAMs([]);
+            setSelectedScreens([]);
+            setSelectedPriceRange('ALL');
+            setSelectedFeatures({ bluetooth: false, lan: false, netflix: false, subwoofer: false, mount: false });
+            setSearchQuery('');
+            setMegaMenuOpen(false);
+            setRightDrawerOpen(false);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          className="flex-shrink-0 flex items-center py-1 text-left transition-transform hover:scale-105"
+          title="Ir para o Início da Loja"
+        >
           <img
             src={LOGO_ONLINE}
             alt="Duplas DMP Investment"
@@ -3569,51 +3586,6 @@ function App() {
   /* ════ FOOTER COMPLETO MULTI-ABAS (PADRÃO OFICIAL NCR ANGOLA) ════ */
   const Footer = () => (
     <footer className="bg-[#0A0C12] text-white border-t border-gray-800 font-body">
-      
-      {/* ABA 1: FAIXA DE VANTAGENS INSTITUCIONAIS */}
-      <div className="bg-[#121622] border-b border-gray-800 py-8">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="flex items-center space-x-4 p-3 rounded-2xl bg-white/5 border border-white/5">
-            <div className="w-12 h-12 rounded-xl bg-brand-red/20 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
-              <i className="fa-solid fa-truck-fast"></i>
-            </div>
-            <div>
-              <h5 className="font-heading font-bold text-sm uppercase text-white">Entregas em Luanda</h5>
-              <p className="text-xs text-gray-400">Entregas rápidas e seguras</p>
-            </div>
-          </div>
-
-          <div className="flex items-center space-x-4 p-3 rounded-2xl bg-white/5 border border-white/5">
-            <div className="w-12 h-12 rounded-xl bg-brand-red/20 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
-              <i className="fa-solid fa-shield-halved"></i>
-            </div>
-            <div>
-              <h5 className="font-heading font-bold text-sm uppercase text-white">Garantia & Laboratório</h5>
-              <p className="text-xs text-gray-400">Assistência técnica oficial própria</p>
-            </div>
-          </div>
-
-          <div className="flex items-center space-x-4 p-3 rounded-2xl bg-white/5 border border-white/5">
-            <div className="w-12 h-12 rounded-xl bg-brand-red/20 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
-              <i className="fa-solid fa-file-invoice-dollar"></i>
-            </div>
-            <div>
-              <h5 className="font-heading font-bold text-sm uppercase text-white">Faturação Certificada AGT</h5>
-              <p className="text-xs text-gray-400">Em conformidade legal em Angola</p>
-            </div>
-          </div>
-
-          <div className="flex items-center space-x-4 p-3 rounded-2xl bg-white/5 border border-white/5">
-            <div className="w-12 h-12 rounded-xl bg-brand-red/20 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
-              <i className="fa-solid fa-headset"></i>
-            </div>
-            <div>
-              <h5 className="font-heading font-bold text-sm uppercase text-white">Apoio ao Cliente & Empresas</h5>
-              <p className="text-xs text-gray-400">+244 941 950 022 · 947 077 913</p>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* ABA 2: FAIXA DE NEWSLETTER & OFERTAS */}
       <div className="bg-[#0D1017] border-b border-gray-800 py-8">
