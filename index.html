@@ -64,21 +64,19 @@
     @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-25px); } to { opacity: 1; transform: translateX(0); } }
     @keyframes fadeInRight { from { opacity: 0; transform: translateX(25px); } to { opacity: 1; transform: translateX(0); } }
     @keyframes floatSlow { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
-    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 20px rgba(204,0,0,0.3); } 50% { box-shadow: 0 0 40px rgba(204,0,0,0.7); } }
     @keyframes pulseRing { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0.7); } 70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(204,0,0,0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0); } }
 
-    .animate-fade-in-up { animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .animate-fade-in-scale { animation: fadeInScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .animate-fade-in-left { animation: fadeInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .animate-fade-in-right { animation: fadeInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .animate-float { animation: floatSlow 4s ease-in-out infinite; }
+    .animate-fade-in-up { animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-scale { animation: fadeInScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-left { animation: fadeInLeft 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-right { animation: fadeInRight 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .pulse-red { animation: pulseRing 2s infinite; }
 
     .glass { background:rgba(10,12,18,0.92); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.08); }
     .glow-red { box-shadow:0 0 25px rgba(204,0,0,0.3); }
     
     .img-zoom { overflow:hidden; }
-    .img-zoom img, .img-zoom-child { transition:transform 0.5s ease; }
+    .img-zoom img, .img-zoom-child { transition:transform 0.4s ease; }
     .img-zoom:hover img, .img-zoom:hover .img-zoom-child { transform:scale(1.06); }
     
     .card-hover { transition:all 0.3s ease; }
@@ -97,7 +95,6 @@
     .product-card:hover { border-bottom-color:#CC0000; transform:translateY(-5px); box-shadow:0 14px 28px rgba(0,0,0,0.1); }
     
     input:focus, textarea:focus, select:focus { outline:none; border-color:#CC0000!important; box-shadow:0 0 0 3px rgba(204,0,0,0.12)!important; }
-    .page-hero-overlay { background:linear-gradient(135deg,rgba(10,12,18,0.95) 0%,rgba(10,12,18,0.65) 70%,transparent 100%); }
     
     @media (max-width:768px){
       .hide-mobile { display:none!important; }
@@ -108,7 +105,7 @@
 <div id="root">
   <div style="display:flex;min-height:100vh;flex-direction:column;align-items:center;justify-content:center;background:#0A0C12;color:#ffffff;font-family:'Poppins',sans-serif;">
     <div style="font-size:32px;font-weight:900;letter-spacing:1px;color:#CC0000;margin-bottom:12px;">DUPLAS DMP</div>
-    <div style="font-size:14px;color:#8A95A5;margin-bottom:24px;">Carregando Catálogo Oficial NCR Angola...</div>
+    <div style="font-size:14px;color:#8A95A5;margin-bottom:24px;">Carregando Catálogo e Serviços Oficiais...</div>
     <div style="width:40px;height:40px;border:3px solid rgba(204,0,0,0.2);border-top-color:#CC0000;border-radius:50%;animation:spin 0.8s linear infinite;"></div>
     <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
   </div>
@@ -121,30 +118,622 @@ const { useState, useEffect, useMemo } = React;
 const LOGO_ONLINE = "https://i.ibb.co/XkF3VWps/DUPLAS.png";
 const LOGO_PATH   = "logo.png";
 
-/* ─── CATEGORIAS NCR ANGOLA ─────────────────────────── */
+/* ─── CATEGORIAS PADRÃO NCR ANGOLA ─────────────────── */
 const NCR_CATEGORIES = [
   { id: 'ALL', name: 'Todos os Produtos', icon: 'fa-layer-group' },
-  { id: 'Informatica', name: 'Informática', icon: 'fa-laptop', subcategories: ['Portáteis', 'Computadores de Secretária', 'Servidores & Storage', 'Switches & Redes', 'Impressoras & POS', 'Monitores'] },
-  { id: 'Escritorio', name: 'Escritório e Papelaria', icon: 'fa-print', subcategories: ['Impressoras POS & Caixas', 'Destruidoras de Papel', 'Calculadoras', 'Material de Escritório'] },
-  { id: 'Electrodomesticos', name: 'Electrodomésticos', icon: 'fa-snowflake', subcategories: ['Ar Condicionado', 'Frigoríficos', 'Micro-ondas', 'Pequenos Domésticos'] },
-  { id: 'Smartphones', name: 'Smartphones e Tablets', icon: 'fa-mobile-screen', subcategories: ['iPhones', 'Smartphones Android', 'Tablets & iPads', 'Smartwatches'] },
-  { id: 'Energia', name: 'Energia', icon: 'fa-bolt', subcategories: ['UPS / No-Breaks', 'Power Stations Portáteis', 'Estabilizadores AVR', 'Geradores & Inversores'] },
-  { id: 'ImagemSom', name: 'Imagem e Som', icon: 'fa-tv', subcategories: ['Smart TVs 4K', 'Soundbars & Áudio', 'Colunas Bluetooth', 'Auscultadores & Earbuds', 'Suportes de TV & Cabos'] },
+  { id: 'Informatica', name: 'Informática', icon: 'fa-laptop', subcategories: ['Portáteis', 'Computadores de Secretária', 'Servidores & Storage', 'Switches & Redes', 'Impressoras & POS', 'Monitores', 'Componentes & Cabos'] },
+  { id: 'Escritorio', name: 'Escritório e Papelaria', icon: 'fa-print', subcategories: ['Impressoras & Multifunções', 'Impressoras POS & Caixas', 'Destruidoras de Papel', 'Calculadoras & Acessórios'] },
+  { id: 'Electrodomesticos', name: 'Electrodomésticos', icon: 'fa-snowflake', subcategories: ['Ar Condicionado', 'Frigoríficos & Geleiras', 'Micro-ondas', 'Pequenos Domésticos'] },
+  { id: 'Smartphones', name: 'Smartphones e Tablets', icon: 'fa-mobile-screen', subcategories: ['iPhones (Apple)', 'Smartphones Samsung', 'Xiaomi & Android', 'Tablets & iPads', 'Smartwatches & Acessórios'] },
+  { id: 'Energia', name: 'Energia', icon: 'fa-bolt', subcategories: ['UPS / No-Breaks Online', 'Power Stations Portáteis', 'Estabilizadores AVR Industriais', 'Geradores & Baterias Solares'] },
+  { id: 'ImagemSom', name: 'Imagem e Som', icon: 'fa-tv', subcategories: ['Smart TVs 4K & QLED', 'Soundbars & Home Cinema', 'Colunas Bluetooth & Party Speakers', 'Auscultadores & Earbuds', 'Suportes de TV & Cabos'] },
 ];
 
-/* ─── CATÁLOGO DE PRODUTOS COMPLETO EXTRAÍDO DO DUMP NCR ANGOLA ─── */
+/* ─── CATÁLOGO EXPANDIDO E COMPLETO COM DADOS DA NCR ANGOLA ─── */
 const productsData = [
-  // ==========================================
-  // 1. IMAGEM E SOM (EXTRAÍDOS DE WWW.NCRANGOLA.COM)
-  // ==========================================
+  // =========================================================================
+  // 1. INFORMÁTICA & COMPUTADORES
+  // =========================================================================
   {
-    id: 'ncr-is-01',
+    id: 'inf-01',
+    sku: 'HP-PB450G10',
+    mpn: '7X024ES',
+    name: 'Portátil HP ProBook 450 G10 15.6" FHD',
+    subtitle: 'Intel Core i5-1335U · 16GB RAM · 512GB SSD NVMe · Windows 11 Pro',
+    category: 'Informatica',
+    subCategory: 'Portáteis',
+    brand: 'HP',
+    priceVal: 958360,
+    priceStr: '958.360,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=600&q=80',
+    badge: 'Mais Vendido',
+    ram: '16GB',
+    screenSize: '15.6"',
+    screenType: 'IPS Anti-reflexo',
+    resolution: 'Full HD 1080p',
+    hasBluetooth: true,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '65W',
+    weight: '1.74 kg',
+    specs: ['Processador Intel Core i5 13ª Geração até 4.6GHz', '16GB RAM DDR4 3200MHz de alta performance', 'Armazenamento SSD 512GB M.2 PCIe NVMe', 'Ecrã 15.6" Full HD IPS Anti-reflexo com micro-bordas', 'Wi-Fi 6E + Bluetooth 5.3 + Porta LAN Gigabit', 'Segurança empresarial HP Wolf Security integrada']
+  },
+  {
+    id: 'inf-02',
+    sku: 'DELL-LAT5440',
+    mpn: 'LAT5440-I7',
+    name: 'Portátil Dell Latitude 5440 14" FHD',
+    subtitle: 'Intel Core i7-1355U · 16GB DDR5 · 512GB SSD · VPro Empresarial',
+    category: 'Informatica',
+    subCategory: 'Portáteis',
+    brand: 'DELL',
+    priceVal: 1250000,
+    priceStr: '1.250.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80',
+    badge: 'Empresarial Top',
+    ram: '16GB',
+    screenSize: '14"',
+    screenType: 'IPS ComfortView',
+    resolution: 'Full HD 1080p',
+    hasBluetooth: true,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '65W',
+    weight: '1.36 kg',
+    specs: ['Intel Core i7-1355U vPro 10 Cores até 5.0GHz', '16GB RAM DDR5 4800MHz Ultra Rápida', 'SSD 512GB NVMe PCIe Gen4 Classe 35', 'Ecrã 14" FHD ComfortView Plus Anti-glare', 'Garantia oficial Dell ProSupport 3 Anos', 'Portas Thunderbolt 4, HDMI e RJ45 LAN Gigabit']
+  },
+  {
+    id: 'inf-03',
+    sku: 'LEN-TP-E14G5',
+    mpn: '21JR0018GP',
+    name: 'Portátil Lenovo ThinkPad E14 Gen 5',
+    subtitle: 'AMD Ryzen 7 7730U · 16GB RAM · 512GB SSD · Chassi Militar Mil-Spec',
+    category: 'Informatica',
+    subCategory: 'Portáteis',
+    brand: 'LENOVO',
+    priceVal: 1180000,
+    priceStr: '1.180.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=600&q=80',
+    badge: 'Ultra Robusto',
+    ram: '16GB',
+    screenSize: '14"',
+    screenType: 'IPS',
+    resolution: 'Full HD 1080p',
+    hasBluetooth: true,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '65W',
+    weight: '1.41 kg',
+    specs: ['AMD Ryzen 7 7730U (8 Núcleos / 16 Threads)', '16GB RAM DDR4 3200MHz', 'SSD 512GB M.2 2242 PCIe', 'Certificação Militar Mil-STD-810H contra quedas e poeira', 'Teclado ergonómico retroiluminado com TrackPoint', 'Câmara FHD com obturador de privacidade']
+  },
+  {
+    id: 'inf-04',
+    sku: 'APP-MBP14M3',
+    mpn: 'MRX33PO',
+    name: 'Apple MacBook Pro 14" M3 Pro',
+    subtitle: 'Chip M3 Pro 11-Core · 18GB RAM · 512GB SSD · Liquid Retina XDR',
+    category: 'Informatica',
+    subCategory: 'Portáteis',
+    brand: 'APPLE',
+    priceVal: 2650000,
+    priceStr: '2.650.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80',
+    badge: 'Apple Oficial',
+    ram: '18GB',
+    screenSize: '14"',
+    screenType: 'Liquid Retina XDR',
+    resolution: 'Liquid Retina 3K (3024x1964)',
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: true,
+    hasSubwoofer: true,
+    hasMountSupport: false,
+    powerWatts: '70W MagSafe',
+    weight: '1.61 kg',
+    specs: ['Chip Apple M3 Pro com GPU de 14 núcleos', '18GB Memória Unificada de Alta Velocidade', 'SSD 512GB PCIe de Alta Performance', 'Ecrã Liquid Retina XDR 120Hz ProMotion', 'Sistema de som de 6 altifalantes com subwoofers', 'Bateria com autonomia até 18 horas']
+  },
+  {
+    id: 'inf-05',
+    sku: 'HP-PD400G9',
+    mpn: '400G9-SFF',
+    name: 'Desktop HP ProDesk 400 G9 SFF',
+    subtitle: 'Intel Core i5-13500 · 16GB RAM · 512GB SSD · Inclui Rato e Teclado',
+    category: 'Informatica',
+    subCategory: 'Computadores de Secretária',
+    brand: 'HP',
+    priceVal: 870000,
+    priceStr: '870.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=600&q=80',
+    badge: 'Desktop Corporativo',
+    ram: '16GB',
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: true,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '180W',
+    weight: '4.2 kg',
+    specs: ['Intel Core i5-13500 14 Cores / 20 Threads', '16GB RAM DDR4 3200MHz', 'SSD 512GB NVMe M.2', 'Portas USB-C, DisplayPort, HDMI, RJ45 LAN', 'Gabinete Small Form Factor económico e silencioso', 'Windows 11 Pro 64-bit']
+  },
+  {
+    id: 'inf-06',
+    sku: 'HPE-ML30G11',
+    mpn: 'ML30-G11-XEON',
+    name: 'Servidor HPE ProLiant ML30 Gen11 Torre',
+    subtitle: 'Intel Xeon E-2434 · 32GB RAM ECC · 2x 2TB SATA Enterprise RAID',
+    category: 'Informatica',
+    subCategory: 'Servidores & Storage',
+    brand: 'HPE',
+    priceVal: 3850000,
+    priceStr: '3.850.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80',
+    badge: 'Servidor Torre',
+    ram: '32GB',
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '500W Redundante',
+    weight: '15.6 kg',
+    specs: ['Processador Intel Xeon E-2434 4 Cores / 8 Threads', '32GB Memória DDR5 ECC Registada', '2 Discos 2TB SATA 7.2K Enterprise em RAID 1', 'Controlador HPE Smart Array & Gestão Remota iLO 6', 'Dupla Fonte de Alimentação Redundante', '4 Portas Gigabit LAN integradas']
+  },
+  {
+    id: 'inf-07',
+    sku: 'CISCO-C1000',
+    mpn: 'C1000-24P-4G-L',
+    name: 'Switch Cisco Catalyst 1000 24P PoE+',
+    subtitle: '24 Portas Gigabit PoE+ · 4x SFP 1G Uplink · 195W Power Budget',
+    category: 'Informatica',
+    subCategory: 'Switches & Redes',
+    brand: 'CISCO',
+    priceVal: 990000,
+    priceStr: '990.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    badge: 'Cisco Enterprise',
+    ram: '512MB',
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: true,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '195W PoE',
+    weight: '3.8 kg',
+    specs: ['24 Portas 10/100/1000 Gigabit Ethernet PoE+', '4 Slots SFP 1G para Fibra Óptica', 'Orçamento PoE total de 195W', 'Gestão avançada VLANs, QoS, IGMP Snooping', 'Montagem em Bastidor / Rack 19"', 'Cisco IOS Software com interface Web intuitiva']
+  },
+  {
+    id: 'inf-08',
+    sku: 'HP-P22G5',
+    mpn: 'P22-G5-FHD',
+    name: 'Monitor HP P22 G5 21.5" Full HD',
+    subtitle: '1920x1080 · Painel IPS 75Hz · HDMI & VGA · Low Blue Light',
+    category: 'Informatica',
+    subCategory: 'Monitores',
+    brand: 'HP',
+    priceVal: 183194,
+    priceStr: '183.194,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80',
+    badge: 'Monitor HP',
+    ram: null,
+    screenSize: '21.5"',
+    screenType: 'IPS',
+    resolution: 'Full HD 1080p',
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '20W',
+    weight: '2.8 kg',
+    specs: ['Resolução Full HD 1920 x 1080 a 75Hz', 'Painel IPS com ângulos de visualização de 178°', 'Entradas HDMI 1.4, DisplayPort 1.2 e VGA', 'Suporte VESA 100x100mm para fixação em parede', 'Filtro HP Eye Ease contra fadiga ocular']
+  },
+  {
+    id: 'inf-09',
+    sku: 'FUK-CAT6-305',
+    mpn: '23400105',
+    name: 'Cabo de Rede Cat6 UTP Furukawa 305m',
+    subtitle: '100% Cobre Puro 23AWG · Homologado 250MHz · Capa LSZH Anti-Chama',
+    category: 'Informatica',
+    subCategory: 'Componentes & Cabos',
+    brand: 'FURUKAWA',
+    priceVal: 55000,
+    priceStr: '55.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    badge: '100% Cobre',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: null,
+    weight: '12.5 kg',
+    specs: ['Caixa de puxar com 305 metros lineares', 'Condutores 100% Cobre Puro 23AWG', 'Capa LSZH sem emissão de fumos tóxicos em caso de incêndio', 'Testado e certificado para redes Gigabit Ethernet 1000BASE-T']
+  },
+
+  // =========================================================================
+  // 2. ESCRITÓRIO E PAPELARIA
+  // =========================================================================
+  {
+    id: 'esc-01',
+    sku: 'HP-M140W',
+    mpn: 'HP-LJ-M140W',
+    name: 'Impressora Multifunções HP LaserJet M140w',
+    subtitle: 'Laser Monocromática · Cópia & Scanner · Wi-Fi & USB',
+    category: 'Escritorio',
+    subCategory: 'Impressoras & Multifunções',
+    brand: 'HP',
+    priceVal: 163209,
+    priceStr: '163.209,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=600&q=80',
+    badge: 'Laser Multifunções',
+    ram: '64MB',
+    screenSize: null,
+    screenType: null,
+    resolution: '600x600 dpi',
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '350W',
+    weight: '5.4 kg',
+    specs: ['Impressão, digitalização e fotocópia em formato compacto', 'Velocidade até 21 páginas por minuto', 'Conectividade Wi-Fi sem fios com app HP Smart', 'Toner HP 141A de alto rendimento incluído']
+  },
+  {
+    id: 'esc-02',
+    sku: 'EPS-L3250',
+    mpn: 'EPSON-L3250',
+    name: 'Impressora Epson EcoTank L3250 Wi-Fi',
+    subtitle: 'Tanque de Tinta Contínuo · Cópia/Scan · 4.500 págs Preto',
+    category: 'Escritorio',
+    subCategory: 'Impressoras & Multifunções',
+    brand: 'EPSON',
+    priceVal: 285000,
+    priceStr: '285.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=600&q=80',
+    badge: 'EcoTank Super Económica',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: '5760x1440 dpi',
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '12W',
+    weight: '3.9 kg',
+    specs: ['Sistema EcoTank 100% sem cartuchos', 'Imprime até 4.500 páginas a preto ou 7.500 a cores por kit', 'Conexão Wi-Fi e Wi-Fi Direct para telemóveis', 'Tecnologia Heat-Free sem aquecimento']
+  },
+  {
+    id: 'esc-03',
+    sku: 'WIN-POS80',
+    mpn: 'WINTEC-POS80',
+    name: 'Impressora POS Térmica Wintec 80mm',
+    subtitle: 'Impressão de Faturas e Talões · USB + LAN · Corte Automático',
+    category: 'Escritorio',
+    subCategory: 'Impressoras POS & Caixas',
+    brand: 'WINTECH',
+    priceVal: 119794,
+    priceStr: '119.794,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1556742049-0a67e557224f?auto=format&fit=crop&w=600&q=80',
+    badge: 'Ponto de Venda POS',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: '203 dpi',
+    hasBluetooth: false,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '30W',
+    weight: '1.2 kg',
+    specs: ['Velocidade ultra rápida 250 mm/s', 'Papel térmico 80mm standard', 'Guilhotina automática com 1.5 milhões de cortes', 'Compatível com softwares certificados pela AGT em Angola']
+  },
+  {
+    id: 'esc-04',
+    sku: 'REX-PRO11',
+    mpn: 'REXEL-P4-11',
+    name: 'Destruidora de Documentos Rexel ProStyle+',
+    subtitle: 'Corte Cruzado DIN P-4 · Destrói 11 Folhas, Cartões e Agrafos',
+    category: 'Escritorio',
+    subCategory: 'Destruidoras de Papel',
+    brand: 'REXEL',
+    priceVal: 95000,
+    priceStr: '95.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80',
+    badge: 'Segurança de Dados',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '200W',
+    weight: '6.8 kg',
+    specs: ['Nível de segurança confidencial DIN P-4 (4x35mm)', 'Capacidade para 11 folhas simultâneas', 'Destrói cartões de crédito, clipes e agrafos', 'Cesto de 20 litros com visor transparente']
+  },
+
+  // =========================================================================
+  // 3. ELECTRODOMÉSTICOS & CLIMATIZAÇÃO
+  // =========================================================================
+  {
+    id: 'elec-01',
+    sku: 'LG-12K-INV',
+    mpn: 'LG-DUAL-INV-12',
+    name: 'Ar Condicionado Split Inverter LG Dual Inverter 12000 BTU',
+    subtitle: 'Inverter Económico · Refrigeração Rápida · Filtro Anti-Bactérias',
+    category: 'Electrodomesticos',
+    subCategory: 'Ar Condicionado',
+    brand: 'LG',
+    priceVal: 385000,
+    priceStr: '385.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80',
+    badge: 'Economia 70% Energia',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '1080W',
+    weight: '31 kg (Conjunto)',
+    specs: ['Capacidade 12.000 BTUs/h Refrigeração', 'Tecnologia Dual Inverter com até 70% de poupança elétrica', 'Gás ecológico R410A de alto rendimento', 'Controlo remoto digital com funções Sleep e Turbo', 'Garantia de 10 anos no compressor']
+  },
+  {
+    id: 'elec-02',
+    sku: 'SAM-18K-WF',
+    mpn: 'SAM-WINDFREE-18',
+    name: 'Ar Condicionado Split Samsung WindFree 18000 BTU',
+    subtitle: 'Refrigeração sem Vento Direto · Wi-Fi SmartThings · Inverter',
+    category: 'Electrodomesticos',
+    subCategory: 'Ar Condicionado',
+    brand: 'SAMSUNG',
+    priceVal: 540000,
+    priceStr: '540.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80',
+    badge: 'WindFree Conforto',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '1600W',
+    weight: '38 kg',
+    specs: ['18.000 BTUs ideal para salas amplas e escritórios', 'Tecnologia exclusiva WindFree com 23.000 microfuros', 'Controlo pelo smartphone via Wi-Fi SmartThings', 'Filtro lavável que retém 99% de poeira e bactérias']
+  },
+  {
+    id: 'elec-03',
+    sku: 'SAM-FRIG-328',
+    mpn: 'RB34T602FSA',
+    name: 'Frigorífico Combinado No Frost Samsung 328L Inox',
+    subtitle: 'Compressor Digital Inverter · All-Around Cooling · Não Cria Gelo',
+    category: 'Electrodomesticos',
+    subCategory: 'Frigoríficos & Geleiras',
+    brand: 'SAMSUNG',
+    priceVal: 495000,
+    priceStr: '495.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=600&q=80',
+    badge: 'No Frost Inox',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '140W',
+    weight: '66 kg',
+    specs: ['Capacidade total de 328 Litros', 'Tecnologia No Frost total (sem formação de gelo)', 'Sistema All-Around Cooling para temperatura uniforme', 'Gaveta Fresh Zone para conservação prolongada de alimentos']
+  },
+
+  // =========================================================================
+  // 4. SMARTPHONES E TABLETS
+  // =========================================================================
+  {
+    id: 'smp-01',
+    sku: 'IPH15P-128',
+    mpn: 'APPLE-A2848',
+    name: 'Apple iPhone 15 Pro 128GB Titânio Natural',
+    subtitle: 'Chip A17 Pro · Ecrã Super Retina XDR 6.1" 120Hz · USB-C 3.0',
+    category: 'Smartphones',
+    subCategory: 'iPhones (Apple)',
+    brand: 'APPLE',
+    priceVal: 1290000,
+    priceStr: '1.290.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=600&q=80',
+    badge: 'Lançamento Apple',
+    ram: '8GB',
+    screenSize: '6.1"',
+    screenType: 'OLED Super Retina XDR',
+    resolution: '2556x1179 pixels',
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: true,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '20W Fast Charge',
+    weight: '187 g',
+    specs: ['Design inovador em Titânio de grau aeroespacial', 'Câmara principal de 48MP com teleobjetiva 3x', 'Dynamic Island interactiva com notificações em tempo real', 'Conexão 5G e USB-C com velocidade USB 3']
+  },
+  {
+    id: 'smp-02',
+    sku: 'SAM-S24U-256',
+    mpn: 'SM-S928B',
+    name: 'Samsung Galaxy S24 Ultra 256GB Titanium Gray',
+    subtitle: 'Snapdragon 8 Gen 3 · Galaxy AI · S-Pen Integrada · Câmara 200MP',
+    category: 'Smartphones',
+    subCategory: 'Smartphones Samsung',
+    brand: 'SAMSUNG',
+    priceVal: 1350000,
+    priceStr: '1.350.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=80',
+    badge: 'Galaxy AI Top',
+    ram: '12GB',
+    screenSize: '6.8"',
+    screenType: 'Dynamic AMOLED 2X',
+    resolution: 'Quad HD+ (3120x1440)',
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: true,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '45W Fast Charge',
+    weight: '232 g',
+    specs: ['Ecrã plano 6.8" 120Hz com vidro Corning Gorilla Armor', 'Câmara principal de 200MP com zoom óptico de até 5x e 100x Space Zoom', 'Recursos Galaxy AI: tradução simultânea e Circle to Search', 'Bateria duradoura de 5000mAh']
+  },
+  {
+    id: 'smp-03',
+    sku: 'APP-IPADAIR-M2',
+    mpn: 'MU9D3TY/A',
+    name: 'Apple iPad Air 11" M2 Wi-Fi 128GB',
+    subtitle: 'Chip Apple M2 · Liquid Retina · Compatível com Apple Pencil Pro',
+    category: 'Smartphones',
+    subCategory: 'Tablets & iPads',
+    brand: 'APPLE',
+    priceVal: 780000,
+    priceStr: '780.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80',
+    badge: 'Tablet M2',
+    ram: '8GB',
+    screenSize: '11"',
+    screenType: 'Liquid Retina IPS',
+    resolution: '2360x1640 pixels',
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: true,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '30W Fast Charge',
+    weight: '462 g',
+    specs: ['Chip Apple M2 de alta velocidade gráfica e inteligência', 'Ecrã Liquid Retina com revestimento anti-reflexo', 'Câmara frontal ultra grande-angular de 12MP em formato horizontal', 'Suporta Magic Keyboard e Apple Pencil Pro']
+  },
+
+  // =========================================================================
+  // 5. ENERGIA & UPS
+  // =========================================================================
+  {
+    id: 'ene-01',
+    sku: 'WIN-PS500',
+    mpn: 'WINTEC-PS500',
+    name: 'Power Station Portátil Wintech 500Wh',
+    subtitle: '500Wh / 600W · Tomadas AC 220V + USB-C PD 100W · Lítio LiFePO4',
+    category: 'Energia',
+    subCategory: 'Power Stations Portáteis',
+    brand: 'WINTECH',
+    priceVal: 554781,
+    priceStr: '554.781,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    badge: 'Energia Portátil',
+    ram: null,
+    screenSize: null,
+    screenType: 'Display LCD',
+    resolution: null,
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '600W (Pico 1000W)',
+    weight: '5.8 kg',
+    specs: ['Capacidade de 500Wh com células de bateria LiFePO4 (3000+ ciclos)', '2 Tomadas AC 220V com onda senoidal pura para computadores', 'Porta USB-C Power Delivery de 100W e saídas 12V para viatura', 'Pode ser carregado via painéis solares, tomada de parede ou automóvel']
+  },
+  {
+    id: 'ene-02',
+    sku: 'APC-SMT1500',
+    mpn: 'SMT1500IC',
+    name: 'UPS APC Smart-UPS 1500VA LCD 230V',
+    subtitle: '1500VA / 1000W · Onda Senoidal Pura · Estabilizador AVR Integrado',
+    category: 'Energia',
+    subCategory: 'UPS / No-Breaks Online',
+    brand: 'APC',
+    priceVal: 210000,
+    priceStr: '210.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    badge: 'Proteção Máxima',
+    ram: null,
+    screenSize: null,
+    screenType: 'Display LCD Diagnóstico',
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '1000W',
+    weight: '24.1 kg',
+    specs: ['Proteção de alimentação de nível empresarial para servidores e redes', 'Regulação Automática de Tensão (AVR) contra picos e quebras', 'Ecrã LCD com dados de carga, voltagem e autonomia', 'Entrada SmartSlot para placa de gestão em rede']
+  },
+  {
+    id: 'ene-03',
+    sku: 'WIN-PS300',
+    mpn: 'WINTEC-PS300',
+    name: 'Power Station Portátil Wintech 300Wh',
+    subtitle: '300Wh / 300W · Compacta para Routers, Laptops e Iluminação',
+    category: 'Energia',
+    subCategory: 'Power Stations Portáteis',
+    brand: 'WINTECH',
+    priceVal: 308426,
+    priceStr: '308.426,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    badge: 'Ideal Home Office',
+    ram: null,
+    screenSize: null,
+    screenType: 'Display LCD',
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '300W',
+    weight: '3.6 kg',
+    specs: ['Capacidade 300Wh fornecendo até 8h de autonomia para internet e portátil', 'Múltiplas portas USB Fast Charge e tomada 220V', 'Lanterna LED integrada com modo SOS', 'Proteção avançada BMS contra curto-circuitos']
+  },
+
+  // =========================================================================
+  // 6. IMAGEM E SOM (EXTRAÍDOS DO DUMP REAL WWW.NCRANGOLA.COM)
+  // =========================================================================
+  {
+    id: 'ims-01',
     sku: '4086',
     mpn: 'CBD15H1',
     name: 'Coluna Party Speaker Tchilo Party 200W Preto',
     subtitle: '200W Potência Real · Bluetooth · USB/SD · Iluminação LED Multicolor',
     category: 'ImagemSom',
-    subCategory: 'Colunas Bluetooth',
+    subCategory: 'Colunas Bluetooth & Party Speakers',
     brand: 'WINTECH',
     priceVal: 155714.88,
     priceStr: '155.714,88 AKZ',
@@ -170,13 +759,13 @@ const productsData = [
     ]
   },
   {
-    id: 'ncr-is-02',
+    id: 'ims-02',
     sku: '4078',
     mpn: '43E2000H',
     name: 'TV 43" LED Full HD Skyworth',
     subtitle: 'Painel Full HD 1080p · HDMI & USB · Design Slim Elegante',
     category: 'ImagemSom',
-    subCategory: 'Smart TVs 4K',
+    subCategory: 'Smart TVs 4K & QLED',
     brand: 'SKYWORTH',
     priceVal: 196586.16,
     priceStr: '196.586,16 AKZ',
@@ -202,7 +791,7 @@ const productsData = [
     ]
   },
   {
-    id: 'ncr-is-03',
+    id: 'ims-03',
     sku: '2982',
     mpn: '435430618006',
     name: 'Auscultador USB STEREO VOX505USB',
@@ -233,7 +822,7 @@ const productsData = [
     ]
   },
   {
-    id: 'ncr-is-04',
+    id: 'ims-04',
     sku: '3281',
     mpn: '51EF0950AA000',
     name: 'Hs Sound Blaster Jam V2 Bluetooth',
@@ -264,7 +853,7 @@ const productsData = [
     ]
   },
   {
-    id: 'ncr-is-05',
+    id: 'ims-05',
     sku: '4978',
     mpn: 'MWTY3ZM/A',
     name: 'Auscultadores EARPODS Com Connector Lightning Apple',
@@ -295,7 +884,7 @@ const productsData = [
     ]
   },
   {
-    id: 'ncr-is-06',
+    id: 'ims-06',
     sku: '4460',
     mpn: 'BHR8391GL',
     name: 'Auscultadores BUDS 6 Active Branco Xiaomi',
@@ -326,7 +915,7 @@ const productsData = [
     ]
   },
   {
-    id: 'ncr-is-07',
+    id: 'ims-07',
     sku: '2745',
     mpn: '462204',
     name: 'Suporte De Tecto Para Tv 37" À 70" Ajustável 180º',
@@ -357,13 +946,13 @@ const productsData = [
     ]
   },
   {
-    id: 'ncr-is-08',
+    id: 'ims-08',
     sku: '2250',
     mpn: '31730024400',
     name: 'Barra De Som USB Soundbar 100 6W Genius',
     subtitle: 'Soundbar Compacta para PC e TV · Alimentação USB · Áudio 3D',
     category: 'ImagemSom',
-    subCategory: 'Soundbars & Áudio',
+    subCategory: 'Soundbars & Home Cinema',
     brand: 'GENIUS',
     priceVal: 11239.26,
     priceStr: '11.239,26 AKZ',
@@ -388,378 +977,49 @@ const productsData = [
     ]
   },
   {
-    id: 'ncr-is-09',
-    sku: '4238',
-    mpn: 'LSY91A',
-    name: 'Cabo Aux Audio 3.5mm 1M Preto LDNIO',
-    subtitle: 'Conectores Banhados a Ouro · Cabo Trançado Reforçado Anti-nó',
+    id: 'ims-09',
+    sku: 'SAM-65Q60D',
+    mpn: 'QN65Q60DAFXZA',
+    name: 'Smart TV Samsung 65" QLED 4K Q60D',
+    subtitle: 'Quantum Dot 100% Cor · HDR10+ · Dolby Atmos · Tizen OS Netflix/YouTube',
     category: 'ImagemSom',
-    subCategory: 'Suportes de TV & Cabos',
-    brand: 'LDNIO',
-    priceVal: 2250.36,
-    priceStr: '2.250,36 AKZ',
-    img: 'https://ncrangola.vtexassets.com/arquivos/ids/173913/Cabo-.jpg?v=639010622653770000',
-    badge: 'Cabo Blindado',
-    ram: null,
-    screenSize: null,
-    screenType: null,
-    resolution: null,
-    hasBluetooth: false,
-    hasLAN: false,
-    hasNetflix: false,
-    hasSubwoofer: false,
-    hasMountSupport: false,
-    powerWatts: null,
-    weight: '30 g',
-    specs: [
-      'Cabo Auxiliar P2 3.5mm macho-macho de 1 metro',
-      'Conectores banhados a ouro para máxima condução sem interferências',
-      'Revestimento em nylon reforçado de alta durabilidade',
-      'Compatível com smartphones, computadores, colunas e sistemas de som'
-    ]
-  },
-  {
-    id: 'ncr-is-10',
-    sku: '291',
-    mpn: '908285',
-    name: 'Auscultadores EB-95 Blush Maxell',
-    subtitle: 'Auriculares Estéreo Leves com Fio · Isolamento Passivo',
-    category: 'ImagemSom',
-    subCategory: 'Auscultadores & Earbuds',
-    brand: 'MAXELL',
-    priceVal: 1990.00,
-    priceStr: '1.990,00 AKZ',
-    img: 'https://ncrangola.vtexassets.com/arquivos/ids/162948/imagem_2025-01-31_110450311.png.png?v=638739182955900000',
-    badge: 'Super Económico',
-    ram: null,
-    screenSize: null,
-    screenType: null,
-    resolution: null,
-    hasBluetooth: false,
-    hasLAN: false,
-    hasNetflix: false,
-    hasSubwoofer: false,
-    hasMountSupport: false,
-    powerWatts: 'Jack 3.5mm',
-    weight: '15 g',
-    specs: [
-      'Auriculares intra-auriculares leves e confortáveis',
-      'Cabo de 1.2 metros com conector standard de 3.5 mm',
-      'Cor Blush moderna e acabamento suave',
-      'Compatível com todos os leitores e telemóveis com entrada de auscultadores'
-    ]
-  },
-
-  // ==========================================
-  // 2. INFORMÁTICA
-  // ==========================================
-  {
-    id: 'p-inf-01',
-    sku: '7X024ES',
-    mpn: 'HP-PB450G10',
-    name: 'Portátil HP ProBook 450 G10 15.6" FHD',
-    subtitle: 'Intel Core i5-1335U · 16GB RAM · 512GB SSD NVMe · Windows 11 Pro',
-    category: 'Informatica',
-    subCategory: 'Portáteis',
-    brand: 'HP',
-    priceVal: 958360,
-    priceStr: '958.360,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=600&q=80',
-    badge: 'Mais Vendido',
-    ram: '16GB',
-    screenSize: '15.6"',
-    screenType: 'IPS',
-    resolution: 'Full HD 1080p',
+    subCategory: 'Smart TVs 4K & QLED',
+    brand: 'SAMSUNG',
+    priceVal: 890000,
+    priceStr: '890.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=600&q=80',
+    badge: 'QLED 4K Top',
+    ram: '4GB',
+    screenSize: '65"',
+    screenType: 'QLED',
+    resolution: '4K Ultra HD',
     hasBluetooth: true,
     hasLAN: true,
-    hasNetflix: false,
-    hasSubwoofer: false,
-    hasMountSupport: false,
-    powerWatts: '65W',
-    weight: '1.74 kg',
-    specs: ['Processador Intel Core i5 13ª Geração até 4.6GHz', '16GB RAM DDR4 3200MHz (Expansível)', 'Armazenamento SSD 512GB M.2 PCIe NVMe', 'Ecrã 15.6" FHD IPS Anti-reflexo', 'Wi-Fi 6E + Bluetooth 5.3 + Porta LAN Gigabit', 'Segurança HP Wolf Security e Leitor Biométrico']
-  },
-  {
-    id: 'p-inf-02',
-    sku: 'LAT5440-I7',
-    mpn: 'DELL-LAT5440',
-    name: 'Portátil Dell Latitude 5440 14" FHD',
-    subtitle: 'Intel Core i7-1355U · 16GB DDR5 · 512GB SSD · VPro Empresarial',
-    category: 'Informatica',
-    subCategory: 'Portáteis',
-    brand: 'DELL',
-    priceVal: 1250000,
-    priceStr: '1.250.000,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80',
-    badge: 'Empresarial Top',
-    ram: '16GB',
-    screenSize: '14"',
-    screenType: 'IPS',
-    resolution: 'Full HD 1080p',
-    hasBluetooth: true,
-    hasLAN: true,
-    hasNetflix: false,
-    hasSubwoofer: false,
-    hasMountSupport: false,
-    powerWatts: '65W',
-    weight: '1.36 kg',
-    specs: ['Intel Core i7-1355U vPro 10 Cores', '16GB RAM DDR5 4800MHz Ultra Rápida', 'SSD 512GB NVMe PCIe Gen4', 'Ecrã 14" FHD ComfortView Plus', 'Garantia Dell ProSupport 3 Anos', 'Portas Thunderbolt 4, HDMI e RJ45 LAN']
-  },
-  {
-    id: 'p-inf-03',
-    sku: '21JR0018GP',
-    mpn: 'THINKPAD-E14G5',
-    name: 'Portátil Lenovo ThinkPad E14 Gen 5',
-    subtitle: 'AMD Ryzen 7 7730U · 16GB RAM · 512GB SSD · Chassi Militar',
-    category: 'Informatica',
-    subCategory: 'Portáteis',
-    brand: 'LENOVO',
-    priceVal: 1180000,
-    priceStr: '1.180.000,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=600&q=80',
-    badge: 'Ultra Robusto',
-    ram: '16GB',
-    screenSize: '14"',
-    screenType: 'IPS',
-    resolution: 'Full HD 1080p',
-    hasBluetooth: true,
-    hasLAN: true,
-    hasNetflix: false,
-    hasSubwoofer: false,
-    hasMountSupport: false,
-    powerWatts: '65W',
-    weight: '1.41 kg',
-    specs: ['AMD Ryzen 7 7730U (8 Núcleos / 16 Threads)', '16GB RAM DDR4 3200MHz', 'SSD 512GB M.2 2242 PCIe', 'Certificação Militar Mil-STD-810H', 'Teclado retroiluminado com TrackPoint', 'Câmara FHD com obturador de privacidade']
-  },
-  {
-    id: 'p-inf-04',
-    sku: 'MRX33PO',
-    mpn: 'APPLE-MBP14M3',
-    name: 'Apple MacBook Pro 14" M3 Pro',
-    subtitle: 'Chip M3 Pro 11-Core · 18GB RAM · 512GB SSD · Liquid Retina XDR',
-    category: 'Informatica',
-    subCategory: 'Portáteis',
-    brand: 'APPLE',
-    priceVal: 2650000,
-    priceStr: '2.650.000,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80',
-    badge: 'Apple Oficial',
-    ram: '18GB',
-    screenSize: '14"',
-    screenType: 'Liquid Retina XDR',
-    resolution: 'Liquid Retina 3K',
-    hasBluetooth: true,
-    hasLAN: false,
     hasNetflix: true,
     hasSubwoofer: true,
-    hasMountSupport: false,
-    powerWatts: '70W',
-    weight: '1.61 kg',
-    specs: ['Chip Apple M3 Pro com GPU 14-Core', '18GB Memória Unificada de Alta Velocidade', 'SSD 512GB PCIe de Alta Performance', 'Ecrã Liquid Retina XDR 120Hz ProMotion', 'Sistema de som com 6 altifalantes e subwoofers', 'Bateria até 18 horas']
-  },
-  {
-    id: 'p-inf-05',
-    sku: '400G9-SFF',
-    mpn: 'HP-PRODESK400G9',
-    name: 'Desktop HP ProDesk 400 G9 SFF',
-    subtitle: 'Intel Core i5-13500 · 16GB RAM · 512GB SSD · Inclui Rato e Teclado',
-    category: 'Informatica',
-    subCategory: 'Computadores de Secretária',
-    brand: 'HP',
-    priceVal: 870000,
-    priceStr: '870.000,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=600&q=80',
-    badge: 'Desktop Corporativo',
-    ram: '16GB',
-    screenSize: null,
-    screenType: null,
-    resolution: null,
-    hasBluetooth: true,
-    hasLAN: true,
-    hasNetflix: false,
-    hasSubwoofer: false,
-    hasMountSupport: false,
-    powerWatts: '180W',
-    weight: '4.2 kg',
-    specs: ['Intel Core i5-13500 14 Cores / 20 Threads', '16GB RAM DDR4 3200MHz', 'SSD 512GB NVMe M.2', 'Portas USB-C, DisplayPort, HDMI, RJ45 LAN', 'Gabinete Small Form Factor económico e silencioso', 'Windows 11 Pro 64-bit']
-  },
-  {
-    id: 'p-inf-06',
-    sku: 'ML30-G11',
-    mpn: 'HPE-ML30GEN11',
-    name: 'Servidor HPE ProLiant ML30 Gen11 Torre',
-    subtitle: 'Intel Xeon E-2434 · 32GB RAM ECC · 2x 2TB SATA Enterprise RAID',
-    category: 'Informatica',
-    subCategory: 'Servidores & Storage',
-    brand: 'HPE',
-    priceVal: 3850000,
-    priceStr: '3.850.000,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80',
-    badge: 'Servidor Torre',
-    ram: '32GB',
-    screenSize: null,
-    screenType: null,
-    resolution: null,
-    hasBluetooth: false,
-    hasLAN: true,
-    hasNetflix: false,
-    hasSubwoofer: false,
     hasMountSupport: true,
-    powerWatts: '500W',
-    weight: '15.6 kg',
-    specs: ['Processador Intel Xeon E-2434 4 Cores / 8 Threads', '32GB Memória DDR5 ECC Registada', '2 Discos 2TB SATA 7.2K Enterprise em RAID 1', 'Controlador HPE Smart Array & Gestão Remota iLO 6', 'Dupla Fonte de Alimentação Redundante', '4 Portas Gigabit LAN integradas']
+    powerWatts: '145W',
+    weight: '21.3 kg',
+    specs: [
+      'Resolução 4K Ultra HD com 100% de volume de cor Quantum Dot',
+      'Processador Quantum Lite 4K com Upscaling inteligente para imagens nítidas',
+      'Sistema Tizen OS com Netflix, Prime Video, YouTube, Spotify e Apple TV',
+      'Design AirSlim ultra fino com suporte de parede padrão VESA'
+    ]
   },
   {
-    id: 'p-inf-07',
-    sku: 'C1000-24P',
-    mpn: 'CISCO-CAT1000',
-    name: 'Switch Cisco Catalyst 1000 24P PoE+',
-    subtitle: '24 Portas Gigabit PoE+ · 4x SFP 1G Uplink · 195W Power Budget',
-    category: 'Informatica',
-    subCategory: 'Switches & Redes',
-    brand: 'CISCO',
-    priceVal: 990000,
-    priceStr: '990.000,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    badge: 'Cisco Enterprise',
-    ram: '512MB',
-    screenSize: null,
-    screenType: null,
-    resolution: null,
-    hasBluetooth: true,
-    hasLAN: true,
-    hasNetflix: false,
-    hasSubwoofer: false,
-    hasMountSupport: true,
-    powerWatts: '195W',
-    weight: '3.8 kg',
-    specs: ['24 Portas 10/100/1000 Gigabit Ethernet PoE+', '4 Slots SFP 1G para Fibra Óptica', 'Orçamento PoE total de 195W', 'Gestão avançada VLANs, QoS, IGMP Snooping', 'Montagem em Bastidor / Rack 19"', 'Cisco IOS Software com interface Web intuitiva']
-  },
-  {
-    id: 'p-inf-08',
-    sku: 'P22-G5',
-    mpn: 'HP-P22G5FHD',
-    name: 'Monitor HP P22 G5 21.5" Full HD',
-    subtitle: '1920x1080 · Painel IPS 75Hz · HDMI & VGA · Low Blue Light',
-    category: 'Informatica',
-    subCategory: 'Monitores',
-    brand: 'HP',
-    priceVal: 183194,
-    priceStr: '183.194,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80',
-    badge: 'Monitor HP',
-    ram: null,
-    screenSize: '21.5"',
-    screenType: 'IPS',
-    resolution: 'Full HD 1080p',
-    hasBluetooth: false,
-    hasLAN: false,
-    hasNetflix: false,
-    hasSubwoofer: false,
-    hasMountSupport: true,
-    powerWatts: '20W',
-    weight: '2.8 kg',
-    specs: ['Resolução Full HD 1920 x 1080 a 75Hz', 'Painel IPS com ângulos de visualização de 178°', 'Entradas HDMI 1.4, DisplayPort 1.2 e VGA', 'Suporte VESA 100x100mm para fixação em parede', 'Filtro HP Eye Ease contra fadiga ocular']
-  },
-
-  // ==========================================
-  // 3. ESCRITÓRIO E PAPELARIA
-  // ==========================================
-  {
-    id: 'p-esc-01',
-    sku: 'M140W-HP',
-    mpn: 'HP-LJ-M140W',
-    name: 'Impressora Multifunções HP LaserJet M140w',
-    subtitle: 'Laser Monocromática · Cópia & Scanner · Wi-Fi & USB',
-    category: 'Escritorio',
-    subCategory: 'Impressoras & POS',
-    brand: 'HP',
-    priceVal: 163209,
-    priceStr: '163.209,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=600&q=80',
-    badge: 'Laser Multifunções',
-    ram: '64MB',
-    screenSize: null,
-    screenType: null,
-    resolution: '600x600 dpi',
-    hasBluetooth: false,
-    hasLAN: false,
-    hasNetflix: false,
-    hasSubwoofer: false,
-    hasMountSupport: false,
-    powerWatts: '350W',
-    weight: '5.4 kg',
-    specs: ['Impressão, digitalização e fotocópia em formato compacto', 'Velocidade até 21 páginas por minuto', 'Conectividade Wi-Fi sem fios com app HP Smart', 'Toner HP 141A de alto rendimento incluído']
-  },
-  {
-    id: 'p-esc-02',
-    sku: 'L3250-EPS',
-    mpn: 'EPSON-L3250',
-    name: 'Impressora Epson EcoTank L3250 Wi-Fi',
-    subtitle: 'Tanque de Tinta Contínuo · Cópia/Scan · 4.500 págs Preto',
-    category: 'Escritorio',
-    subCategory: 'Impressoras & POS',
-    brand: 'EPSON',
-    priceVal: 285000,
-    priceStr: '285.000,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=600&q=80',
-    badge: 'EcoTank Super Económica',
-    ram: null,
-    screenSize: null,
-    screenType: null,
-    resolution: '5760x1440 dpi',
-    hasBluetooth: false,
-    hasLAN: false,
-    hasNetflix: false,
-    hasSubwoofer: false,
-    hasMountSupport: false,
-    powerWatts: '12W',
-    weight: '3.9 kg',
-    specs: ['Sistema EcoTank 100% sem cartuchos', 'Imprime até 4.500 páginas a preto ou 7.500 a cores por kit', 'Conexão Wi-Fi e Wi-Fi Direct para telemóveis', 'Tecnologia Heat-Free sem aquecimento']
-  },
-  {
-    id: 'p-esc-03',
-    sku: 'POS-80W',
-    mpn: 'WINTEC-POS80',
-    name: 'Impressora POS Térmica Wintec 80mm',
-    subtitle: 'Impressão de Faturas e Talões · USB + LAN · Corte Automático',
-    category: 'Escritorio',
-    subCategory: 'Impressoras POS & Caixas',
-    brand: 'WINTECH',
-    priceVal: 119794,
-    priceStr: '119.794,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1556742049-0a67e557224f?auto=format&fit=crop&w=600&q=80',
-    badge: 'Ponto de Venda POS',
-    ram: null,
-    screenSize: null,
-    screenType: null,
-    resolution: '203 dpi',
-    hasBluetooth: false,
-    hasLAN: true,
-    hasNetflix: false,
-    hasSubwoofer: false,
-    hasMountSupport: true,
-    powerWatts: '30W',
-    weight: '1.2 kg',
-    specs: ['Velocidade ultra rápida 250 mm/s', 'Papel térmico 80mm standard', 'Guilhotina automática com 1.5 milhões de cortes', 'Compatível com softwares certificados pela AGT em Angola']
-  },
-
-  // ==========================================
-  // 4. ELECTRODOMÉSTICOS
-  // ==========================================
-  {
-    id: 'p-elec-01',
-    sku: 'LG-12K-INV',
-    mpn: 'LG-DUAL-INV-12',
-    name: 'Ar Condicionado Split Inverter LG Dual Inverter 12000 BTU',
-    subtitle: 'Inverter Económico · Refrigeração Rápida · Filtro Anti-Bactérias',
-    category: 'Electrodomesticos',
-    subCategory: 'Ar Condicionado',
-    brand: 'LG',
-    priceVal: 385000,
-    priceStr: '385.000,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80',
-    badge: 'Economia 70% Energia',
+    id: 'ims-10',
+    sku: 'JBL-SB190',
+    mpn: 'JBLSB190BLKEP',
+    name: 'Soundbar JBL Cinema SB190 380W com Subwoofer Sem Fios',
+    subtitle: 'Virtual Dolby Atmos · Subwoofer Wireless 6.5" · Bluetooth & HDMI eARC',
+    category: 'ImagemSom',
+    subCategory: 'Soundbars & Home Cinema',
+    brand: 'JBL',
+    priceVal: 275000,
+    priceStr: '275.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=600&q=80',
+    badge: 'Dolby Atmos',
     ram: null,
     screenSize: null,
     screenType: null,
@@ -767,195 +1027,84 @@ const productsData = [
     hasBluetooth: true,
     hasLAN: false,
     hasNetflix: false,
-    hasSubwoofer: false,
+    hasSubwoofer: true,
     hasMountSupport: true,
-    powerWatts: '1080W',
-    weight: '31 kg (Conjunto)',
-    specs: ['Capacidade 12.000 BTUs/h Refrigeração', 'Tecnologia Dual Inverter com até 70% de poupança elétrica', 'Gás ecológico R410A de alto rendimento', 'Controlo remoto digital com funções Sleep e Turbo', 'Garantia de 10 anos no compressor']
-  },
-  {
-    id: 'p-elec-02',
-    sku: 'SAM-18K-WF',
-    mpn: 'SAM-WINDFREE-18',
-    name: 'Ar Condicionado Split Samsung WindFree 18000 BTU',
-    subtitle: 'Refrigeração sem Vento Direto · Wi-Fi SmartThings · Inverter',
-    category: 'Electrodomesticos',
-    subCategory: 'Ar Condicionado',
-    brand: 'SAMSUNG',
-    priceVal: 540000,
-    priceStr: '540.000,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80',
-    badge: 'WindFree Conforto',
-    ram: null,
-    screenSize: null,
-    screenType: null,
-    resolution: null,
-    hasBluetooth: true,
-    hasLAN: false,
-    hasNetflix: false,
-    hasSubwoofer: false,
-    hasMountSupport: true,
-    powerWatts: '1600W',
-    weight: '38 kg',
-    specs: ['18.000 BTUs ideal para salas amplas e escritórios', 'Tecnologia exclusiva WindFree com 23.000 microfuros', 'Controlo pelo smartphone via Wi-Fi SmartThings', 'Filtro lavável que retém 99% de poeira e bactérias']
-  },
-
-  // ==========================================
-  // 5. SMARTPHONES E TABLETS
-  // ==========================================
-  {
-    id: 'p-smp-01',
-    sku: 'IPH15P-128',
-    mpn: 'APPLE-A2848',
-    name: 'Apple iPhone 15 Pro 128GB Titânio Natural',
-    subtitle: 'Chip A17 Pro · Ecrã Super Retina XDR 6.1" 120Hz · USB-C 3.0',
-    category: 'Smartphones',
-    subCategory: 'iPhones',
-    brand: 'APPLE',
-    priceVal: 1290000,
-    priceStr: '1.290.000,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=600&q=80',
-    badge: 'Lançamento Apple',
-    ram: '8GB',
-    screenSize: '6.1"',
-    screenType: 'OLED Super Retina XDR',
-    resolution: '2556x1179 pixels',
-    hasBluetooth: true,
-    hasLAN: false,
-    hasNetflix: true,
-    hasSubwoofer: false,
-    hasMountSupport: false,
-    powerWatts: '20W Fast Charge',
-    weight: '187 g',
-    specs: ['Design inovador em Titânio de grau aeroespacial', 'Câmara principal de 48MP com teleobjetiva 3x', 'Dynamic Island interactiva com notificações em tempo real', 'Conexão 5G e USB-C com velocidade USB 3']
-  },
-  {
-    id: 'p-smp-02',
-    sku: 'S24U-256',
-    mpn: 'SAM-S928B',
-    name: 'Samsung Galaxy S24 Ultra 256GB Titanium Gray',
-    subtitle: 'Snapdragon 8 Gen 3 · Galaxy AI · S-Pen Integrada · Câmara 200MP',
-    category: 'Smartphones',
-    subCategory: 'Smartphones Android',
-    brand: 'SAMSUNG',
-    priceVal: 1350000,
-    priceStr: '1.350.000,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=80',
-    badge: 'Galaxy AI Top',
-    ram: '12GB',
-    screenSize: '6.8"',
-    screenType: 'Dynamic AMOLED 2X',
-    resolution: 'Quad HD+ (3120x1440)',
-    hasBluetooth: true,
-    hasLAN: false,
-    hasNetflix: true,
-    hasSubwoofer: false,
-    hasMountSupport: false,
-    powerWatts: '45W Fast Charge',
-    weight: '232 g',
-    specs: ['Ecrã plano 6.8" 120Hz com vidro Corning Gorilla Armor', 'Câmara principal de 200MP com zoom óptico de até 5x e 100x Space Zoom', 'Recursos Galaxy AI: tradução simultânea e Circle to Search', 'Bateria duradoura de 5000mAh']
-  },
-
-  // ==========================================
-  // 6. ENERGIA
-  // ==========================================
-  {
-    id: 'p-ene-01',
-    sku: 'PS-500W',
-    mpn: 'WINTEC-PS500',
-    name: 'Power Station Portátil Wintech 500Wh',
-    subtitle: '500Wh / 600W · Tomadas AC 220V + USB-C PD 100W · Lítio LiFePO4',
-    category: 'Energia',
-    subCategory: 'Power Stations Portáteis',
-    brand: 'WINTECH',
-    priceVal: 554781,
-    priceStr: '554.781,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    badge: 'Energia Portátil',
-    ram: null,
-    screenSize: null,
-    screenType: 'Display LCD',
-    resolution: null,
-    hasBluetooth: true,
-    hasLAN: false,
-    hasNetflix: false,
-    hasSubwoofer: false,
-    hasMountSupport: false,
-    powerWatts: '600W (Pico 1000W)',
-    weight: '5.8 kg',
-    specs: ['Capacidade de 500Wh com células de bateria LiFePO4 (3000+ ciclos)', '2 Tomadas AC 220V com onda senoidal pura para computadores', 'Porta USB-C Power Delivery de 100W e saídas 12V para viatura', 'Pode ser carregado via painéis solares, tomada de parede ou automóvel']
-  },
-  {
-    id: 'p-ene-02',
-    sku: 'SMT1500I',
-    mpn: 'APC-SMT1500IC',
-    name: 'UPS APC Smart-UPS 1500VA LCD 230V',
-    subtitle: '1500VA / 1000W · Onda Senoidal Pura · Estabilizador AVR Integrado',
-    category: 'Energia',
-    subCategory: 'UPS / No-Breaks',
-    brand: 'APC',
-    priceVal: 210000,
-    priceStr: '210.000,00 AKZ',
-    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    badge: 'Proteção Máxima',
-    ram: null,
-    screenSize: null,
-    screenType: 'Display LCD Diagnóstico',
-    resolution: null,
-    hasBluetooth: false,
-    hasLAN: true,
-    hasNetflix: false,
-    hasSubwoofer: false,
-    hasMountSupport: true,
-    powerWatts: '1000W',
-    weight: '24.1 kg',
-    specs: ['Proteção de alimentação de nível empresarial para servidores e redes', 'Regulação Automática de Tensão (AVR) contra picos e quebras', 'Ecrã LCD com dados de carga, voltagem e autonomia', 'Entrada SmartSlot para placa de gestão em rede']
+    powerWatts: '380W RMS',
+    weight: '7.5 kg',
+    specs: [
+      'Potência total de 380 Watts RMS com som surround cinematográfico',
+      'Subwoofer sem fios de 6.5" com graves profundos e impactantes',
+      'Tecnologia Virtual Dolby Atmos para efeito áudio tridimensional 3D',
+      'Entrada HDMI eARC e conectividade Bluetooth 5.1 sem fios'
+    ]
   }
 ];
 
-/* ─── SERVIÇOS OFICIAIS DUPLAS DMP (INTEGRADOS NO PADRÃO NCR ANGOLA) ─── */
+/* ─── 8 SERVIÇOS TÉCNICOS OFICIAIS DUPLAS DMP & NCR ANGOLA ─── */
 const servicesData = [
   {
     id: 's1',
-    title: 'Internet Dedicada, Fibra Óptica & Satélite',
-    desc: 'Instalação de links simétricos em fibra óptica, antenas ponto a ponto e sistemas de internet de alta velocidade para empresas e residências em Luanda e províncias.',
+    title: 'Internet Dedicada, Fibra Óptica & Satélite Starlink',
+    desc: 'Links simétricos 1:1 em fibra óptica de alta capacidade, rádio enlaces ponto-a-ponto e instalação autorizada de sistemas Starlink para fazendas, minas, residências e empresas em toda Angola.',
     icon: 'fa-wifi',
+    tag: 'Telecomunicações',
     img: 'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 's2',
     title: 'Telecomunicações & Centrais Telefónicas PABX IP',
-    desc: 'Centrais telefónicas na nuvem, troncos SIP, gravação de chamadas, IVR e intercomunicadores corporativos para redução de custos em telecomunicações.',
+    desc: 'Modernização de comunicações empresariais com centrais PABX VoIP na nuvem ou físicas, troncos SIP, gravação de chamadas, IVR e terminais telefónicos corporativos.',
     icon: 'fa-phone-volume',
+    tag: 'Voz & VoIP',
     img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 's3',
-    title: 'CCTV, Segurança Eletrónica & Controlo de Acesso',
-    desc: 'Sistemas inteligentes de vídeo-vigilância 4K ColorVu Hikvision, gravação centralizada em NVR, alarmes de intrusão e controlo de acesso biométrico e facial.',
+    title: 'CCTV 4K, Segurança Eletrónica & Controlo Biométrico',
+    desc: 'Projetos completos de vídeo-vigilância IP em 4K ColorVu Hikvision, gravação centralizada em NVR, alarmes de intrusão e controlo de acesso biométrico e por reconhecimento facial.',
     icon: 'fa-shield-halved',
+    tag: 'Segurança',
     img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 's4',
     title: 'Redes Estruturadas, Bastidores & Fusão de Fibra',
-    desc: 'Cablagem estruturada Cat6/Cat6A certificada, montagem de salas de servidores, organização de racks e fusão de fibra óptica por técnicos qualificados.',
+    desc: 'Cablagem estruturada Cat6/Cat6A certificada Furukawa, organização e montagem de salas de servidores, patch panels e fusão de fibra óptica por técnicos credenciados.',
     icon: 'fa-server',
+    tag: 'Infraestrutura',
     img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 's5',
-    title: 'Assistência Técnica, Reparação & Manutenção',
-    desc: 'Diagnóstico técnico, reparação de computadores, portáteis, impressoras, no-breaks e contratos mensais de suporte preventivo e corretivo (SLA).',
+    title: 'Assistência Técnica, Reparação & Manutenção SLA',
+    desc: 'Laboratório técnico próprio para diagnóstico e reparação de portáteis, computadores desktop, impressoras laser/jato de tinta, no-breaks e contratos mensais de suporte preventivo.',
     icon: 'fa-screwdriver-wrench',
+    tag: 'Suporte 24/7',
     img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 's6',
-    title: 'Instalação de Ar Condicionado & Climatização',
-    desc: 'Montagem técnica certificada de aparelhos de ar condicionado Split e industriais, limpeza profunda, recarga de gás e manutenção periódica.',
+    title: 'Instalação e Manutenção de Ar Condicionado',
+    desc: 'Montagem técnica certificada de aparelhos de ar condicionado Split Inverter, cassetes e sistemas industriais, recarga de gás ecológico e contratos de limpeza e manutenção periódica.',
     icon: 'fa-snowflake',
+    tag: 'Climatização',
     img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 's7',
+    title: 'Energia Solar, UPS Industriais & Geradores',
+    desc: 'Dimensionamento e instalação de sistemas solares fotovoltaicos com baterias de lítio LiFePO4, no-breaks industriais de alta autonomia e quadros de transferência automática (ATS).',
+    icon: 'fa-bolt',
+    tag: 'Energia',
+    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 's8',
+    title: 'Consultoria de TI, Servidores & Data Centers',
+    desc: 'Projetos de virtualização VMware/Proxmox, configuração de servidores HPE/Dell, armazenamento NAS/SAN, segurança perimetral com Firewalls Fortinet e cópias de segurança em nuvem.',
+    icon: 'fa-network-wired',
+    tag: 'Consultoria',
+    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80'
   }
 ];
 
@@ -1092,7 +1241,7 @@ function App() {
   const TopBar = () => (
     <div className="bg-brand-dark text-gray-300 text-xs md:text-sm py-2.5 border-b border-gray-800 hide-mobile">
       <div className="w-full px-4 sm:px-7 lg:px-10 flex justify-between items-center">
-        <span className="font-body tracking-wide truncate">Angola · Luanda — Equipamentos Originais, Soluções de TI e Serviços</span>
+        <span className="font-body tracking-wide truncate">Angola · Luanda — Equipamentos Originais, Soluções de TI, Telecomunicações e Climatização</span>
         <div className="flex items-center space-x-6 flex-shrink-0">
           <span className="flex items-center space-x-2"><i className="fa-brands fa-whatsapp text-emerald-400 text-xs"></i><span>+244 941 950 022</span></span>
           <span className="flex items-center space-x-2"><i className="fa-solid fa-phone text-brand-red text-xs"></i><span>+244 947 077 913</span></span>
@@ -1123,7 +1272,7 @@ function App() {
         <div className="hidden md:flex flex-1 max-w-xl relative">
           <input
             type="text"
-            placeholder="Pesquisar por computadores, marcas, auscultadores, TVs, impressoras..."
+            placeholder="Pesquisar portáteis, TVs, auscultadores, impressoras, ar condicionado..."
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
@@ -1278,7 +1427,7 @@ function App() {
             <p className="font-body text-xs sm:text-sm text-gray-500 mt-1">Ofertas em equipamentos com imagens originais e preços oficiais em Kwanzas (AKZ)</p>
           </div>
           <button onClick={() => setPage('loja')} className="inline-flex items-center space-x-2 text-brand-red font-heading font-bold text-sm uppercase tracking-wider hover:text-brand-redHover">
-            <span>Ver Todos os Produtos</span>
+            <span>Ver Todos os Produtos ({productsData.length})</span>
             <i className="fa-solid fa-arrow-right text-xs"></i>
           </button>
         </div>
@@ -1338,7 +1487,39 @@ function App() {
                 <i className={`fa-solid ${cat.icon}`}></i>
               </div>
               <h4 className="font-heading font-bold text-xs sm:text-sm text-gray-900 uppercase group-hover:text-brand-red">{cat.name}</h4>
+              <p className="text-[10px] text-gray-400 mt-1 font-body">
+                {productsData.filter(p => p.category === cat.id).length} Produtos
+              </p>
             </button>
+          ))}
+        </div>
+      </section>
+
+      {/* SEÇÃO DE SERVIÇOS TÉCNICOS NA HOMEPAGE */}
+      <section className="w-full px-4 sm:px-7 lg:px-10 bg-brand-dark py-16 rounded-3xl text-white">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Engenharia & Suporte Técnico</span>
+          <h2 className="font-heading text-3xl font-extrabold text-white uppercase mt-1">Serviços Especializados</h2>
+          <p className="font-body text-xs sm:text-sm text-gray-400 mt-2">Instalação, reparação laboratorial e suporte em telecomunicações em Luanda</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {servicesData.slice(0, 4).map((s, i) => (
+            <div key={i} className="bg-gray-900/90 border border-gray-800 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-red transition-all">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-xl bg-brand-red text-white flex items-center justify-center text-xl shadow">
+                  <i className={`fa-solid ${s.icon}`}></i>
+                </div>
+                <div>
+                  <span className="text-[10px] font-heading font-bold text-brand-red uppercase">{s.tag}</span>
+                  <h3 className="font-heading font-bold text-base text-white uppercase mt-1 leading-snug">{s.title}</h3>
+                  <p className="font-body text-xs text-gray-400 mt-2 line-clamp-3 leading-relaxed">{s.desc}</p>
+                </div>
+              </div>
+              <button onClick={() => setQuoteOpen(true)} className="mt-6 w-full bg-white/10 hover:bg-brand-red text-white font-heading font-bold uppercase text-xs py-2.5 rounded-xl transition-all">
+                Pedir Proposta
+              </button>
+            </div>
           ))}
         </div>
       </section>
@@ -1355,7 +1536,7 @@ function App() {
         <div>
           <h1 className="font-heading font-extrabold text-3xl text-gray-900 uppercase">Loja Online & Catálogo</h1>
           <p className="font-body text-xs text-gray-500 mt-1">
-            A exibir <strong className="text-gray-900">{filteredProducts.length}</strong> produtos disponíveis com especificações e preços em Kwanzas (AKZ)
+            A exibir <strong className="text-gray-900">{filteredProducts.length}</strong> produtos de um catálogo total de <strong className="text-brand-red">{productsData.length}</strong> itens disponíveis em Kwanzas (AKZ)
           </p>
         </div>
 
@@ -1603,25 +1784,26 @@ function App() {
         <div className="w-full px-4 sm:px-7 lg:px-10 text-center max-w-3xl mx-auto space-y-3">
           <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Soluções Corporativas & Residenciais</span>
           <h1 className="font-heading text-4xl sm:text-5xl font-extrabold uppercase">Nossos Serviços Especializados</h1>
-          <p className="font-body text-gray-300 text-sm md:text-base">Engenharia, suporte técnico e instalação profissional em Angola.</p>
+          <p className="font-body text-gray-300 text-sm md:text-base">Engenharia, suporte técnico, telecomunicações e climatização profissional em Angola.</p>
         </div>
       </section>
 
       <section className="w-full px-4 sm:px-7 lg:px-10 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {servicesData.map((s, i) => (
             <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 card-hover group flex flex-col justify-between">
               <div>
-                <div className="img-zoom h-52 relative">
+                <div className="img-zoom h-48 relative">
                   <img src={s.img} alt={s.title} className="w-full h-full object-cover img-zoom-child" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-brand-red text-white flex items-center justify-center text-xl shadow-lg">
                     <i className={`fa-solid ${s.icon}`}></i>
                   </div>
+                  <span className="absolute bottom-3 left-4 bg-brand-red text-white text-[10px] font-heading font-bold px-2.5 py-0.5 rounded uppercase">{s.tag}</span>
                 </div>
                 <div className="p-6 space-y-3">
-                  <h3 className="font-heading font-bold text-lg text-gray-900 uppercase group-hover:text-brand-red transition-colors">{s.title}</h3>
-                  <p className="font-body text-xs sm:text-sm text-gray-600 leading-relaxed">{s.desc}</p>
+                  <h3 className="font-heading font-bold text-base text-gray-900 uppercase group-hover:text-brand-red transition-colors leading-snug">{s.title}</h3>
+                  <p className="font-body text-xs text-gray-600 leading-relaxed">{s.desc}</p>
                 </div>
               </div>
               <div className="p-6 pt-0">
