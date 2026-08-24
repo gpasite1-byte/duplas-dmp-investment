@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Duplas DMP Investment | Loja Online & Soluções em Tecnologia Angola</title>
-  <meta name="description" content="Duplas DMP Investment — Catálogo oficial e loja online com produtos em Informática, Telecomunicações, Smartphones, Energia, Imagem e Som e Climatização em Luanda, Angola.">
+  <meta name="description" content="Duplas DMP Investment — Catálogo oficial de produtos e soluções em Tecnologia, Telecomunicações, Energia, Climatização, Assistência Técnica e Serviços Empresariais em Angola.">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -50,14 +50,14 @@
     ::-webkit-scrollbar-thumb { background:#CC0000; border-radius:4px; }
 
     /* ── ANIMATIONS ── */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeInScale { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
     @keyframes fadeInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
     @keyframes pulseRing { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0.7); } 70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(204,0,0,0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0); } }
 
-    .animate-fade-in-up { animation: fadeInUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .animate-fade-in-scale { animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .animate-fade-in-right { animation: fadeInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-up { animation: fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-scale { animation: fadeInScale 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-right { animation: fadeInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     .pulse-red { animation: pulseRing 2s infinite; }
 
     .glow-red { box-shadow:0 0 20px rgba(204,0,0,0.25); }
@@ -69,7 +69,7 @@
     .card-hover:hover { transform:translateY(-4px); box-shadow:0 12px 24px -6px rgba(0,0,0,0.08); }
     
     .badge-red { background:linear-gradient(135deg,#CC0000,#E30613); }
-    .product-card { border:1px solid #E2E8F0; transition:all 0.25s ease; }
+    .product-card { border:1px solid #E2E8F0; transition:all 0.25s ease; background:#fff; }
     .product-card:hover { border-color:#CC0000; transform:translateY(-4px); box-shadow:0 12px 24px rgba(0,0,0,0.07); }
     
     input:focus, textarea:focus, select:focus { outline:none; border-color:#CC0000!important; box-shadow:0 0 0 3px rgba(204,0,0,0.12)!important; }
@@ -99,7 +99,7 @@ const { useState, useEffect, useMemo } = React;
 const LOGO_ONLINE = "https://i.ibb.co/XkF3VWps/DUPLAS.png";
 const LOGO_PATH   = "logo.png";
 
-/* ─── CATEGORIAS / DEPARTAMENTOS PADRÃO NCR ANGOLA ─── */
+/* ─── DEPARTAMENTOS OFICIAIS NCR ANGOLA ─── */
 const NCR_DEPARTMENTS = [
   { id: 'ALL', name: 'Todos os Produtos', icon: 'fa-layer-group' },
   { id: 'Informatica', name: 'Informática', icon: 'fa-laptop' },
@@ -110,7 +110,7 @@ const NCR_DEPARTMENTS = [
   { id: 'ImagemSom', name: 'Imagem e Som', icon: 'fa-tv' },
 ];
 
-/* ─── CATÁLOGO COMPLETO COM +45 PRODUTOS REAIS EXTRAÍDOS DA NCR ANGOLA ─── */
+/* ─── CATÁLOGO COMPLETO COM +50 PRODUTOS OFICIAIS NCR ANGOLA ─── */
 const allProducts = [
   // ==========================================
   // INFORMÁTICA
@@ -1697,71 +1697,97 @@ const allProducts = [
   }
 ];
 
-/* ─── 8 SERVIÇOS OFICIAIS DUPLAS DMP & NCR ANGOLA ─── */
+/* ─── 10 SERVIÇOS & SOLUÇÕES CORPORATIVAS OFICIAIS NCR ANGOLA ─── */
 const allServices = [
   {
     id: 's1',
-    title: 'Internet Dedicada, Fibra Óptica & Satélite Starlink',
-    desc: 'Links simétricos 1:1 em fibra óptica de alta capacidade, rádio enlaces ponto-a-ponto e instalação autorizada de sistemas Starlink para fazendas, minas, residências e empresas em toda Angola.',
-    icon: 'fa-wifi',
-    tag: 'Telecomunicações',
-    img: 'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=600&q=80'
+    title: 'Centro Técnico Autorizado & Reparação Laboratorial',
+    desc: 'Diagnóstico avançado e assistência técnica multimarca oficial (HP, Dell, Lenovo, Apple, Epson, Canon). Substituição de ecrãs, baterias, reballing e reparação de motherboards.',
+    icon: 'fa-screwdriver-wrench',
+    tag: 'Laboratório Oficial',
+    img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
+    details: ['Reparação de portáteis, desktops e monitores', 'Manutenção corretiva e preventiva de impressoras laser e térmicas', 'Laboratório com bancadas antiestáticas e peças originais']
   },
   {
     id: 's2',
-    title: 'Telecomunicações & Centrais Telefónicas PABX IP',
-    desc: 'Modernização de comunicações empresariais com centrais PABX VoIP na nuvem ou físicas, troncos SIP, gravação de chamadas, IVR e terminais telefónicos corporativos.',
-    icon: 'fa-phone-volume',
-    tag: 'Voz & VoIP',
-    img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80'
+    title: 'Instalação de Redes Estruturadas & Fusão de Fibra Óptica',
+    desc: 'Projetos e montagem de redes cabladas Cat6/Cat6A certificadas Furukawa, organização de bastidores/racks de 19", testes com OTDR e fusão de fibra óptica.',
+    icon: 'fa-network-wired',
+    tag: 'Infraestrutura LAN/WAN',
+    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80',
+    details: ['Cablagem estruturada de voz e dados', 'Montagem e conectorização de patch panels', 'Fusão e certificação de enlaces de fibra óptica']
   },
   {
     id: 's3',
-    title: 'CCTV 4K, Segurança Eletrónica & Controlo Biométrico',
-    desc: 'Projetos completos de vídeo-vigilância IP em 4K ColorVu Hikvision, gravação centralizada em NVR, alarmes de intrusão e controlo de acesso biométrico e por reconhecimento facial.',
-    icon: 'fa-shield-halved',
-    tag: 'Segurança',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80'
+    title: 'Sistemas POS, Faturação Certificada AGT & Caixas',
+    desc: 'Implementação de postos de venda completos com impressoras de talões 80mm, gavetas de dinheiro, leitores 2D e parametrização de software certificado pela AGT.',
+    icon: 'fa-cash-register',
+    tag: 'Ponto de Venda (POS)',
+    img: 'https://images.unsplash.com/photo-1556742049-0a67e557224f?auto=format&fit=crop&w=600&q=80',
+    details: ['Montagem de hardware POS e periféricos de caixa', 'Formação técnica para operadores de loja', 'Suporte contínuo para conformidade com a AGT']
   },
   {
     id: 's4',
-    title: 'Redes Estruturadas, Bastidores & Fusão de Fibra',
-    desc: 'Cablagem estruturada Cat6/Cat6A certificada Furukawa, organização e montagem de salas de servidores, patch panels e fusão de fibra óptica por técnicos credenciados.',
-    icon: 'fa-server',
-    tag: 'Infraestrutura',
-    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80'
+    title: 'CCTV 4K, Segurança Eletrónica & Controlo Biométrico',
+    desc: 'Instalação de câmaras IP de alta definição Hikvision ColorVu, gravação NVR em rede, controlo de assiduidade biométrico e reconhecimento facial ZKTeco.',
+    icon: 'fa-shield-halved',
+    tag: 'Segurança & Acessos',
+    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80',
+    details: ['Vídeo-vigilância com visão noturna a cores 24/7', 'Controlo de ponto e acessos com catracas e torniquetes', 'Acesso remoto via telemóvel e central de monitorização']
   },
   {
     id: 's5',
-    title: 'Assistência Técnica, Reparação & Manutenção SLA',
-    desc: 'Laboratório técnico próprio para diagnóstico e reparação de portáteis, computadores desktop, impressoras laser/jato de tinta, no-breaks e contratos mensais de suporte preventivo.',
-    icon: 'fa-screwdriver-wrench',
-    tag: 'Suporte 24/7',
-    img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
+    title: 'Instalação & Manutenção de Ar Condicionado',
+    desc: 'Montagem técnica certificada de aparelhos Split Inverter, sistemas Cassete e climatização industrial. Recarga de gás ecológico e higienização antibacteriana periódica.',
+    icon: 'fa-snowflake',
+    tag: 'Climatização',
+    img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80',
+    details: ['Instalação de splits residenciais e corporativos', 'Contratos de manutenção preventiva com relatórios técnicos', 'Diagnóstico de compressores e limpeza profunda de filtros']
   },
   {
     id: 's6',
-    title: 'Instalação e Manutenção de Ar Condicionado',
-    desc: 'Montagem técnica certificada de aparelhos de ar condicionado Split Inverter, cassetes e sistemas industriais, recarga de gás ecológico e contratos de limpeza e manutenção periódica.',
-    icon: 'fa-snowflake',
-    tag: 'Climatização',
-    img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80'
+    title: 'Sistemas de Energia Solar, UPS Industriais & Geradores',
+    desc: 'Dimensionamento de sistemas fotovoltaicos com baterias de lítio LiFePO4, instalação de UPS online de alta potência para salas de servidores e quadros de comutação ATS.',
+    icon: 'fa-bolt',
+    tag: 'Energia Crítica',
+    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    details: ['Proteção de equipamentos contra quebras e oscilações', 'Instalação de bancos de baterias solares de lítio', 'Manutenção preventiva de no-breaks e quadros elétricos']
   },
   {
     id: 's7',
-    title: 'Energia Solar, UPS Industriais & Geradores',
-    desc: 'Dimensionamento e instalação de sistemas solares fotovoltaicos com baterias de lítio LiFePO4, no-breaks industriais de alta autonomia e quadros de transferência automática (ATS).',
-    icon: 'fa-bolt',
-    tag: 'Energia',
-    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80'
+    title: 'Telecomunicações & Centrais Telefónicas PABX VoIP',
+    desc: 'Modernização da telefonia corporativa com centrais IP na nuvem ou físicas, troncos SIP, gravação de chamadas, menus de atendimento IVR e telefones IP executivos.',
+    icon: 'fa-phone-volume',
+    tag: 'Voz & Telefonia IP',
+    img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80',
+    details: ['Redução de custos de comunicação interna e externa', 'Integração de filiais e trabalho remoto', 'Atendimento automático personalizado para empresas']
   },
   {
     id: 's8',
-    title: 'Consultoria de TI, Servidores & Data Centers',
-    desc: 'Projetos de virtualização VMware/Proxmox, configuração de servidores HPE/Dell, armazenamento NAS/SAN, segurança perimetral com Firewalls Fortinet e cópias de segurança em nuvem.',
-    icon: 'fa-network-wired',
-    tag: 'Consultoria',
-    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80'
+    title: 'Internet Dedicada, Fibra Óptica & Satélite Starlink',
+    desc: 'Fornecimento de links dedicados simétricos 1:1, rádio enlaces corporativos e montagem oficial de kits Starlink para fazendas, estaleiros e províncias.',
+    icon: 'fa-wifi',
+    tag: 'Conectividade',
+    img: 'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=600&q=80',
+    details: ['Alta velocidade com baixa latência', 'Cobertura em qualquer província de Angola', 'Suporte técnico 24/7 com monitorização contínua']
+  },
+  {
+    id: 's9',
+    title: 'Impressão Gerida (MPS) & Aluguer de Multifunções',
+    desc: 'Outsourcing de impressão para empresas com fornecimento contínuo de toners originais, peças e substituição imediata de equipamentos sem custos adicionais.',
+    icon: 'fa-print',
+    tag: 'Outsourcing',
+    img: 'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=600&q=80',
+    details: ['Controle total de custos por página impressa', 'Reposição automática de toners e consumíveis', 'Garantia de funcionamento sem interrupções']
+  },
+  {
+    id: 's10',
+    title: 'Contratos Corporativos SLA & Consultoria de TI',
+    desc: 'Gestão integral da infraestrutura tecnológica de empresas, com técnicos dedicados, suporte remoto e presencial rápido, auditorias de segurança e backup em nuvem.',
+    icon: 'fa-handshake',
+    tag: 'Contratos Empresariais',
+    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80',
+    details: ['Tempo de resposta garantido por contrato (SLA)', 'Gestão de servidores Windows Server e Linux', 'Cópias de segurança diárias e recuperação de desastres']
   }
 ];
 
@@ -1771,6 +1797,7 @@ function App() {
   const [cart, setCart]               = useState([]);
   const [cartOpen, setCartOpen]       = useState(false);
   const [quoteOpen, setQuoteOpen]     = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
   const [detailProd, setDetailProd]   = useState(null);
   const [toast, setToast]             = useState('');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
@@ -1892,28 +1919,20 @@ function App() {
   // Filtragem dos Produtos
   const filteredProducts = useMemo(() => {
     return allProducts.filter(p => {
-      // 1. Departamento
       if (selectedDept !== 'ALL' && p.department !== selectedDept) return false;
-      // 2. Subcategoria
       if (selectedCategory !== 'ALL' && p.category !== selectedCategory) return false;
-      // 3. Marcas selecionadas (se houver alguma selecionada)
       if (selectedBrands.length > 0 && !selectedBrands.includes(p.brand)) return false;
-      // 4. Faixa de Preço
       if (selectedPriceRange === 'under50k' && p.priceVal >= 50000) return false;
       if (selectedPriceRange === '50k-200k' && (p.priceVal < 50000 || p.priceVal > 200000)) return false;
       if (selectedPriceRange === '200k-1000k' && (p.priceVal < 200000 || p.priceVal > 1000000)) return false;
       if (selectedPriceRange === 'over1000k' && p.priceVal <= 1000000) return false;
-      // 5. Memória RAM
       if (selectedRAMs.length > 0 && (!p.ram || !selectedRAMs.includes(p.ram))) return false;
-      // 6. Tamanho de Ecrã
       if (selectedScreens.length > 0 && (!p.screenSize || !selectedScreens.includes(p.screenSize))) return false;
-      // 7. Recursos & Conectividade
       if (selectedFeatures.bluetooth && !p.hasBluetooth) return false;
       if (selectedFeatures.lan && !p.hasLAN) return false;
       if (selectedFeatures.netflix && !p.hasNetflix) return false;
       if (selectedFeatures.subwoofer && !p.hasSubwoofer) return false;
       if (selectedFeatures.mount && !p.hasMountSupport) return false;
-      // 8. Pesquisa
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase();
         const matchesName = p.name.toLowerCase().includes(q);
@@ -1928,11 +1947,10 @@ function App() {
       if (sortBy === 'priceAsc') return a.priceVal - b.priceVal;
       if (sortBy === 'priceDesc') return b.priceVal - a.priceVal;
       if (sortBy === 'nameAsc') return a.name.localeCompare(b.name);
-      return 0; // featured
+      return 0;
     });
   }, [selectedDept, selectedCategory, selectedBrands, selectedPriceRange, selectedRAMs, selectedScreens, selectedFeatures, searchQuery, sortBy]);
 
-  // Contagem ativa de filtros selecionados
   const activeFiltersCount = useMemo(() => {
     let count = 0;
     if (selectedDept !== 'ALL') count++;
@@ -1954,7 +1972,7 @@ function App() {
   const TopBar = () => (
     <div className="bg-[#0A0C12] text-gray-300 text-xs py-2 border-b border-gray-800">
       <div className="w-full px-4 sm:px-8 flex justify-between items-center">
-        <span className="truncate">Angola · Luanda — Equipamentos Originais, Assistência Técnica e Telecomunicações</span>
+        <span className="truncate">Angola · Luanda — Equipamentos Oficiais, Serviços Técnicos e Soluções Corporativas</span>
         <div className="hidden lg:flex items-center space-x-6 flex-shrink-0">
           <span className="flex items-center space-x-1.5"><i className="fa-brands fa-whatsapp text-emerald-400"></i><span>+244 941 950 022</span></span>
           <span className="flex items-center space-x-1.5"><i className="fa-solid fa-phone text-brand-red"></i><span>+244 947 077 913</span></span>
@@ -2003,7 +2021,7 @@ function App() {
         <div className="flex items-center space-x-3 sm:space-x-4">
           <nav className="hidden xl:flex items-center space-x-5 font-heading text-xs uppercase font-bold text-gray-800">
             <button onClick={() => setCurrentTab('loja')} className={`hover:text-brand-red ${currentTab === 'loja' ? 'text-brand-red' : ''}`}>Loja & Produtos</button>
-            <button onClick={() => setCurrentTab('servicos')} className={`hover:text-brand-red ${currentTab === 'servicos' ? 'text-brand-red' : ''}`}>Serviços Oficiais</button>
+            <button onClick={() => setCurrentTab('servicos')} className={`hover:text-brand-red ${currentTab === 'servicos' ? 'text-brand-red' : ''}`}>Serviços Oficiais ({allServices.length})</button>
             <button onClick={() => setCurrentTab('sobre')} className={`hover:text-brand-red ${currentTab === 'sobre' ? 'text-brand-red' : ''}`}>Sobre Nós</button>
             <button onClick={() => setCurrentTab('contactos')} className={`hover:text-brand-red ${currentTab === 'contactos' ? 'text-brand-red' : ''}`}>Contactos</button>
           </nav>
@@ -2048,13 +2066,9 @@ function App() {
     </header>
   );
 
-  /* ════════════════════════════════════════════════════════
-     BARRA LATERAL DE FILTROS FACETADOS (ESTILO VTEX / NCR)
-  ════════════════════════════════════════════════════════ */
+  /* ════ BARRA LATERAL DE FILTROS ════ */
   const FilterSidebar = () => (
     <aside className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm space-y-5 font-body text-xs">
-      
-      {/* CABEÇALHO DE FILTROS */}
       <div className="flex items-center justify-between pb-3 border-b border-gray-200">
         <div className="flex items-center space-x-2">
           <i className="fa-solid fa-sliders text-brand-red"></i>
@@ -2070,7 +2084,7 @@ function App() {
         )}
       </div>
 
-      {/* 1. DEPARTAMENTOS */}
+      {/* DEPARTAMENTOS */}
       <div className="filter-section">
         <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-2.5 flex items-center justify-between">
           <span>Departamentos</span>
@@ -2100,7 +2114,7 @@ function App() {
         </div>
       </div>
 
-      {/* 2. CATEGORIAS / SUBCATEGORIAS */}
+      {/* SUBCATEGORIAS */}
       {availableCategories.length > 0 && (
         <div className="filter-section">
           <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-2.5 flex items-center justify-between">
@@ -2131,7 +2145,7 @@ function App() {
         </div>
       )}
 
-      {/* 3. FAIXA DE PREÇO (AKZ) */}
+      {/* PREÇO */}
       <div className="filter-section">
         <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-2.5 flex items-center justify-between">
           <span>Faixas de Preço (AKZ)</span>
@@ -2159,7 +2173,7 @@ function App() {
         </div>
       </div>
 
-      {/* 4. MARCAS (COM CHECKBOXES E CONTADORES) */}
+      {/* MARCAS */}
       {brandFacetList.length > 0 && (
         <div className="filter-section">
           <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-2.5 flex items-center justify-between">
@@ -2185,7 +2199,7 @@ function App() {
         </div>
       )}
 
-      {/* 5. MEMÓRIA RAM (COM CHECKBOXES) */}
+      {/* MEMÓRIA RAM */}
       {ramFacetList.length > 0 && (
         <div className="filter-section">
           <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-2.5 flex items-center justify-between">
@@ -2207,11 +2221,11 @@ function App() {
         </div>
       )}
 
-      {/* 6. POLEGADAS / ECRÃ (COM CHECKBOXES) */}
+      {/* POLEGADAS */}
       {screenFacetList.length > 0 && (
         <div className="filter-section">
           <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-2.5 flex items-center justify-between">
-            <span>Polegadas / Tamanho do Ecrã</span>
+            <span>Polegadas / Ecrã</span>
             <i className="fa-solid fa-angle-down text-gray-400 text-[10px]"></i>
           </h4>
           <div className="grid grid-cols-2 gap-1.5">
@@ -2229,7 +2243,7 @@ function App() {
         </div>
       )}
 
-      {/* 7. RECURSOS & CONECTIVIDADE */}
+      {/* RECURSOS */}
       <div className="filter-section">
         <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-2.5 flex items-center justify-between">
           <span>Recursos & Conectividade</span>
@@ -2255,16 +2269,25 @@ function App() {
           ))}
         </div>
       </div>
-
     </aside>
   );
 
-  /* ════════════════════════════════════════════════════════
-     PÁGINA PRINCIPAL DA LOJA & CATÁLOGO (ESTILO VTEX / NCR)
-  ════════════════════════════════════════════════════════ */
+  /* ════ PÁGINA DA LOJA & PRODUTOS ════ */
   const ShopSection = () => (
     <div className="w-full px-4 sm:px-8 py-8 animate-fade-in-up">
       
+      {/* BANNER PROMOCIONAL DE SERVIÇOS TÉCNICOS & LOJA */}
+      <div className="mb-8 bg-gradient-to-r from-[#0A0C12] via-[#1A1E2E] to-[#0A0C12] rounded-3xl p-6 md:p-8 text-white border border-gray-800 flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div className="space-y-2 text-center lg:text-left">
+          <span className="bg-brand-red text-white text-[10px] font-heading font-bold uppercase px-3 py-1 rounded-full">Assistência Técnica & Soluções Oficiais</span>
+          <h2 className="font-heading font-extrabold text-xl sm:text-2xl text-white uppercase">Precisa de Reparação, Instalação ou Redes para a sua Empresa?</h2>
+          <p className="font-body text-xs sm:text-sm text-gray-300 max-w-2xl">Dispomos de laboratório técnico próprio, engenheiros certificados e contratos SLA em Luanda.</p>
+        </div>
+        <button onClick={() => setCurrentTab('servicos')} className="bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold text-xs uppercase px-6 py-3.5 rounded-xl shadow glow-red whitespace-nowrap transition-all">
+          Ver Todos os 10 Serviços Oficiais
+        </button>
+      </div>
+
       {/* BREADCRUMB & TÍTULO DA GALERIA */}
       <div className="mb-6 space-y-1">
         <div className="flex items-center space-x-2 text-xs text-gray-500 font-heading uppercase">
@@ -2313,13 +2336,10 @@ function App() {
 
       {/* LAYOUT: SIDEBAR ESQUERDA + GRELHA DE PRODUTOS DIREITA */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        {/* FILTROS DESKTOP */}
         <div className="hidden lg:block lg:col-span-3">
           <FilterSidebar />
         </div>
 
-        {/* GRELHA DE PRODUTOS */}
         <div className="lg:col-span-9">
           {filteredProducts.length === 0 ? (
             <div className="bg-white p-12 rounded-2xl border border-gray-200 text-center space-y-4 shadow-sm">
@@ -2335,7 +2355,6 @@ function App() {
               {filteredProducts.map(p => (
                 <div key={p.id} className="bg-white rounded-2xl product-card overflow-hidden flex flex-col justify-between group">
                   <div>
-                    {/* IMAGEM DO PRODUTO */}
                     <div className="img-zoom h-56 relative cursor-pointer bg-[#F8FAFC] flex items-center justify-center p-4 border-b border-gray-100" onClick={() => setDetailProd(p)}>
                       <img src={p.img} alt={p.name} className="w-full h-full object-contain img-zoom-child" />
                       <span className="absolute top-3 left-3 badge-red text-white text-[10px] font-heading px-2.5 py-0.5 rounded uppercase tracking-wide shadow">{p.brand}</span>
@@ -2344,7 +2363,6 @@ function App() {
                       )}
                     </div>
 
-                    {/* DADOS DO PRODUTO */}
                     <div className="p-5 space-y-2">
                       <div className="flex justify-between items-center text-[10px] font-heading text-gray-400 uppercase tracking-wider">
                         <span>{p.category}</span>
@@ -2356,7 +2374,6 @@ function App() {
                       </h3>
                       <p className="font-body text-xs text-gray-500 line-clamp-2">{p.subtitle}</p>
 
-                      {/* BADGES RÁPIDAS DE ESPECIFICAÇÕES */}
                       <div className="flex flex-wrap gap-1 pt-1.5">
                         {p.ram && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded font-semibold">RAM: {p.ram}</span>}
                         {p.screenSize && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded font-semibold">Ecrã: {p.screenSize}</span>}
@@ -2367,7 +2384,6 @@ function App() {
                     </div>
                   </div>
 
-                  {/* PREÇO E AÇÕES */}
                   <div className="p-5 pt-0 space-y-3">
                     <div className="font-display text-2xl text-brand-red font-bold">{p.priceStr}</div>
                     <div className="grid grid-cols-2 gap-2">
@@ -2384,7 +2400,6 @@ function App() {
             </div>
           )}
         </div>
-
       </div>
 
       {/* MODAL DE FILTROS MOBILE */}
@@ -2413,39 +2428,54 @@ function App() {
   );
 
   /* ════════════════════════════════════════════════════════
-     PÁGINA DE SERVIÇOS TÉCNICOS & ENGENHARIA
+     PÁGINA DE SERVIÇOS & SOLUÇÕES CORPORATIVAS OFICIAIS
   ════════════════════════════════════════════════════════ */
   const ServicosSection = () => (
     <div className="animate-fade-in-up">
+      {/* HERO SERVIÇOS */}
       <section className="relative text-white overflow-hidden py-16 bg-[#0A0C12]">
-        <div className="w-full px-4 sm:px-8 text-center max-w-3xl mx-auto space-y-3">
-          <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Soluções Corporativas & Residenciais</span>
+        <div className="w-full px-4 sm:px-8 text-center max-w-4xl mx-auto space-y-3">
+          <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Soluções Oficiais e Assistência Técnica</span>
           <h1 className="font-heading text-3xl sm:text-5xl font-extrabold uppercase">Serviços Técnicos e de Engenharia</h1>
-          <p className="font-body text-gray-300 text-xs sm:text-base">Apoio técnico, manutenção laboratorial, climatização e telecomunicações em Angola.</p>
+          <p className="font-body text-gray-300 text-xs sm:text-base">Centro laboratorial, contratos de manutenção SLA, climatização, redes e telecomunicações em Angola.</p>
         </div>
       </section>
 
+      {/* GRELHA DOS 10 SERVIÇOS */}
       <section className="w-full px-4 sm:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {allServices.map((s, i) => (
-            <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 card-hover group flex flex-col justify-between">
+            <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-200 card-hover group flex flex-col justify-between">
               <div>
-                <div className="img-zoom h-48 relative">
+                <div className="img-zoom h-52 relative">
                   <img src={s.img} alt={s.title} className="w-full h-full object-cover img-zoom-child" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-brand-red text-white flex items-center justify-center text-xl shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                  <div className="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-brand-red text-white flex items-center justify-center text-xl shadow-lg">
                     <i className={`fa-solid ${s.icon}`}></i>
                   </div>
-                  <span className="absolute bottom-3 left-4 bg-brand-red text-white text-[10px] font-heading font-bold px-2.5 py-0.5 rounded uppercase">{s.tag}</span>
+                  <span className="absolute bottom-3 left-4 bg-brand-red text-white text-[10px] font-heading font-bold px-3 py-1 rounded-full uppercase">{s.tag}</span>
                 </div>
-                <div className="p-6 space-y-3">
-                  <h3 className="font-heading font-bold text-base text-gray-900 uppercase group-hover:text-brand-red transition-colors leading-snug">{s.title}</h3>
+                <div className="p-6 space-y-4">
+                  <h3 className="font-heading font-bold text-lg text-gray-900 uppercase group-hover:text-brand-red transition-colors leading-snug">{s.title}</h3>
                   <p className="font-body text-xs text-gray-600 leading-relaxed">{s.desc}</p>
+                  
+                  <div className="border-t border-gray-100 pt-3 space-y-1.5">
+                    {(s.details || []).map((d, idx) => (
+                      <div key={idx} className="flex items-start space-x-2 text-xs font-body text-gray-700">
+                        <i className="fa-solid fa-check text-brand-red mt-0.5 flex-shrink-0"></i>
+                        <span>{d}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
+
               <div className="p-6 pt-0">
-                <button onClick={() => setQuoteOpen(true)} className="w-full bg-gray-900 hover:bg-brand-red text-white font-heading font-semibold uppercase text-xs py-3 rounded-xl transition-all shadow">
-                  Solicitar Proposta
+                <button
+                  onClick={() => { setSelectedService(s); setQuoteOpen(true); }}
+                  className="w-full bg-gray-900 hover:bg-brand-red text-white font-heading font-bold uppercase text-xs py-3.5 rounded-xl transition-all shadow"
+                >
+                  Solicitar Cotação / Visita Técnica
                 </button>
               </div>
             </div>
@@ -2455,9 +2485,7 @@ function App() {
     </div>
   );
 
-  /* ════════════════════════════════════════════════════════
-     PÁGINA SOBRE NÓS
-  ════════════════════════════════════════════════════════ */
+  /* ════ PÁGINA SOBRE NÓS ════ */
   const SobreSection = () => (
     <div className="animate-fade-in-up py-14 w-full px-4 sm:px-8 max-w-5xl mx-auto space-y-10">
       <div className="text-center space-y-2">
@@ -2488,9 +2516,7 @@ function App() {
     </div>
   );
 
-  /* ════════════════════════════════════════════════════════
-     PÁGINA DE CONTACTOS
-  ════════════════════════════════════════════════════════ */
+  /* ════ PÁGINA DE CONTACTOS ════ */
   const ContactosSection = () => (
     <div className="animate-fade-in-up py-14 w-full px-4 sm:px-8 max-w-6xl mx-auto space-y-10">
       <div className="text-center space-y-2">
@@ -2562,7 +2588,6 @@ function App() {
             </div>
           </div>
 
-          {/* FICHA TÉCNICA DETALHADA */}
           <div className="border-t border-gray-100 pt-5 space-y-4">
             <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900">Especificações Técnicas:</h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-body">
@@ -2659,39 +2684,45 @@ function App() {
     </div>
   );
 
-  /* ════ MODAL DE COTAÇÃO ════ */
+  /* ════ MODAL DE COTAÇÃO & SERVIÇOS ════ */
   const QuoteModal = () => !quoteOpen ? null : (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div onClick={() => setQuoteOpen(false)} className="fixed inset-0 bg-black/70 backdrop-blur-sm" />
+      <div onClick={() => { setQuoteOpen(false); setSelectedService(null); }} className="fixed inset-0 bg-black/70 backdrop-blur-sm" />
       <div className="relative bg-white rounded-3xl max-w-lg w-full shadow-2xl z-10 p-6 md:p-8 animate-fade-in-scale">
-        <button onClick={() => setQuoteOpen(false)} className="absolute top-4 right-4 text-gray-400 hover:text-gray-800">
+        <button onClick={() => { setQuoteOpen(false); setSelectedService(null); }} className="absolute top-4 right-4 text-gray-400 hover:text-gray-800">
           <i className="fa-solid fa-xmark text-lg"></i>
         </button>
         <div className="text-center space-y-2 mb-6">
           <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Duplas DMP Investment</span>
-          <h3 className="font-heading font-extrabold text-2xl text-gray-900 uppercase">Solicitação de Cotação</h3>
+          <h3 className="font-heading font-extrabold text-2xl text-gray-900 uppercase">
+            {selectedService ? 'Solicitar ' + selectedService.title : 'Solicitação de Cotação'}
+          </h3>
           <p className="font-body text-xs text-gray-500">Envie o seu pedido oficial e receba a proposta detalhada em Kwanzas.</p>
         </div>
 
-        <form onSubmit={(e) => { e.preventDefault(); showToast('✓ Pedido de cotação enviado! Entraremos em contacto.'); setQuoteOpen(false); }} className="space-y-4 font-body text-xs">
-          <input type="text" required placeholder="Nome Completo ou Empresa *" className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm" />
+        <form onSubmit={(e) => { e.preventDefault(); showToast('✓ Pedido enviado! A nossa equipa entrará em contacto.'); setQuoteOpen(false); setSelectedService(null); }} className="space-y-4 font-body text-xs">
+          <input type="text" required placeholder="Nome Completo ou Razão Social da Empresa *" className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm" />
           <div className="grid grid-cols-2 gap-3">
             <input type="email" required placeholder="E-mail *" className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm" />
             <input type="tel" required placeholder="Telefone / WhatsApp *" className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm" />
           </div>
-          <select className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm font-heading font-semibold uppercase">
+          <select defaultValue={selectedService ? selectedService.title : "Equipamentos de Informática / Portáteis"} className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm font-heading font-semibold uppercase">
+            <option>Centro Técnico Autorizado & Reparação Laboratorial</option>
+            <option>Instalação de Redes Estruturadas & Fusão de Fibra Óptica</option>
+            <option>Sistemas POS, Faturação Certificada AGT & Caixas</option>
+            <option>CCTV 4K, Segurança Eletrónica & Controlo Biométrico</option>
+            <option>Instalação & Manutenção de Ar Condicionado</option>
+            <option>Sistemas de Energia Solar, UPS Industriais & Geradores</option>
+            <option>Telecomunicações & Centrais Telefónicas PABX VoIP</option>
+            <option>Internet Dedicada, Fibra Óptica & Satélite Starlink</option>
+            <option>Impressão Gerida (MPS) & Aluguer de Multifunções</option>
+            <option>Contratos Corporativos SLA & Consultoria de TI</option>
             <option>Equipamentos de Informática / Portáteis</option>
             <option>Imagem e Som / Auscultadores / Smart TVs</option>
-            <option>Redes, Fibra Óptica & Servidores</option>
-            <option>Segurança CCTV & Controlo de Acesso</option>
-            <option>Smartphones & Tablets</option>
-            <option>Energia, UPS & Power Stations</option>
-            <option>Electrodomésticos & Climatização</option>
-            <option>Outros Serviços</option>
           </select>
           <textarea rows="3" placeholder="Descreva os equipamentos, quantidades ou detalhes do projeto..." className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm"></textarea>
           <button type="submit" className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-sm py-4 rounded-xl shadow glow-red transition-all">
-            Enviar Pedido de Cotação
+            Enviar Pedido
           </button>
         </form>
       </div>
@@ -2705,7 +2736,7 @@ function App() {
         <div className="space-y-4">
           <img src={LOGO_ONLINE} alt="Duplas DMP" style={{ height: '75px', objectFit: 'contain' }} onError={(e) => { e.target.src = LOGO_PATH; }} />
           <p className="text-xs text-gray-400 leading-relaxed">
-            Soluções completas em Tecnologia, Informática, Telecomunicações, Energia, Climatização e Segurança em Angola.
+            Soluções completas em Tecnologia, Informática, Telecomunicações, Energia, Climatização, Assistência Técnica e Segurança em Angola.
           </p>
         </div>
 
@@ -2721,13 +2752,13 @@ function App() {
         </div>
 
         <div className="space-y-3">
-          <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Serviços Técnicos</h4>
+          <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Serviços Oficiais</h4>
           <ul className="space-y-2 text-xs text-gray-400 font-heading uppercase">
-            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Internet Dedicada & Satélite</button></li>
-            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Centrais PABX IP & Telefonia</button></li>
-            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Vídeo-vigilância CCTV 4K</button></li>
-            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Redes Estruturadas & Fibra</button></li>
-            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Assistência & Reparação</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Centro Técnico & Reparação</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Instalação de Redes & Fibra</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Sistemas POS & Faturação AGT</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">CCTV 4K & Biometria</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red">Contratos Corporativos SLA</button></li>
           </ul>
         </div>
 
