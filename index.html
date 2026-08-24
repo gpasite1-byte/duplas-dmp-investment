@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Duplas DMP Investment | Telecomunicações, Internet e Tecnologia em Angola</title>
-  <meta name="description" content="Duplas DMP Investment — Soluções completas em Internet, Telecomunicações, Redes e Tecnologia em Angola. Planos a partir de 8.500 Kz/mês.">
+  <title>Duplas DMP Investment | Soluções em Tecnologia, Telecomunicações e Loja Online</title>
+  <meta name="description" content="Duplas DMP Investment — Catálogo completo em Informática, Telecomunicações, Smartphones, Energia, Imagem e Som, Climatização e Segurança em Angola.">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -13,7 +13,7 @@
       theme: {
         extend: {
           colors: {
-            brand: { red:'#CC0000', redHover:'#AA0000', dark:'#0A0C12', gray:'#1A1E2E' }
+            brand: { red:'#CC0000', redHover:'#AA0000', dark:'#0A0C12', gray:'#1A1E2E', lightBg:'#F4F6F9' }
           },
           fontFamily: {
             sans:    ['Poppins', 'system-ui', 'sans-serif'],
@@ -27,7 +27,7 @@
     }
   </script>
 
-  <!-- Google Fonts: Poppins -->
+  <!-- Google Fonts: Poppins (300 a 900) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap" rel="stylesheet">
@@ -42,15 +42,15 @@
       console.error('Global error:', e);
       var root = document.getElementById('root');
       if (root && root.innerText.indexOf('Carregando') !== -1) {
-        root.innerHTML = '<div style="padding:40px;text-align:center;font-family:Poppins,sans-serif;color:#ffffff;background:#0A0C12;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;"><h2 style="color:#CC0000;font-size:24px;margin-bottom:12px;">Falha ao carregar componentes</h2><p style="color:#8A95A5;font-size:14px;max-width:500px;margin-bottom:20px;">' + (e.message || 'Verifique a sua ligação à internet para carregamento dos recursos visuais.') + '</p><button onclick="location.reload()" style="padding:12px 28px;background:#CC0000;color:#fff;border:none;border-radius:10px;font-weight:700;cursor:pointer;">Tentar Novamente</button></div>';
+        root.innerHTML = '<div style="padding:40px;text-align:center;font-family:Poppins,sans-serif;color:#ffffff;background:#0A0C12;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;"><h2 style="color:#CC0000;font-size:24px;margin-bottom:12px;">Falha ao carregar componentes</h2><p style="color:#8A95A5;font-size:14px;max-width:500px;margin-bottom:20px;">' + (e.message || 'Verifique a sua ligação à internet.') + '</p><button onclick="location.reload()" style="padding:12px 28px;background:#CC0000;color:#fff;border:none;border-radius:10px;font-weight:700;cursor:pointer;">Tentar Novamente</button></div>';
       }
     });
   </script>
 
   <style>
-    body { font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; margin:0; padding:0; box-sizing:border-box; font-weight: 400; }
-    h1,h2,h3,h4,h5,h6,.font-heading { font-family:'Poppins',sans-serif; font-weight: 800; }
-    .font-display { font-family:'Poppins',sans-serif; font-weight: 700; }
+    body { font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; margin:0; padding:0; box-sizing:border-box; font-weight:400; }
+    h1,h2,h3,h4,h5,h6,.font-heading { font-family:'Poppins',sans-serif; font-weight:800; }
+    .font-display { font-family:'Poppins',sans-serif; font-weight:700; }
     .font-body { font-family:'Poppins',sans-serif; }
     html { scroll-behavior:smooth; }
 
@@ -59,106 +59,48 @@
     ::-webkit-scrollbar-thumb { background:#CC0000; border-radius:4px; }
 
     /* ── ANIMATIONS ── */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(35px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInScale {
-      from { opacity: 0; transform: scale(0.93); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    @keyframes fadeInLeft {
-      from { opacity: 0; transform: translateX(-35px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes fadeInRight {
-      from { opacity: 0; transform: translateX(35px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes floatSlow {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-12px) rotate(1deg); }
-    }
-    @keyframes shimmerText {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 24px rgba(204,0,0,0.4), 0 0 45px rgba(204,0,0,0.18); }
-      50% { box-shadow: 0 0 45px rgba(204,0,0,0.85), 0 0 85px rgba(204,0,0,0.45); }
-    }
-    @keyframes pulseRing {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0.7); }
-      70% { transform: scale(1.06); box-shadow: 0 0 0 10px rgba(204,0,0,0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0); }
-    }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-25px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInRight { from { opacity: 0; transform: translateX(25px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes floatSlow { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 20px rgba(204,0,0,0.3); } 50% { box-shadow: 0 0 40px rgba(204,0,0,0.7); } }
+    @keyframes pulseRing { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0.7); } 70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(204,0,0,0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0); } }
 
-    .animate-fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .animate-fade-in-scale { animation: fadeInScale 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .animate-fade-in-left { animation: fadeInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .animate-fade-in-right { animation: fadeInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .animate-float { animation: floatSlow 5.5s ease-in-out infinite; }
-    .animate-pulse-glow { animation: pulseGlow 3.5s infinite; }
+    .animate-fade-in-up { animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-scale { animation: fadeInScale 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-left { animation: fadeInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-fade-in-right { animation: fadeInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .animate-float { animation: floatSlow 4s ease-in-out infinite; }
     .pulse-red { animation: pulseRing 2s infinite; }
-    
-    .text-gradient-red {
-      background: linear-gradient(135deg,#CC0000 0%,#FF4444 50%,#CC0000 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradientShift 5s ease infinite;
-    }
-    .animate-shimmer {
-      background: linear-gradient(90deg, #CC0000 0%, #FF6666 25%, #FFFFFF 50%, #FF6666 75%, #CC0000 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shimmerText 4.5s linear infinite;
-    }
 
-    .glass { background:rgba(10,12,18,0.88); backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.08); }
-    .glow-red { box-shadow:0 0 28px rgba(204,0,0,0.35),0 4px 16px rgba(0,0,0,0.4); }
-    .glow-red-hover:hover { box-shadow:0 0 45px rgba(204,0,0,0.6),0 8px 30px rgba(0,0,0,0.5); }
+    .glass { background:rgba(10,12,18,0.92); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.08); }
+    .glow-red { box-shadow:0 0 25px rgba(204,0,0,0.3); }
     
     .img-zoom { overflow:hidden; }
-    .img-zoom img, .img-zoom-child { transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .img-zoom:hover img, .img-zoom:hover .img-zoom-child { transform:scale(1.08); }
+    .img-zoom img, .img-zoom-child { transition:transform 0.5s ease; }
+    .img-zoom:hover img, .img-zoom:hover .img-zoom-child { transform:scale(1.06); }
     
-    .card-hover { transition:all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
-    .card-hover:hover { transform:translateY(-8px) scale(1.015); box-shadow:0 20px 35px -10px rgba(204,0,0,0.2); }
+    .card-hover { transition:all 0.3s ease; }
+    .card-hover:hover { transform:translateY(-6px); box-shadow:0 18px 30px -8px rgba(0,0,0,0.15); }
     
-    .heading-line::after { content:''; display:block; width:56px; height:3px; background:#CC0000; margin:10px auto 0; border-radius:2px; }
-    .heading-line-left::after { content:''; display:block; width:56px; height:3px; background:#CC0000; margin:10px 0 0; border-radius:2px; }
+    .heading-line::after { content:''; display:block; width:50px; height:3px; background:#CC0000; margin:10px auto 0; border-radius:2px; }
+    .heading-line-left::after { content:''; display:block; width:50px; height:3px; background:#CC0000; margin:10px 0 0; border-radius:2px; }
     
     .nav-link { position:relative; }
-    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#CC0000; transition:width 0.3s ease; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#CC0000; transition:width 0.25s ease; }
     .nav-link:hover::after,.nav-link.active::after { width:100%; }
     .nav-link.active { color:#CC0000; }
     
     .badge-red { background:linear-gradient(135deg,#CC0000,#E30613); }
-    .product-card { border-bottom:3px solid transparent; transition:all 0.35s ease; }
-    .product-card:hover { border-bottom-color:#CC0000; transform:translateY(-6px); box-shadow:0 15px 30px rgba(0,0,0,0.12); }
+    .product-card { border-bottom:3px solid transparent; transition:all 0.3s ease; }
+    .product-card:hover { border-bottom-color:#CC0000; transform:translateY(-5px); box-shadow:0 14px 28px rgba(0,0,0,0.1); }
     
     input:focus, textarea:focus, select:focus { outline:none; border-color:#CC0000!important; box-shadow:0 0 0 3px rgba(204,0,0,0.12)!important; }
-    .stat-card { border-top:4px solid #CC0000; transition: transform 0.3s ease; }
-    .stat-card:hover { transform: translateY(-4px); }
-
-    .section-full { width:100%; }
-    .mobile-menu { display:none; }
-    .mobile-menu.open { display:block; }
-    @keyframes slideDown { from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);} }
-    .mobile-menu.open { animation:slideDown 0.25s ease; }
-    .page-hero-overlay { background:linear-gradient(135deg,rgba(10,12,18,0.95) 0%,rgba(10,12,18,0.6) 70%,transparent 100%); }
+    .page-hero-overlay { background:linear-gradient(135deg,rgba(10,12,18,0.95) 0%,rgba(10,12,18,0.65) 70%,transparent 100%); }
     
     @media (max-width:768px){
       .hide-mobile { display:none!important; }
-      .mobile-stack { flex-direction:column!important; }
     }
   </style>
 </head>
@@ -166,920 +108,1427 @@
 <div id="root">
   <div style="display:flex;min-height:100vh;flex-direction:column;align-items:center;justify-content:center;background:#0A0C12;color:#ffffff;font-family:'Poppins',sans-serif;">
     <div style="font-size:32px;font-weight:900;letter-spacing:1px;color:#CC0000;margin-bottom:12px;">DUPLAS DMP</div>
-    <div style="font-size:14px;color:#8A95A5;margin-bottom:24px;">Carregando Soluções Tecnológicas...</div>
+    <div style="font-size:14px;color:#8A95A5;margin-bottom:24px;">Carregando Soluções Tecnológicas & Loja Online...</div>
     <div style="width:40px;height:40px;border:3px solid rgba(204,0,0,0.2);border-top-color:#CC0000;border-radius:50%;animation:spin 0.8s linear infinite;"></div>
     <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
   </div>
 </div>
 
 <script type="text/babel">
-const { useState, useEffect, useRef } = React;
+const { useState, useEffect, useMemo } = React;
 
-/* ─── DATA ─────────────────────────────────────────── */
+/* ─── LOGO ─────────────────────────────────────────── */
 const LOGO_ONLINE = "https://i.ibb.co/XkF3VWps/DUPLAS.png";
 const LOGO_PATH   = "logo.png";
 
+/* ─── CATEGORIAS NCR ANGOLA ─────────────────────────── */
+const NCR_CATEGORIES = [
+  { id: 'ALL', name: 'Todos os Produtos', icon: 'fa-layer-group' },
+  { id: 'Informatica', name: 'Informática', icon: 'fa-laptop', subcategories: ['Portáteis', 'Computadores de Secretária', 'Servidores & Storage', 'Switches & Redes', 'Impressoras & POS', 'Monitores'] },
+  { id: 'Escritorio', name: 'Escritório e Papelaria', icon: 'fa-print', subcategories: ['Impressoras POS & Caixas', 'Destruidoras de Papel', 'Calculadoras', 'Material de Escritório'] },
+  { id: 'Electrodomesticos', name: 'Electrodomésticos', icon: 'fa-snowflake', subcategories: ['Ar Condicionado', 'Frigoríficos', 'Micro-ondas', 'Pequenos Domésticos'] },
+  { id: 'Smartphones', name: 'Smartphones e Tablets', icon: 'fa-mobile-screen', subcategories: ['iPhones', 'Smartphones Android', 'Tablets & iPads', 'Smartwatches'] },
+  { id: 'Energia', name: 'Energia', icon: 'fa-bolt', subcategories: ['UPS / No-Breaks', 'Power Stations Portáteis', 'Estabilizadores AVR', 'Geradores & Inversores'] },
+  { id: 'ImagemSom', name: 'Imagem e Som', icon: 'fa-tv', subcategories: ['Smart TVs 4K', 'Soundbars & Áudio', 'Colunas Bluetooth', 'Auscultadores'] },
+];
+
+/* ─── CATÁLOGO DE PRODUTOS COMPLETO (PADRÃO NCR ANGOLA) ─── */
 const productsData = [
-  // --- COMPUTADORES & PORTÁTEIS (NCR ANGOLA) ---
-  { id:'p1', name:'Portátil HP ProBook 450 G10 15.6"', subtitle:'Intel Core i5-1335U · 16GB RAM · 512GB SSD NVMe', priceStr:'958.360,00 AKZ', priceVal:958360, category:'Computadores & Portáteis', badge:'Mais Vendido',
-    img:'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=600&q=80',
-    specs:['Processador Intel Core i5 13ª Geração','16GB RAM DDR4 3200MHz','SSD 512GB PCIe NVMe High Speed','Ecrã 15.6" Full HD IPS Anti-reflexo'] },
-  { id:'p2', name:'Portátil Dell Latitude 5440 14"', subtitle:'Intel Core i7-1355U · 16GB DDR5 · 512GB SSD', priceStr:'1.250.000,00 AKZ', priceVal:1250000, category:'Computadores & Portáteis', badge:'Empresarial',
-    img:'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80',
-    specs:['Processador Intel Core i7 vPro 5.0GHz','16GB RAM DDR5 4800MHz','SSD 512GB M.2 NVMe Classe 35','Garantia ProSupport Dell Oficial'] },
-  { id:'p3', name:'Portátil Lenovo ThinkPad E14 Gen 5', subtitle:'AMD Ryzen 7 7730U · 16GB RAM · 512GB SSD', priceStr:'1.180.000,00 AKZ', priceVal:1180000, category:'Computadores & Portáteis', badge:'Ultra Robusto',
-    img:'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=600&q=80',
-    specs:['Processador AMD Ryzen 7 8 Cores / 16 Threads','16GB RAM DDR4','Chassi Militar Mil-Spec STD-810H','Teclado Ergonómico ThinkPad'] },
-  { id:'p4', name:'Desktop HP ProDesk 400 G9 SFF', subtitle:'Intel Core i5-13500 · 16GB RAM · 512GB SSD', priceStr:'870.000,00 AKZ', priceVal:870000, category:'Computadores & Portáteis', badge:'Desktop Corporativo',
-    img:'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=600&q=80',
-    specs:['Processador Intel Core i5 14 Cores','16GB RAM DDR4','SSD 512GB PCIe NVMe','Inclui Teclado e Rato HP'] },
-  { id:'p5', name:'Apple MacBook Pro 14" M3 Pro', subtitle:'Apple M3 Pro 11-Core · 18GB RAM · 512GB SSD', priceStr:'2.650.000,00 AKZ', priceVal:2650000, category:'Computadores & Portáteis', badge:'Apple Oficial',
-    img:'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80',
-    specs:['Chip Apple M3 Pro com GPU 14-Core','18GB Memória Unificada','Ecrã Liquid Retina XDR 120Hz ProMotion','Bateria até 18 horas de autonomia'] },
+  // ==========================================
+  // 1. INFORMÁTICA
+  // ==========================================
+  {
+    id: 'p-inf-01',
+    name: 'Portátil HP ProBook 450 G10 15.6" FHD',
+    subtitle: 'Intel Core i5-1335U · 16GB RAM · 512GB SSD NVMe · Windows 11 Pro',
+    category: 'Informatica',
+    subCategory: 'Portáteis',
+    brand: 'HP',
+    priceVal: 958360,
+    priceStr: '958.360,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=600&q=80',
+    badge: 'Mais Vendido',
+    ram: '16GB',
+    screenSize: '15.6"',
+    screenType: 'IPS',
+    resolution: 'Full HD 1080p',
+    hasBluetooth: true,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '65W',
+    weight: '1.74 kg',
+    specs: ['Processador Intel Core i5 13ª Geração até 4.6GHz', '16GB RAM DDR4 3200MHz (Expansível)', 'Armazenamento SSD 512GB M.2 PCIe NVMe', 'Ecrã 15.6" FHD IPS Anti-reflexo', 'Wi-Fi 6E + Bluetooth 5.3 + Porta LAN Gigabit', 'Segurança HP Wolf Security e Leitor Biométrico']
+  },
+  {
+    id: 'p-inf-02',
+    name: 'Portátil Dell Latitude 5440 14" FHD',
+    subtitle: 'Intel Core i7-1355U · 16GB DDR5 · 512GB SSD · VPro Empresarial',
+    category: 'Informatica',
+    subCategory: 'Portáteis',
+    brand: 'Dell',
+    priceVal: 1250000,
+    priceStr: '1.250.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80',
+    badge: 'Empresarial Top',
+    ram: '16GB',
+    screenSize: '14"',
+    screenType: 'IPS',
+    resolution: 'Full HD 1080p',
+    hasBluetooth: true,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '65W',
+    weight: '1.36 kg',
+    specs: ['Intel Core i7-1355U vPro 10 Cores', '16GB RAM DDR5 4800MHz Ultra Rápida', 'SSD 512GB NVMe PCIe Gen4', 'Ecrã 14" FHD ComfortView Plus', 'Garantia Dell ProSupport 3 Anos', 'Portas Thunderbolt 4, HDMI e RJ45 LAN']
+  },
+  {
+    id: 'p-inf-03',
+    name: 'Portátil Lenovo ThinkPad E14 Gen 5',
+    subtitle: 'AMD Ryzen 7 7730U · 16GB RAM · 512GB SSD · Chassi Militar',
+    category: 'Informatica',
+    subCategory: 'Portáteis',
+    brand: 'Lenovo',
+    priceVal: 1180000,
+    priceStr: '1.180.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=600&q=80',
+    badge: 'Ultra Robusto',
+    ram: '16GB',
+    screenSize: '14"',
+    screenType: 'IPS',
+    resolution: 'Full HD 1080p',
+    hasBluetooth: true,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '65W',
+    weight: '1.41 kg',
+    specs: ['AMD Ryzen 7 7730U (8 Núcleos / 16 Threads)', '16GB RAM DDR4 3200MHz', 'SSD 512GB M.2 2242 PCIe', 'Certificação Militar Mil-STD-810H', 'Teclado retroiluminado com TrackPoint', 'Câmara FHD com obturador de privacidade']
+  },
+  {
+    id: 'p-inf-04',
+    name: 'Apple MacBook Pro 14" M3 Pro',
+    subtitle: 'Chip M3 Pro 11-Core · 18GB RAM · 512GB SSD · Liquid Retina XDR',
+    category: 'Informatica',
+    subCategory: 'Portáteis',
+    brand: 'Apple',
+    priceVal: 2650000,
+    priceStr: '2.650.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80',
+    badge: 'Apple Oficial',
+    ram: '18GB',
+    screenSize: '14"',
+    screenType: 'Liquid Retina XDR',
+    resolution: 'Liquid Retina 3K',
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: true,
+    hasSubwoofer: true,
+    hasMountSupport: false,
+    powerWatts: '70W',
+    weight: '1.61 kg',
+    specs: ['Chip Apple M3 Pro com GPU 14-Core', '18GB Memória Unificada de Alta Velocidade', 'SSD 512GB PCIe de Alta Performance', 'Ecrã Liquid Retina XDR 120Hz ProMotion', 'Sistema de som com 6 altifalantes e subwoofers', 'Bateria até 18 horas']
+  },
+  {
+    id: 'p-inf-05',
+    name: 'Desktop HP ProDesk 400 G9 SFF',
+    subtitle: 'Intel Core i5-13500 · 16GB RAM · 512GB SSD · Inclui Rato e Teclado',
+    category: 'Informatica',
+    subCategory: 'Computadores de Secretária',
+    brand: 'HP',
+    priceVal: 870000,
+    priceStr: '870.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=600&q=80',
+    badge: 'Desktop Corporativo',
+    ram: '16GB',
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: true,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '180W',
+    weight: '4.2 kg',
+    specs: ['Intel Core i5-13500 14 Cores / 20 Threads', '16GB RAM DDR4 3200MHz', 'SSD 512GB NVMe M.2', 'Portas USB-C, DisplayPort, HDMI, RJ45 LAN', 'Gabinete Small Form Factor económico e silencioso', 'Windows 11 Pro 64-bit']
+  },
+  {
+    id: 'p-inf-06',
+    name: 'Servidor HPE ProLiant ML30 Gen11 Torre',
+    subtitle: 'Intel Xeon E-2434 · 32GB RAM ECC · 2x 2TB SATA Enterprise RAID',
+    category: 'Informatica',
+    subCategory: 'Servidores & Storage',
+    brand: 'HPE',
+    priceVal: 3850000,
+    priceStr: '3.850.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80',
+    badge: 'Servidor Torre',
+    ram: '32GB',
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '500W',
+    weight: '15.6 kg',
+    specs: ['Processador Intel Xeon E-2434 4 Cores / 8 Threads', '32GB Memória DDR5 ECC Registada', '2 Discos 2TB SATA 7.2K Enterprise em RAID 1', 'Controlador HPE Smart Array & Gestão Remota iLO 6', 'Dupla Fonte de Alimentação Redundante', '4 Portas Gigabit LAN integradas']
+  },
+  {
+    id: 'p-inf-07',
+    name: 'Switch Cisco Catalyst 1000 24P PoE+',
+    subtitle: '24 Portas Gigabit PoE+ · 4x SFP 1G Uplink · 195W Power Budget',
+    category: 'Informatica',
+    subCategory: 'Switches & Redes',
+    brand: 'Cisco',
+    priceVal: 990000,
+    priceStr: '990.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    badge: 'Cisco Enterprise',
+    ram: '512MB',
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: true,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '195W',
+    weight: '3.8 kg',
+    specs: ['24 Portas 10/100/1000 Gigabit Ethernet PoE+', '4 Slots SFP 1G para Fibra Óptica', 'Orçamento PoE total de 195W', 'Gestão avançada VLANs, QoS, IGMP Snooping', 'Montagem em Bastidor / Rack 19"', 'Cisco IOS Software com interface Web intuitiva']
+  },
+  {
+    id: 'p-inf-08',
+    name: 'Monitor HP P22 G5 21.5" Full HD',
+    subtitle: '1920x1080 · Painel IPS 75Hz · HDMI & VGA · Low Blue Light',
+    category: 'Informatica',
+    subCategory: 'Monitores',
+    brand: 'HP',
+    priceVal: 183194,
+    priceStr: '183.194,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80',
+    badge: 'Monitor HP',
+    ram: null,
+    screenSize: '21.5"',
+    screenType: 'IPS',
+    resolution: 'Full HD 1080p',
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '20W',
+    weight: '2.8 kg',
+    specs: ['Resolução Full HD 1920 x 1080 a 75Hz', 'Painel IPS com ângulos de visualização de 178°', 'Entradas HDMI 1.4, DisplayPort 1.2 e VGA', 'Suporte VESA 100x100mm para fixação em parede', 'Filtro HP Eye Ease contra fadiga ocular']
+  },
 
-  // --- IMPRESSÃO & POS ---
-  { id:'p6', name:'Impressora HP LaserJet Mono M111A SFP', subtitle:'Laser Mono · USB · Compacta 20 ppm', priceStr:'163.209,00 AKZ', priceVal:163209, category:'Impressão & POS', badge:'Laser HP',
-    img:'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=600&q=80',
-    specs:['Velocidade até 20 páginas por minuto','Resolução de impressão 600x600 dpi','Toner HP LaserJet Original de alto rendimento','Design compacto para escritório'] },
-  { id:'p7', name:'Impressora Multifunções Epson EcoTank L3250', subtitle:'Tanque de Tinta · Wi-Fi Direct · Bivolt', priceStr:'285.000,00 AKZ', priceVal:285000, category:'Impressão & POS', badge:'EcoTank',
-    img:'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=600&q=80',
-    specs:['Sistema EcoTank sem tinteiros','Imprime até 4.500 páginas a preto','Conectividade Wi-Fi e Wi-Fi Direct','App Epson Smart Panel'] },
-  { id:'p8', name:'Impressora POS Térmica Wintec 80mm', subtitle:'Térmica Direta · USB + LAN · Corte Auto', priceStr:'119.794,00 AKZ', priceVal:119794, category:'Impressão & POS', badge:'Para POS & Caixa',
-    img:'https://images.unsplash.com/photo-1556742049-0a67e557224f?auto=format&fit=crop&w=600&q=80',
-    specs:['Papel térmico standard 80mm','Guilhotina de corte automático','Portas USB e Ethernet LAN','Compatível com softwares de faturação em Angola'] },
-  { id:'p9', name:'Impressora Deskjet HP 2976 E-AIO', subtitle:'Jato de Tinta Multifuncional · Wi-Fi', priceStr:'61.814,00 AKZ', priceVal:61814, category:'Impressão & POS', badge:'Económica',
-    img:'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=600&q=80',
-    specs:['Impressão, Cópia e Scanner','Conexão sem fios Wi-Fi integrada','Compatível com cartuchos HP originais','Ideal para uso pessoal e home office'] },
+  // ==========================================
+  // 2. ESCRITÓRIO E PAPELARIA
+  // ==========================================
+  {
+    id: 'p-esc-01',
+    name: 'Impressora Multifunções HP LaserJet M140w',
+    subtitle: 'Laser Monocromática · Cópia & Scanner · Wi-Fi & USB',
+    category: 'Escritorio',
+    subCategory: 'Impressoras & POS',
+    brand: 'HP',
+    priceVal: 163209,
+    priceStr: '163.209,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=600&q=80',
+    badge: 'Laser Multifunções',
+    ram: '64MB',
+    screenSize: null,
+    screenType: null,
+    resolution: '600x600 dpi',
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '350W',
+    weight: '5.4 kg',
+    specs: ['Impressão, digitalização e fotocópia em formato compacto', 'Velocidade até 21 páginas por minuto', 'Conectividade Wi-Fi sem fios com app HP Smart', 'Toner HP 141A de alto rendimento incluído']
+  },
+  {
+    id: 'p-esc-02',
+    name: 'Impressora Epson EcoTank L3250 Wi-Fi',
+    subtitle: 'Tanque de Tinta Contínuo · Cópia/Scan · 4.500 págs Preto',
+    category: 'Escritorio',
+    subCategory: 'Impressoras & POS',
+    brand: 'Epson',
+    priceVal: 285000,
+    priceStr: '285.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=600&q=80',
+    badge: 'EcoTank Super Económica',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: '5760x1440 dpi',
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '12W',
+    weight: '3.9 kg',
+    specs: ['Sistema EcoTank 100% sem cartuchos', 'Imprime até 4.500 páginas a preto ou 7.500 a cores por kit', 'Conexão Wi-Fi e Wi-Fi Direct para telemóveis', 'Tecnologia Heat-Free sem aquecimento']
+  },
+  {
+    id: 'p-esc-03',
+    name: 'Impressora POS Térmica Wintec 80mm',
+    subtitle: 'Impressão de Faturas e Talões · USB + LAN · Corte Automático',
+    category: 'Escritorio',
+    subCategory: 'Impressoras POS & Caixas',
+    brand: 'Wintec',
+    priceVal: 119794,
+    priceStr: '119.794,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1556742049-0a67e557224f?auto=format&fit=crop&w=600&q=80',
+    badge: 'Ponto de Venda POS',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: '203 dpi',
+    hasBluetooth: false,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '30W',
+    weight: '1.2 kg',
+    specs: ['Velocidade ultra rápida 250 mm/s', 'Papel térmico 80mm standard', 'Guilhotina automática com 1.5 milhões de cortes', 'Compatível com softwares certificados pela AGT em Angola']
+  },
+  {
+    id: 'p-esc-04',
+    name: 'Destruidora de Documentos Rexel ProStyle+',
+    subtitle: 'Corte Cruzado P-4 · Destrói 11 Folhas, Cartões e Agrafos',
+    category: 'Escritorio',
+    subCategory: 'Destruidoras de Papel',
+    brand: 'Rexel',
+    priceVal: 95000,
+    priceStr: '95.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80',
+    badge: 'Segurança de Dados',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '200W',
+    weight: '6.8 kg',
+    specs: ['Nível de segurança confidencial DIN P-4 (4x35mm)', 'Capacidade para 11 folhas simultâneas', 'Destrói cartões de crédito, clipes e agrafos', 'Cesto de 20 litros com visor transparente']
+  },
 
-  // --- REDES & SERVIDORES ---
-  { id:'p10', name:'Switch Cisco Catalyst 1000 24P PoE+', subtitle:'24x Gigabit PoE+ · 4x SFP · 195W', priceStr:'990.000,00 AKZ', priceVal:990000, category:'Redes & Servidores', badge:'Cisco Oficial',
-    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    specs:['24 Portas Gigabit RJ45 PoE+','4 Portas SFP 1G Uplink','Power Budget PoE de 195 Watts','Gestão Web UI e Linha de Comandos Cisco IOS'] },
-  { id:'p11', name:'Servidor HPE ProLiant ML30 Gen11', subtitle:'Intel Xeon E-2434 · 32GB RAM · 2x 2TB SATA', priceStr:'3.850.000,00 AKZ', priceVal:3850000, category:'Redes & Servidores', badge:'Servidor Torre',
-    img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80',
-    specs:['Processador Intel Xeon E-2434 4 Cores','32GB Memória DDR5 ECC Registada','2x Discos 2TB SATA Enterprise RAID 1','Controlador HPE iLO 6 de Gestão Remota'] },
-  { id:'p12', name:'Switch D-Link 24 Portas Gigabit Managed', subtitle:'24x 10/100/1000 · 4x SFP · VLAN', priceStr:'185.000,00 AKZ', priceVal:185000, category:'Redes & Servidores', badge:'D-Link',
-    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    specs:['24 Portas Gigabit RJ45','4 Slots SFP para Fibra Óptica','Gestão Web Smart com suporte a VLANs','Chassi metálico para montagem em Rack 19"'] },
-  { id:'p13', name:'Switch Hikvision 8 Portas Gigabit', subtitle:'8 Portas 10/100/1000 Mbps · Plug & Play', priceStr:'32.713,00 AKZ', priceVal:32713, category:'Redes & Servidores',
-    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    specs:['8 Portas RJ45 Gigabit automáticas','Construção metálica reforçada','Design silencioso sem ventoinha','Instalação Plug and Play sem configuração'] },
-  { id:'p14', name:'Router Wi-Fi 6 AX3000 Dual Band Gigabit', subtitle:'Dual Band 2.4/5GHz · 4 Antenas High-Gain', priceStr:'45.000,00 AKZ', priceVal:45000, category:'Redes & Servidores', badge:'Wi-Fi 6',
-    img:'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=600&q=80',
-    specs:['Velocidade combinada até 3000 Mbps','Tecnologia OFDMA & MU-MIMO','4 Antenas externas de alto ganho','Segurança WPA3 de última geração'] },
-  { id:'p15', name:'Cabo de Rede Cat6 UTP Furukawa 305m', subtitle:'100% Cobre Puro · Homologado 250MHz', priceStr:'55.000,00 AKZ', priceVal:55000, category:'Redes & Servidores',
-    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    specs:['Caixa de puxar com 305 Metros','Condutores 100% Cobre Puro 23AWG','Capa LSZH Anti-chama sem emissão de gases','Certificado internacional Gigabit'] },
+  // ==========================================
+  // 3. ELECTRODOMÉSTICOS
+  // ==========================================
+  {
+    id: 'p-elec-01',
+    name: 'Ar Condicionado Split Inverter LG Dual Inverter 12000 BTU',
+    subtitle: 'Inverter Económico · Refrigeração Rápida · Filtro Anti-Bactérias',
+    category: 'Electrodomesticos',
+    subCategory: 'Ar Condicionado',
+    brand: 'LG',
+    priceVal: 385000,
+    priceStr: '385.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80',
+    badge: 'Economia 70% Energia',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '1080W',
+    weight: '31 kg (Conjunto)',
+    specs: ['Capacidade 12.000 BTUs/h Refrigeração', 'Tecnologia Dual Inverter com até 70% de poupança elétrica', 'Gás ecológico R410A de alto rendimento', 'Controlo remoto digital com funções Sleep e Turbo', 'Garantia de 10 anos no compressor']
+  },
+  {
+    id: 'p-elec-02',
+    name: 'Ar Condicionado Split Samsung WindFree 18000 BTU',
+    subtitle: 'Refrigeração sem Vento Direto · Wi-Fi SmartThings · Inverter',
+    category: 'Electrodomesticos',
+    subCategory: 'Ar Condicionado',
+    brand: 'Samsung',
+    priceVal: 540000,
+    priceStr: '540.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80',
+    badge: 'WindFree Conforto',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '1600W',
+    weight: '38 kg',
+    specs: ['18.000 BTUs ideal para salas amplas e escritórios', 'Tecnologia exclusiva WindFree com 23.000 microfuros', 'Controlo pelo smartphone via Wi-Fi SmartThings', 'Filtro lavável que retém 99% de poeira e bactérias']
+  },
+  {
+    id: 'p-elec-03',
+    name: 'Frigorífico Combinado No Frost Samsung 328L',
+    subtitle: 'Compressor Digital Inverter · All-Around Cooling · Inox',
+    category: 'Electrodomesticos',
+    subCategory: 'Frigoríficos',
+    brand: 'Samsung',
+    priceVal: 495000,
+    priceStr: '495.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=600&q=80',
+    badge: 'No Frost Inox',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '140W',
+    weight: '66 kg',
+    specs: ['Capacidade total de 328 Litros', 'Tecnologia No Frost total (sem formação de gelo)', 'Sistema All-Around Cooling para temperatura uniforme', 'Gaveta Fresh Zone para conservação prolongada de alimentos']
+  },
 
-  // --- SEGURANÇA & CFTV ---
-  { id:'p16', name:'Câmara Dome IP 4K Hikvision ColorVu', subtitle:'4K 8MP · Cor 24/7 · Áudio Integrado · IP67', priceStr:'75.000,00 AKZ', priceVal:75000, category:'Segurança & CFTV', badge:'ColorVu 24/7',
-    img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80',
-    specs:['Resolução 4K Ultra HD (3840x2160)','Tecnologia ColorVu com imagem colorida no escuro','Deteção de pessoas e veículos por Inteligência Artificial','Microfone integrado e proteção impermeável IP67'] },
-  { id:'p17', name:'Câmara Fixed Turret Hikvision HD-TVI', subtitle:'2MP 1080p · Visão Noturna IR 20m · Exterior', priceStr:'17.201,00 AKZ', priceVal:17201, category:'Segurança & CFTV',
-    img:'https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&w=600&q=80',
-    specs:['Resolução Full HD 1080p','Infravermelhos Smart IR até 20 metros','Chassi resistente para montagem exterior','Compatível com todos os DVRs HD'] },
-  { id:'p18', name:'Câmara PTZ Speed Dome D-Link 4K UHD', subtitle:'Zoom Óptico 30x · Rotação 360° · IR 150m', priceStr:'2.653.920,00 AKZ', priceVal:2653920, category:'Segurança & CFTV', badge:'Industrial',
-    img:'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80',
-    specs:['Zoom Óptico profissional de 30x','Rotação panorâmica contínua de 360°','Auto-tracking com seguimento automático de alvos','Alcance de visão noturna até 150 metros'] },
-  { id:'p19', name:'DVR Gravador Hikvision HD-TVI 32 Canais', subtitle:'32 Canais · 4x SATA até 40TB · H.265+', priceStr:'827.675,00 AKZ', priceVal:827675, category:'Segurança & CFTV', badge:'32 Canais',
-    img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80',
-    specs:['Suporta até 32 câmaras em simultâneo','4 Entradas SATA para discos rígidos até 40TB','Compressão de vídeo H.265+ de alta eficiência','Acesso remoto via telemóvel Hik-Connect'] },
+  // ==========================================
+  // 4. SMARTPHONES E TABLETS
+  // ==========================================
+  {
+    id: 'p-smp-01',
+    name: 'Apple iPhone 15 Pro 128GB Titânio Natural',
+    subtitle: 'Chip A17 Pro · Ecrã Super Retina XDR 6.1" 120Hz · USB-C 3.0',
+    category: 'Smartphones',
+    subCategory: 'iPhones',
+    brand: 'Apple',
+    priceVal: 1290000,
+    priceStr: '1.290.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=600&q=80',
+    badge: 'Lançamento Apple',
+    ram: '8GB',
+    screenSize: '6.1"',
+    screenType: 'OLED Super Retina XDR',
+    resolution: '2556x1179 pixels',
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: true,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '20W Fast Charge',
+    weight: '187 g',
+    specs: ['Design inovador em Titânio de grau aeroespacial', 'Câmara principal de 48MP com teleobjetiva 3x', 'Dynamic Island interactiva com notificações em tempo real', 'Conexão 5G e USB-C com velocidade USB 3']
+  },
+  {
+    id: 'p-smp-02',
+    name: 'Samsung Galaxy S24 Ultra 256GB Titanium Gray',
+    subtitle: 'Snapdragon 8 Gen 3 · Galaxy AI · S-Pen Integrada · Câmara 200MP',
+    category: 'Smartphones',
+    subCategory: 'Smartphones Android',
+    brand: 'Samsung',
+    priceVal: 1350000,
+    priceStr: '1.350.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=80',
+    badge: 'Galaxy AI Top',
+    ram: '12GB',
+    screenSize: '6.8"',
+    screenType: 'Dynamic AMOLED 2X',
+    resolution: 'Quad HD+ (3120x1440)',
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: true,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '45W Fast Charge',
+    weight: '232 g',
+    specs: ['Ecrã plano 6.8" 120Hz com vidro Corning Gorilla Armor', 'Câmara principal de 200MP com zoom óptico de até 5x e 100x Space Zoom', 'Recursos Galaxy AI: tradução simultânea e Circle to Search', 'Bateria duradoura de 5000mAh']
+  },
+  {
+    id: 'p-smp-03',
+    name: 'Apple iPad Air 11" M2 Wi-Fi 128GB',
+    subtitle: 'Chip Apple M2 · Liquid Retina · Compatível com Apple Pencil Pro',
+    category: 'Smartphones',
+    subCategory: 'Tablets & iPads',
+    brand: 'Apple',
+    priceVal: 780000,
+    priceStr: '780.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80',
+    badge: 'Tablet M2',
+    ram: '8GB',
+    screenSize: '11"',
+    screenType: 'Liquid Retina IPS',
+    resolution: '2360x1640 pixels',
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: true,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '30W',
+    weight: '462 g',
+    specs: ['Chip Apple M2 de alta velocidade gráfica e inteligência', 'Ecrã Liquid Retina com revestimento anti-reflexo', 'Câmara frontal ultra grande-angular de 12MP em formato horizontal', 'Suporta Magic Keyboard e Apple Pencil Pro']
+  },
 
-  // --- ENERGIA & UPS ---
-  { id:'p20', name:'Power Station Portátil Wintech 500Wh', subtitle:'500Wh / 600W · Saída AC 220V + USB-C PD', priceStr:'554.781,00 AKZ', priceVal:554781, category:'Energia & UPS', badge:'Energia Portátil',
-    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    specs:['Capacidade da bateria 500Wh (Lítio de longa vida)','Tomadas AC 220V com onda senoidal pura','Carregamento solar, tomada ou tomada de carro','Display digital informativo'] },
-  { id:'p21', name:'Power Station Portátil Wintech 300Wh', subtitle:'300Wh / 300W · Bateria Backup para Escritório', priceStr:'308.426,00 AKZ', priceVal:308426, category:'Energia & UPS',
-    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    specs:['Capacidade 300Wh ideal para routers e portáteis','Saídas USB, Type-C Fast Charge e AC 220V','Compacta e fácil de transportar','Proteção contra sobretensão e curto-circuito'] },
-  { id:'p22', name:'UPS APC Smart-UPS 1500VA LCD 230V', subtitle:'1500VA / 1000W · Onda Senoidal · AVR', priceStr:'210.000,00 AKZ', priceVal:210000, category:'Energia & UPS', badge:'Proteção Top',
-    img:'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    specs:['Potência nominal de 1500VA / 1000 Watts','Onda senoidal pura protegendo servidores e PCs','Estabilização automática de tensão AVR','Ecrã LCD com diagnóstico em tempo real'] },
+  // ==========================================
+  // 5. ENERGIA
+  // ==========================================
+  {
+    id: 'p-ene-01',
+    name: 'Power Station Portátil Wintech 500Wh',
+    subtitle: '500Wh / 600W · Tomadas AC 220V + USB-C PD 100W · Lítio LiFePO4',
+    category: 'Energia',
+    subCategory: 'Power Stations Portáteis',
+    brand: 'Wintec',
+    priceVal: 554781,
+    priceStr: '554.781,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    badge: 'Energia Portátil',
+    ram: null,
+    screenSize: null,
+    screenType: 'Display LCD',
+    resolution: null,
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '600W (Pico 1000W)',
+    weight: '5.8 kg',
+    specs: ['Capacidade de 500Wh com células de bateria LiFePO4 (3000+ ciclos)', '2 Tomadas AC 220V com onda senoidal pura para computadores', 'Porta USB-C Power Delivery de 100W e saídas 12V para viatura', 'Pode ser carregado via painéis solares, tomada de parede ou automóvel']
+  },
+  {
+    id: 'p-ene-02',
+    name: 'UPS APC Smart-UPS 1500VA LCD 230V',
+    subtitle: '1500VA / 1000W · Onda Senoidal Pura · Estabilizador AVR Integrado',
+    category: 'Energia',
+    subCategory: 'UPS / No-Breaks',
+    brand: 'APC',
+    priceVal: 210000,
+    priceStr: '210.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    badge: 'Proteção Máxima',
+    ram: null,
+    screenSize: null,
+    screenType: 'Display LCD Diagnóstico',
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: true,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '1000W',
+    weight: '24.1 kg',
+    specs: ['Proteção de alimentação de nível empresarial para servidores e redes', 'Regulação Automática de Tensão (AVR) contra picos e quebras', 'Ecrã LCD com dados de carga, voltagem e autonomia', 'Entrada SmartSlot para placa de gestão em rede']
+  },
+  {
+    id: 'p-ene-03',
+    name: 'Power Station Portátil Wintech 300Wh',
+    subtitle: '300Wh / 300W · Compacta para Routers, Laptops e Iluminação',
+    category: 'Energia',
+    subCategory: 'Power Stations Portáteis',
+    brand: 'Wintec',
+    priceVal: 308426,
+    priceStr: '308.426,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
+    badge: 'Ideal Home Office',
+    ram: null,
+    screenSize: null,
+    screenType: 'Display LCD',
+    resolution: null,
+    hasBluetooth: false,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: false,
+    hasMountSupport: false,
+    powerWatts: '300W',
+    weight: '3.6 kg',
+    specs: ['Capacidade 300Wh fornecendo até 8h de autonomia para internet e portátil', 'Múltiplas portas USB Fast Charge e tomada 220V', 'Lanterna LED integrada com modo SOS', 'Proteção avançada BMS contra curto-circuitos']
+  },
 
-  // --- ACESSÓRIOS & MONITORES ---
-  { id:'p23', name:'Monitor HP 21.5" Full HD VGA/HDMI', subtitle:'1920x1080 · Painel IPS 75Hz · Anti-reflexo', priceStr:'183.194,00 AKZ', priceVal:183194, category:'Acessórios & Monitores', badge:'Monitor HP',
-    img:'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80',
-    specs:['Resolução Full HD 1080p (1920x1080)','Entradas HDMI e VGA com cabo incluído','Ângulos de visão amplos de 178° IPS','Filtro de luz azul Low Blue Light'] },
-  { id:'p24', name:'Fusionadora de Fibra Óptica AI-9', subtitle:'6 Motores de Precisão · Aquecimento 15s', priceStr:'450.000,00 AKZ', priceVal:450000, category:'Acessórios & Monitores', badge:'Ferramenta Pro',
-    img:'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=600&q=80',
-    specs:['Alinhamento por núcleo em 5 segundos','Mala completa com clivador e ferramentas','Bateria de alta capacidade 7800mAh','Display LCD a cores com zoom 300x'] }
+  // ==========================================
+  // 6. IMAGEM E SOM
+  // ==========================================
+  {
+    id: 'p-ims-01',
+    name: 'Smart TV Samsung 65" QLED 4K Q60D',
+    subtitle: 'Quantum Dot · HDR10+ · Dolby Atmos · Tizen OS com Netflix & YouTube',
+    category: 'ImagemSom',
+    subCategory: 'Smart TVs 4K',
+    brand: 'Samsung',
+    priceVal: 890000,
+    priceStr: '890.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=600&q=80',
+    badge: 'QLED 4K',
+    ram: '4GB',
+    screenSize: '65"',
+    screenType: 'QLED',
+    resolution: '4K Ultra HD',
+    hasBluetooth: true,
+    hasLAN: true,
+    hasNetflix: true,
+    hasSubwoofer: true,
+    hasMountSupport: true,
+    powerWatts: '145W',
+    weight: '21.3 kg',
+    specs: ['Resolução 4K Ultra HD com 100% de volume de cor Quantum Dot', 'Processador Quantum Lite 4K com Upscaling inteligente', 'Sistema Tizen OS com Netflix, Prime Video, YouTube e Apple TV', 'Design AirSlim ultra fino com suporte de parede VESA']
+  },
+  {
+    id: 'p-ims-02',
+    name: 'Smart TV LG 55" 4K UHD ThinQ AI webOS',
+    subtitle: 'Processador α5 Gen6 AI · HDR10 Pro · Apple AirPlay · Wi-Fi & LAN',
+    category: 'ImagemSom',
+    subCategory: 'Smart TVs 4K',
+    brand: 'LG',
+    priceVal: 520000,
+    priceStr: '520.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=600&q=80',
+    badge: 'Smart TV LG',
+    ram: '2GB',
+    screenSize: '55"',
+    screenType: 'LED UHD',
+    resolution: '4K Ultra HD',
+    hasBluetooth: true,
+    hasLAN: true,
+    hasNetflix: true,
+    hasSubwoofer: false,
+    hasMountSupport: true,
+    powerWatts: '120W',
+    weight: '14.2 kg',
+    specs: ['Ecrã Real 4K com cores vivas e detalhes nítidos', 'webOS 23 com comando Magic Remote incluído', 'Suporta Netflix, Disney+, Spotify e jogos em nuvem', 'Áudio AI Sound com som surround virtual 5.1']
+  },
+  {
+    id: 'p-ims-03',
+    name: 'Soundbar JBL Cinema SB190 380W com Subwoofer Sem Fios',
+    subtitle: 'Virtual Dolby Atmos · Subwoofer Wireless 6.5" · Bluetooth & HDMI eARC',
+    category: 'ImagemSom',
+    subCategory: 'Soundbars & Áudio',
+    brand: 'JBL',
+    priceVal: 275000,
+    priceStr: '275.000,00 AKZ',
+    img: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=600&q=80',
+    badge: 'Dolby Atmos',
+    ram: null,
+    screenSize: null,
+    screenType: null,
+    resolution: null,
+    hasBluetooth: true,
+    hasLAN: false,
+    hasNetflix: false,
+    hasSubwoofer: true,
+    hasMountSupport: true,
+    powerWatts: '380W',
+    weight: '7.5 kg',
+    specs: ['Potência impressionante de 380 Watts RMS', 'Subwoofer sem fios de 6.5" com graves profundos e potentes', 'Tecnologia Virtual Dolby Atmos para som de cinema 3D', 'Entrada HDMI eARC e Bluetooth 5.1 para telemóveis']
+  }
 ];
 
-const internetPlans = [
-  { name:'Residencial Light', speed:'10 Mbps', price:'8.500 Kz', badge:'Popular',
-    img:'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=700&q=80',
-    features:['Download 10 Mbps simétrico','Router Wi-Fi 6 incluído','Instalação em 48h em Luanda','Suporte Técnico 24/7'] },
-  { name:'Residencial Plus', speed:'30 Mbps', price:'18.500 Kz',
-    img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80',
-    features:['30 Mbps — Streaming 4K & Gaming','Router Dual Band Gigabit AC3000','Sem taxas de instalação','Suporte Prioritário 12h'] },
-  { name:'Empresarial Pro', speed:'50 Mbps', price:'45.000 Kz', badge:'Recomendado',
-    img:'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=700&q=80',
-    features:['Banda 100% Dedicada 1:1','IP Fixo Público incluído','SLA Garantido 99.9% Uptime','Gerente de Conta Dedicado'] },
-  { name:'Corporativo Fibra', speed:'100 Mbps', price:'95.000 Kz',
-    img:'https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?auto=format&fit=crop&w=700&q=80',
-    features:['Link Simétrico 100 Mbps 1:1','Múltiplos IPs Fixos Públicos','NOC — Monitorização 24h/365d','SLA 4h — Técnico no Local'] },
+/* ─── SERVIÇOS OFICIAIS DUPLAS DMP ─────────────────── */
+const servicesData = [
+  {
+    id: 's1',
+    title: 'Internet Dedicada, Fibra Óptica & Satélite',
+    desc: 'Instalação de links simétricos em fibra óptica, antenas ponto a ponto e sistemas de internet de alta velocidade para empresas e residências em Luanda e províncias.',
+    icon: 'fa-wifi',
+    img: 'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 's2',
+    title: 'Telecomunicações & Centrais Telefónicas PABX IP',
+    desc: 'Centrais telefónicas na nuvem, troncos SIP, gravação de chamadas, IVR e intercomunicadores corporativos para redução de custos em telecomunicações.',
+    icon: 'fa-phone-volume',
+    img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 's3',
+    title: 'CCTV, Segurança Eletrónica & Controlo de Acesso',
+    desc: 'Sistemas inteligentes de vídeo-vigilância 4K ColorVu Hikvision, gravação centralizada em NVR, alarmes de intrusão e controlo de acesso biométrico e facial.',
+    icon: 'fa-shield-halved',
+    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 's4',
+    title: 'Redes Estruturadas, Bastidores & Fusão de Fibra',
+    desc: 'Cablagem estruturada Cat6/Cat6A certificada, montagem de salas de servidores, organização de racks e fusão de fibra óptica por técnicos qualificados.',
+    icon: 'fa-server',
+    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 's5',
+    title: 'Assistência Técnica, Reparação & Manutenção',
+    desc: 'Diagnóstico técnico, reparação de computadores, portáteis, impressoras, no-breaks e contratos mensais de suporte preventivo e corretivo (SLA).',
+    icon: 'fa-screwdriver-wrench',
+    img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80'
+  },
+  {
+    id: 's6',
+    title: 'Instalação de Ar Condicionado & Climatização',
+    desc: 'Montagem técnica certificada de aparelhos de ar condicionado Split e industriais, limpeza profunda, recarga de gás e manutenção periódica.',
+    icon: 'fa-snowflake',
+    img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80'
+  }
 ];
 
-const telecomServices = [
-  { icon:'fa-phone-volume', title:'Centrais Telefónicas PABX IP', desc:'Sistemas de telefonia empresarial na nuvem com gravação de chamadas, IVR e ramais móveis para smartphones.', img:'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=700&q=80' },
-  { icon:'fa-network-wired', title:'Troncos SIP & VoIP Corporativo', desc:'Reduza até 60% nos custos de comunicação com chamadas nacionais e internacionais sobre IP com qualidade crystal clear.', img:'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=700&q=80' },
-  { icon:'fa-headset', title:'Call Center & IVR Inteligente', desc:'Plataforma completa de call center com distribuição automática, relatórios em tempo real e integração CRM.', img:'https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?auto=format&fit=crop&w=700&q=80' },
-  { icon:'fa-tower-cell', title:'Rádio Microondas Ponto-a-Ponto', desc:'Links de microondas de alta capacidade para conectar filiais, sites remotos e backhaul de operadoras em Angola.', img:'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80' },
-];
-
-const techServices = [
-  { icon:'fa-video', title:'CCTV & Segurança Eletrónica IP', desc:'Instalação de câmeras de vigilância 4K com inteligência artificial para deteção de intrusos, rostos e veículos.', img:'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=700&q=80' },
-  { icon:'fa-server', title:'Servidores & Data Centers', desc:'Infraestrutura de data center com servidores HP/Dell, storages NAS/SAN, racks e sistemas UPS industriais.', img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=700&q=80' },
-  { icon:'fa-sitemap', title:'Redes Estruturadas Cat6A & Fibra', desc:'Instalação de cablagem estruturada certificada, fusão de fibra óptica e redes Wi-Fi empresarial (Ubiquiti, Cisco).', img:'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=700&q=80' },
-  { icon:'fa-fire-extinguisher', title:'Controlo de Acesso & Alarmes', desc:'Sistemas de controlo de acesso biométrico, fechaduras eletrónicas, alarmes de incêndio e detecção de fumo.', img:'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=700&q=80' },
-];
-
-/* ─── APP ─────────────────────────────────────────── */
+/* ─── APP PRINCIPAL ─────────────────────────────────── */
 function App() {
   const [page, setPage]             = useState('home');
   const [cart, setCart]             = useState([]);
   const [cartOpen, setCartOpen]     = useState(false);
   const [quoteOpen, setQuoteOpen]   = useState(false);
   const [detailProd, setDetailProd] = useState(null);
-  const [shopCat, setShopCat]       = useState('ALL');
-  const [search, setSearch]         = useState('');
   const [toast, setToast]           = useState('');
   const [mobileMenu, setMobileMenu] = useState(false);
 
-  useEffect(()=>{ window.scrollTo({top:0,behavior:'smooth'}); setMobileMenu(false); },[page]);
+  // Estados dos Filtros da Loja
+  const [selectedCat, setSelectedCat]       = useState('ALL');
+  const [selectedSubCat, setSelectedSubCat] = useState('ALL');
+  const [searchQuery, setSearchQuery]       = useState('');
+  const [priceRange, setPriceRange]         = useState('ALL');
+  const [selectedBrand, setSelectedBrand]   = useState('ALL');
+  const [filterRAM, setFilterRAM]           = useState('ALL');
+  const [filterScreen, setFilterScreen]     = useState('ALL');
+  const [filterBluetooth, setFilterBluetooth] = useState(false);
+  const [filterLAN, setFilterLAN]           = useState(false);
+  const [filterNetflix, setFilterNetflix]   = useState(false);
+  const [filterSubwoofer, setFilterSubwoofer] = useState(false);
+  const [sortBy, setSortBy]                 = useState('featured');
 
-  const showToast = msg => { setToast(msg); setTimeout(()=>setToast(''),3500); };
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setMobileMenu(false);
+  }, [page]);
+
+  const showToast = msg => {
+    setToast(msg);
+    setTimeout(() => setToast(''), 3500);
+  };
 
   const addToCart = p => {
     setCart(prev => {
-      const f = prev.find(x=>x.id===p.id);
-      return f ? prev.map(x=>x.id===p.id?{...x,qty:x.qty+1}:x) : [...prev,{...p,qty:1}];
+      const exists = prev.find(x => x.id === p.id);
+      return exists ? prev.map(x => x.id === p.id ? { ...x, qty: x.qty + 1 } : x) : [...prev, { ...p, qty: 1 }];
     });
-    showToast(`✓ "${p.name}" adicionado ao carrinho`);
+    showToast(`✓ "${p.name}" adicionado ao carrinho!`);
   };
 
-  const updateQty = (id,d) => setCart(prev=>prev.map(p=>{
-    if(p.id===id){ const n=p.qty+d; return n>0?{...p,qty:n}:null; }
-    return p;
-  }).filter(Boolean));
-
-  const cartCount = cart.reduce((a,p)=>a+p.qty,0);
-  const cartTotal = cart.reduce((a,p)=>a+(p.priceVal||0)*p.qty,0);
-
-  const handleLogoError = (e) => {
-    if (e.target.src !== LOGO_PATH) {
-      e.target.onerror = null;
-      e.target.src = LOGO_PATH;
-    }
+  const updateQty = (id, delta) => {
+    setCart(prev => prev.map(p => {
+      if (p.id === id) {
+        const next = p.qty + delta;
+        return next > 0 ? { ...p, qty: next } : null;
+      }
+      return p;
+    }).filter(Boolean));
   };
 
-  /* ── NAV ITEMS ── */
-  const navItems = [
-    {key:'home',        label:'Início'},
-    {key:'internet',    label:'Internet'},
-    {key:'telecom',     label:'Telecomunicações'},
-    {key:'tecnologia',  label:'Tecnologia'},
-    {key:'loja',        label:'Loja Online'},
-    {key:'sobre',       label:'Sobre Nós'},
-    {key:'contactos',   label:'Contactos'},
-  ];
+  const cartCount = cart.reduce((a, p) => a + p.qty, 0);
+  const cartTotal = cart.reduce((a, p) => a + (p.priceVal || 0) * p.qty, 0);
+
+  // Lista única de marcas para os filtros
+  const availableBrands = useMemo(() => {
+    const brands = new Set(productsData.map(p => p.brand).filter(Boolean));
+    return ['ALL', ...Array.from(brands)];
+  }, []);
+
+  // Lista de RAMs disponíveis
+  const availableRAMs = useMemo(() => {
+    const rams = new Set(productsData.map(p => p.ram).filter(Boolean));
+    return ['ALL', ...Array.from(rams)];
+  }, []);
+
+  // Lista de tamanhos de ecrã disponíveis
+  const availableScreens = useMemo(() => {
+    const screens = new Set(productsData.map(p => p.screenSize).filter(Boolean));
+    return ['ALL', ...Array.from(screens)];
+  }, []);
+
+  // Filtragem e Ordenação dos Produtos
+  const filteredProducts = useMemo(() => {
+    return productsData.filter(p => {
+      // Categoria
+      if (selectedCat !== 'ALL' && p.category !== selectedCat) return false;
+      // Subcategoria
+      if (selectedSubCat !== 'ALL' && p.subCategory !== selectedSubCat) return false;
+      // Marca
+      if (selectedBrand !== 'ALL' && p.brand !== selectedBrand) return false;
+      // Faixa de Preço
+      if (priceRange === 'under100k' && p.priceVal >= 100000) return false;
+      if (priceRange === '100k-500k' && (p.priceVal < 100000 || p.priceVal > 500000)) return false;
+      if (priceRange === '500k-1500k' && (p.priceVal < 500000 || p.priceVal > 1500000)) return false;
+      if (priceRange === 'over1500k' && p.priceVal <= 1500000) return false;
+      // RAM
+      if (filterRAM !== 'ALL' && p.ram !== filterRAM) return false;
+      // Polegadas
+      if (filterScreen !== 'ALL' && p.screenSize !== filterScreen) return false;
+      // Especificações booleanas
+      if (filterBluetooth && !p.hasBluetooth) return false;
+      if (filterLAN && !p.hasLAN) return false;
+      if (filterNetflix && !p.hasNetflix) return false;
+      if (filterSubwoofer && !p.hasSubwoofer) return false;
+      // Pesquisa por texto
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase();
+        const matchesName = p.name.toLowerCase().includes(q);
+        const matchesSubtitle = p.subtitle.toLowerCase().includes(q);
+        const matchesBrand = (p.brand || '').toLowerCase().includes(q);
+        const matchesSpecs = (p.specs || []).some(s => s.toLowerCase().includes(q));
+        if (!matchesName && !matchesSubtitle && !matchesBrand && !matchesSpecs) return false;
+      }
+      return true;
+    }).sort((a, b) => {
+      if (sortBy === 'priceAsc') return a.priceVal - b.priceVal;
+      if (sortBy === 'priceDesc') return b.priceVal - a.priceVal;
+      if (sortBy === 'nameAsc') return a.name.localeCompare(b.name);
+      return 0; // featured
+    });
+  }, [selectedCat, selectedSubCat, selectedBrand, priceRange, filterRAM, filterScreen, filterBluetooth, filterLAN, filterNetflix, filterSubwoofer, searchQuery, sortBy]);
+
+  const clearAllFilters = () => {
+    setSelectedCat('ALL');
+    setSelectedSubCat('ALL');
+    setSelectedBrand('ALL');
+    setPriceRange('ALL');
+    setFilterRAM('ALL');
+    setFilterScreen('ALL');
+    setFilterBluetooth(false);
+    setFilterLAN(false);
+    setFilterNetflix(false);
+    setFilterSubwoofer(false);
+    setSearchQuery('');
+  };
 
   /* ── TOP BAR ── */
   const TopBar = () => (
     <div className="bg-brand-dark text-gray-300 text-xs md:text-sm py-2.5 border-b border-gray-800 hide-mobile">
       <div className="w-full px-4 sm:px-7 lg:px-10 flex justify-between items-center">
-        <span className="font-body tracking-wide truncate">Angola · Luanda — Tecnologia que conecta. Soluções que impulsionam.</span>
+        <span className="font-body tracking-wide truncate">Angola · Luanda — Soluções Corporativas, Equipamentos e Serviços</span>
         <div className="flex items-center space-x-6 flex-shrink-0">
           <span className="flex items-center space-x-2"><i className="fa-brands fa-whatsapp text-emerald-400 text-xs"></i><span>+244 941 950 022</span></span>
           <span className="flex items-center space-x-2"><i className="fa-solid fa-phone text-brand-red text-xs"></i><span>+244 947 077 913</span></span>
           <span className="flex items-center space-x-2"><i className="fa-solid fa-envelope text-brand-red text-xs"></i><span>geral@duplasdmp.co.ao</span></span>
           <span className="flex items-center space-x-2"><i className="fa-solid fa-clock text-brand-red text-xs"></i><span>Seg–Sex: 08h–17h</span></span>
-          <div className="flex items-center space-x-2 ml-2 pl-3 border-l border-gray-800">
-            <a href="https://www.facebook.com/DUPLASDMP/?locale=pt_BR" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded bg-gray-800 hover:bg-brand-red flex items-center justify-center transition-all text-xs hover:scale-110"><i className="fa-brands fa-facebook-f"></i></a>
-            <a href="https://ao.linkedin.com/company/duplas-dmp-insvestment" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded bg-gray-800 hover:bg-brand-red flex items-center justify-center transition-all text-xs hover:scale-110"><i className="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://www.instagram.com/duplasdmp/" target="_blank" rel="noopener noreferrer" className="w-7 h-7 rounded bg-gray-800 hover:bg-brand-red flex items-center justify-center transition-all text-xs hover:scale-110"><i className="fa-brands fa-instagram"></i></a>
-          </div>
         </div>
       </div>
     </div>
   );
 
-  /* ── HEADER (LOGOMARCA AMPLIADA COM IMAGEM ORIGINAL DUPLAS.PNG) ── */
+  /* ── HEADER COM DEPARTAMENTOS & NAVEGAÇÃO ── */
   const Header = () => (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-md transition-all">
-      <div className="w-full px-4 sm:px-7 lg:px-10 h-28 md:h-[125px] flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm transition-all">
+      <div className="w-full px-4 sm:px-7 lg:px-10 h-24 md:h-28 flex items-center justify-between gap-4">
         
-        {/* LOGO AMPLIADO */}
-        <button onClick={()=>setPage('home')} className="flex-shrink-0 py-2 flex items-center space-x-3 text-left group">
+        {/* LOGOMARCA */}
+        <button onClick={() => setPage('home')} className="flex-shrink-0 py-2 flex items-center space-x-3 text-left group">
           <img
             src={LOGO_ONLINE}
             alt="Duplas DMP Investment"
-            style={{height:'120px', width:'auto', objectFit:'contain', maxHeight:'135px'}}
-            onError={handleLogoError}
+            style={{ height: '95px', width: 'auto', objectFit: 'contain', maxHeight: '115px' }}
+            onError={(e) => { e.target.src = LOGO_PATH; }}
             className="group-hover:scale-105 transition-transform"
           />
         </button>
 
-        {/* DESKTOP NAV */}
-        <nav className="hidden lg:flex items-center space-x-2 font-heading">
-          {navItems.map(item=>(
-            <button
-              key={item.key}
-              onClick={()=>setPage(item.key)}
-              className={`nav-link px-4 py-8 font-bold tracking-wider uppercase text-base lg:text-[16px] transition-colors ${page===item.key?'active text-brand-red':'text-gray-900 hover:text-brand-red'}`}
-            >
-              <span>{item.label}</span>
-            </button>
-          ))}
+        {/* BARRA DE PESQUISA RÁPIDA */}
+        <div className="hidden md:flex flex-1 max-w-xl relative">
+          <input
+            type="text"
+            placeholder="Pesquisar por portáteis, marcas, impressoras, TVs, UPS..."
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              if (page !== 'loja') setPage('loja');
+            }}
+            className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-full font-body text-xs md:text-sm bg-gray-50 focus:bg-white shadow-inner"
+          />
+          <i className="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+        </div>
+
+        {/* NAVEGAÇÃO PRINCIPAL */}
+        <nav className="hidden xl:flex items-center space-x-6 font-heading">
+          <button onClick={() => setPage('home')} className={`nav-link font-bold uppercase text-sm ${page === 'home' ? 'text-brand-red active' : 'text-gray-800 hover:text-brand-red'}`}>Início</button>
+          <button onClick={() => setPage('loja')} className={`nav-link font-bold uppercase text-sm ${page === 'loja' ? 'text-brand-red active' : 'text-gray-800 hover:text-brand-red'}`}>Loja Online</button>
+          <button onClick={() => setPage('servicos')} className={`nav-link font-bold uppercase text-sm ${page === 'servicos' ? 'text-brand-red active' : 'text-gray-800 hover:text-brand-red'}`}>Serviços</button>
+          <button onClick={() => setPage('sobre')} className={`nav-link font-bold uppercase text-sm ${page === 'sobre' ? 'text-brand-red active' : 'text-gray-800 hover:text-brand-red'}`}>Sobre Nós</button>
+          <button onClick={() => setPage('contactos')} className={`nav-link font-bold uppercase text-sm ${page === 'contactos' ? 'text-brand-red active' : 'text-gray-800 hover:text-brand-red'}`}>Contactos</button>
         </nav>
 
-        {/* RIGHT ACTIONS */}
+        {/* AÇÕES (CARRINHO, COTAÇÃO, MENU MOBILE) */}
         <div className="flex items-center space-x-3 md:space-x-4">
-          <button onClick={()=>setPage('loja')} className="p-2.5 text-gray-700 hover:text-brand-red hover:scale-110 transition-all hide-mobile text-lg" title="Pesquisar">
-            <i className="fa-solid fa-magnifying-glass"></i>
+          <button onClick={() => setCartOpen(true)} className="relative p-3 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-900 transition-all hover:scale-105" title="Carrinho">
+            <i className="fa-solid fa-cart-shopping text-lg"></i>
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-brand-red text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white pulse-red">{cartCount}</span>
+            )}
           </button>
-          <button onClick={()=>setCartOpen(true)} className="relative p-2.5 text-gray-800 hover:text-brand-red hover:scale-110 transition-all">
-            <i className="fa-solid fa-cart-shopping text-xl"></i>
-            {cartCount>0&&<span className="absolute -top-1 -right-1 bg-brand-red text-white text-xs font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-white pulse-red">{cartCount}</span>}
-          </button>
-          <button onClick={()=>setQuoteOpen(true)} className="hidden sm:flex items-center space-x-2 bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold text-xs md:text-sm uppercase tracking-widest px-5 py-3.5 rounded-xl transition-all shadow-md glow-red-hover active:scale-95">
+          <button onClick={() => setQuoteOpen(true)} className="hidden sm:flex items-center space-x-2 bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold text-xs md:text-sm uppercase tracking-widest px-5 py-3 rounded-full transition-all shadow glow-red active:scale-95">
             <i className="fa-solid fa-file-invoice text-xs"></i>
             <span>Pedir Cotação</span>
           </button>
-          <button onClick={()=>setMobileMenu(p=>!p)} className="lg:hidden p-2.5 text-gray-800 hover:text-brand-red">
-            <i className={`fa-solid ${mobileMenu?'fa-xmark':'fa-bars'} text-2xl`}></i>
+          <button onClick={() => setMobileMenu(p => !p)} className="xl:hidden p-2.5 text-gray-800 hover:text-brand-red">
+            <i className={`fa-solid ${mobileMenu ? 'fa-xmark' : 'fa-bars'} text-2xl`}></i>
           </button>
+        </div>
+      </div>
+
+      {/* SUB-BARRA DE DEPARTAMENTOS / CATEGORIAS (PADRÃO NCR ANGOLA) */}
+      <div className="bg-brand-dark text-white text-xs border-t border-gray-800 overflow-x-auto hide-scrollbar">
+        <div className="w-full px-4 sm:px-7 lg:px-10 flex items-center space-x-6 py-2.5 font-heading font-semibold uppercase tracking-wider whitespace-nowrap">
+          <span className="text-brand-red flex items-center space-x-2 mr-2">
+            <i className="fa-solid fa-bars-staggered"></i>
+            <span>Departamentos:</span>
+          </span>
+          {NCR_CATEGORIES.map(cat => (
+            <button
+              key={cat.id}
+              onClick={() => {
+                setSelectedCat(cat.id);
+                setSelectedSubCat('ALL');
+                setPage('loja');
+              }}
+              className={`hover:text-brand-red transition-colors flex items-center space-x-1.5 ${selectedCat === cat.id && page === 'loja' ? 'text-brand-red font-bold' : 'text-gray-300'}`}
+            >
+              <i className={`fa-solid ${cat.icon} text-[11px]`}></i>
+              <span>{cat.name}</span>
+            </button>
+          ))}
         </div>
       </div>
 
       {/* MOBILE MENU */}
       {mobileMenu && (
-        <div className="mobile-menu open lg:hidden bg-white border-t border-gray-100 shadow-xl">
-          {navItems.map(item=>(
-            <button key={item.key} onClick={()=>setPage(item.key)}
-              className={`flex items-center space-x-3 w-full text-left px-6 py-3.5 font-heading font-semibold text-sm uppercase tracking-wide border-b border-gray-50 transition-colors ${page===item.key?'text-brand-red bg-red-50':'text-gray-800 hover:text-brand-red'}`}>
-              {page===item.key&&<i className="fa-solid fa-circle text-brand-red text-[8px]"></i>}
-              <span>{item.label}</span>
-            </button>
-          ))}
-          <div className="p-4">
-            <button onClick={()=>setQuoteOpen(true)} className="w-full bg-brand-red text-white font-heading font-semibold uppercase tracking-widest text-sm py-3 rounded-xl shadow-md">
-              Pedir Cotação
-            </button>
+        <div className="xl:hidden bg-white border-t border-gray-200 shadow-2xl p-6 space-y-4 animate-fade-in-up">
+          <div className="space-y-2">
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Navegação</p>
+            {['home', 'loja', 'servicos', 'sobre', 'contactos'].map(p => (
+              <button
+                key={p}
+                onClick={() => setPage(p)}
+                className={`block w-full text-left font-heading font-bold text-base py-2 uppercase border-b border-gray-100 ${page === p ? 'text-brand-red' : 'text-gray-800'}`}
+              >
+                {p === 'home' ? 'Início' : p === 'loja' ? 'Loja Online' : p === 'servicos' ? 'Serviços' : p === 'sobre' ? 'Sobre Nós' : 'Contactos'}
+              </button>
+            ))}
           </div>
+          <button onClick={() => setQuoteOpen(true)} className="w-full bg-brand-red text-white font-heading font-bold uppercase py-3.5 rounded-xl shadow glow-red">
+            Pedir Cotação
+          </button>
         </div>
       )}
     </header>
   );
 
-  /* ── PAGE HERO ── */
-  const PageHero = ({tag,title,subtitle,img}) => (
-    <section className="relative text-white overflow-hidden animate-fade-in-up" style={{minHeight:'290px'}}>
-      <img src={img} className="absolute inset-0 w-full h-full object-cover animate-fade-in-scale" style={{filter:'brightness(0.28)'}}/>
-      <div className="absolute inset-0 page-hero-overlay"></div>
-      <div className="relative z-10 w-full px-4 sm:px-7 lg:px-10 py-16 md:py-20 flex flex-col justify-end" style={{minHeight:'290px'}}>
-        <span className="inline-block badge-red text-white text-[10px] font-heading tracking-[0.2em] uppercase px-3 py-1 rounded mb-3 w-fit shadow">{tag}</span>
-        <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">{title}</h1>
-        {subtitle&&<p className="mt-3 text-gray-300 font-body max-w-3xl text-sm md:text-base leading-relaxed">{subtitle}</p>}
-      </div>
-    </section>
-  );
-
   /* ════════════════════════════════════════
-     HOME PAGE (TELA AMPLIADA, ROBUSTA & BONITA DO COMMIT 2)
+     PÁGINA INICIAL (HOMEPAGE)
   ════════════════════════════════════════ */
   const HomePage = () => (
-    <div className="animate-fade-in-up">
-      {/* HERO SECTION ROBUSTA DO COMMIT 2 */}
-      <section className="relative text-white overflow-hidden section-full" style={{minHeight:'calc(100vh - 90px)'}}>
-        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2200&q=90"
-          className="absolute inset-0 w-full h-full object-cover animate-fade-in-scale" style={{filter:'brightness(0.24) contrast(1.15)'}}/>
-        <div className="absolute inset-0" style={{background:'linear-gradient(135deg,rgba(10,12,18,0.96) 0%,rgba(10,12,18,0.65) 55%,rgba(180,0,0,0.12) 100%)'}}></div>
+    <div className="animate-fade-in-up space-y-16 pb-16">
+      {/* HERO BANNER */}
+      <section className="relative text-white overflow-hidden" style={{ minHeight: '520px' }}>
+        <img
+          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2200&q=90"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: 'brightness(0.24) contrast(1.1)' }}
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg,rgba(10,12,18,0.96) 0%,rgba(10,12,18,0.7) 60%,rgba(180,0,0,0.15) 100%)' }}></div>
         
-        <div className="relative z-10 w-full px-4 sm:px-7 lg:px-10 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center" style={{minHeight:'calc(100vh - 90px)'}}>
-          <div className="lg:col-span-7 space-y-6 md:space-y-8 animate-fade-in-left">
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-1 bg-brand-red rounded-full animate-pulse-glow"></div>
-              <span className="font-heading text-brand-red text-xs md:text-sm tracking-[0.3em] uppercase font-bold">Soluções Completas em Angola</span>
+        <div className="relative z-10 w-full px-4 sm:px-7 lg:px-10 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center" style={{ minHeight: '520px' }}>
+          <div className="lg:col-span-8 space-y-6">
+            <div className="inline-flex items-center space-x-2 bg-brand-red/20 border border-brand-red/40 px-3.5 py-1.5 rounded-full">
+              <i className="fa-solid fa-bolt text-brand-red text-xs"></i>
+              <span className="font-heading text-white text-xs tracking-wider uppercase font-semibold">Tecnologia · Telecomunicações · Soluções Empresariais</span>
             </div>
-            <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-white leading-none tracking-tight">
-              TELECOMUNICAÇÕES,<br/>
-              <span className="text-gradient-red animate-shimmer">INTERNET</span><br/>
-              E TECNOLOGIA
+            <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight uppercase">
+              O Seu Parceiro em <span className="text-brand-red">Tecnologia</span> & Equipamentos em Angola
             </h1>
-            <p className="font-body text-gray-200 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl">
-              Internet de alta performance, soluções em telecom, segurança eletrónica e infraestrutura de TI para empresas e residências em Angola.
+            <p className="font-body text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed">
+              Catálogo completo em computadores, redes, servidores, CCTV, energia e impressão. Preços oficiais em Kwanzas (AKZ) com suporte e entrega rápida em Luanda.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
-              <button onClick={()=>setPage('telecom')}
-                className="inline-flex items-center space-x-3 bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold tracking-wider uppercase text-base px-8 py-4 rounded-xl transition-all glow-red active:scale-95 shadow-lg hover:scale-105">
+              <button onClick={() => setPage('loja')} className="bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold text-sm uppercase px-8 py-4 rounded-xl shadow-lg glow-red transition-all hover:scale-105">
+                <span>Ver Loja Online</span>
+                <i className="fa-solid fa-arrow-right ml-2 text-xs"></i>
+              </button>
+              <button onClick={() => setPage('servicos')} className="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-heading font-bold text-sm uppercase px-8 py-4 rounded-xl backdrop-blur-sm transition-all hover:scale-105">
                 <span>Nossos Serviços</span>
-                <i className="fa-solid fa-arrow-right text-xs"></i>
-              </button>
-              <button onClick={()=>setPage('internet')}
-                className="inline-flex items-center space-x-3 bg-white/10 hover:bg-white/20 border border-white/25 text-white font-heading font-semibold tracking-wider uppercase text-base px-8 py-4 rounded-xl transition-all backdrop-blur-sm shadow-md hover:scale-105">
-                <i className="fa-solid fa-wifi text-brand-red text-sm"></i>
-                <span>Ver Planos Internet</span>
-              </button>
-            </div>
-          </div>
-
-          <div className="lg:col-span-5 animate-fade-in-right animate-float">
-            <div className="glass rounded-3xl p-6 md:p-8 space-y-6 glow-red border border-gray-800">
-              <div className="flex items-center justify-between pb-4 border-b border-gray-800">
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-xl bg-brand-red flex items-center justify-center text-white font-bold shadow-md">
-                    <i className="fa-solid fa-bolt"></i>
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-white uppercase text-sm">Internet de Alta Velocidade</h3>
-                    <p className="font-body text-xs text-gray-400">Planos a partir de 8.500 Kz/mês</p>
-                  </div>
-                </div>
-                <span className="badge-red text-white text-[10px] font-heading px-2.5 py-1 rounded uppercase tracking-wider shadow">Angola</span>
-              </div>
-
-              <div className="space-y-3">
-                {[
-                  { title:'Fibra Óptica Simétrica', desc:'Download e upload na mesma velocidade' },
-                  { title:'Suporte Técnico 24/7 em Luanda', desc:'Equipa local sempre pronta a responder' },
-                  { title:'Instalação Rápida & Garantida', desc:'Sem complicações em poucas horas' },
-                ].map((f,i)=>(
-                  <div key={i} className="flex items-start space-x-3 p-3 rounded-xl bg-gray-900/60 border border-gray-800/80 hover:border-brand-red/50 transition-colors">
-                    <i className="fa-solid fa-circle-check text-brand-red text-base mt-0.5 flex-shrink-0"></i>
-                    <div>
-                      <p className="font-heading font-semibold text-xs text-white uppercase">{f.title}</p>
-                      <p className="font-body text-[11px] text-gray-400">{f.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <button onClick={()=>setQuoteOpen(true)}
-                className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-widest text-sm py-4 rounded-xl transition-all glow-red hover:scale-102 active:scale-95">
-                Pedir Proposta Personalizada
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* STATS BAR */}
-      <section className="bg-brand-dark py-10 border-y border-gray-800">
-        <div className="w-full px-4 sm:px-7 lg:px-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      {/* BANNER DE VANTAGENS */}
+      <section className="w-full px-4 sm:px-7 lg:px-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { val:'99.9%', label:'Disponibilidade de Rede', icon:'fa-signal' },
-            { val:'10+ Anos', label:'Experiência no Mercado', icon:'fa-award' },
-            { val:'500+', label:'Projetos Executados', icon:'fa-diagram-project' },
-            { val:'24 / 7', label:'Suporte Técnico Local', icon:'fa-headset' },
-          ].map((s,i)=>(
-            <div key={i} className="bg-brand-gray/50 p-5 rounded-2xl border border-gray-800/80 stat-card hover:scale-105 transition-all">
-              <i className={`fa-solid ${s.icon} text-brand-red text-2xl mb-2 block`}></i>
-              <div className="font-heading text-2xl md:text-3xl font-extrabold text-white">{s.val}</div>
-              <div className="font-body text-xs text-gray-400 mt-1 uppercase tracking-wider">{s.label}</div>
+            { icon: 'fa-truck-fast', title: 'Entrega Rápida', desc: 'Em Luanda e envios para todas as províncias' },
+            { icon: 'fa-shield-check', title: 'Garantia Oficial', desc: 'Equipamentos certificados com garantia' },
+            { icon: 'fa-file-invoice-dollar', title: 'Faturação Certificada', desc: 'Faturas oficiais em Kwanzas com IVA' },
+            { icon: 'fa-headset', title: 'Suporte Técnico 24/7', desc: 'Equipa de engenheiros e técnicos qualificados' },
+          ].map((v, i) => (
+            <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 flex items-center space-x-4">
+              <div className="w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
+                <i className={`fa-solid ${v.icon}`}></i>
+              </div>
+              <div>
+                <h4 className="font-heading font-bold text-sm text-gray-900 uppercase">{v.title}</h4>
+                <p className="font-body text-xs text-gray-500 mt-0.5">{v.desc}</p>
+              </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* FEATURED SERVICES */}
-      <section className="py-16 bg-gray-50">
-        <div className="w-full px-4 sm:px-7 lg:px-10">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="font-heading text-brand-red text-xs font-bold tracking-[0.25em] uppercase">O Que Fazemos</span>
-            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2 uppercase heading-line">Nossas Soluções Principais</h2>
-            <p className="font-body text-gray-600 text-sm md:text-base mt-4">Tecnologia avançada adaptada ao mercado angolano com garantia de desempenho e fiabilidade.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title:'Internet & Conectividade', desc:'Links dedicados em fibra óptica, VSAT via satélite e redes de alta velocidade.', icon:'fa-wifi', page:'internet', img:'https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=600&q=80' },
-              { title:'Telecomunicações & PABX', desc:'Centrais telefónicas virtuais PABX IP, troncos SIP e telefonia corporativa.', icon:'fa-tower-cell', page:'telecom', img:'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80' },
-              { title:'Tecnologia & Segurança CCTV', desc:'Câmeras IP 4K com inteligência artificial, redes estruturadas e data centers.', icon:'fa-shield-halved', page:'tecnologia', img:'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80' },
-            ].map((srv,i)=>(
-              <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 card-hover group">
-                <div className="img-zoom h-56 relative">
-                  <img src={srv.img} className="w-full h-full object-cover img-zoom-child"/>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                  <div className="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-brand-red text-white flex items-center justify-center shadow-lg">
-                    <i className={`fa-solid ${srv.icon} text-xl`}></i>
-                  </div>
-                </div>
-                <div className="p-6 space-y-3">
-                  <h3 className="font-heading font-bold text-xl text-gray-900 uppercase group-hover:text-brand-red transition-colors">{srv.title}</h3>
-                  <p className="font-body text-sm text-gray-600 leading-relaxed">{srv.desc}</p>
-                  <button onClick={()=>setPage(srv.page)}
-                    className="inline-flex items-center space-x-2 font-heading text-xs font-bold text-brand-red hover:text-brand-redHover uppercase tracking-widest pt-2 transition-colors">
-                    <span>Saber Mais</span>
-                    <i className="fa-solid fa-arrow-right text-xs"></i>
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* PRODUTOS DO MÊS */}
-      <section className="py-16 bg-white border-t border-gray-100">
-        <div className="w-full px-4 sm:px-7 lg:px-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-gray-200 gap-4">
-            <div>
-              <div className="flex items-center space-x-2 text-brand-red font-bold text-xs uppercase tracking-widest mb-1">
-                <i className="fa-solid fa-fire text-sm"></i>
-                <span>Ofertas Selecionadas</span>
-              </div>
-              <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-gray-900 uppercase">PRODUTOS DO MÊS</h2>
-              <p className="font-body text-xs sm:text-sm text-gray-500 mt-1">Equipamentos de alta tecnologia com entrega rápida em Luanda e em todo o país</p>
-            </div>
-            <button onClick={()=>setPage('loja')} className="inline-flex items-center space-x-2 text-brand-red hover:text-brand-redHover font-heading font-bold text-xs sm:text-sm uppercase tracking-wider transition-colors">
-              <span>Ver Todos os Produtos</span>
-              <i className="fa-solid fa-arrow-right text-xs"></i>
-            </button>
+      <section className="w-full px-4 sm:px-7 lg:px-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-gray-200 gap-4">
+          <div>
+            <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Destaques da Loja</span>
+            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-gray-900 uppercase mt-1">PRODUTOS DO MÊS</h2>
+            <p className="font-body text-xs sm:text-sm text-gray-500 mt-1">Ofertas em equipamentos de alto desempenho com preços em Kwanzas (AKZ)</p>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {productsData.slice(0, 8).map(p=>(
-              <div key={p.id} className="bg-white rounded-2xl shadow-md product-card overflow-hidden flex flex-col justify-between border border-gray-100 group">
-                <div>
-                  <div className="img-zoom h-52 relative cursor-pointer" onClick={()=>setDetailProd(p)}>
-                    <img src={p.img} alt={p.name} className="w-full h-full object-cover img-zoom-child"/>
-                    <span className="absolute top-2.5 left-2.5 badge-red text-white text-[10px] font-heading px-2.5 py-0.5 rounded uppercase tracking-wide shadow">{p.category}</span>
-                    {p.badge && (
-                      <span className="absolute top-2.5 right-2.5 bg-gray-900/80 backdrop-blur-sm text-white text-[9px] font-heading px-2 py-0.5 rounded uppercase tracking-wide">{p.badge}</span>
-                    )}
-                  </div>
-                  <div className="p-4 space-y-1.5">
-                    <h3 onClick={()=>setDetailProd(p)} className="font-heading font-bold text-sm md:text-base text-gray-900 uppercase leading-tight hover:text-brand-red cursor-pointer transition-colors">{p.name}</h3>
-                    <p className="font-body text-xs text-gray-500">{p.subtitle}</p>
-                  </div>
-                </div>
-
-                <div className="p-4 pt-0 space-y-3">
-                  <div className="font-display text-2xl text-brand-red font-bold">{p.priceStr}</div>
-                  <div className="grid grid-cols-2 gap-2">
-                    <button onClick={()=>setDetailProd(p)}
-                      className="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-heading font-semibold uppercase tracking-wider text-[10px] py-2.5 rounded-xl transition-all">
-                      Detalhes
-                    </button>
-                    <button onClick={()=>addToCart(p)}
-                      className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-wider text-[10px] py-2.5 rounded-xl transition-all shadow glow-red">
-                      Comprar
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <button onClick={() => setPage('loja')} className="inline-flex items-center space-x-2 text-brand-red font-heading font-bold text-sm uppercase tracking-wider hover:text-brand-redHover">
+            <span>Ver Todos os Produtos</span>
+            <i className="fa-solid fa-arrow-right text-xs"></i>
+          </button>
         </div>
-      </section>
-    </div>
-  );
 
-  /* ════ INTERNET PAGE ════ */
-  const InternetPage = () => (
-    <div className="animate-fade-in-up">
-      <PageHero tag="Soluções de Conectividade" title="Internet de Alta Performance em Angola"
-        subtitle="Conexão ultra rápida, dedicada e estável com fibra óptica e VSAT para residências e empresas."
-        img="https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=1800&q=90"/>
-      <section className="py-16 bg-gray-50">
-        <div className="w-full px-4 sm:px-7 lg:px-10">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="font-heading text-3xl font-extrabold text-gray-900 uppercase heading-line">Planos de Internet</h2>
-            <p className="font-body text-sm text-gray-600 mt-3">Escolha o plano ideal para a sua residência ou empresa com preços transparentes em Kwanza (Kz).</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {internetPlans.map((plan,i)=>(
-              <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-md border border-gray-200 card-hover flex flex-col justify-between relative group">
-                {plan.badge && (
-                  <span className="absolute top-3 right-3 z-10 badge-red text-white text-[10px] font-heading uppercase px-3 py-1 rounded-full shadow">{plan.badge}</span>
-                )}
-                <div className="img-zoom h-40 relative">
-                  <img src={plan.img} className="w-full h-full object-cover img-zoom-child"/>
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 to-transparent"></div>
-                  <div className="absolute bottom-3 left-4 text-white">
-                    <span className="font-heading font-bold text-xs uppercase tracking-wider text-red-400">Plano</span>
-                    <h3 className="font-heading font-bold text-lg leading-none uppercase">{plan.name}</h3>
-                  </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {productsData.slice(0, 8).map(p => (
+            <div key={p.id} className="bg-white rounded-2xl shadow-sm product-card overflow-hidden flex flex-col justify-between border border-gray-200 group">
+              <div>
+                <div className="img-zoom h-52 relative cursor-pointer bg-gray-100" onClick={() => setDetailProd(p)}>
+                  <img src={p.img} alt={p.name} className="w-full h-full object-cover img-zoom-child" />
+                  <span className="absolute top-2.5 left-2.5 badge-red text-white text-[10px] font-heading px-2.5 py-0.5 rounded uppercase tracking-wide shadow">{p.brand || 'Original'}</span>
+                  {p.badge && (
+                    <span className="absolute top-2.5 right-2.5 bg-gray-900/85 text-white text-[9px] font-heading px-2 py-0.5 rounded uppercase tracking-wide">{p.badge}</span>
+                  )}
                 </div>
-                <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                  <div>
-                    <div className="flex items-baseline justify-between border-b border-gray-100 pb-3 mb-3">
-                      <span className="font-heading font-bold text-2xl text-gray-900">{plan.speed}</span>
-                      <span className="font-display text-2xl text-brand-red font-bold">{plan.price}<span className="text-xs text-gray-500 font-normal">/mês</span></span>
-                    </div>
-                    <ul className="space-y-2">
-                      {plan.features.map((f,j)=>(
-                        <li key={j} className="flex items-start space-x-2 font-body text-xs text-gray-600">
-                          <i className="fa-solid fa-check text-brand-red mt-0.5 flex-shrink-0"></i>
-                          <span>{f}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <button onClick={()=>setQuoteOpen(true)}
-                    className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-widest text-xs py-3 rounded-xl transition-all glow-red shadow">
-                    Subscrever Plano
+                <div className="p-4 space-y-1.5">
+                  <h3 onClick={() => setDetailProd(p)} className="font-heading font-bold text-sm md:text-base text-gray-900 uppercase leading-tight hover:text-brand-red cursor-pointer transition-colors line-clamp-2">{p.name}</h3>
+                  <p className="font-body text-xs text-gray-500 line-clamp-1">{p.subtitle}</p>
+                </div>
+              </div>
+
+              <div className="p-4 pt-0 space-y-3">
+                <div className="font-display text-2xl text-brand-red font-bold">{p.priceStr}</div>
+                <div className="grid grid-cols-2 gap-2">
+                  <button onClick={() => setDetailProd(p)} className="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-heading font-semibold uppercase text-xs py-2.5 rounded-xl transition-all">
+                    Detalhes
+                  </button>
+                  <button onClick={() => addToCart(p)} className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase text-xs py-2.5 rounded-xl transition-all shadow glow-red">
+                    Comprar
                   </button>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
-    </div>
-  );
 
-  /* ════ TELECOM PAGE ════ */
-  const TelecomPage = () => (
-    <div className="animate-fade-in-up">
-      <PageHero tag="Comunicação Empresarial" title="Telecomunicações e Centrais Telefónicas PABX"
-        subtitle="Transforme a comunicação da sua empresa com centrais virtuais PABX IP, troncos SIP e rádios microondas em Angola."
-        img="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=90"/>
-      <section className="py-16 bg-gray-50">
-        <div className="w-full px-4 sm:px-7 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {telecomServices.map((s,i)=>(
-            <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 card-hover hover:border-brand-red transition-all">
-              <div className="img-zoom h-52 relative">
-                <img src={s.img} className="w-full h-full object-cover img-zoom-child"/>
-                <div className="absolute inset-0" style={{background:'linear-gradient(to top,rgba(10,12,18,0.85) 0%,transparent 60%)'}}></div>
-                <div className="absolute bottom-4 left-4 z-10 w-10 h-10 rounded-xl bg-brand-red flex items-center justify-center shadow-md">
-                  <i className={`fa-solid ${s.icon} text-white text-sm`}></i>
-                </div>
+      {/* DEPARTAMENTOS EM DESTAQUE */}
+      <section className="w-full px-4 sm:px-7 lg:px-10">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <h2 className="font-heading text-3xl font-extrabold text-gray-900 uppercase heading-line">Departamentos Principais</h2>
+          <p className="font-body text-xs sm:text-sm text-gray-500 mt-2">Explore as categorias organizadas pelo padrão NCR Angola</p>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          {NCR_CATEGORIES.filter(c => c.id !== 'ALL').map(cat => (
+            <button
+              key={cat.id}
+              onClick={() => {
+                setSelectedCat(cat.id);
+                setSelectedSubCat('ALL');
+                setPage('loja');
+              }}
+              className="bg-white p-6 rounded-2xl border border-gray-200 text-center hover:border-brand-red hover:shadow-md transition-all group card-hover"
+            >
+              <div className="w-14 h-14 mx-auto rounded-2xl bg-red-50 text-brand-red flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition-transform">
+                <i className={`fa-solid ${cat.icon}`}></i>
               </div>
-              <div className="p-5">
-                <h3 className="font-heading font-bold text-base text-gray-900 uppercase tracking-wide mb-2">{s.title}</h3>
-                <p className="font-body text-sm text-gray-600 leading-relaxed mb-4">{s.desc}</p>
-                <button onClick={()=>setQuoteOpen(true)}
-                  className="inline-flex items-center space-x-1.5 font-heading text-xs font-semibold text-brand-red hover:text-brand-redHover uppercase tracking-wider transition-colors">
-                  <span>Solicitar Proposta</span><i className="fa-solid fa-arrow-right text-[10px]"></i>
-                </button>
-              </div>
-            </div>
+              <h4 className="font-heading font-bold text-xs sm:text-sm text-gray-900 uppercase group-hover:text-brand-red">{cat.name}</h4>
+            </button>
           ))}
         </div>
       </section>
     </div>
   );
 
-  /* ════ TECNOLOGIA PAGE ════ */
-  const TecnologiaPage = () => (
-    <div className="animate-fade-in-up">
-      <PageHero tag="Infraestrutura & Segurança" title="Tecnologia, CCTV e Redes Estruturadas"
-        subtitle="Engenharia de redes de dados, fusão de fibra óptica, sistemas de segurança eletrónica avançada e data centers corporativos."
-        img="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1800&q=90"/>
-      <section className="py-16 bg-gray-50">
-        <div className="w-full px-4 sm:px-7 lg:px-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {techServices.map((s,i)=>(
-            <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 card-hover hover:border-brand-red transition-all">
-              <div className="img-zoom h-52 relative">
-                <img src={s.img} className="w-full h-full object-cover img-zoom-child"/>
-                <div className="absolute inset-0" style={{background:'linear-gradient(to top,rgba(10,12,18,0.85) 0%,transparent 60%)'}}></div>
-                <div className="absolute bottom-4 left-4 z-10 w-10 h-10 rounded-xl bg-brand-red flex items-center justify-center shadow-md">
-                  <i className={`fa-solid ${s.icon} text-white text-sm`}></i>
-                </div>
-              </div>
-              <div className="p-5">
-                <h3 className="font-heading font-bold text-base text-gray-900 uppercase tracking-wide mb-2">{s.title}</h3>
-                <p className="font-body text-sm text-gray-600 leading-relaxed mb-4">{s.desc}</p>
-                <button onClick={()=>setQuoteOpen(true)}
-                  className="inline-flex items-center space-x-1.5 font-heading text-xs font-semibold text-brand-red hover:text-brand-redHover uppercase tracking-wider transition-colors">
-                  <span>Solicitar Proposta</span><i className="fa-solid fa-arrow-right text-[10px]"></i>
-                </button>
-              </div>
-            </div>
-          ))}
+  /* ════════════════════════════════════════
+     LOJA ONLINE COMPLETA COM FILTROS NCR
+  ════════════════════════════════════════ */
+  const LojaPage = () => (
+    <div className="w-full px-4 sm:px-7 lg:px-10 py-10 animate-fade-in-up">
+      {/* CABEÇALHO DA LOJA */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 mb-8 border-b border-gray-200 gap-4">
+        <div>
+          <h1 className="font-heading font-extrabold text-3xl text-gray-900 uppercase">Loja Online & Catálogo</h1>
+          <p className="font-body text-xs text-gray-500 mt-1">
+            A exibir <strong className="text-gray-900">{filteredProducts.length}</strong> produtos disponíveis em Kwanzas (AKZ)
+          </p>
         </div>
-      </section>
-    </div>
-  );
 
-  /* ════ LOJA ONLINE PAGE ════ */
-  const LojaPage = () => {
-    const filteredProducts = productsData
-      .filter(p => shopCat === 'ALL' || p.category === shopCat)
-      .filter(p => p.name.toLowerCase().includes(search.toLowerCase()) || p.subtitle.toLowerCase().includes(search.toLowerCase()));
+        <div className="flex flex-wrap items-center gap-3">
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className="p-3 border border-gray-300 rounded-xl font-heading text-xs uppercase bg-white font-semibold shadow-sm"
+          >
+            <option value="featured">Mais Relevantes</option>
+            <option value="priceAsc">Menor Preço</option>
+            <option value="priceDesc">Maior Preço</option>
+            <option value="nameAsc">Nome (A - Z)</option>
+          </select>
+          <button
+            onClick={clearAllFilters}
+            className="p-3 border border-gray-300 hover:border-brand-red hover:text-brand-red text-gray-700 rounded-xl font-heading text-xs uppercase font-semibold transition-all bg-white"
+          >
+            <i className="fa-solid fa-rotate-left mr-1.5"></i>
+            <span>Limpar Filtros</span>
+          </button>
+        </div>
+      </div>
 
-    return (
-      <div className="py-10 bg-gray-50 min-h-screen animate-fade-in-up">
-        <div className="w-full px-4 sm:px-7 lg:px-10">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-7 pb-5 border-b border-gray-200 gap-3">
+      {/* LAYOUT: SIDEBAR FILTROS + GRELHA DE PRODUTOS */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        {/* ── BARRA LATERAL DE FILTROS FACETADOS (PADRÃO NCR ANGOLA) ── */}
+        <div className="lg:col-span-3 space-y-6">
+          <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm space-y-6">
+            
+            {/* 1. DEPARTAMENTOS / CATEGORIAS */}
             <div>
-              <h1 className="font-heading font-bold text-2xl md:text-3xl text-gray-900 uppercase tracking-wide">Loja Online</h1>
-              <p className="font-body text-xs text-gray-500 mt-1">Equipamentos de informática, redes, telecom, CCTV e energia — preços oficiais em Kwanzas (AKZ)</p>
-            </div>
-            <div className="relative">
-              <i className="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
-              <input type="text" placeholder="Pesquisar produto..." value={search} onChange={e=>setSearch(e.target.value)}
-                className="pl-8 pr-4 py-2.5 border border-gray-200 rounded-xl font-body text-xs w-full sm:w-64 bg-white shadow-sm"/>
-            </div>
-          </div>
-
-          {/* CATEGORIAS DA LOJA */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            {['ALL', 'Computadores & Portáteis', 'Redes & Servidores', 'Segurança & CFTV', 'Impressão & POS', 'Energia & UPS', 'Acessórios & Monitores'].map(cat=>(
-              <button key={cat} onClick={()=>setShopCat(cat)}
-                className={`px-5 py-2.5 rounded-xl font-heading font-bold text-xs uppercase tracking-wider transition-all ${shopCat===cat?'bg-brand-red text-white shadow-md glow-red scale-105':'bg-white text-gray-700 border border-gray-200 hover:border-brand-red hover:text-brand-red'}`}>
-                {cat==='ALL' ? 'Todos os Produtos' : cat}
-              </button>
-            ))}
-          </div>
-
-          {/* GRELHA DE PRODUTOS */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {filteredProducts.map(p=>(
-              <div key={p.id} className="bg-white rounded-2xl shadow-md product-card overflow-hidden flex flex-col justify-between group">
-                <div>
-                  <div className="img-zoom h-48 md:h-56 relative cursor-pointer" onClick={()=>setDetailProd(p)}>
-                    <img src={p.img} alt={p.name} className="w-full h-full object-cover img-zoom-child"/>
-                    <span className="absolute top-2.5 left-2.5 badge-red text-white text-[10px] font-heading px-2.5 py-0.5 rounded uppercase tracking-wide shadow">{p.category}</span>
-                    {p.badge && (
-                      <span className="absolute top-2.5 right-2.5 bg-gray-900/80 backdrop-blur-sm text-white text-[9px] font-heading px-2 py-0.5 rounded uppercase tracking-wide">{p.badge}</span>
-                    )}
-                  </div>
-                  <div className="p-4 space-y-2">
-                    <h3 onClick={()=>setDetailProd(p)} className="font-heading font-bold text-sm md:text-base text-gray-900 uppercase leading-tight hover:text-brand-red cursor-pointer transition-colors">{p.name}</h3>
-                    <p className="font-body text-xs text-gray-500">{p.subtitle}</p>
-                  </div>
-                </div>
-
-                <div className="p-4 pt-0 space-y-3">
-                  <div className="font-display text-2xl text-brand-red font-bold">{p.priceStr}</div>
-                  <div className="grid grid-cols-2 gap-2">
-                    <button onClick={()=>setDetailProd(p)}
-                      className="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-heading font-semibold uppercase tracking-wider text-[10px] py-2.5 rounded-xl transition-all">
-                      Detalhes
-                    </button>
-                    <button onClick={()=>addToCart(p)}
-                      className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-wider text-[10px] py-2.5 rounded-xl transition-all shadow glow-red">
-                      Comprar
-                    </button>
-                  </div>
-                </div>
+              <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-3 pb-2 border-b border-gray-100 flex items-center justify-between">
+                <span>Departamentos</span>
+                <i className="fa-solid fa-list text-gray-400"></i>
+              </h3>
+              <div className="space-y-1">
+                {NCR_CATEGORIES.map(cat => (
+                  <button
+                    key={cat.id}
+                    onClick={() => {
+                      setSelectedCat(cat.id);
+                      setSelectedSubCat('ALL');
+                    }}
+                    className={`w-full text-left px-3 py-2 rounded-lg text-xs font-heading font-medium flex items-center justify-between transition-colors ${selectedCat === cat.id ? 'bg-red-50 text-brand-red font-bold' : 'text-gray-700 hover:bg-gray-50'}`}
+                  >
+                    <span>{cat.name}</span>
+                    <span className="text-[10px] text-gray-400 font-normal">
+                      {cat.id === 'ALL' ? productsData.length : productsData.filter(p => p.category === cat.id).length}
+                    </span>
+                  </button>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
 
-          {filteredProducts.length === 0 && (
-            <div className="text-center py-16 bg-white rounded-2xl border border-gray-200">
-              <i className="fa-solid fa-box-open text-4xl text-gray-400 mb-3 block"></i>
-              <p className="font-heading font-bold text-gray-700 text-lg uppercase">Nenhum produto encontrado</p>
-              <p className="font-body text-xs text-gray-500 mt-1">Tente pesquisar por outro termo ou selecione a categoria "Todos".</p>
+            {/* 2. FAIXA DE PREÇO */}
+            <div>
+              <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-3 pb-2 border-b border-gray-100">
+                Faixa de Preço (AKZ)
+              </h3>
+              <div className="space-y-2 text-xs font-body">
+                {[
+                  { id: 'ALL', label: 'Todos os Preços' },
+                  { id: 'under100k', label: 'Até 100.000 AKZ' },
+                  { id: '100k-500k', label: '100.000 a 500.000 AKZ' },
+                  { id: '500k-1500k', label: '500.000 a 1.500.000 AKZ' },
+                  { id: 'over1500k', label: 'Acima de 1.500.000 AKZ' },
+                ].map(r => (
+                  <label key={r.id} className="flex items-center space-x-2.5 cursor-pointer text-gray-700 hover:text-brand-red">
+                    <input
+                      type="radio"
+                      name="priceRange"
+                      checked={priceRange === r.id}
+                      onChange={() => setPriceRange(r.id)}
+                      className="text-brand-red focus:ring-brand-red"
+                    />
+                    <span>{r.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* 3. MARCAS POPULARES */}
+            <div>
+              <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-3 pb-2 border-b border-gray-100">
+                Marcas
+              </h3>
+              <div className="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+                {availableBrands.map(b => (
+                  <label key={b} className="flex items-center justify-between text-xs font-body cursor-pointer text-gray-700 hover:text-brand-red">
+                    <div className="flex items-center space-x-2">
+                      <input
+                        type="radio"
+                        name="brandFilter"
+                        checked={selectedBrand === b}
+                        onChange={() => setSelectedBrand(b)}
+                        className="text-brand-red focus:ring-brand-red"
+                      />
+                      <span>{b === 'ALL' ? 'Todas as Marcas' : b}</span>
+                    </div>
+                    <span className="text-[10px] text-gray-400">
+                      {b === 'ALL' ? productsData.length : productsData.filter(p => p.brand === b).length}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* 4. MEMÓRIA RAM */}
+            <div>
+              <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-3 pb-2 border-b border-gray-100">
+                Memória RAM
+              </h3>
+              <div className="flex flex-wrap gap-1.5">
+                {availableRAMs.map(ram => (
+                  <button
+                    key={ram}
+                    onClick={() => setFilterRAM(ram)}
+                    className={`px-3 py-1 rounded-md text-[11px] font-heading font-semibold border transition-all ${filterRAM === ram ? 'bg-brand-red text-white border-brand-red' : 'bg-gray-50 text-gray-700 border-gray-200 hover:border-brand-red'}`}
+                  >
+                    {ram === 'ALL' ? 'Todas' : ram}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* 5. POLEGADAS / TAMANHO DO ECRÃ */}
+            <div>
+              <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-3 pb-2 border-b border-gray-100">
+                Polegadas / Ecrã
+              </h3>
+              <div className="flex flex-wrap gap-1.5">
+                {availableScreens.map(scr => (
+                  <button
+                    key={scr}
+                    onClick={() => setFilterScreen(scr)}
+                    className={`px-3 py-1 rounded-md text-[11px] font-heading font-semibold border transition-all ${filterScreen === scr ? 'bg-brand-red text-white border-brand-red' : 'bg-gray-50 text-gray-700 border-gray-200 hover:border-brand-red'}`}
+                  >
+                    {scr === 'ALL' ? 'Todos' : scr}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* 6. CONECTIVIDADE & RECURSOS */}
+            <div>
+              <h3 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900 mb-3 pb-2 border-b border-gray-100">
+                Recursos & Conectividade
+              </h3>
+              <div className="space-y-2 text-xs font-body">
+                <label className="flex items-center space-x-2.5 cursor-pointer text-gray-700 hover:text-brand-red">
+                  <input type="checkbox" checked={filterBluetooth} onChange={e => setFilterBluetooth(e.target.checked)} className="rounded text-brand-red focus:ring-brand-red" />
+                  <span>Bluetooth Integrado</span>
+                </label>
+                <label className="flex items-center space-x-2.5 cursor-pointer text-gray-700 hover:text-brand-red">
+                  <input type="checkbox" checked={filterLAN} onChange={e => setFilterLAN(e.target.checked)} className="rounded text-brand-red focus:ring-brand-red" />
+                  <span>Porta LAN / Rede RJ45</span>
+                </label>
+                <label className="flex items-center space-x-2.5 cursor-pointer text-gray-700 hover:text-brand-red">
+                  <input type="checkbox" checked={filterNetflix} onChange={e => setFilterNetflix(e.target.checked)} className="rounded text-brand-red focus:ring-brand-red" />
+                  <span>Suporte Netflix & Smart TV</span>
+                </label>
+                <label className="flex items-center space-x-2.5 cursor-pointer text-gray-700 hover:text-brand-red">
+                  <input type="checkbox" checked={filterSubwoofer} onChange={e => setFilterSubwoofer(e.target.checked)} className="rounded text-brand-red focus:ring-brand-red" />
+                  <span>Subwoofer / Áudio Avançado</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* ── GRELHA DE PRODUTOS ── */}
+        <div className="lg:col-span-9">
+          {filteredProducts.length === 0 ? (
+            <div className="bg-white p-12 rounded-2xl border border-gray-200 text-center space-y-4">
+              <i className="fa-solid fa-box-open text-5xl text-gray-300"></i>
+              <h3 className="font-heading font-bold text-lg text-gray-800 uppercase">Nenhum produto encontrado com estes filtros</h3>
+              <p className="font-body text-xs text-gray-500">Tente ajustar a sua pesquisa ou limpe os filtros para visualizar todo o catálogo.</p>
+              <button onClick={clearAllFilters} className="bg-brand-red text-white font-heading font-bold text-xs uppercase px-6 py-3 rounded-xl shadow glow-red">
+                Limpar Todos os Filtros
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              {filteredProducts.map(p => (
+                <div key={p.id} className="bg-white rounded-2xl shadow-sm product-card overflow-hidden flex flex-col justify-between border border-gray-200 group">
+                  <div>
+                    <div className="img-zoom h-56 relative cursor-pointer bg-gray-100" onClick={() => setDetailProd(p)}>
+                      <img src={p.img} alt={p.name} className="w-full h-full object-cover img-zoom-child" />
+                      <span className="absolute top-3 left-3 badge-red text-white text-[10px] font-heading px-2.5 py-0.5 rounded uppercase tracking-wide shadow">{p.brand || 'Original'}</span>
+                      {p.badge && (
+                        <span className="absolute top-3 right-3 bg-gray-900/85 text-white text-[9px] font-heading px-2 py-0.5 rounded uppercase tracking-wide">{p.badge}</span>
+                      )}
+                    </div>
+                    <div className="p-5 space-y-2">
+                      <span className="text-[10px] font-heading font-semibold text-gray-400 uppercase tracking-wider">{p.subCategory || p.category}</span>
+                      <h3 onClick={() => setDetailProd(p)} className="font-heading font-bold text-sm md:text-base text-gray-900 uppercase leading-snug hover:text-brand-red cursor-pointer transition-colors line-clamp-2">
+                        {p.name}
+                      </h3>
+                      <p className="font-body text-xs text-gray-500 line-clamp-2">{p.subtitle}</p>
+                      
+                      {/* BADGES DE SPECS RÁPIDAS */}
+                      <div className="flex flex-wrap gap-1 pt-1">
+                        {p.ram && <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded">RAM: {p.ram}</span>}
+                        {p.screenSize && <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded">Ecrã: {p.screenSize}</span>}
+                        {p.hasLAN && <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded"><i className="fa-solid fa-network-wired mr-1"></i>LAN</span>}
+                        {p.hasBluetooth && <span className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded"><i className="fa-brands fa-bluetooth-b mr-1"></i>BT</span>}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-5 pt-0 space-y-3">
+                    <div className="font-display text-2xl text-brand-red font-bold">{p.priceStr}</div>
+                    <div className="grid grid-cols-2 gap-2">
+                      <button onClick={() => setDetailProd(p)} className="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-heading font-semibold uppercase text-xs py-2.5 rounded-xl transition-all">
+                        Detalhes
+                      </button>
+                      <button onClick={() => addToCart(p)} className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase text-xs py-2.5 rounded-xl transition-all shadow glow-red">
+                        Comprar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
         </div>
-      </div>
-    );
-  };
 
-  /* ════ SOBRE PAGE ════ */
-  const SobrePage = () => (
-    <div className="animate-fade-in-up">
-      <PageHero tag="Quem Somos" title="Sobre a Duplas DMP Investment"
-        subtitle="Mais de uma década a transformar a conectividade e infraestrutura tecnológica de empresas e famílias em Angola."
-        img="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1800&q=90"/>
-      <section className="py-16 bg-gray-50">
-        <div className="w-full px-4 sm:px-7 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-14">
-            <div>
-              <span className="font-heading text-brand-red text-[11px] font-medium tracking-[0.3em] uppercase">A Nossa História</span>
-              <h2 className="font-heading text-2xl md:text-3xl font-bold text-gray-900 mt-2 mb-4 heading-line-left">Líderes em Tecnologia em Angola</h2>
-              <p className="font-body text-gray-600 leading-relaxed mb-4 text-sm md:text-base">A Duplas DMP Investment nasceu com a missão de democratizar o acesso à internet e às telecomunicações de qualidade em Angola. Desde a nossa fundação, temos crescido para nos tornar uma empresa referência no mercado angolano.</p>
-              <p className="font-body text-gray-600 leading-relaxed text-sm md:text-base">Com uma equipa de engenheiros certificados e parceiros internacionais de renome como Cisco, Huawei, Hikvision e Ubiquiti, oferecemos soluções integradas que vão desde a simples ligação à internet residencial até complexos projetos de infraestrutura para grandes corporações.</p>
-            </div>
-            <div className="img-zoom rounded-2xl overflow-hidden shadow-xl h-64 md:h-72">
-              <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80" className="w-full h-full object-cover img-zoom-child"/>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 
-  /* ════ CONTACTOS PAGE ════ */
-  const ContactosPage = () => (
+  /* ════════════════════════════════════════
+     PÁGINA DE SERVIÇOS TÉCNICOS
+  ════════════════════════════════════════ */
+  const ServicosPage = () => (
     <div className="animate-fade-in-up">
-      <PageHero tag="Fale Connosco" title="Entre em Contacto Connosco"
-        subtitle="Estamos prontos para atender a sua empresa ou residência em Luanda e em todo o território nacional."
-        img="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=90"/>
-      <section className="py-16 bg-gray-50">
-        <div className="w-full px-4 sm:px-7 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          <div className="lg:col-span-5 space-y-4">
-            {[
-              {icon:'fa-whatsapp',label:'WhatsApp & Loja',val:'+244 941 950 022',img:'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80'},
-              {icon:'fa-phone',label:'Atendimento & Suporte',val:'+244 947 077 913',img:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'},
-              {icon:'fa-envelope',label:'E-mail Comercial',val:'geral@duplasdmp.co.ao',img:'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80'},
-              {icon:'fa-location-dot',label:'Sede Comercial',val:'Luanda, Angola',img:'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=400&q=80'},
-              {icon:'fa-clock',label:'Horário de Atendimento',val:'Seg - Sex: 08h00 - 17h00',img:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80'},
-            ].map((c,i)=>(
-              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-md flex items-stretch border border-gray-100 card-hover hover:border-brand-red transition-all">
-                <div className="w-20 flex-shrink-0 img-zoom">
-                  <img src={c.img} className="w-full h-full object-cover img-zoom-child"/>
-                </div>
-                <div className="flex items-center space-x-4 px-4 py-3">
-                  <div className="w-10 h-10 rounded-xl bg-red-50 text-brand-red flex items-center justify-center flex-shrink-0">
-                    <i className={`fa-solid ${c.icon} text-base`}></i>
-                  </div>
-                  <div>
-                    <p className="font-heading text-[10px] font-medium text-gray-500 uppercase tracking-widest">{c.label}</p>
-                    <p className="font-heading font-bold text-sm text-gray-900 mt-0.5">{c.val}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="lg:col-span-7 bg-white rounded-2xl shadow-md p-6 md:p-8 border border-gray-100">
-            <h3 className="font-heading font-bold text-xl text-gray-900 uppercase tracking-wide mb-1">Envie uma Mensagem</h3>
-            <p className="font-body text-xs text-gray-500 mb-5">Resposta garantida em até 4 horas em dias úteis.</p>
-            <form onSubmit={e=>{e.preventDefault();showToast('✓ Mensagem enviada! Responderemos em breve.');}} className="space-y-4">
-              <input type="text" required placeholder="Nome Completo *" className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50"/>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input type="email" required placeholder="E-mail *" className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50"/>
-                <input type="tel" required placeholder="Telefone (+244) *" className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50"/>
-              </div>
-              <select className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50">
-                <option>Seleccione o assunto...</option>
-                <option>Internet Residencial</option>
-                <option>Internet Empresarial</option>
-                <option>Telecomunicações (PABX/VoIP)</option>
-                <option>Segurança CCTV IP</option>
-                <option>Redes & Infraestrutura</option>
-                <option>Outro assunto</option>
-              </select>
-              <textarea rows="4" placeholder="Descreva o seu projeto ou necessidade..." className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50 resize-none"></textarea>
-              <button type="submit" className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-widest text-sm py-4 rounded-xl transition-all glow-red">
-                Enviar Mensagem
-              </button>
-            </form>
-          </div>
+      <section className="relative text-white overflow-hidden py-20 bg-brand-dark">
+        <div className="w-full px-4 sm:px-7 lg:px-10 text-center max-w-3xl mx-auto space-y-3">
+          <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Soluções Corporativas & Residenciais</span>
+          <h1 className="font-heading text-4xl sm:text-5xl font-extrabold uppercase">Nossos Serviços Especializados</h1>
+          <p className="font-body text-gray-300 text-sm md:text-base">Engenharia, suporte técnico e instalação profissional em Angola.</p>
         </div>
       </section>
-    </div>
-  );
 
-  /* ════ FOOTER (LOGOMARCA: "Duplas" em BRANCO, "DMP" em VERMELHO, "Investment" em BRANCO) ════ */
-  const Footer = () => (
-    <footer className="bg-brand-dark text-gray-300 border-t border-gray-800">
-      <div className="w-full px-4 sm:px-7 lg:px-10 pt-16 pb-10">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-gray-800">
-          
-          {/* COLUMN 1: FOOTER LOGO COM "Duplas" E "Investment" EM BRANCO, E "DMP" EM VERMELHO */}
-          <div className="col-span-2 md:col-span-1 space-y-5">
-            <button onClick={()=>setPage('home')} className="flex items-center space-x-3 text-left group">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-red to-red-800 flex items-center justify-center text-white font-black text-2xl italic shadow-md shadow-brand-red/30 group-hover:scale-110 transition-transform">
-                D
-              </div>
-              <div className="flex flex-col">
-                <span className="font-black text-xl text-white tracking-tight leading-none font-heading">
-                  Duplas <span className="text-brand-red font-extrabold uppercase">DMP</span>
-                </span>
-                <span className="text-[10px] font-bold text-white tracking-widest uppercase mt-0.5 font-heading">
-                  Investment
-                </span>
-              </div>
-            </button>
-
-            <p className="font-body text-xs md:text-sm leading-relaxed text-gray-400 mt-3">
-              Tecnologia que conecta. Soluções que impulsionam. A sua parceira em telecomunicações e tecnologia em Angola.
-            </p>
-            
-            <div className="flex space-x-2.5">
-              {['facebook-f','linkedin-in','instagram','youtube'].map(s=>(
-                <a key={s} href="#" className="w-9 h-9 rounded-xl bg-gray-800 hover:bg-brand-red flex items-center justify-center transition-all text-sm text-gray-300 hover:text-white hover:scale-110">
-                  <i className={`fa-brands fa-${s}`}></i>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {[
-            {title:'NAVEGAÇÃO',links:[{l:'Início',p:'home'},{l:'Internet',p:'internet'},{l:'Telecomunicações',p:'telecom'},{l:'Tecnologia',p:'tecnologia'},{l:'Loja Online',p:'loja'},{l:'Sobre Nós',p:'sobre'},{l:'Contactos',p:'contactos'}]},
-            {title:'SERVIÇOS',links:[{l:'Internet Residencial',p:'internet'},{l:'Internet Empresarial',p:'internet'},{l:'Centrais PABX',p:'telecom'},{l:'VoIP & SIP',p:'telecom'},{l:'CCTV & Segurança',p:'tecnologia'}]},
-            {title:'SUPORTE',links:[{l:'Suporte Técnico 24/7',p:'contactos'},{l:'Pedir Cotação',p:'contactos'},{l:'Área do Cliente',p:'contactos'},{l:'Contactar Equipa',p:'contactos'}]},
-          ].map((col,i)=>(
-            <div key={i}>
-              <h4 className="font-heading font-bold text-white text-xs md:text-sm uppercase tracking-widest mb-5 pb-2.5 border-b border-gray-800">{col.title}</h4>
-              <ul className="space-y-3">
-                {col.links.map((lnk,j)=>(
-                  <li key={j}>
-                    <button onClick={()=>setPage(lnk.p)} className="font-body text-xs md:text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all flex items-center space-x-2 text-left group">
-                      <i className="fa-solid fa-angle-right text-xs text-brand-red group-hover:text-white transition-colors"></i>
-                      <span className="font-medium">{lnk.l}</span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-          <div>
-            <h4 className="font-heading font-bold text-white text-xs md:text-sm uppercase tracking-widest mb-5 pb-2.5 border-b border-gray-800">CONTACTE-NOS</h4>
-            <ul className="space-y-3.5 text-xs md:text-sm font-body text-gray-300">
-              <li className="flex items-start space-x-2.5"><i className="fa-brands fa-whatsapp text-emerald-400 mt-1 flex-shrink-0 text-xs"></i><span>+244 941 950 022 (WhatsApp)</span></li>
-              <li className="flex items-start space-x-2.5"><i className="fa-solid fa-phone text-brand-red mt-1 flex-shrink-0 text-xs"></i><span>+244 947 077 913 (Voz)</span></li>
-              <li className="flex items-start space-x-2.5"><i className="fa-solid fa-envelope text-brand-red mt-1 flex-shrink-0 text-xs"></i><span>geral@duplasdmp.co.ao</span></li>
-              <li className="flex items-start space-x-2.5"><i className="fa-solid fa-location-dot text-brand-red mt-1 flex-shrink-0 text-xs"></i><span>Luanda, Angola</span></li>
-              <li className="flex items-start space-x-2.5"><i className="fa-solid fa-clock text-brand-red mt-1 flex-shrink-0 text-xs"></i><span>Seg-Sex: 08h-17h</span></li>
-            </ul>
-            <div className="mt-6 bg-brand-gray border border-gray-800 rounded-2xl p-4 text-center shadow-inner">
-              <i className="fa-solid fa-globe text-brand-red text-3xl mb-2 animate-float"></i>
-              <div className="font-heading font-bold text-white text-xs md:text-sm uppercase tracking-wider">Cobertura Nacional</div>
-              <div className="font-body text-xs text-gray-400 mt-1">Todo o território angolano</div>
-            </div>
-          </div>
-        </div>
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs md:text-sm font-body text-gray-400 gap-3">
-          <p>© 2024 Duplas DMP Investment, Lda. Todos os direitos reservados.</p>
-          <div className="space-x-6">
-            <a href="#" className="hover:text-brand-red transition-colors">Política de Privacidade</a>
-            <a href="#" className="hover:text-brand-red transition-colors">Termos e Condições</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-
-  /* ════ CART DRAWER ════ */
-  const CartDrawer = () => !cartOpen ? null : (
-    <div className="fixed inset-0 z-50 flex justify-end animate-fade-in-scale">
-      <div onClick={()=>setCartOpen(false)} className="fixed inset-0 bg-black/60 backdrop-blur-sm"/>
-      <div className="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col z-10">
-        <div className="flex justify-between items-center p-5 border-b border-gray-100">
-          <h3 className="font-heading font-bold text-base uppercase tracking-wide">Carrinho ({cartCount})</h3>
-          <button onClick={()=>setCartOpen(false)} className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-sm">
-            <i className="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-        <div className="flex-1 overflow-y-auto p-5 space-y-3">
-          {cart.length===0
-            ? <div className="text-center py-12 text-gray-400"><i className="fa-solid fa-cart-shopping text-4xl mb-4 block"></i><p className="font-body text-sm">O carrinho está vazio</p></div>
-            : cart.map(item=>(
-              <div key={item.id} className="flex space-x-3 bg-gray-50 rounded-xl p-3 border border-gray-100">
-                <img src={item.img} className="w-14 h-14 rounded-lg object-cover flex-shrink-0"/>
-                <div className="flex-1 min-w-0">
-                  <p className="font-heading font-semibold text-xs text-gray-900 uppercase truncate">{item.name}</p>
-                  <p className="font-display text-brand-red text-base">{item.priceStr}</p>
-                  <div className="flex items-center space-x-2 mt-1">
-                    <button onClick={()=>updateQty(item.id,-1)} className="w-6 h-6 rounded-full bg-gray-200 text-xs hover:bg-brand-red hover:text-white transition-colors">−</button>
-                    <span className="font-heading font-bold text-xs w-4 text-center">{item.qty}</span>
-                    <button onClick={()=>updateQty(item.id,1)} className="w-6 h-6 rounded-full bg-gray-200 text-xs hover:bg-brand-red hover:text-white transition-colors">+</button>
+      <section className="w-full px-4 sm:px-7 lg:px-10 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {servicesData.map((s, i) => (
+            <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 card-hover group flex flex-col justify-between">
+              <div>
+                <div className="img-zoom h-52 relative">
+                  <img src={s.img} alt={s.title} className="w-full h-full object-cover img-zoom-child" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div className="absolute top-4 left-4 w-12 h-12 rounded-xl bg-brand-red text-white flex items-center justify-center text-xl shadow-lg">
+                    <i className={`fa-solid ${s.icon}`}></i>
                   </div>
                 </div>
-                <button onClick={()=>setCart(p=>p.filter(x=>x.id!==item.id))} className="text-gray-300 hover:text-brand-red text-xs self-start">
-                  <i className="fa-solid fa-trash"></i>
+                <div className="p-6 space-y-3">
+                  <h3 className="font-heading font-bold text-lg text-gray-900 uppercase group-hover:text-brand-red transition-colors">{s.title}</h3>
+                  <p className="font-body text-xs sm:text-sm text-gray-600 leading-relaxed">{s.desc}</p>
+                </div>
+              </div>
+              <div className="p-6 pt-0">
+                <button onClick={() => setQuoteOpen(true)} className="w-full bg-gray-900 hover:bg-brand-red text-white font-heading font-semibold uppercase text-xs py-3 rounded-xl transition-all shadow">
+                  Solicitar Proposta
                 </button>
               </div>
-            ))
-          }
-        </div>
-        {cart.length>0&&(
-          <div className="p-5 border-t border-gray-100 space-y-3">
-            <div className="flex justify-between font-heading font-bold text-sm">
-              <span>Subtotal</span>
-              <span className="text-brand-red font-display text-xl">{cartTotal.toLocaleString('pt-AO')} Kz</span>
             </div>
-            <button onClick={()=>{alert('Encomenda enviada com sucesso! Entraremos em contacto.');setCart([]);setCartOpen(false);}}
-              className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-widest text-sm py-4 rounded-xl transition-all glow-red">
-              Finalizar Encomenda
-            </button>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+
+  /* ════════════════════════════════════════
+     PÁGINA SOBRE NÓS
+  ════════════════════════════════════════ */
+  const SobrePage = () => (
+    <div className="animate-fade-in-up py-16 w-full px-4 sm:px-7 lg:px-10 max-w-5xl mx-auto space-y-12">
+      <div className="text-center space-y-3">
+        <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Sobre a Duplas DMP</span>
+        <h1 className="font-heading text-4xl font-extrabold uppercase text-gray-900">Soluções em Telecomunicações e Tecnologia</h1>
+      </div>
+      <div className="bg-white p-8 md:p-12 rounded-3xl border border-gray-200 shadow-sm space-y-6 font-body text-sm sm:text-base text-gray-700 leading-relaxed">
+        <p>A <strong>Duplas DMP Investment</strong> é uma empresa de referência em Angola, focada na prestação de serviços e fornecimento de equipamentos de ponta nas áreas de telecomunicações, redes informáticas, segurança eletrónica, energia e comércio de eletrodomésticos e tecnologia.</p>
+        <p>Com uma vasta gama de produtos inspirada nos mais altos padrões do mercado angolano (como a NCR Angola), disponibilizamos equipamentos originais com garantia, faturação certificada e apoio técnico contínuo para clientes residenciais e grandes empresas.</p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-gray-100 text-center">
+          <div className="p-4 bg-gray-50 rounded-2xl">
+            <i className="fa-solid fa-award text-brand-red text-2xl mb-2"></i>
+            <h4 className="font-heading font-bold uppercase text-gray-900">Qualidade Garantida</h4>
+            <p className="text-xs text-gray-500 mt-1">Equipamentos originais e certificados</p>
           </div>
-        )}
+          <div className="p-4 bg-gray-50 rounded-2xl">
+            <i className="fa-solid fa-screwdriver-wrench text-brand-red text-2xl mb-2"></i>
+            <h4 className="font-heading font-bold uppercase text-gray-900">Técnicos Locais</h4>
+            <p className="text-xs text-gray-500 mt-1">Instalação e reparação em Luanda</p>
+          </div>
+          <div className="p-4 bg-gray-50 rounded-2xl">
+            <i className="fa-solid fa-handshake text-brand-red text-2xl mb-2"></i>
+            <h4 className="font-heading font-bold uppercase text-gray-900">Transparência</h4>
+            <p className="text-xs text-gray-500 mt-1">Preços justos e faturação oficial</p>
+          </div>
+        </div>
       </div>
     </div>
   );
 
-  /* ════ QUOTE MODAL ════ */
-  const QuoteModal = () => !quoteOpen ? null : (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div onClick={()=>setQuoteOpen(false)} className="fixed inset-0 bg-black/70 backdrop-blur-sm"/>
-      <div className="relative bg-white rounded-2xl max-w-md w-full shadow-2xl z-10 overflow-hidden animate-fade-in-scale">
-        <div className="bg-brand-dark px-6 py-5 flex justify-between items-center">
-          <div className="flex items-center space-x-3">
-            <div className="w-9 h-9 rounded-lg bg-brand-red flex items-center justify-center"><i className="fa-solid fa-file-invoice text-white text-sm"></i></div>
-            <h3 className="font-heading font-bold text-white uppercase tracking-wide text-sm">PEDIR COTAÇÃO</h3>
-          </div>
-          <button onClick={()=>setQuoteOpen(false)} className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white text-sm">
-            <i className="fa-solid fa-xmark"></i>
-          </button>
+  /* ════════════════════════════════════════
+     PÁGINA DE CONTACTOS
+  ════════════════════════════════════════ */
+  const ContactosPage = () => (
+    <div className="animate-fade-in-up py-16 w-full px-4 sm:px-7 lg:px-10 max-w-6xl mx-auto space-y-10">
+      <div className="text-center space-y-2">
+        <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Fale Connosco</span>
+        <h1 className="font-heading text-4xl font-extrabold uppercase text-gray-900">Entre em Contacto</h1>
+        <p className="font-body text-xs sm:text-sm text-gray-500">Estamos prontos para atender pedidos de cotação e assistência em Luanda.</p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="lg:col-span-5 space-y-4">
+          {[
+            { icon: 'fa-whatsapp', label: 'WhatsApp & Vendas', val: '+244 941 950 022' },
+            { icon: 'fa-phone', label: 'Atendimento Geral', val: '+244 947 077 913' },
+            { icon: 'fa-envelope', label: 'E-mail Oficial', val: 'geral@duplasdmp.co.ao' },
+            { icon: 'fa-location-dot', label: 'Sede Comercial', val: 'Luanda, Angola' },
+            { icon: 'fa-clock', label: 'Horário de Funcionamento', val: 'Segunda a Sexta: 08h às 17h' }
+          ].map((c, i) => (
+            <div key={i} className="bg-white p-5 rounded-2xl border border-gray-200 flex items-center space-x-4 shadow-sm">
+              <div className="w-12 h-12 rounded-xl bg-red-50 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
+                <i className={`fa-solid ${c.icon}`}></i>
+              </div>
+              <div>
+                <p className="text-[10px] font-heading font-bold text-gray-400 uppercase">{c.label}</p>
+                <p className="font-heading font-bold text-sm text-gray-900">{c.val}</p>
+              </div>
+            </div>
+          ))}
         </div>
-        <div className="p-6">
-          <form onSubmit={e=>{e.preventDefault();showToast('✓ Pedido enviado! Responderemos em menos de 4h.');setQuoteOpen(false);}} className="space-y-3.5">
-            <input type="text" required placeholder="Nome Completo *" className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50"/>
-            <input type="email" required placeholder="E-mail *" className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50"/>
-            <input type="tel" required placeholder="Telefone (+244) *" className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50"/>
-            <select className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50">
-              <option>Tipo de serviço pretendido...</option>
-              <option>Internet Residencial</option>
-              <option>Internet Empresarial</option>
-              <option>Telecomunicações PABX/VoIP</option>
-              <option>Segurança CCTV IP</option>
-              <option>Redes Estruturadas</option>
-            </select>
-            <textarea rows="3" placeholder="Detalhes do projecto..." className="w-full p-3.5 border border-gray-200 rounded-xl font-body text-sm bg-gray-50 resize-none"></textarea>
-            <button type="submit" className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-widest text-sm py-4 rounded-xl transition-all glow-red">
-              Enviar Pedido de Cotação
+
+        <div className="lg:col-span-7 bg-white p-8 rounded-3xl border border-gray-200 shadow-sm">
+          <h3 className="font-heading font-bold text-xl text-gray-900 uppercase mb-4">Envie-nos uma Mensagem</h3>
+          <form onSubmit={(e) => { e.preventDefault(); showToast('✓ Mensagem enviada com sucesso!'); }} className="space-y-4 font-body text-xs">
+            <input type="text" required placeholder="Seu Nome Completo *" className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input type="email" required placeholder="Seu E-mail *" className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm" />
+              <input type="tel" required placeholder="Telefone / WhatsApp *" className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm" />
+            </div>
+            <textarea rows="4" placeholder="Escreva a sua mensagem ou pedido de informação..." className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm"></textarea>
+            <button type="submit" className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-sm py-4 rounded-xl shadow glow-red transition-all">
+              Enviar Mensagem
             </button>
           </form>
         </div>
@@ -1087,36 +1536,55 @@ function App() {
     </div>
   );
 
-  /* ════ PRODUCT MODAL ════ */
+  /* ════ MODAL DETALHES DE PRODUTO ════ */
   const ProductModal = () => !detailProd ? null : (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div onClick={()=>setDetailProd(null)} className="fixed inset-0 bg-black/70 backdrop-blur-sm"/>
-      <div className="relative bg-white rounded-2xl max-w-xl w-full shadow-2xl z-10 overflow-hidden animate-fade-in-scale">
-        <div className="grid grid-cols-1 sm:grid-cols-2">
-          <div className="img-zoom h-60 sm:h-auto">
-            <img src={detailProd.img} className="w-full h-full object-cover img-zoom-child"/>
-          </div>
-          <div className="p-6 flex flex-col justify-between">
-            <div>
-              <button onClick={()=>setDetailProd(null)} className="absolute top-3 right-3 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-sm">
-                <i className="fa-solid fa-xmark"></i>
-              </button>
-              <span className="badge-red text-white text-[10px] font-heading px-2 py-0.5 rounded uppercase">{detailProd.category}</span>
-              <h3 className="font-heading font-bold text-lg text-gray-900 mt-3 uppercase leading-tight">{detailProd.name}</h3>
-              <p className="font-body text-xs text-gray-500">{detailProd.subtitle}</p>
-              <div className="font-display text-3xl text-brand-red mt-2">{detailProd.priceStr}</div>
-              <div className="mt-4 space-y-2">
-                <p className="font-heading text-[10px] font-semibold uppercase tracking-wider text-gray-700">Especificações:</p>
-                {detailProd.specs.map((s,i)=>(
-                  <div key={i} className="flex items-start space-x-2 text-xs font-body text-gray-600">
-                    <i className="fa-solid fa-circle-check text-brand-red mt-0.5 flex-shrink-0"></i><span>{s}</span>
-                  </div>
-                ))}
-              </div>
+      <div onClick={() => setDetailProd(null)} className="fixed inset-0 bg-black/70 backdrop-blur-sm" />
+      <div className="relative bg-white rounded-3xl max-w-2xl w-full shadow-2xl z-10 overflow-hidden animate-fade-in-scale max-h-[90vh] flex flex-col">
+        <button onClick={() => setDetailProd(null)} className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-sm">
+          <i className="fa-solid fa-xmark"></i>
+        </button>
+        <div className="overflow-y-auto p-6 md:p-8 space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+            <div className="h-64 rounded-2xl overflow-hidden bg-gray-100">
+              <img src={detailProd.img} alt={detailProd.name} className="w-full h-full object-cover" />
             </div>
-            <button onClick={()=>{addToCart(detailProd);setDetailProd(null);}}
-              className="mt-5 w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase tracking-widest text-sm py-3.5 rounded-xl transition-all glow-red">
-              Adicionar ao Carrinho
+            <div className="space-y-3">
+              <span className="badge-red text-white text-[10px] font-heading px-2.5 py-1 rounded uppercase tracking-wider">{detailProd.brand} · {detailProd.subCategory || detailProd.category}</span>
+              <h2 className="font-heading font-extrabold text-xl text-gray-900 uppercase leading-snug">{detailProd.name}</h2>
+              <p className="font-body text-xs text-gray-500">{detailProd.subtitle}</p>
+              <div className="font-display text-3xl text-brand-red font-bold pt-2">{detailProd.priceStr}</div>
+            </div>
+          </div>
+
+          {/* FICHA TÉCNICA DETALHADA */}
+          <div className="border-t border-gray-100 pt-5 space-y-4">
+            <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-gray-900">Especificações Técnicas:</h4>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-body">
+              {detailProd.ram && <div className="p-2.5 bg-gray-50 rounded-xl"><strong>RAM:</strong> {detailProd.ram}</div>}
+              {detailProd.screenSize && <div className="p-2.5 bg-gray-50 rounded-xl"><strong>Ecrã:</strong> {detailProd.screenSize}</div>}
+              {detailProd.screenType && <div className="p-2.5 bg-gray-50 rounded-xl"><strong>Tipo de Ecrã:</strong> {detailProd.screenType}</div>}
+              {detailProd.resolution && <div className="p-2.5 bg-gray-50 rounded-xl"><strong>Resolução:</strong> {detailProd.resolution}</div>}
+              {detailProd.powerWatts && <div className="p-2.5 bg-gray-50 rounded-xl"><strong>Potência:</strong> {detailProd.powerWatts}</div>}
+              {detailProd.weight && <div className="p-2.5 bg-gray-50 rounded-xl"><strong>Peso:</strong> {detailProd.weight}</div>}
+            </div>
+
+            <ul className="space-y-2 pt-2">
+              {(detailProd.specs || []).map((s, idx) => (
+                <li key={idx} className="flex items-start space-x-2 text-xs font-body text-gray-700">
+                  <i className="fa-solid fa-check text-brand-red mt-0.5 flex-shrink-0"></i>
+                  <span>{s}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="pt-4">
+            <button
+              onClick={() => { addToCart(detailProd); setDetailProd(null); }}
+              className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-sm py-4 rounded-xl shadow glow-red transition-all"
+            >
+              Adicionar ao Carrinho de Compras
             </button>
           </div>
         </div>
@@ -1124,44 +1592,195 @@ function App() {
     </div>
   );
 
-  /* ════ RENDER ════ */
+  /* ════ DRAWER DO CARRINHO ════ */
+  const CartDrawer = () => !cartOpen ? null : (
+    <div className="fixed inset-0 z-50 flex justify-end">
+      <div onClick={() => setCartOpen(false)} className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
+      <div className="relative bg-white w-full max-w-md h-full shadow-2xl z-10 flex flex-col justify-between animate-fade-in-right p-6">
+        <div>
+          <div className="flex items-center justify-between pb-4 border-b border-gray-200">
+            <div className="flex items-center space-x-2">
+              <i className="fa-solid fa-cart-shopping text-brand-red"></i>
+              <h3 className="font-heading font-bold text-lg uppercase text-gray-900">Seu Carrinho ({cartCount})</h3>
+            </div>
+            <button onClick={() => setCartOpen(false)} className="p-2 text-gray-500 hover:text-gray-900">
+              <i className="fa-solid fa-xmark text-lg"></i>
+            </button>
+          </div>
+
+          <div className="overflow-y-auto max-h-[60vh] divide-y divide-gray-100 mt-4 pr-1">
+            {cart.length === 0 ? (
+              <div className="py-12 text-center text-gray-400 space-y-2">
+                <i className="fa-solid fa-cart-arrow-down text-4xl"></i>
+                <p className="font-heading font-semibold text-xs uppercase">O seu carrinho está vazio</p>
+              </div>
+            ) : (
+              cart.map(item => (
+                <div key={item.id} className="py-3.5 flex items-center justify-between gap-3">
+                  <img src={item.img} className="w-14 h-14 rounded-xl object-cover border border-gray-100 flex-shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-heading font-bold text-xs text-gray-900 truncate uppercase">{item.name}</h4>
+                    <p className="font-display text-xs text-brand-red font-bold">{item.priceStr}</p>
+                  </div>
+                  <div className="flex items-center space-x-2 bg-gray-100 rounded-lg p-1">
+                    <button onClick={() => updateQty(item.id, -1)} className="w-6 h-6 rounded bg-white font-bold text-xs flex items-center justify-center shadow-sm">-</button>
+                    <span className="text-xs font-bold px-1">{item.qty}</span>
+                    <button onClick={() => updateQty(item.id, 1)} className="w-6 h-6 rounded bg-white font-bold text-xs flex items-center justify-center shadow-sm">+</button>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+
+        <div className="border-t border-gray-200 pt-4 space-y-4">
+          <div className="flex items-center justify-between text-base font-heading font-bold text-gray-900">
+            <span>Total Estimado:</span>
+            <span className="text-brand-red text-xl font-display">{cartTotal.toLocaleString('pt-AO')} AKZ</span>
+          </div>
+          <button
+            onClick={() => {
+              if (cart.length === 0) return;
+              setCartOpen(false);
+              setQuoteOpen(true);
+            }}
+            disabled={cart.length === 0}
+            className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-sm py-4 rounded-xl shadow glow-red transition-all disabled:opacity-50"
+          >
+            Finalizar Pedido / Cotação
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+  /* ════ MODAL DE COTAÇÃO ════ */
+  const QuoteModal = () => !quoteOpen ? null : (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div onClick={() => setQuoteOpen(false)} className="fixed inset-0 bg-black/70 backdrop-blur-sm" />
+      <div className="relative bg-white rounded-3xl max-w-lg w-full shadow-2xl z-10 p-6 md:p-8 animate-fade-in-scale">
+        <button onClick={() => setQuoteOpen(false)} className="absolute top-4 right-4 text-gray-400 hover:text-gray-800">
+          <i className="fa-solid fa-xmark text-lg"></i>
+        </button>
+        <div className="text-center space-y-2 mb-6">
+          <span className="text-brand-red font-heading font-bold text-xs uppercase tracking-widest">Duplas DMP Investment</span>
+          <h3 className="font-heading font-extrabold text-2xl text-gray-900 uppercase">Solicitação de Cotação</h3>
+          <p className="font-body text-xs text-gray-500">Envie o seu pedido oficial e receba a proposta detalhada em Kwanzas.</p>
+        </div>
+
+        <form onSubmit={(e) => { e.preventDefault(); showToast('✓ Pedido de cotação enviado! Entraremos em contacto.'); setQuoteOpen(false); }} className="space-y-4 font-body text-xs">
+          <input type="text" required placeholder="Nome Completo ou Empresa *" className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm" />
+          <div className="grid grid-cols-2 gap-3">
+            <input type="email" required placeholder="E-mail *" className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm" />
+            <input type="tel" required placeholder="Telefone / WhatsApp *" className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm" />
+          </div>
+          <select className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm font-heading font-semibold uppercase">
+            <option>Equipamentos de Informática / Portáteis</option>
+            <option>Redes, Fibra Óptica & Servidores</option>
+            <option>Segurança CCTV & Controlo de Acesso</option>
+            <option>Smartphones & Tablets</option>
+            <option>Energia, UPS & Power Stations</option>
+            <option>Electrodomésticos & Climatização</option>
+            <option>Outros Serviços</option>
+          </select>
+          <textarea rows="3" placeholder="Descreva os equipamentos, quantidades ou detalhes do projeto..." className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm"></textarea>
+          <button type="submit" className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-sm py-4 rounded-xl shadow glow-red transition-all">
+            Enviar Pedido de Cotação
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+
+  /* ════ FOOTER ════ */
+  const Footer = () => (
+    <footer className="bg-brand-dark text-white border-t border-gray-800 pt-16 pb-8 font-body">
+      <div className="w-full px-4 sm:px-7 lg:px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+        <div className="space-y-4">
+          <img src={LOGO_ONLINE} alt="Duplas DMP" style={{ height: '80px', objectFit: 'contain' }} onError={(e) => { e.target.src = LOGO_PATH; }} />
+          <p className="text-xs text-gray-400 leading-relaxed">
+            Soluções completas em Tecnologia, Informática, Telecomunicações, Energia, Climatização e Segurança em Angola.
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Departamentos</h4>
+          <ul className="space-y-2 text-xs text-gray-400 font-heading uppercase">
+            <li><button onClick={() => { setSelectedCat('Informatica'); setPage('loja'); }} className="hover:text-brand-red">Informática & Laptops</button></li>
+            <li><button onClick={() => { setSelectedCat('Smartphones'); setPage('loja'); }} className="hover:text-brand-red">Smartphones & Tablets</button></li>
+            <li><button onClick={() => { setSelectedCat('Energia'); setPage('loja'); }} className="hover:text-brand-red">Energia & UPS</button></li>
+            <li><button onClick={() => { setSelectedCat('ImagemSom'); setPage('loja'); }} className="hover:text-brand-red">Imagem e Som / Smart TVs</button></li>
+            <li><button onClick={() => { setSelectedCat('Electrodomesticos'); setPage('loja'); }} className="hover:text-brand-red">Electrodomésticos & AC</button></li>
+          </ul>
+        </div>
+
+        <div className="space-y-3">
+          <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Serviços Técnicos</h4>
+          <ul className="space-y-2 text-xs text-gray-400 font-heading uppercase">
+            <li><button onClick={() => setPage('servicos')} className="hover:text-brand-red">Internet Dedicada & Satélite</button></li>
+            <li><button onClick={() => setPage('servicos')} className="hover:text-brand-red">Centrais PABX IP & Telefonia</button></li>
+            <li><button onClick={() => setPage('servicos')} className="hover:text-brand-red">Vídeo-vigilância CCTV 4K</button></li>
+            <li><button onClick={() => setPage('servicos')} className="hover:text-brand-red">Redes Estruturadas & Fibra</button></li>
+            <li><button onClick={() => setPage('servicos')} className="hover:text-brand-red">Assistência & Reparação</button></li>
+          </ul>
+        </div>
+
+        <div className="space-y-3">
+          <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Contactos Luanda</h4>
+          <p className="text-xs text-gray-400"><i className="fa-solid fa-location-dot text-brand-red mr-2"></i>Luanda, Angola</p>
+          <p className="text-xs text-gray-400"><i className="fa-brands fa-whatsapp text-emerald-400 mr-2"></i>+244 941 950 022</p>
+          <p className="text-xs text-gray-400"><i className="fa-solid fa-phone text-brand-red mr-2"></i>+244 947 077 913</p>
+          <p className="text-xs text-gray-400"><i className="fa-solid fa-envelope text-brand-red mr-2"></i>geral@duplasdmp.co.ao</p>
+        </div>
+      </div>
+
+      <div className="w-full px-4 sm:px-7 lg:px-10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+        <span>© 2026 Duplas DMP Investment, Lda. Todos os direitos reservados.</span>
+        <span>Estrutura e Catálogo no Padrão NCR Angola</span>
+      </div>
+    </footer>
+  );
+
+  /* ════ RENDER GERAL ════ */
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      {/* Toast */}
+    <div className="min-h-screen flex flex-col bg-gray-50 font-body">
+      {/* Toast Notification */}
       {toast && (
-        <div className="fixed top-4 right-4 z-[100] bg-brand-dark text-white px-5 py-3.5 rounded-xl shadow-2xl border border-brand-red/40 flex items-center space-x-3 font-body text-sm font-medium max-w-xs animate-fade-in-scale">
-          {toast}
+        <div className="fixed top-4 right-4 z-[100] bg-brand-dark text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-brand-red/40 flex items-center space-x-3 text-xs font-semibold animate-fade-in-scale">
+          <span>{toast}</span>
         </div>
       )}
 
-      <TopBar/>
-      <Header/>
+      <TopBar />
+      <Header />
 
       <main className="flex-1">
-        {page==='home'       && <HomePage/>}
-        {page==='internet'   && <InternetPage/>}
-        {page==='telecom'    && <TelecomPage/>}
-        {page==='tecnologia' && <TecnologiaPage/>}
-        {page==='loja'       && <LojaPage/>}
-        {page==='sobre'      && <SobrePage/>}
-        {page==='contactos'  && <ContactosPage/>}
+        {page === 'home' && <HomePage />}
+        {page === 'loja' && <LojaPage />}
+        {page === 'servicos' && <ServicosPage />}
+        {page === 'sobre' && <SobrePage />}
+        {page === 'contactos' && <ContactosPage />}
       </main>
 
-      <Footer/>
-      <CartDrawer/>
-      <QuoteModal/>
-      <ProductModal/>
+      <Footer />
+      <CartDrawer />
+      <QuoteModal />
+      <ProductModal />
 
-      {/* WhatsApp FAB */}
-      <a href="https://wa.me/244941950022" target="_blank" title="Contactar no WhatsApp"
-        className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all pulse-red">
+      {/* WHATSAPP FAB */}
+      <a
+        href="https://wa.me/244941950022"
+        target="_blank"
+        title="Contactar no WhatsApp"
+        className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all pulse-red"
+      >
         <i className="fa-brands fa-whatsapp text-3xl"></i>
       </a>
     </div>
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 </script>
 </body>
 </html>
