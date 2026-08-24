@@ -52,7 +52,7 @@
     /* ── ANIMATIONS ── */
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeInScale { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
-    @keyframes fadeInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInRight { from { opacity: 0; transform: translateX(100%); } to { opacity: 1; transform: translateX(0); } }
     @keyframes pulseRing { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0.7); } 70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(204,0,0,0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(204,0,0,0); } }
 
     .animate-fade-in-up { animation: fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
@@ -80,6 +80,10 @@
     /* Accordion styles */
     .filter-section { border-bottom:1px solid #E2E8F0; padding-bottom:14px; margin-bottom:14px; }
     .filter-section:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+
+    /* Mega menu dropdown styles */
+    .megamenu-dropdown { display:none; position:absolute; top:100%; left:0; width:100%; background:#ffffff; box-shadow:0 20px 40px rgba(0,0,0,0.15); border-top:2px solid #CC0000; z-index:45; }
+    .megamenu-parent:hover .megamenu-dropdown { display:block; animation:fadeInUp 0.2s ease forwards; }
   </style>
 </head>
 <body class="bg-[#F8FAFC] text-gray-900 antialiased selection:bg-brand-red selection:text-white">
@@ -99,18 +103,53 @@ const { useState, useEffect, useMemo } = React;
 const LOGO_ONLINE = "https://i.ibb.co/XkF3VWps/DUPLAS.png";
 const LOGO_PATH   = "logo.png";
 
-/* ─── DEPARTAMENTOS OFICIAIS NCR ANGOLA ─── */
+/* ─── DEPARTAMENTOS & SUB-CATEGORIAS OFICIAIS NCR ANGOLA ─── */
 const NCR_DEPARTMENTS = [
-  { id: 'ALL', name: 'Todos os Produtos', icon: 'fa-layer-group' },
-  { id: 'Informatica', name: 'Informática', icon: 'fa-laptop' },
-  { id: 'Escritorio', name: 'Escritório e Papelaria', icon: 'fa-print' },
-  { id: 'Electrodomesticos', name: 'Electrodomésticos', icon: 'fa-snowflake' },
-  { id: 'Smartphones', name: 'Smartphones e Tablets', icon: 'fa-mobile-screen' },
-  { id: 'Energia', name: 'Energia', icon: 'fa-bolt' },
-  { id: 'ImagemSom', name: 'Imagem e Som', icon: 'fa-tv' },
+  { 
+    id: 'ALL', 
+    name: 'Todos os Produtos', 
+    icon: 'fa-layer-group',
+    subcategories: ['Todos os Artigos', 'Novidades', 'Mais Vendidos', 'Promoções', 'Equipamentos Oficiais']
+  },
+  { 
+    id: 'Informatica', 
+    name: 'Informática', 
+    icon: 'fa-laptop',
+    subcategories: ['Portáteis', 'Computadores de Secretária', 'Servidores & Storage', 'Switches & Redes', 'Monitores', 'Componentes & Cabos', 'Ratos & Teclados', 'Acessórios para PC']
+  },
+  { 
+    id: 'Escritorio', 
+    name: 'Escritório e Papelaria', 
+    icon: 'fa-print',
+    subcategories: ['Impressoras & Multifunções', 'Impressoras POS & Caixas', 'Toners & Consumíveis', 'Destruidoras de Papel', 'Calculadoras & Acessórios', 'Material de Escritório']
+  },
+  { 
+    id: 'Electrodomesticos', 
+    name: 'Electrodomésticos', 
+    icon: 'fa-snowflake',
+    subcategories: ['Ar Condicionado', 'Frigoríficos & Geleiras', 'Micro-ondas & Cozinha', 'Dispensadores de Água', 'Pequenos Eletrodomésticos']
+  },
+  { 
+    id: 'Smartphones', 
+    name: 'Smartphones e Tablets', 
+    icon: 'fa-mobile-screen',
+    subcategories: ['iPhones (Apple)', 'Smartphones Samsung', 'Xiaomi & Android', 'Tablets & iPads', 'Smartwatches & Acessórios', 'Carregadores & Cabos']
+  },
+  { 
+    id: 'Energia', 
+    name: 'Energia', 
+    icon: 'fa-bolt',
+    subcategories: ['Power Stations Portáteis', 'UPS / No-Breaks Online', 'Geradores & Baterias Solares', 'Estabilizadores de Tensão']
+  },
+  { 
+    id: 'ImagemSom', 
+    name: 'Imagem e Som', 
+    icon: 'fa-tv',
+    subcategories: ['Smart TVs 4K & QLED', 'Soundbars & Home Cinema', 'Colunas & Party Speakers', 'Auscultadores & Earbuds', 'Suportes de TV & Cabos', 'Acessórios de Áudio']
+  }
 ];
 
-/* ─── CATÁLOGO COMPLETO COM +50 PRODUTOS OFICIAIS NCR ANGOLA ─── */
+/* ─── CATÁLOGO COMPLETO DE PRODUTOS (+60 PRODUTOS REAIS EXTRAÍDOS E AMPLIADOS) ─── */
 const allProducts = [
   // ==========================================
   // INFORMÁTICA
@@ -139,7 +178,7 @@ const allProducts = [
     hasMountSupport: false,
     powerWatts: '65W',
     weight: '1.74 kg',
-    specs: ['Processador Intel Core i5 13ª Geração até 4.6GHz', '16GB RAM DDR4 3200MHz', 'SSD 512GB M.2 PCIe NVMe', 'Ecrã 15.6" Full HD IPS Anti-reflexo', 'Wi-Fi 6E + Bluetooth 5.3 + Porta LAN Gigabit', 'Segurança empresarial HP Wolf Security']
+    specs: ['Intel Core i5 13ª Geração até 4.6GHz', '16GB RAM DDR4 3200MHz', 'SSD 512GB M.2 PCIe NVMe', 'Ecrã 15.6" Full HD IPS Anti-reflexo', 'Wi-Fi 6E + Bluetooth 5.3 + Porta LAN Gigabit', 'Segurança empresarial HP Wolf Security']
   },
   {
     id: 'inf-02',
@@ -1791,11 +1830,23 @@ const allServices = [
   }
 ];
 
+/* ─── LOJAS EM LUANDA ─── */
+const storesList = [
+  { name: 'Loja Principal Mutamba', address: 'Rua Rainha Ginga, Mutamba, Luanda', hours: 'Seg - Sex: 08h às 17h | Sáb: 08h às 13h', phone: '+244 941 950 022' },
+  { name: 'Centro Técnico & Laboratório', address: 'Viana Park Empresarial, Luanda', hours: 'Seg - Sex: 08h às 17h', phone: '+244 947 077 913' },
+  { name: 'Showroom Talatona', address: 'Via Expressa, Edifício Luanda Sul, Talatona', hours: 'Seg - Sáb: 09h às 19h', phone: '+244 941 950 022' }
+];
+
 /* ─── APP PRINCIPAL ─────────────────────────────────── */
 function App() {
-  const [currentTab, setCurrentTab]   = useState('loja'); // 'loja', 'servicos', 'sobre', 'contactos'
+  const [currentTab, setCurrentTab]   = useState('loja'); // 'loja', 'servicos', 'sobre', 'contactos', 'lojas'
   const [cart, setCart]               = useState([]);
+  const [wishlist, setWishlist]       = useState([]);
   const [cartOpen, setCartOpen]       = useState(false);
+  const [wishlistOpen, setWishlistOpen] = useState(false);
+  const [rightDrawerOpen, setRightDrawerOpen] = useState(false); // NOVO MENU LATERAL DIREITO
+  const [loginModalOpen, setLoginModalOpen] = useState(false);   // MODAL MINHA CONTA / ENTRAR
+  const [storesModalOpen, setStoresModalOpen] = useState(false); // MODAL NOSSAS LOJAS
   const [quoteOpen, setQuoteOpen]     = useState(false);
   const [selectedService, setSelectedService] = useState(null);
   const [detailProd, setDetailProd]   = useState(null);
@@ -1830,6 +1881,19 @@ function App() {
       return exists ? prev.map(x => x.id === p.id ? { ...x, qty: x.qty + 1 } : x) : [...prev, { ...p, qty: 1 }];
     });
     showToast(`✓ "${p.name}" adicionado ao carrinho!`);
+  };
+
+  const toggleWishlist = p => {
+    setWishlist(prev => {
+      const exists = prev.find(x => x.id === p.id);
+      if (exists) {
+        showToast(`Removido dos favoritos`);
+        return prev.filter(x => x.id !== p.id);
+      } else {
+        showToast(`✓ Adicionado aos seus Favoritos!`);
+        return [...prev, p];
+      }
+    });
   };
 
   const updateQty = (id, delta) => {
@@ -1888,7 +1952,6 @@ function App() {
     return Object.keys(map).map(s => ({ name: s, count: map[s] }));
   }, [selectedDept]);
 
-  // Toggle de filtros multi-seleção
   const toggleBrand = brand => {
     setSelectedBrands(prev => prev.includes(brand) ? prev.filter(b => b !== brand) : [...prev, brand]);
   };
@@ -1982,7 +2045,7 @@ function App() {
     </div>
   );
 
-  /* ════ HEADER PRINCIPAL COM BARRA DE PESQUISA E CARRINHO ════ */
+  /* ════ HEADER PRINCIPAL VTEX / NCR ANGOLA ════ */
   const Header = () => (
     <header className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
       <div className="w-full px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4">
@@ -1997,11 +2060,11 @@ function App() {
           />
         </button>
 
-        {/* BARRA DE PESQUISA CENTRAL ESTILO VTEX */}
+        {/* BARRA DE PESQUISA CENTRAL (O que procuras?) */}
         <div className="flex-1 max-w-2xl relative">
           <input
             type="text"
-            placeholder="O que procura? (ex: Portátil HP, Smart TV, Auscultadores, Ar Condicionado, UPS...)"
+            placeholder="O que procuras? (ex: Portátil HP, Smart TV, Auscultadores, Ar Condicionado, UPS...)"
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
@@ -2017,37 +2080,84 @@ function App() {
           )}
         </div>
 
-        {/* NAVEGAÇÃO & AÇÕES */}
-        <div className="flex items-center space-x-3 sm:space-x-4">
-          <nav className="hidden xl:flex items-center space-x-5 font-heading text-xs uppercase font-bold text-gray-800">
-            <button onClick={() => setCurrentTab('loja')} className={`hover:text-brand-red ${currentTab === 'loja' ? 'text-brand-red' : ''}`}>Loja & Produtos</button>
-            <button onClick={() => setCurrentTab('servicos')} className={`hover:text-brand-red ${currentTab === 'servicos' ? 'text-brand-red' : ''}`}>Serviços Oficiais ({allServices.length})</button>
-            <button onClick={() => setCurrentTab('sobre')} className={`hover:text-brand-red ${currentTab === 'sobre' ? 'text-brand-red' : ''}`}>Sobre Nós</button>
-            <button onClick={() => setCurrentTab('contactos')} className={`hover:text-brand-red ${currentTab === 'contactos' ? 'text-brand-red' : ''}`}>Contactos</button>
-          </nav>
+        {/* AÇÕES DO LADO DIREITO (IDENTICAS AO HEADER NCR ANGOLA) */}
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          
+          {/* BOTÃO NOSSAS LOJAS / MAPA */}
+          <button
+            onClick={() => setStoresModalOpen(true)}
+            className="hidden md:flex items-center space-x-1.5 px-3 py-2 rounded-xl text-gray-700 hover:text-brand-red hover:bg-gray-50 text-xs font-heading font-semibold transition-all"
+            title="Ver Nossas Lojas e Centros Técnicos"
+          >
+            <i className="fa-solid fa-location-dot text-brand-red text-sm"></i>
+            <span className="hidden lg:inline">Nossas Lojas</span>
+          </button>
 
-          <button onClick={() => setCartOpen(true)} className="relative p-2.5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-900 transition-all" title="Ver Carrinho">
+          {/* BOTÃO MINHA CONTA / ENTRAR */}
+          <button
+            onClick={() => setLoginModalOpen(true)}
+            className="flex items-center space-x-1.5 px-3 py-2 rounded-xl text-gray-700 hover:text-brand-red hover:bg-gray-50 text-xs font-heading font-semibold transition-all"
+            title="Minha Conta / Entrar"
+          >
+            <i className="fa-regular fa-user text-base text-gray-600"></i>
+            <span className="hidden lg:inline">Entrar</span>
+          </button>
+
+          {/* BOTÃO WISHLIST / FAVORITOS */}
+          <button
+            onClick={() => setWishlistOpen(true)}
+            className="relative p-2.5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-brand-red transition-all"
+            title="Favoritos"
+          >
+            <i className="fa-regular fa-heart text-base"></i>
+            {wishlist.length > 0 && (
+              <span className="absolute -top-1 -right-1 bg-brand-red text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border-2 border-white">{wishlist.length}</span>
+            )}
+          </button>
+
+          {/* BOTÃO CARRINHO / MINICART */}
+          <button
+            onClick={() => setCartOpen(true)}
+            className="relative p-2.5 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-900 transition-all"
+            title="Ver Carrinho"
+          >
             <i className="fa-solid fa-cart-shopping text-base"></i>
             {cartCount > 0 && (
               <span className="absolute -top-1 -right-1 bg-brand-red text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white pulse-red">{cartCount}</span>
             )}
           </button>
 
-          <button onClick={() => setQuoteOpen(true)} className="hidden sm:flex items-center space-x-2 bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold text-xs uppercase px-4 py-2.5 rounded-full shadow glow-red transition-all">
-            <i className="fa-solid fa-file-invoice text-xs"></i>
-            <span>Pedir Cotação</span>
+          {/* BOTÃO DO MENU LATERAL DIREITO (DRAWER DE SERVIÇOS & ATALHOS) */}
+          <button
+            onClick={() => setRightDrawerOpen(true)}
+            className="p-2.5 rounded-xl bg-gray-900 hover:bg-brand-red text-white transition-all flex items-center space-x-1.5 shadow-sm"
+            title="Abrir Menu Lateral de Serviços & Opções"
+          >
+            <i className="fa-solid fa-bars text-sm"></i>
+            <span className="hidden sm:inline text-xs font-heading font-bold uppercase">Menu</span>
           </button>
         </div>
       </div>
 
-      {/* BARRA DE DEPARTAMENTOS ESTILO NCR ANGOLA (VTEX) */}
+      {/* BARRA DE DEPARTAMENTOS ESTILO NCR ANGOLA (VTEX) COM MEGA-MENU */}
       <div className="bg-[#0A0C12] text-white text-xs border-t border-gray-800 overflow-x-auto hide-scrollbar">
         <div className="w-full px-4 sm:px-8 flex items-center space-x-6 py-2.5 font-heading font-semibold uppercase tracking-wider whitespace-nowrap">
-          <span className="text-brand-red flex items-center space-x-1.5 mr-2">
-            <i className="fa-solid fa-bars-staggered"></i>
-            <span>Departamentos:</span>
-          </span>
-          {NCR_DEPARTMENTS.map(dept => (
+          
+          {/* ITEM TODOS OS PRODUTOS (MEGA MENU) */}
+          <button
+            onClick={() => {
+              setSelectedDept('ALL');
+              setSelectedCategory('ALL');
+              if (currentTab !== 'loja') setCurrentTab('loja');
+            }}
+            className={`flex items-center space-x-2 text-xs font-heading font-bold py-1 px-3 rounded-lg transition-colors ${selectedDept === 'ALL' && currentTab === 'loja' ? 'bg-brand-red text-white' : 'bg-gray-800 text-gray-200 hover:bg-gray-700'}`}
+          >
+            <i className="fa-solid fa-bars-staggered text-sm"></i>
+            <span>Todos os Produtos</span>
+          </button>
+
+          {/* LINKS DE DEPARTAMENTOS */}
+          {NCR_DEPARTMENTS.filter(d => d.id !== 'ALL').map(dept => (
             <button
               key={dept.id}
               onClick={() => {
@@ -2055,12 +2165,21 @@ function App() {
                 setSelectedCategory('ALL');
                 if (currentTab !== 'loja') setCurrentTab('loja');
               }}
-              className={`hover:text-brand-red transition-colors flex items-center space-x-1.5 ${selectedDept === dept.id && currentTab === 'loja' ? 'text-brand-red font-bold' : 'text-gray-300'}`}
+              className={`hover:text-brand-red transition-colors flex items-center space-x-1.5 py-1 ${selectedDept === dept.id && currentTab === 'loja' ? 'text-brand-red font-bold' : 'text-gray-300'}`}
             >
               <i className={`fa-solid ${dept.icon} text-[11px]`}></i>
               <span>{dept.name}</span>
             </button>
           ))}
+
+          {/* LINK DIRETO SERVIÇOS */}
+          <button
+            onClick={() => setCurrentTab('servicos')}
+            className={`hover:text-brand-red transition-colors flex items-center space-x-1.5 py-1 ${currentTab === 'servicos' ? 'text-brand-red font-bold' : 'text-amber-400 font-bold'}`}
+          >
+            <i className="fa-solid fa-screwdriver-wrench text-[11px]"></i>
+            <span>Serviços & Assistência ({allServices.length})</span>
+          </button>
         </div>
       </div>
     </header>
@@ -2283,9 +2402,14 @@ function App() {
           <h2 className="font-heading font-extrabold text-xl sm:text-2xl text-white uppercase">Precisa de Reparação, Instalação ou Redes para a sua Empresa?</h2>
           <p className="font-body text-xs sm:text-sm text-gray-300 max-w-2xl">Dispomos de laboratório técnico próprio, engenheiros certificados e contratos SLA em Luanda.</p>
         </div>
-        <button onClick={() => setCurrentTab('servicos')} className="bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold text-xs uppercase px-6 py-3.5 rounded-xl shadow glow-red whitespace-nowrap transition-all">
-          Ver Todos os 10 Serviços Oficiais
-        </button>
+        <div className="flex items-center space-x-3">
+          <button onClick={() => setQuoteOpen(true)} className="bg-white hover:bg-gray-100 text-gray-900 font-heading font-bold text-xs uppercase px-5 py-3.5 rounded-xl shadow transition-all">
+            Pedir Cotação Rápida
+          </button>
+          <button onClick={() => setCurrentTab('servicos')} className="bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold text-xs uppercase px-6 py-3.5 rounded-xl shadow glow-red whitespace-nowrap transition-all">
+            Ver Todos os 10 Serviços
+          </button>
+        </div>
       </div>
 
       {/* BREADCRUMB & TÍTULO DA GALERIA */}
@@ -2352,51 +2476,63 @@ function App() {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {filteredProducts.map(p => (
-                <div key={p.id} className="bg-white rounded-2xl product-card overflow-hidden flex flex-col justify-between group">
-                  <div>
-                    <div className="img-zoom h-56 relative cursor-pointer bg-[#F8FAFC] flex items-center justify-center p-4 border-b border-gray-100" onClick={() => setDetailProd(p)}>
-                      <img src={p.img} alt={p.name} className="w-full h-full object-contain img-zoom-child" />
-                      <span className="absolute top-3 left-3 badge-red text-white text-[10px] font-heading px-2.5 py-0.5 rounded uppercase tracking-wide shadow">{p.brand}</span>
-                      {p.badge && (
-                        <span className="absolute top-3 right-3 bg-gray-900/85 text-white text-[9px] font-heading px-2 py-0.5 rounded uppercase tracking-wide">{p.badge}</span>
-                      )}
-                    </div>
+              {filteredProducts.map(p => {
+                const isFav = wishlist.some(x => x.id === p.id);
+                return (
+                  <div key={p.id} className="bg-white rounded-2xl product-card overflow-hidden flex flex-col justify-between group relative">
+                    {/* BOTÃO WISHLIST CORAÇÃO */}
+                    <button
+                      onClick={() => toggleWishlist(p)}
+                      className={`absolute top-3 right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all ${isFav ? 'bg-red-50 text-brand-red' : 'bg-white/80 hover:bg-white text-gray-400 hover:text-brand-red shadow-sm'}`}
+                      title={isFav ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+                    >
+                      <i className={`${isFav ? 'fa-solid' : 'fa-regular'} fa-heart text-sm`}></i>
+                    </button>
 
-                    <div className="p-5 space-y-2">
-                      <div className="flex justify-between items-center text-[10px] font-heading text-gray-400 uppercase tracking-wider">
-                        <span>{p.category}</span>
-                        {p.sku && <span>SKU: {p.sku}</span>}
+                    <div>
+                      <div className="img-zoom h-56 relative cursor-pointer bg-[#F8FAFC] flex items-center justify-center p-4 border-b border-gray-100" onClick={() => setDetailProd(p)}>
+                        <img src={p.img} alt={p.name} className="w-full h-full object-contain img-zoom-child" />
+                        <span className="absolute top-3 left-3 badge-red text-white text-[10px] font-heading px-2.5 py-0.5 rounded uppercase tracking-wide shadow">{p.brand}</span>
+                        {p.badge && (
+                          <span className="absolute bottom-3 left-3 bg-gray-900/85 text-white text-[9px] font-heading px-2 py-0.5 rounded uppercase tracking-wide">{p.badge}</span>
+                        )}
                       </div>
 
-                      <h3 onClick={() => setDetailProd(p)} className="font-heading font-bold text-sm text-gray-900 uppercase leading-snug hover:text-brand-red cursor-pointer transition-colors line-clamp-2">
-                        {p.name}
-                      </h3>
-                      <p className="font-body text-xs text-gray-500 line-clamp-2">{p.subtitle}</p>
+                      <div className="p-5 space-y-2">
+                        <div className="flex justify-between items-center text-[10px] font-heading text-gray-400 uppercase tracking-wider">
+                          <span>{p.category}</span>
+                          {p.sku && <span>SKU: {p.sku}</span>}
+                        </div>
 
-                      <div className="flex flex-wrap gap-1 pt-1.5">
-                        {p.ram && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded font-semibold">RAM: {p.ram}</span>}
-                        {p.screenSize && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded font-semibold">Ecrã: {p.screenSize}</span>}
-                        {p.powerWatts && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded font-semibold"><i className="fa-solid fa-bolt text-[9px] mr-1 text-amber-500"></i>{p.powerWatts}</span>}
-                        {p.hasLAN && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i className="fa-solid fa-network-wired mr-1"></i>LAN</span>}
-                        {p.hasBluetooth && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i className="fa-brands fa-bluetooth-b mr-1 text-blue-500"></i>BT</span>}
+                        <h3 onClick={() => setDetailProd(p)} className="font-heading font-bold text-sm text-gray-900 uppercase leading-snug hover:text-brand-red cursor-pointer transition-colors line-clamp-2">
+                          {p.name}
+                        </h3>
+                        <p className="font-body text-xs text-gray-500 line-clamp-2">{p.subtitle}</p>
+
+                        <div className="flex flex-wrap gap-1 pt-1.5">
+                          {p.ram && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded font-semibold">RAM: {p.ram}</span>}
+                          {p.screenSize && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded font-semibold">Ecrã: {p.screenSize}</span>}
+                          {p.powerWatts && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded font-semibold"><i className="fa-solid fa-bolt text-[9px] mr-1 text-amber-500"></i>{p.powerWatts}</span>}
+                          {p.hasLAN && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i className="fa-solid fa-network-wired mr-1"></i>LAN</span>}
+                          {p.hasBluetooth && <span className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded"><i className="fa-brands fa-bluetooth-b mr-1 text-blue-500"></i>BT</span>}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="p-5 pt-0 space-y-3">
+                      <div className="font-display text-2xl text-brand-red font-bold">{p.priceStr}</div>
+                      <div className="grid grid-cols-2 gap-2">
+                        <button onClick={() => setDetailProd(p)} className="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-heading font-semibold uppercase text-xs py-2.5 rounded-xl transition-all">
+                          Detalhes
+                        </button>
+                        <button onClick={() => addToCart(p)} className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase text-xs py-2.5 rounded-xl transition-all shadow glow-red">
+                          Comprar
+                        </button>
                       </div>
                     </div>
                   </div>
-
-                  <div className="p-5 pt-0 space-y-3">
-                    <div className="font-display text-2xl text-brand-red font-bold">{p.priceStr}</div>
-                    <div className="grid grid-cols-2 gap-2">
-                      <button onClick={() => setDetailProd(p)} className="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-heading font-semibold uppercase text-xs py-2.5 rounded-xl transition-all">
-                        Detalhes
-                      </button>
-                      <button onClick={() => addToCart(p)} className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-semibold uppercase text-xs py-2.5 rounded-xl transition-all shadow glow-red">
-                        Comprar
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
@@ -2564,6 +2700,240 @@ function App() {
     </div>
   );
 
+  /* ════════════════════════════════════════════════════════
+     NOVO: MENU LATERAL DIREITO (RIGHT DRAWER)
+  ════════════════════════════════════════════════════════ */
+  const RightDrawer = () => !rightDrawerOpen ? null : (
+    <div className="fixed inset-0 z-50 flex justify-end">
+      <div onClick={() => setRightDrawerOpen(false)} className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
+      <div className="relative bg-[#0A0C12] text-white w-full max-w-sm h-full shadow-2xl z-10 flex flex-col justify-between animate-fade-in-right p-6 overflow-y-auto">
+        
+        {/* TOPO DO MENU DIREITO */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-gray-800">
+            <div className="flex items-center space-x-2">
+              <i className="fa-solid fa-compass text-brand-red text-lg"></i>
+              <h3 className="font-heading font-bold text-base uppercase text-white">Menu & Serviços</h3>
+            </div>
+            <button onClick={() => setRightDrawerOpen(false)} className="p-2 text-gray-400 hover:text-white">
+              <i className="fa-solid fa-xmark text-lg"></i>
+            </button>
+          </div>
+
+          {/* PERFIL / LOGIN CARD */}
+          <div className="bg-gray-900/80 p-4 rounded-2xl border border-gray-800 flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-full bg-brand-red text-white flex items-center justify-center font-bold">
+                <i className="fa-regular fa-user"></i>
+              </div>
+              <div>
+                <p className="font-heading font-bold text-xs uppercase text-white">Minha Conta</p>
+                <p className="text-[10px] text-gray-400">Aceder a cotações e encomendas</p>
+              </div>
+            </div>
+            <button onClick={() => { setRightDrawerOpen(false); setLoginModalOpen(true); }} className="text-xs text-brand-red hover:underline font-bold uppercase">Entrar</button>
+          </div>
+
+          {/* NAVEGAÇÃO PRINCIPAL */}
+          <div className="space-y-1 font-heading text-xs uppercase font-semibold">
+            <button onClick={() => { setCurrentTab('loja'); setRightDrawerOpen(false); }} className="w-full text-left p-3 rounded-xl hover:bg-gray-800 flex items-center justify-between">
+              <div className="flex items-center space-x-3"><i className="fa-solid fa-store text-brand-red w-5"></i><span>Loja & Catálogo</span></div>
+              <i className="fa-solid fa-angle-right text-gray-500 text-[10px]"></i>
+            </button>
+            <button onClick={() => { setCurrentTab('servicos'); setRightDrawerOpen(false); }} className="w-full text-left p-3 rounded-xl hover:bg-gray-800 flex items-center justify-between">
+              <div className="flex items-center space-x-3"><i className="fa-solid fa-screwdriver-wrench text-brand-red w-5"></i><span>10 Serviços Técnicos</span></div>
+              <i className="fa-solid fa-angle-right text-gray-500 text-[10px]"></i>
+            </button>
+            <button onClick={() => { setStoresModalOpen(true); setRightDrawerOpen(false); }} className="w-full text-left p-3 rounded-xl hover:bg-gray-800 flex items-center justify-between">
+              <div className="flex items-center space-x-3"><i className="fa-solid fa-location-dot text-brand-red w-5"></i><span>Nossas Lojas em Luanda</span></div>
+              <i className="fa-solid fa-angle-right text-gray-500 text-[10px]"></i>
+            </button>
+            <button onClick={() => { setWishlistOpen(true); setRightDrawerOpen(false); }} className="w-full text-left p-3 rounded-xl hover:bg-gray-800 flex items-center justify-between">
+              <div className="flex items-center space-x-3"><i className="fa-regular fa-heart text-brand-red w-5"></i><span>Favoritos ({wishlist.length})</span></div>
+              <i className="fa-solid fa-angle-right text-gray-500 text-[10px]"></i>
+            </button>
+            <button onClick={() => { setCartOpen(true); setRightDrawerOpen(false); }} className="w-full text-left p-3 rounded-xl hover:bg-gray-800 flex items-center justify-between">
+              <div className="flex items-center space-x-3"><i className="fa-solid fa-cart-shopping text-brand-red w-5"></i><span>Carrinho ({cartCount})</span></div>
+              <i className="fa-solid fa-angle-right text-gray-500 text-[10px]"></i>
+            </button>
+            <button onClick={() => { setCurrentTab('sobre'); setRightDrawerOpen(false); }} className="w-full text-left p-3 rounded-xl hover:bg-gray-800 flex items-center justify-between">
+              <div className="flex items-center space-x-3"><i className="fa-solid fa-building text-brand-red w-5"></i><span>Sobre Nós</span></div>
+              <i className="fa-solid fa-angle-right text-gray-500 text-[10px]"></i>
+            </button>
+            <button onClick={() => { setCurrentTab('contactos'); setRightDrawerOpen(false); }} className="w-full text-left p-3 rounded-xl hover:bg-gray-800 flex items-center justify-between">
+              <div className="flex items-center space-x-3"><i className="fa-solid fa-envelope text-brand-red w-5"></i><span>Fale Connosco</span></div>
+              <i className="fa-solid fa-angle-right text-gray-500 text-[10px]"></i>
+            </button>
+          </div>
+
+          {/* DEPARTAMENTOS RÁPIDOS */}
+          <div className="pt-4 border-t border-gray-800 space-y-2">
+            <p className="text-[10px] font-heading font-bold uppercase text-gray-400 tracking-wider">Departamentos Rápidos</p>
+            <div className="grid grid-cols-2 gap-2 text-[11px] font-heading">
+              {NCR_DEPARTMENTS.filter(d => d.id !== 'ALL').map(dept => (
+                <button
+                  key={dept.id}
+                  onClick={() => {
+                    setSelectedDept(dept.id);
+                    setSelectedCategory('ALL');
+                    setCurrentTab('loja');
+                    setRightDrawerOpen(false);
+                  }}
+                  className="p-2 bg-gray-900 hover:bg-brand-red rounded-lg text-left truncate transition-colors"
+                >
+                  {dept.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* RODAPÉ DO MENU DIREITO */}
+        <div className="pt-6 border-t border-gray-800 space-y-3">
+          <button
+            onClick={() => { setQuoteOpen(true); setRightDrawerOpen(false); }}
+            className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-xs py-3.5 rounded-xl shadow glow-red transition-all"
+          >
+            Solicitar Cotação Empresarial
+          </button>
+          <p className="text-[10px] text-gray-500 text-center">Atendimento telefónico: +244 941 950 022</p>
+        </div>
+      </div>
+    </div>
+  );
+
+  /* ════ MODAL MINHA CONTA / ENTRAR (VTEX LOGIN) ════ */
+  const LoginModal = () => !loginModalOpen ? null : (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div onClick={() => setLoginModalOpen(false)} className="fixed inset-0 bg-black/70 backdrop-blur-sm" />
+      <div className="relative bg-white rounded-3xl max-w-md w-full shadow-2xl z-10 p-6 md:p-8 animate-fade-in-scale font-body">
+        <button onClick={() => setLoginModalOpen(false)} className="absolute top-4 right-4 text-gray-400 hover:text-gray-800">
+          <i className="fa-solid fa-xmark text-lg"></i>
+        </button>
+        <div className="text-center space-y-2 mb-6">
+          <div className="w-14 h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center text-2xl mx-auto shadow-sm">
+            <i className="fa-regular fa-user"></i>
+          </div>
+          <h3 className="font-heading font-extrabold text-xl text-gray-900 uppercase">Aceder à Minha Conta</h3>
+          <p className="text-xs text-gray-500">Introduza os seus dados para gerir encomendas e pedidos de assistência técnica.</p>
+        </div>
+
+        <form onSubmit={(e) => { e.preventDefault(); showToast('✓ Autenticado com sucesso!'); setLoginModalOpen(false); }} className="space-y-4 text-xs">
+          <div>
+            <label className="font-heading font-bold uppercase text-[10px] text-gray-700 block mb-1">E-mail ou Telemóvel</label>
+            <input type="text" required placeholder="ex: cliente@empresa.co.ao" className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm" />
+          </div>
+          <div>
+            <label className="font-heading font-bold uppercase text-[10px] text-gray-700 block mb-1">Palavra-passe</label>
+            <input type="password" required placeholder="••••••••" className="w-full p-3.5 border border-gray-300 rounded-xl bg-gray-50 text-sm" />
+          </div>
+          <button type="submit" className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-xs py-4 rounded-xl shadow glow-red transition-all">
+            Entrar no Portal
+          </button>
+          <div className="text-center pt-2">
+            <button type="button" onClick={() => { showToast('Instruções de recuperação enviadas para o seu e-mail.'); setLoginModalOpen(false); }} className="text-[11px] text-brand-red hover:underline font-semibold">
+              Esqueceu-se da palavra-passe?
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+
+  /* ════ MODAL NOSSAS LOJAS & CENTROS TÉCNICOS ════ */
+  const StoresModal = () => !storesModalOpen ? null : (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div onClick={() => setStoresModalOpen(false)} className="fixed inset-0 bg-black/70 backdrop-blur-sm" />
+      <div className="relative bg-white rounded-3xl max-w-xl w-full shadow-2xl z-10 p-6 md:p-8 animate-fade-in-scale font-body max-h-[90vh] overflow-y-auto">
+        <button onClick={() => setStoresModalOpen(false)} className="absolute top-4 right-4 text-gray-400 hover:text-gray-800">
+          <i className="fa-solid fa-xmark text-lg"></i>
+        </button>
+        <div className="text-center space-y-2 mb-6">
+          <div className="w-14 h-14 bg-red-50 text-brand-red rounded-2xl flex items-center justify-center text-2xl mx-auto shadow-sm">
+            <i className="fa-solid fa-location-dot"></i>
+          </div>
+          <h3 className="font-heading font-extrabold text-xl text-gray-900 uppercase">Lojas & Centros Técnicos em Luanda</h3>
+          <p className="text-xs text-gray-500">Visite os nossos espaços oficiais para compras, levantamento e assistência laboratorial.</p>
+        </div>
+
+        <div className="space-y-4 text-xs">
+          {storesList.map((store, idx) => (
+            <div key={idx} className="p-4 bg-gray-50 rounded-2xl border border-gray-200 space-y-2">
+              <div className="flex items-center justify-between">
+                <h4 className="font-heading font-bold text-sm text-gray-900 uppercase">{store.name}</h4>
+                <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Aberto</span>
+              </div>
+              <p className="text-gray-600"><i className="fa-solid fa-map-pin text-brand-red mr-1.5"></i>{store.address}</p>
+              <p className="text-gray-500"><i className="fa-regular fa-clock text-gray-400 mr-1.5"></i>{store.hours}</p>
+              <p className="text-gray-700 font-semibold"><i className="fa-solid fa-phone text-brand-red mr-1.5"></i>{store.phone}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
+  /* ════ DRAWER DOS FAVORITOS (WISHLIST) ════ */
+  const WishlistDrawer = () => !wishlistOpen ? null : (
+    <div className="fixed inset-0 z-50 flex justify-end">
+      <div onClick={() => setWishlistOpen(false)} className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
+      <div className="relative bg-white w-full max-w-md h-full shadow-2xl z-10 flex flex-col justify-between animate-fade-in-right p-6">
+        <div>
+          <div className="flex items-center justify-between pb-4 border-b border-gray-200">
+            <div className="flex items-center space-x-2">
+              <i className="fa-solid fa-heart text-brand-red"></i>
+              <h3 className="font-heading font-bold text-lg uppercase text-gray-900">Seus Favoritos ({wishlist.length})</h3>
+            </div>
+            <button onClick={() => setWishlistOpen(false)} className="p-2 text-gray-500 hover:text-gray-900">
+              <i className="fa-solid fa-xmark text-lg"></i>
+            </button>
+          </div>
+
+          <div className="overflow-y-auto max-h-[65vh] divide-y divide-gray-100 mt-4 pr-1">
+            {wishlist.length === 0 ? (
+              <div className="py-12 text-center text-gray-400 space-y-2">
+                <i className="fa-regular fa-heart text-4xl"></i>
+                <p className="font-heading font-semibold text-xs uppercase">Ainda não tem produtos favoritos</p>
+                <p className="text-xs">Clique no ícone de coração nos produtos para guardar para mais tarde.</p>
+              </div>
+            ) : (
+              wishlist.map(item => (
+                <div key={item.id} className="py-3.5 flex items-center justify-between gap-3">
+                  <img src={item.img} className="w-14 h-14 rounded-xl object-contain border border-gray-100 flex-shrink-0 p-1" />
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-heading font-bold text-xs text-gray-900 truncate uppercase">{item.name}</h4>
+                    <p className="font-display text-xs text-brand-red font-bold">{item.priceStr}</p>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <button onClick={() => { addToCart(item); }} className="p-2 bg-brand-red hover:bg-brand-redHover text-white rounded-lg text-xs" title="Adicionar ao Carrinho">
+                      <i className="fa-solid fa-cart-plus"></i>
+                    </button>
+                    <button onClick={() => toggleWishlist(item)} className="p-2 text-gray-400 hover:text-red-500" title="Remover">
+                      <i className="fa-solid fa-trash-can"></i>
+                    </button>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+
+        <div className="border-t border-gray-200 pt-4">
+          <button
+            onClick={() => {
+              wishlist.forEach(p => addToCart(p));
+              setWishlistOpen(false);
+            }}
+            disabled={wishlist.length === 0}
+            className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-xs py-3.5 rounded-xl shadow glow-red transition-all disabled:opacity-50"
+          >
+            Mover Todos Para o Carrinho
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
   /* ════ MODAL DETALHES DE PRODUTO ════ */
   const ProductModal = () => !detailProd ? null : (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -2609,12 +2979,19 @@ function App() {
             </ul>
           </div>
 
-          <div className="pt-4">
+          <div className="pt-4 flex gap-3">
+            <button
+              onClick={() => { toggleWishlist(detailProd); }}
+              className="px-5 py-4 border border-gray-300 rounded-xl hover:bg-gray-50 text-gray-700 font-bold"
+              title="Guardar nos Favoritos"
+            >
+              <i className="fa-regular fa-heart text-base"></i>
+            </button>
             <button
               onClick={() => { addToCart(detailProd); setDetailProd(null); }}
-              className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-sm py-4 rounded-xl shadow glow-red transition-all"
+              className="flex-1 bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-sm py-4 rounded-xl shadow glow-red transition-all"
             >
-              Adicionar ao Carrinho de Compras
+              Adicionar ao Carrinho
             </button>
           </div>
         </div>
@@ -2800,6 +3177,10 @@ function App() {
 
       <Footer />
       <CartDrawer />
+      <WishlistDrawer />
+      <RightDrawer />
+      <LoginModal />
+      <StoresModal />
       <QuoteModal />
       <ProductModal />
 
