@@ -3399,61 +3399,203 @@ function App() {
     </div>
   );
 
-  /* ════ FOOTER ════ */
+  /* ════ FOOTER COMPLETO MULTI-ABAS (PADRÃO OFICIAL NCR ANGOLA) ════ */
   const Footer = () => (
-    <footer className="bg-[#0A0C12] text-white border-t border-gray-800 pt-12 pb-8 font-body">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-gray-800">
-        <div className="space-y-4">
-          
-          {/* LOGOMARCA EM CARD BRANCO DE ALTO CONTRASTE */}
-          <div className="bg-white p-3.5 rounded-2xl inline-block shadow-md border border-gray-100">
+    <footer className="bg-[#0A0C12] text-white border-t border-gray-800 font-body">
+      
+      {/* ABA 1: FAIXA DE VANTAGENS INSTITUCIONAIS */}
+      <div className="bg-[#121622] border-b border-gray-800 py-8">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex items-center space-x-4 p-3 rounded-2xl bg-white/5 border border-white/5">
+            <div className="w-12 h-12 rounded-xl bg-brand-red/20 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
+              <i className="fa-solid fa-truck-fast"></i>
+            </div>
+            <div>
+              <h5 className="font-heading font-bold text-sm uppercase text-white">Entregas em Luanda</h5>
+              <p className="text-xs text-gray-400">Entregas rápidas e seguras</p>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-4 p-3 rounded-2xl bg-white/5 border border-white/5">
+            <div className="w-12 h-12 rounded-xl bg-brand-red/20 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
+              <i className="fa-solid fa-shield-halved"></i>
+            </div>
+            <div>
+              <h5 className="font-heading font-bold text-sm uppercase text-white">Garantia & Laboratório</h5>
+              <p className="text-xs text-gray-400">Assistência técnica oficial própria</p>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-4 p-3 rounded-2xl bg-white/5 border border-white/5">
+            <div className="w-12 h-12 rounded-xl bg-brand-red/20 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
+              <i className="fa-solid fa-file-invoice-dollar"></i>
+            </div>
+            <div>
+              <h5 className="font-heading font-bold text-sm uppercase text-white">Faturação Certificada AGT</h5>
+              <p className="text-xs text-gray-400">Em conformidade legal em Angola</p>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-4 p-3 rounded-2xl bg-white/5 border border-white/5">
+            <div className="w-12 h-12 rounded-xl bg-brand-red/20 text-brand-red flex items-center justify-center text-xl flex-shrink-0">
+              <i className="fa-solid fa-headset"></i>
+            </div>
+            <div>
+              <h5 className="font-heading font-bold text-sm uppercase text-white">Apoio ao Cliente & Empresas</h5>
+              <p className="text-xs text-gray-400">+244 941 950 022 · 947 077 913</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ABA 2: FAIXA DE NEWSLETTER & OFERTAS */}
+      <div className="bg-[#0D1017] border-b border-gray-800 py-8">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-1 text-center md:text-left">
+            <h4 className="font-heading font-bold text-base uppercase text-white flex items-center justify-center md:justify-start space-x-2">
+              <i className="fa-solid fa-envelope-open-text text-brand-red text-lg"></i>
+              <span>Subscreva a Nossa Newsletter</span>
+            </h4>
+            <p className="text-xs text-gray-400">Receba em primeira mão novidades tecnológicas, campanhas exclusivas e promoções da Duplas DMP.</p>
+          </div>
+
+          <form onSubmit={(e) => { e.preventDefault(); showToast('✓ Subscrição efetuada com sucesso!'); }} className="w-full md:w-auto flex-1 max-w-md flex items-center gap-2">
+            <input
+              type="email"
+              required
+              placeholder="Introduza o seu e-mail..."
+              className="w-full px-4 py-3 bg-white/10 border border-gray-700 focus:border-brand-red text-white text-xs rounded-xl font-body placeholder:text-gray-500"
+            />
+            <button
+              type="submit"
+              className="bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold text-xs uppercase px-6 py-3 rounded-xl shadow glow-red whitespace-nowrap transition-all"
+            >
+              Subscrever
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {/* ABA 3: 5 COLUNAS DE NAVEGAÇÃO & INFORMAÇÕES */}
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 border-b border-gray-800">
+        
+        {/* COLUNA 1: INSTITUCIONAL & LOGO */}
+        <div className="space-y-4 lg:col-span-1">
+          <div className="bg-white p-3 rounded-2xl inline-block shadow-md border border-gray-100">
             <img
               src={LOGO_ONLINE}
               alt="Duplas DMP"
-              style={{ height: '85px', width: 'auto', objectFit: 'contain' }}
+              style={{ height: '78px', width: 'auto', objectFit: 'contain' }}
               onError={(e) => { e.target.src = LOGO_PATH; }}
             />
           </div>
-
-          <p className="text-[13px] text-gray-300 leading-relaxed font-body">
-            Soluções completas em Tecnologia, Informática, Telecomunicações, Energia, Climatização, Assistência Técnica e Segurança em Angola.
+          <p className="text-xs text-gray-400 leading-relaxed font-body">
+            Empresa de referência em Tecnologia, Telecomunicações, Energia, Climatização, Segurança e Assistência Técnica Laboratorial em Angola.
           </p>
+          <div className="flex items-center space-x-3 pt-2">
+            <a href="https://wa.me/244941950022" target="_blank" className="w-8 h-8 rounded-full bg-white/10 hover:bg-brand-red text-white flex items-center justify-center text-xs transition-colors"><i className="fa-brands fa-whatsapp"></i></a>
+            <a href="#" className="w-8 h-8 rounded-full bg-white/10 hover:bg-brand-red text-white flex items-center justify-center text-xs transition-colors"><i className="fa-brands fa-facebook-f"></i></a>
+            <a href="#" className="w-8 h-8 rounded-full bg-white/10 hover:bg-brand-red text-white flex items-center justify-center text-xs transition-colors"><i className="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" className="w-8 h-8 rounded-full bg-white/10 hover:bg-brand-red text-white flex items-center justify-center text-xs transition-colors"><i className="fa-brands fa-instagram"></i></a>
+          </div>
         </div>
 
+        {/* COLUNA 2: DEPARTAMENTOS OFICIAIS */}
         <div className="space-y-3">
-          <h4 className="font-heading font-bold text-[14px] uppercase text-white tracking-wider">Departamentos</h4>
-          <ul className="space-y-2.5 text-[13px] text-gray-300 font-body">
+          <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Departamentos</h4>
+          <ul className="space-y-2 text-xs text-gray-400 font-body">
             <li><button onClick={() => { setSelectedDept('Informatica'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Informática & Laptops</button></li>
-            <li><button onClick={() => { setSelectedDept('ImagemSom'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Imagem e Som / Áudio</button></li>
+            <li><button onClick={() => { setSelectedDept('Escritorio'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Escritório e Papelaria</button></li>
+            <li><button onClick={() => { setSelectedDept('Electrodomesticos'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Electrodomésticos & AC</button></li>
             <li><button onClick={() => { setSelectedDept('Smartphones'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Smartphones & Tablets</button></li>
             <li><button onClick={() => { setSelectedDept('Energia'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Energia & UPS</button></li>
-            <li><button onClick={() => { setSelectedDept('Electrodomesticos'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Electrodomésticos & AC</button></li>
+            <li><button onClick={() => { setSelectedDept('ImagemSom'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Imagem e Som / Áudio</button></li>
           </ul>
         </div>
 
+        {/* COLUNA 3: SERVIÇOS TÉCNICOS & SOLUÇÕES */}
         <div className="space-y-3">
-          <h4 className="font-heading font-bold text-[14px] uppercase text-white tracking-wider">Serviços Oficiais</h4>
-          <ul className="space-y-2.5 text-[13px] text-gray-300 font-body">
+          <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Serviços Oficiais</h4>
+          <ul className="space-y-2 text-xs text-gray-400 font-body">
             <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red transition-colors">Centro Técnico & Reparação</button></li>
-            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red transition-colors">Instalação de Redes & Fibra</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red transition-colors">Redes Estruturadas & Fibra</button></li>
             <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red transition-colors">Sistemas POS & Faturação AGT</button></li>
-            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red transition-colors">CCTV 4K & Biometria</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red transition-colors">CCTV 4K & Controlo Biométrico</button></li>
+            <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red transition-colors">Ar Condicionado & Climatização</button></li>
             <li><button onClick={() => setCurrentTab('servicos')} className="hover:text-brand-red transition-colors">Contratos Corporativos SLA</button></li>
           </ul>
         </div>
 
+        {/* COLUNA 4: NOSSAS LOJAS EM LUANDA */}
         <div className="space-y-3">
-          <h4 className="font-heading font-bold text-[14px] uppercase text-white tracking-wider">Contactos Luanda</h4>
-          <p className="text-[13px] text-gray-300"><i className="fa-solid fa-location-dot text-brand-red mr-2"></i>Luanda, Angola</p>
-          <p className="text-[13px] text-gray-300"><i className="fa-brands fa-whatsapp text-emerald-400 mr-2"></i>+244 941 950 022</p>
-          <p className="text-[13px] text-gray-300"><i className="fa-solid fa-phone text-brand-red mr-2"></i>+244 947 077 913</p>
-          <p className="text-[13px] text-gray-300"><i className="fa-solid fa-envelope text-brand-red mr-2"></i>geral@duplasdmp.co.ao</p>
+          <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Nossas Lojas</h4>
+          <ul className="space-y-2 text-xs text-gray-400 font-body">
+            <li>
+              <strong className="text-gray-300 block font-heading font-semibold">Loja Principal Mutamba</strong>
+              <span className="text-[11px]">Rua Rainha Ginga, Mutamba, Luanda</span>
+            </li>
+            <li>
+              <strong className="text-gray-300 block font-heading font-semibold">Centro Técnico & Laboratório</strong>
+              <span className="text-[11px]">Viana Park Empresarial, Luanda</span>
+            </li>
+            <li>
+              <strong className="text-gray-300 block font-heading font-semibold">Showroom Talatona</strong>
+              <span className="text-[11px]">Via Expressa, Luanda Sul, Talatona</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* COLUNA 5: APOIO AO CLIENTE & POLÍTICAS */}
+        <div className="space-y-3">
+          <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Apoio & Contactos</h4>
+          <ul className="space-y-2 text-xs text-gray-400 font-body">
+            <li className="flex items-center space-x-2 text-gray-300">
+              <i className="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+              <span>+244 941 950 022</span>
+            </li>
+            <li className="flex items-center space-x-2 text-gray-300">
+              <i className="fa-solid fa-phone text-brand-red text-sm"></i>
+              <span>+244 947 077 913</span>
+            </li>
+            <li className="flex items-center space-x-2 text-gray-300">
+              <i className="fa-solid fa-envelope text-brand-red text-sm"></i>
+              <span>geral@duplasdmp.co.ao</span>
+            </li>
+            <li className="pt-2">
+              <button onClick={() => setLoginModalOpen(true)} className="hover:text-brand-red transition-colors text-xs flex items-center space-x-1.5">
+                <i className="fa-regular fa-user"></i>
+                <span>Minha Conta / Encomendas</span>
+              </button>
+            </li>
+            <li>
+              <button onClick={() => setStoresModalOpen(true)} className="hover:text-brand-red transition-colors text-xs flex items-center space-x-1.5">
+                <i className="fa-solid fa-location-dot"></i>
+                <span>Horários de Funcionamento</span>
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-[12px] text-gray-400 gap-4">
-        <span>© 2026 Duplas DMP Investment, Lda. Todos os direitos reservados.</span>
-        <span>Estrutura e Catálogo Oficial Integrado no Padrão NCR Angola</span>
+      {/* ABA 4: FAIXA INFERIOR DE SELOS, PAGAMENTOS E COPYRIGHT */}
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between text-xs text-gray-400 gap-4">
+        <div className="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left">
+          <span>© 2026 Duplas DMP Investment, Lda. Todos os direitos reservados.</span>
+          <span className="hidden sm:inline">·</span>
+          <span>Plataforma e Catálogo Oficial no Padrão NCR Angola</span>
+        </div>
+
+        {/* MÉTODOS DE PAGAMENTO E SEGURANÇA */}
+        <div className="flex items-center space-x-3 text-gray-300 text-xs">
+          <span className="text-[11px] text-gray-500 font-heading uppercase font-semibold">Pagamentos:</span>
+          <span className="px-2.5 py-1 bg-white/10 rounded font-heading font-bold text-[11px] text-white">Multicaixa</span>
+          <span className="px-2.5 py-1 bg-white/10 rounded font-heading font-bold text-[11px] text-white">Express</span>
+          <span className="px-2.5 py-1 bg-white/10 rounded font-heading font-bold text-[11px] text-white">Transferência</span>
+          <span className="px-2.5 py-1 bg-emerald-900/50 text-emerald-300 border border-emerald-700/50 rounded font-heading font-bold text-[11px] flex items-center space-x-1">
+            <i className="fa-solid fa-lock text-[9px]"></i>
+            <span>100% Seguro</span>
+          </span>
+        </div>
       </div>
     </footer>
   );
