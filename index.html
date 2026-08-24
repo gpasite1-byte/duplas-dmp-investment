@@ -2068,6 +2068,29 @@ function App() {
   const [toast, setToast]             = useState('');
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
+  // Catálogo de Produtos com suporte a persistência e edição administrativa
+  const [productsList, setProductsList] = useState(() => {
+    try {
+      const saved = localStorage.getItem('duplas_products_catalog');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {}
+    return allProducts;
+  });
+
+  // Estados da Área Administrativa Secreta (8 Cliques no Rodapé)
+  const [adminClickCount, setAdminClickCount] = useState(0);
+  const [adminAuthOpen, setAdminAuthOpen]     = useState(false);
+  const [adminDashboardOpen, setAdminDashboardOpen] = useState(false);
+  const [adminUser, setAdminUser]             = useState('Admin');
+  const [adminPass, setAdminPass]             = useState('');
+  const [adminAuthError, setAdminAuthError]   = useState('');
+  const [editingProduct, setEditingProduct]   = useState(null);
+  const [adminTab, setAdminTab]               = useState('produtos'); // 'produtos' | 'novo' | 'empresa' | 'backup'
+  const [adminSearch, setAdminSearch]         = useState('');
+
   // Estados dos Filtros
   const [selectedDept, setSelectedDept]       = useState('ALL');
   const [selectedCategory, setSelectedCategory] = useState('ALL');
@@ -2088,6 +2111,86 @@ function App() {
   const showToast = msg => {
     setToast(msg);
     setTimeout(() => setToast(''), 3500);
+  };
+
+  // Navegação direta com transição e rolagem para o catálogo
+  const navigateToDepartment = (deptId) => {
+    setSelectedDept(deptId);
+    setSelectedCategory('ALL');
+    setSelectedBrands([]);
+    setSelectedRAMs([]);
+    setSelectedScreens([]);
+    setSelectedPriceRange('ALL');
+    setSelectedFeatures({ bluetooth: false, lan: false, netflix: false, subwoofer: false, mount: false });
+    setSearchQuery('');
+    setMegaMenuOpen(false);
+    setRightDrawerOpen(false);
+    setCurrentTab('loja');
+    setTimeout(() => {
+      const el = document.getElementById('catalogo-produtos');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 80);
+  };
+
+  // Contador de 8 cliques na logomarca do rodapé
+  const handleFooterLogoClick = (e) => {
+    e.preventDefault();
+    setAdminClickCount(prev => {
+      const next = prev + 1;
+      if (next >= 8) {
+        setAdminAuthOpen(true);
+        setAdminAuthError('');
+        showToast('🔑 Acesso Administrativo Desbloqueado! Efetue o login.');
+        return 0;
+      } else if (next >= 4) {
+        showToast(`🔒 Toque mais ${8 - next} vezes para o Modo Administrador`);
+      }
+      if (window._adminClickTimeout) clearTimeout(window._adminClickTimeout);
+      window._adminClickTimeout = setTimeout(() => {
+        setAdminClickCount(0);
+      }, 3500);
+      return next;
+    });
+  };
+
+  // Login do Administrador
+  const handleAdminLogin = (e) => {
+    e.preventDefault();
+    const validUsers = ['admin', 'admin1', 'admin 2'];
+    const u = adminUser.trim().toLowerCase();
+    if (validUsers.includes(u) && adminPass === 'gpa2026') {
+      setAdminAuthOpen(false);
+      setAdminPass('');
+      setAdminAuthError('');
+      setAdminDashboardOpen(true);
+      showToast(`✓ Bem-vindo à Área Administrativa, ${adminUser}!`);
+    } else {
+      setAdminAuthError('Utilizador ou Palavra-passe incorreta! (Utilizadores permitidos: Admin, Admin1, Admin 2 / Passe: gpa2026)');
+    }
+  };
+
+  // Salvar Produtos no LocalStorage
+  const saveCatalogLocally = (newList) => {
+    setProductsList(newList);
+    try {
+      localStorage.setItem('duplas_products_catalog', JSON.stringify(newList));
+      showToast('✓ Catálogo atualizado e gravado com sucesso no navegador!');
+    } catch (e) {
+      showToast('⚠️ Erro ao gravar localmente.');
+    }
+  };
+
+  // Restaurar Catálogo de Fábrica
+  const restoreDefaultCatalog = () => {
+    if (confirm('Tem a certeza que deseja restaurar o catálogo de produtos original de fábrica?')) {
+      setProductsList(allProducts);
+      try {
+        localStorage.removeItem('duplas_products_catalog');
+      } catch (e) {}
+      showToast('✓ Catálogo de fábrica restaurado com sucesso!');
+    }
   };
 
   const addToCart = p => {
@@ -2126,14 +2229,14 @@ function App() {
 
   // Subcategorias disponíveis
   const availableCategories = useMemo(() => {
-    const subset = selectedDept === 'ALL' ? allProducts : allProducts.filter(p => p.department === selectedDept);
+    const subset = selectedDept === 'ALL' ? productsList : productsList.filter(p => p.department === selectedDept);
     const cats = new Set(subset.map(p => p.category).filter(Boolean));
     return Array.from(cats);
-  }, [selectedDept]);
+  }, [selectedDept, productsList]);
 
   // Lista de marcas
   const brandFacetList = useMemo(() => {
-    const subset = selectedDept === 'ALL' ? allProducts : allProducts.filter(p => p.department === selectedDept);
+    const subset = selectedDept === 'ALL' ? productsList : productsList.filter(p => p.department === selectedDept);
     const map = {};
     subset.forEach(p => {
       if (p.brand) {
@@ -2141,11 +2244,11 @@ function App() {
       }
     });
     return Object.keys(map).map(b => ({ name: b, count: map[b] })).sort((a, b) => a.name.localeCompare(b.name));
-  }, [selectedDept]);
+  }, [selectedDept, productsList]);
 
   // Lista de RAMs
   const ramFacetList = useMemo(() => {
-    const subset = selectedDept === 'ALL' ? allProducts : allProducts.filter(p => p.department === selectedDept);
+    const subset = selectedDept === 'ALL' ? productsList : productsList.filter(p => p.department === selectedDept);
     const map = {};
     subset.forEach(p => {
       if (p.ram) {
@@ -2153,11 +2256,11 @@ function App() {
       }
     });
     return Object.keys(map).map(r => ({ name: r, count: map[r] }));
-  }, [selectedDept]);
+  }, [selectedDept, productsList]);
 
   // Lista de Polegadas
   const screenFacetList = useMemo(() => {
-    const subset = selectedDept === 'ALL' ? allProducts : allProducts.filter(p => p.department === selectedDept);
+    const subset = selectedDept === 'ALL' ? productsList : productsList.filter(p => p.department === selectedDept);
     const map = {};
     subset.forEach(p => {
       if (p.screenSize) {
@@ -2165,7 +2268,7 @@ function App() {
       }
     });
     return Object.keys(map).map(s => ({ name: s, count: map[s] }));
-  }, [selectedDept]);
+  }, [selectedDept, productsList]);
 
   const toggleBrand = brand => {
     setSelectedBrands(prev => prev.includes(brand) ? prev.filter(b => b !== brand) : [...prev, brand]);
@@ -2196,7 +2299,7 @@ function App() {
 
   // Filtragem dos Produtos
   const filteredProducts = useMemo(() => {
-    return allProducts.filter(p => {
+    return productsList.filter(p => {
       if (selectedDept !== 'ALL' && p.department !== selectedDept) return false;
       if (selectedCategory !== 'ALL' && p.category !== selectedCategory) return false;
       if (selectedBrands.length > 0 && !selectedBrands.includes(p.brand)) return false;
@@ -2227,7 +2330,7 @@ function App() {
       if (sortBy === 'nameAsc') return a.name.localeCompare(b.name);
       return 0;
     });
-  }, [selectedDept, selectedCategory, selectedBrands, selectedPriceRange, selectedRAMs, selectedScreens, selectedFeatures, searchQuery, sortBy]);
+  }, [selectedDept, selectedCategory, selectedBrands, selectedPriceRange, selectedRAMs, selectedScreens, selectedFeatures, searchQuery, sortBy, productsList]);
 
   const activeFiltersCount = useMemo(() => {
     let count = 0;
@@ -2250,14 +2353,14 @@ function App() {
   const Header = () => (
     <header className="sticky top-0 z-40 bg-white border-b border-[#E2E8F0] shadow-sm">
       {/* CONTAINER PRINCIPAL NA RESOLUÇÃO EXATA DA NCR (MAX-W 1440PX) */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-4">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex items-center justify-between gap-4">
         
-        {/* LOGOMARCA MUITO GRANDE E BEM VISÍVEL */}
+        {/* LOGOMARCA MUITO GRANDE E BEM VISÍVEL (125PX - 135PX) */}
         <button onClick={() => { setCurrentTab('loja'); setSelectedDept('ALL'); setSelectedCategory('ALL'); }} className="flex-shrink-0 flex items-center py-1 text-left transition-transform hover:scale-105">
           <img
             src={LOGO_ONLINE}
             alt="Duplas DMP Investment"
-            style={{ height: '105px', width: 'auto', maxHeight: '115px', objectFit: 'contain' }}
+            style={{ height: '125px', width: 'auto', maxHeight: '135px', objectFit: 'contain' }}
             onError={(e) => { e.target.src = LOGO_PATH; }}
           />
         </button>
@@ -2267,7 +2370,7 @@ function App() {
           <div className="relative flex items-center">
             <input
               type="text"
-              placeholder="O que procuras?"
+              placeholder="O que procuras? (ex: Portáteis, HP, iPhone, AC, Cabos...)"
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
@@ -2276,7 +2379,13 @@ function App() {
               className="w-full pl-5 pr-12 py-3 text-sm bg-[#F4F6F8] focus:bg-white border border-[#D1D5DB] focus:border-brand-red rounded-xl font-body transition-all placeholder:text-gray-400 shadow-inner"
             />
             <button
-              onClick={() => { if (currentTab !== 'loja') setCurrentTab('loja'); }}
+              onClick={() => {
+                if (currentTab !== 'loja') setCurrentTab('loja');
+                setTimeout(() => {
+                  const el = document.getElementById('catalogo-produtos');
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 80);
+              }}
               className="absolute right-0 top-0 bottom-0 px-4 text-gray-500 hover:text-brand-red flex items-center justify-center"
             >
               <i className="fa-solid fa-magnifying-glass text-base"></i>
@@ -2348,7 +2457,7 @@ function App() {
         </div>
       </div>
 
-      {/* BARRA DE NAVEGAÇÃO DE DEPARTAMENTOS (ESTILO NCR ANGOLA) */}
+      {/* BARRA DE NAVEGAÇÃO DE DEPARTAMENTOS (ESTILO NCR ANGOLA COM TRANSIÇÃO DIRETA) */}
       <div className="bg-[#FFFFFF] border-t border-[#E5E7EB] text-gray-800 text-xs font-heading font-semibold shadow-inner relative">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center space-x-6 py-2.5 whitespace-nowrap overflow-x-auto hide-scrollbar">
           
@@ -2362,16 +2471,11 @@ function App() {
             <i className={`fa-solid fa-angle-down text-[10px] ml-1 transition-transform ${megaMenuOpen ? 'rotate-180' : ''}`}></i>
           </button>
 
-          {/* DEPARTAMENTOS HORIZONTAIS */}
+          {/* DEPARTAMENTOS HORIZONTAIS COM ROLAGEM AUTOMÁTICA */}
           {NCR_DEPARTMENTS.map(dept => (
             <button
               key={dept.id}
-              onClick={() => {
-                setSelectedDept(dept.id);
-                setSelectedCategory('ALL');
-                setMegaMenuOpen(false);
-                if (currentTab !== 'loja') setCurrentTab('loja');
-              }}
+              onClick={() => navigateToDepartment(dept.id)}
               className={`hover:text-brand-red transition-colors flex items-center space-x-1.5 py-1 uppercase ${selectedDept === dept.id && currentTab === 'loja' ? 'text-brand-red font-extrabold border-b-2 border-brand-red' : 'text-gray-700'}`}
             >
               <span>{dept.name}</span>
@@ -2759,8 +2863,8 @@ function App() {
         />
       </div>
 
-      {/* CONTEÚDO DA LOJA COM CONTAINER CENTRALIZADO */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      {/* CONTEÚDO DA LOJA COM CONTAINER CENTRALIZADO E ÂNCORA PARA ROLAGEM */}
+      <div id="catalogo-produtos" className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
       {/* BREADCRUMB & TÍTULO DA GALERIA */}
       <div className="mb-6 space-y-2">
@@ -3122,6 +3226,20 @@ function App() {
               <div className="flex items-center space-x-3"><i className="fa-solid fa-envelope text-brand-red w-5"></i><span>Fale Connosco</span></div>
               <i className="fa-solid fa-angle-right text-gray-500 text-[10px]"></i>
             </button>
+          </div>
+
+          <div className="pt-3 border-t border-gray-800 space-y-1">
+            <p className="text-[10px] text-gray-500 font-heading uppercase font-bold px-3">Departamentos</p>
+            {NCR_DEPARTMENTS.map(dept => (
+              <button
+                key={dept.id}
+                onClick={() => navigateToDepartment(dept.id)}
+                className="w-full text-left p-2.5 rounded-xl hover:bg-gray-800 flex items-center justify-between text-xs text-gray-300 hover:text-white"
+              >
+                <span>{dept.name}</span>
+                <i className="fa-solid fa-angle-right text-gray-600 text-[10px]"></i>
+              </button>
+            ))}
           </div>
         </div>
 
@@ -3528,15 +3646,24 @@ function App() {
       {/* ABA 3: 5 COLUNAS DE NAVEGAÇÃO & INFORMAÇÕES */}
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 border-b border-gray-800">
         
-        {/* COLUNA 1: INSTITUCIONAL & LOGO */}
+        {/* COLUNA 1: INSTITUCIONAL & LOGO COM GATILHO SECRETO DE 8 CLIQUES */}
         <div className="space-y-4 lg:col-span-1">
-          <div className="bg-white p-3 rounded-2xl inline-block shadow-md border border-gray-100">
+          <div
+            onClick={handleFooterLogoClick}
+            className="bg-white p-3 rounded-2xl inline-block shadow-md border border-gray-100 cursor-pointer select-none transition-transform hover:scale-105 active:scale-95 group relative"
+            title="Duplas DMP Investment (Toque 8x para Administração)"
+          >
             <img
               src={LOGO_ONLINE}
               alt="Duplas DMP"
               style={{ height: '78px', width: 'auto', objectFit: 'contain' }}
               onError={(e) => { e.target.src = LOGO_PATH; }}
             />
+            {adminClickCount > 0 && adminClickCount < 8 && (
+              <span className="absolute -top-2 -right-2 bg-brand-red text-white text-[9px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white animate-bounce">
+                {8 - adminClickCount}
+              </span>
+            )}
           </div>
           <p className="text-xs text-gray-400 leading-relaxed font-body">
             Empresa de referência em Tecnologia, Telecomunicações, Energia, Climatização, Segurança e Assistência Técnica Laboratorial em Angola.
@@ -3553,12 +3680,12 @@ function App() {
         <div className="space-y-3">
           <h4 className="font-heading font-bold text-sm uppercase text-white tracking-wider">Departamentos</h4>
           <ul className="space-y-2 text-xs text-gray-400 font-body">
-            <li><button onClick={() => { setSelectedDept('Informatica'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Informática & Laptops</button></li>
-            <li><button onClick={() => { setSelectedDept('Escritorio'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Escritório e Papelaria</button></li>
-            <li><button onClick={() => { setSelectedDept('Electrodomesticos'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Electrodomésticos & AC</button></li>
-            <li><button onClick={() => { setSelectedDept('Smartphones'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Smartphones & Tablets</button></li>
-            <li><button onClick={() => { setSelectedDept('Energia'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Energia & UPS</button></li>
-            <li><button onClick={() => { setSelectedDept('ImagemSom'); setCurrentTab('loja'); }} className="hover:text-brand-red transition-colors">Imagem e Som / Áudio</button></li>
+            <li><button onClick={() => navigateToDepartment('Informatica')} className="hover:text-brand-red transition-colors">Informática & Laptops</button></li>
+            <li><button onClick={() => navigateToDepartment('Escritorio')} className="hover:text-brand-red transition-colors">Escritório e Papelaria</button></li>
+            <li><button onClick={() => navigateToDepartment('Electrodomesticos')} className="hover:text-brand-red transition-colors">Electrodomésticos & AC</button></li>
+            <li><button onClick={() => navigateToDepartment('Smartphones')} className="hover:text-brand-red transition-colors">Smartphones & Tablets</button></li>
+            <li><button onClick={() => navigateToDepartment('Energia')} className="hover:text-brand-red transition-colors">Energia & UPS</button></li>
+            <li><button onClick={() => navigateToDepartment('ImagemSom')} className="hover:text-brand-red transition-colors">Imagem e Som / Áudio</button></li>
           </ul>
         </div>
 
@@ -3649,6 +3776,506 @@ function App() {
     </footer>
   );
 
+  /* ════ MODAL DE AUTENTICAÇÃO ADMINISTRATIVA (8 CLIQUES) ════ */
+  const AdminAuthModal = () => !adminAuthOpen ? null : (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <div onClick={() => setAdminAuthOpen(false)} className="fixed inset-0 bg-black/80 backdrop-blur-md" />
+      <div className="relative bg-[#0A0C12] text-white border-2 border-brand-red rounded-3xl max-w-md w-full p-8 z-10 shadow-2xl animate-fade-in-scale space-y-6">
+        <button onClick={() => setAdminAuthOpen(false)} className="absolute top-4 right-4 text-gray-400 hover:text-white">
+          <i className="fa-solid fa-xmark text-lg"></i>
+        </button>
+
+        <div className="text-center space-y-2">
+          <div className="w-16 h-16 bg-brand-red/20 text-brand-red border border-brand-red/50 rounded-2xl mx-auto flex items-center justify-center text-2xl pulse-red">
+            <i className="fa-solid fa-user-shield"></i>
+          </div>
+          <h3 className="font-heading font-extrabold text-xl uppercase tracking-wider text-white">Acesso Administrativo</h3>
+          <p className="text-xs text-gray-400">Painel Restrito da Duplas DMP Investment</p>
+        </div>
+
+        {adminAuthError && (
+          <div className="p-3 bg-red-900/50 border border-red-500/50 rounded-xl text-red-200 text-xs font-semibold text-center">
+            {adminAuthError}
+          </div>
+        )}
+
+        <form onSubmit={handleAdminLogin} className="space-y-4 text-xs font-body">
+          <div className="space-y-1">
+            <label className="text-gray-300 font-heading font-bold uppercase text-[11px]">Utilizador Autorizado:</label>
+            <select
+              value={adminUser}
+              onChange={(e) => setAdminUser(e.target.value)}
+              className="w-full p-3.5 bg-[#121622] border border-gray-700 focus:border-brand-red rounded-xl text-white font-heading font-semibold uppercase"
+            >
+              <option value="Admin">Admin</option>
+              <option value="Admin1">Admin1</option>
+              <option value="Admin 2">Admin 2</option>
+            </select>
+          </div>
+
+          <div className="space-y-1">
+            <label className="text-gray-300 font-heading font-bold uppercase text-[11px]">Palavra-Passe:</label>
+            <input
+              type="password"
+              required
+              value={adminPass}
+              onChange={(e) => setAdminPass(e.target.value)}
+              placeholder="Digite a palavra-passe..."
+              className="w-full p-3.5 bg-[#121622] border border-gray-700 focus:border-brand-red rounded-xl text-white text-sm tracking-widest placeholder:text-gray-600"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-xs py-4 rounded-xl shadow glow-red transition-all mt-2"
+          >
+            Entrar no Painel de Controlo
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+
+  /* ════ PAINEL ADMINISTRATIVO COMPLETO DE GESTÃO ════ */
+  const AdminDashboardModal = () => {
+    if (!adminDashboardOpen) return null;
+
+    const [formProduct, setFormProduct] = useState(editingProduct || {
+      id: `prod-${Date.now()}`,
+      sku: '',
+      name: '',
+      subtitle: '',
+      department: 'Informatica',
+      category: 'Portáteis',
+      brand: 'HP',
+      priceVal: 0,
+      img: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=600&q=80',
+      badge: 'Destaque',
+      ram: '16GB',
+      screenSize: '15.6"',
+      powerWatts: '',
+      weight: '',
+      specsText: 'Garantia Oficial 1 Ano\nAssistência Técnica Duplas DMP'
+    });
+
+    const handleFileUpload = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setFormProduct(prev => ({ ...prev, img: reader.result }));
+          showToast('✓ Imagem carregada com sucesso do computador!');
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+
+    const handleSaveProductForm = (e) => {
+      e.preventDefault();
+      const val = Number(formProduct.priceVal) || 0;
+      const formatted = {
+        ...formProduct,
+        priceVal: val,
+        priceStr: `${val.toLocaleString('pt-AO')},00 AKZ`,
+        specs: (formProduct.specsText || '').split('\n').filter(Boolean)
+      };
+
+      let updated;
+      const exists = productsList.some(p => p.id === formatted.id);
+      if (exists) {
+        updated = productsList.map(p => p.id === formatted.id ? formatted : p);
+        showToast(`✓ Produto "${formatted.name}" atualizado!`);
+      } else {
+        updated = [formatted, ...productsList];
+        showToast(`✓ Novo produto "${formatted.name}" adicionado ao catálogo!`);
+      }
+
+      saveCatalogLocally(updated);
+      setEditingProduct(null);
+      setAdminTab('produtos');
+    };
+
+    const handleDeleteProduct = (id, name) => {
+      if (confirm(`Tem a certeza que deseja remover o produto "${name}" do catálogo?`)) {
+        const updated = productsList.filter(p => p.id !== id);
+        saveCatalogLocally(updated);
+        showToast(`✓ Produto removido com sucesso!`);
+      }
+    };
+
+    const exportCatalogJSON = () => {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(productsList, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `catalogo_duplas_dmp_${new Date().toISOString().slice(0,10)}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast('✓ Ficheiro JSON do catálogo descarregado!');
+    };
+
+    const filteredAdminProds = productsList.filter(p => {
+      if (!adminSearch.trim()) return true;
+      const q = adminSearch.toLowerCase();
+      return p.name.toLowerCase().includes(q) || (p.sku || '').toLowerCase().includes(q) || (p.brand || '').toLowerCase().includes(q);
+    });
+
+    return (
+      <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-md">
+        <div className="bg-[#0A0C12] text-white border border-gray-800 rounded-3xl max-w-6xl w-full h-[92vh] shadow-2xl flex flex-col overflow-hidden animate-fade-in-scale">
+          
+          {/* TOPO DO PAINEL ADMIN */}
+          <div className="bg-[#121622] p-4 sm:p-6 border-b border-gray-800 flex flex-wrap items-center justify-between gap-4 flex-shrink-0">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-xl bg-brand-red text-white flex items-center justify-center text-lg font-bold shadow glow-red">
+                <i className="fa-solid fa-gears"></i>
+              </div>
+              <div>
+                <h3 className="font-heading font-extrabold text-base uppercase text-white tracking-wide">Painel Administrativo Duplas DMP</h3>
+                <p className="text-xs text-gray-400">Sessão ativa como <strong className="text-brand-red">{adminUser}</strong> · Controlo Total do Catálogo</p>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              <button
+                onClick={() => {
+                  setEditingProduct(null);
+                  setAdminTab('novo');
+                }}
+                className="px-3.5 py-2 bg-brand-red hover:bg-brand-redHover text-white rounded-xl text-xs font-heading font-bold uppercase transition-all flex items-center space-x-1.5 shadow"
+              >
+                <i className="fa-solid fa-plus"></i>
+                <span>Novo Produto</span>
+              </button>
+              <button
+                onClick={() => setAdminDashboardOpen(false)}
+                className="p-2 text-gray-400 hover:text-white rounded-xl hover:bg-white/10 text-base"
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+
+          {/* ABAS DO PAINEL */}
+          <div className="bg-[#0D1017] px-6 border-b border-gray-800 flex items-center space-x-6 text-xs font-heading font-bold uppercase overflow-x-auto flex-shrink-0">
+            <button
+              onClick={() => setAdminTab('produtos')}
+              className={`py-3.5 border-b-2 transition-colors flex items-center space-x-2 ${adminTab === 'produtos' ? 'border-brand-red text-brand-red' : 'border-transparent text-gray-400 hover:text-white'}`}
+            >
+              <i className="fa-solid fa-boxes-stacked"></i>
+              <span>Gerir Catálogo ({productsList.length})</span>
+            </button>
+
+            <button
+              onClick={() => {
+                setEditingProduct(null);
+                setAdminTab('novo');
+              }}
+              className={`py-3.5 border-b-2 transition-colors flex items-center space-x-2 ${adminTab === 'novo' ? 'border-brand-red text-brand-red' : 'border-transparent text-gray-400 hover:text-white'}`}
+            >
+              <i className="fa-solid fa-pen-to-square"></i>
+              <span>{editingProduct ? 'Editar Artigo' : 'Adicionar Artigo'}</span>
+            </button>
+
+            <button
+              onClick={() => setAdminTab('backup')}
+              className={`py-3.5 border-b-2 transition-colors flex items-center space-x-2 ${adminTab === 'backup' ? 'border-brand-red text-brand-red' : 'border-transparent text-gray-400 hover:text-white'}`}
+            >
+              <i className="fa-solid fa-database"></i>
+              <span>Backup & Restauro</span>
+            </button>
+          </div>
+
+          {/* CONTEÚDO DAS ABAS */}
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+            
+            {/* ABA 1: LISTA DE PRODUTOS */}
+            {adminTab === 'produtos' && (
+              <div className="space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="relative flex-1 max-w-md">
+                    <input
+                      type="text"
+                      placeholder="Pesquisar por nome, SKU ou marca..."
+                      value={adminSearch}
+                      onChange={(e) => setAdminSearch(e.target.value)}
+                      className="w-full pl-10 pr-4 py-2.5 bg-[#121622] border border-gray-700 rounded-xl text-white text-xs placeholder:text-gray-500 focus:border-brand-red"
+                    />
+                    <i className="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                  </div>
+
+                  <span className="text-xs text-gray-400 font-body">
+                    A exibir <strong>{filteredAdminProds.length}</strong> artigos
+                  </span>
+                </div>
+
+                <div className="border border-gray-800 rounded-2xl overflow-hidden bg-[#121622]">
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs font-body">
+                      <thead className="bg-[#1A1E2E] text-gray-300 font-heading uppercase text-[11px] border-b border-gray-800">
+                        <tr>
+                          <th className="p-3">Artigo</th>
+                          <th className="p-3">SKU</th>
+                          <th className="p-3">Depto / Categoria</th>
+                          <th className="p-3">Preço (AKZ)</th>
+                          <th className="p-3 text-right">Ações</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-800/60">
+                        {filteredAdminProds.map(prod => (
+                          <tr key={prod.id} className="hover:bg-white/5 transition-colors">
+                            <td className="p-3 flex items-center space-x-3">
+                              <img src={prod.img} className="w-10 h-10 rounded-lg object-contain bg-white p-1 flex-shrink-0" />
+                              <div className="min-w-0">
+                                <strong className="text-white block truncate max-w-xs">{prod.name}</strong>
+                                <span className="text-[10px] text-gray-400">{prod.brand}</span>
+                              </div>
+                            </td>
+                            <td className="p-3 text-gray-300 font-mono text-[11px]">{prod.sku || '-'}</td>
+                            <td className="p-3">
+                              <span className="px-2 py-0.5 rounded bg-white/10 text-gray-300 text-[10px] uppercase font-semibold">{prod.department}</span>
+                              <span className="text-gray-400 text-[11px] block mt-0.5">{prod.category}</span>
+                            </td>
+                            <td className="p-3 font-bold text-brand-red whitespace-nowrap">{prod.priceStr}</td>
+                            <td className="p-3 text-right space-x-2 whitespace-nowrap">
+                              <button
+                                onClick={() => {
+                                  setEditingProduct({
+                                    ...prod,
+                                    specsText: (prod.specs || []).join('\n')
+                                  });
+                                  setFormProduct({
+                                    ...prod,
+                                    specsText: (prod.specs || []).join('\n')
+                                  });
+                                  setAdminTab('novo');
+                                }}
+                                className="px-2.5 py-1.5 bg-blue-600/30 hover:bg-blue-600 text-blue-300 hover:text-white rounded-lg text-xs font-semibold transition-all"
+                              >
+                                <i className="fa-solid fa-pen mr-1"></i> Editar
+                              </button>
+                              <button
+                                onClick={() => handleDeleteProduct(prod.id, prod.name)}
+                                className="px-2.5 py-1.5 bg-red-600/30 hover:bg-red-600 text-red-300 hover:text-white rounded-lg text-xs font-semibold transition-all"
+                              >
+                                <i className="fa-solid fa-trash mr-1"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* ABA 2: FORMULÁRIO DE ADIÇÃO / EDIÇÃO */}
+            {adminTab === 'novo' && (
+              <form onSubmit={handleSaveProductForm} className="max-w-3xl mx-auto space-y-4 text-xs font-body">
+                <div className="bg-[#121622] p-5 rounded-2xl border border-gray-800 space-y-4">
+                  <h4 className="font-heading font-bold text-sm uppercase text-brand-red flex items-center space-x-2">
+                    <i className="fa-solid fa-box-open"></i>
+                    <span>{editingProduct ? 'Editar Informações do Artigo' : 'Criar Novo Artigo no Catálogo'}</span>
+                  </h4>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-gray-300 font-heading font-bold uppercase text-[11px]">Nome do Produto *</label>
+                      <input
+                        type="text"
+                        required
+                        value={formProduct.name}
+                        onChange={(e) => setFormProduct({ ...formProduct, name: e.target.value })}
+                        placeholder="ex: Portátil HP ProBook 450 G10"
+                        className="w-full p-3 bg-[#0A0C12] border border-gray-700 rounded-xl text-white text-xs focus:border-brand-red"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-gray-300 font-heading font-bold uppercase text-[11px]">Código SKU / MPN</label>
+                      <input
+                        type="text"
+                        value={formProduct.sku}
+                        onChange={(e) => setFormProduct({ ...formProduct, sku: e.target.value })}
+                        placeholder="ex: HP-PB450G10"
+                        className="w-full p-3 bg-[#0A0C12] border border-gray-700 rounded-xl text-white text-xs focus:border-brand-red"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-gray-300 font-heading font-bold uppercase text-[11px]">Departamento *</label>
+                      <select
+                        value={formProduct.department}
+                        onChange={(e) => setFormProduct({ ...formProduct, department: e.target.value })}
+                        className="w-full p-3 bg-[#0A0C12] border border-gray-700 rounded-xl text-white text-xs font-semibold focus:border-brand-red uppercase"
+                      >
+                        <option value="Informatica">Informática & Laptops</option>
+                        <option value="Escritorio">Escritório & Papelaria</option>
+                        <option value="Electrodomesticos">Electrodomésticos & AC</option>
+                        <option value="Smartphones">Smartphones & Tablets</option>
+                        <option value="Energia">Energia & UPS</option>
+                        <option value="ImagemSom">Imagem e Som / Áudio</option>
+                      </select>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-gray-300 font-heading font-bold uppercase text-[11px]">Categoria</label>
+                      <input
+                        type="text"
+                        value={formProduct.category}
+                        onChange={(e) => setFormProduct({ ...formProduct, category: e.target.value })}
+                        placeholder="ex: Portáteis, Impressoras..."
+                        className="w-full p-3 bg-[#0A0C12] border border-gray-700 rounded-xl text-white text-xs focus:border-brand-red"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-gray-300 font-heading font-bold uppercase text-[11px]">Marca *</label>
+                      <input
+                        type="text"
+                        required
+                        value={formProduct.brand}
+                        onChange={(e) => setFormProduct({ ...formProduct, brand: e.target.value })}
+                        placeholder="ex: HP, DELL, APPLE, LG..."
+                        className="w-full p-3 bg-[#0A0C12] border border-gray-700 rounded-xl text-white text-xs focus:border-brand-red"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-gray-300 font-heading font-bold uppercase text-[11px]">Preço em Kwanzas (AKZ) *</label>
+                      <input
+                        type="number"
+                        required
+                        value={formProduct.priceVal}
+                        onChange={(e) => setFormProduct({ ...formProduct, priceVal: Number(e.target.value) })}
+                        placeholder="ex: 950000"
+                        className="w-full p-3 bg-[#0A0C12] border border-gray-700 rounded-xl text-brand-red font-bold text-sm focus:border-brand-red"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-gray-300 font-heading font-bold uppercase text-[11px]">Etiqueta / Badge</label>
+                      <input
+                        type="text"
+                        value={formProduct.badge}
+                        onChange={(e) => setFormProduct({ ...formProduct, badge: e.target.value })}
+                        placeholder="ex: Mais Vendido, Promoção, Novo..."
+                        className="w-full p-3 bg-[#0A0C12] border border-gray-700 rounded-xl text-white text-xs focus:border-brand-red"
+                      />
+                    </div>
+                  </div>
+
+                  {/* CARREGAMENTO DE IMAGEM */}
+                  <div className="space-y-2 border-t border-gray-800 pt-3">
+                    <label className="text-gray-300 font-heading font-bold uppercase text-[11px]">Imagem do Produto (URL ou Ficheiro do Computador)</label>
+                    <div className="flex flex-col sm:flex-row gap-3 items-center">
+                      <input
+                        type="text"
+                        value={formProduct.img}
+                        onChange={(e) => setFormProduct({ ...formProduct, img: e.target.value })}
+                        placeholder="Introduza o link da imagem ou selecione o ficheiro ao lado..."
+                        className="flex-1 w-full p-3 bg-[#0A0C12] border border-gray-700 rounded-xl text-white text-xs focus:border-brand-red"
+                      />
+                      <label className="px-4 py-3 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs font-heading font-bold uppercase cursor-pointer whitespace-nowrap transition-colors border border-gray-700 flex items-center space-x-2">
+                        <i className="fa-solid fa-cloud-arrow-up text-brand-red"></i>
+                        <span>Carregar Foto</span>
+                        <input type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
+                      </label>
+                    </div>
+                    {formProduct.img && (
+                      <div className="flex items-center space-x-3 pt-2">
+                        <span className="text-[11px] text-gray-400">Pré-visualização:</span>
+                        <img src={formProduct.img} className="w-14 h-14 rounded-xl object-contain bg-white p-1 border border-gray-700" />
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="space-y-1 border-t border-gray-800 pt-3">
+                    <label className="text-gray-300 font-heading font-bold uppercase text-[11px]">Subtítulo / Resumo</label>
+                    <input
+                      type="text"
+                      value={formProduct.subtitle}
+                      onChange={(e) => setFormProduct({ ...formProduct, subtitle: e.target.value })}
+                      placeholder="ex: Intel Core i5 · 16GB RAM · 512GB SSD"
+                      className="w-full p-3 bg-[#0A0C12] border border-gray-700 rounded-xl text-white text-xs focus:border-brand-red"
+                    />
+                  </div>
+
+                  <div className="space-y-1">
+                    <label className="text-gray-300 font-heading font-bold uppercase text-[11px]">Especificações Detalhadas (1 por linha)</label>
+                    <textarea
+                      rows="3"
+                      value={formProduct.specsText}
+                      onChange={(e) => setFormProduct({ ...formProduct, specsText: e.target.value })}
+                      placeholder="Linha 1 de especificação&#10;Linha 2 de especificação"
+                      className="w-full p-3 bg-[#0A0C12] border border-gray-700 rounded-xl text-white text-xs focus:border-brand-red"
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-3 pt-2">
+                  <button
+                    type="submit"
+                    className="flex-1 py-3.5 bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-xs rounded-xl shadow glow-red transition-all"
+                  >
+                    Guardar Artigo no Catálogo
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setEditingProduct(null); setAdminTab('produtos'); }}
+                    className="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-gray-300 rounded-xl font-heading font-bold uppercase text-xs transition-colors"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </form>
+            )}
+
+            {/* ABA 3: BACKUP E RESTAURO */}
+            {adminTab === 'backup' && (
+              <div className="max-w-2xl mx-auto space-y-6 text-xs font-body">
+                <div className="bg-[#121622] p-6 rounded-2xl border border-gray-800 space-y-4">
+                  <h4 className="font-heading font-bold text-sm uppercase text-white flex items-center space-x-2">
+                    <i className="fa-solid fa-download text-brand-red"></i>
+                    <span>Exportar Cópia de Segurança do Catálogo</span>
+                  </h4>
+                  <p className="text-gray-400">Descarregue todos os artigos, especificações, preços e fotos num ficheiro JSON seguro.</p>
+                  <button
+                    onClick={exportCatalogJSON}
+                    className="px-6 py-3 bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold uppercase text-xs rounded-xl shadow transition-all flex items-center space-x-2"
+                  >
+                    <i className="fa-solid fa-file-arrow-down"></i>
+                    <span>Descarregar Ficheiro JSON</span>
+                  </button>
+                </div>
+
+                <div className="bg-[#121622] p-6 rounded-2xl border border-gray-800 space-y-4">
+                  <h4 className="font-heading font-bold text-sm uppercase text-amber-400 flex items-center space-x-2">
+                    <i className="fa-solid fa-rotate-left"></i>
+                    <span>Restaurar Catálogo Original de Fábrica</span>
+                  </h4>
+                  <p className="text-gray-400">Reverte todas as edições locais para o catálogo inicial oficial de +75 produtos.</p>
+                  <button
+                    onClick={restoreDefaultCatalog}
+                    className="px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-heading font-bold uppercase text-xs rounded-xl shadow transition-all flex items-center space-x-2"
+                  >
+                    <i className="fa-solid fa-arrows-rotate"></i>
+                    <span>Restaurar Catálogo Padrão</span>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   /* ════ RENDER GERAL ════ */
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFC] font-body" onClick={() => { if (megaMenuOpen) setMegaMenuOpen(false); }}>
@@ -3675,6 +4302,8 @@ function App() {
       <StoresModal />
       <QuoteModal />
       <ProductModal />
+      <AdminAuthModal />
+      <AdminDashboardModal />
 
       {/* WHATSAPP FLOAT BUTTON */}
       <a
