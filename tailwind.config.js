@@ -18,10 +18,11 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Barlow', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        heading: ['Oswald', 'Impact', 'sans-serif'],
-        body: ['Barlow', 'system-ui', 'sans-serif'],
-        display: ['Bebas Neue', 'Impact', 'sans-serif'],
+        sans: ['Poppins', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        heading: ['Poppins', 'sans-serif'],
+        body: ['Poppins', 'sans-serif'],
+        display: ['Poppins', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       }
     },
   },
