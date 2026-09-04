@@ -14,8 +14,9 @@ const MIME = {
 };
 
 const server = http.createServer((req, res) => {
-  let file = req.url === '/' ? 'index.html' : req.url.slice(1);
-  const filePath = path.resolve(file.split('?')[0]);
+  let rawUrl = req.url === '/' ? 'index.html' : req.url.slice(1);
+  let file = decodeURIComponent(rawUrl.split('?')[0]);
+  const filePath = path.resolve(file);
   
   fs.readFile(filePath, (err, data) => {
     if (err) {

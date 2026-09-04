@@ -11,8 +11,8 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({ onOpenQuoteModal }) => {
       {/* BACKGROUND IMAGE WITH LIGHTING OVERLAYS */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=2000&q=90"
-          alt="Angolan Technology and Telecom"
+          src="imagem principal/Gemini_Generated_Image_6xkh606xkh606xkh (2).jpg"
+          alt="Duplas DMP - Tecnologia e Telecomunicações"
           className="w-full h-full object-cover opacity-20 scale-105 transform filter contrast-125 grayscale"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#070A10] via-[#070A10]/95 to-[#070A10]/70"></div>
