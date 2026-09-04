@@ -3139,8 +3139,8 @@ function App() {
       {/* CARROSSEL PRINCIPAL FULL-WIDTH COM AS 3 IMAGENS DE CAPA COMPLETAS (SEM ESCRITA SOBREPOSTA) */}
       <div className="w-full bg-[#07090E] relative overflow-hidden group select-none border-b border-gray-800">
         
-        {/* CONTAINER DOS SLIDES COM ALTURA AMPLIADA E MÁXIMA QUALIDADE */}
-        <div className="relative w-full h-[360px] sm:h-[480px] md:h-[580px] lg:h-[680px] xl:h-[750px] overflow-hidden flex items-center justify-center">
+        {/* CONTAINER DOS SLIDES FULL-WIDTH DE PONTA A PONTA (100% LARGURA E ALTURA COMPLETA) */}
+        <div className="relative w-full h-[400px] sm:h-[520px] md:h-[620px] lg:h-[720px] xl:h-[800px] 2xl:h-[860px] overflow-hidden">
           {HERO_BANNERS.map((banner, index) => {
             const isActive = index === heroSlide;
             return (
@@ -3160,33 +3160,25 @@ function App() {
                     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }
                 }}
-                className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out flex items-center justify-center cursor-pointer ${isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}
+                className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out cursor-pointer ${isActive ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}
                 title="Clique para ver mais detalhes e produtos"
               >
-                {/* FUNDO AMBIENTE COM GRADIENTE SUAVE */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center filter blur-3xl opacity-25 scale-105 pointer-events-none"
-                  style={{ backgroundImage: `url("${banner.img}")` }}
-                ></div>
-
-                {/* IMAGEM PRINCIPAL LIMPA EM ALTA DEFINIÇÃO E SEM ESCRITA OBSTRUINDO */}
-                <div className="relative w-full h-full flex items-center justify-center">
-                  <img
-                    src={banner.img}
-                    alt={banner.alt}
-                    className="w-full h-full object-cover md:object-contain object-center block mx-auto drop-shadow-2xl transition-transform duration-700 hover:scale-[1.01]"
-                    style={{
-                      imageRendering: '-webkit-optimize-contrast',
-                      transform: 'translateZ(0)',
-                      backfaceVisibility: 'hidden'
-                    }}
-                    onError={(e) => {
-                      if (e.target.src.indexOf('imagem_principal.jpg') === -1) {
-                        e.target.src = 'imagem_principal.jpg';
-                      }
-                    }}
-                  />
-                </div>
+                {/* IMAGEM PRINCIPAL DE PONTA A PONTA (SEM BARRAS PRETAS LATERAIS) */}
+                <img
+                  src={banner.img}
+                  alt={banner.alt}
+                  className="w-full h-full object-cover object-center block drop-shadow-2xl transition-transform duration-700 hover:scale-[1.02]"
+                  style={{
+                    imageRendering: '-webkit-optimize-contrast',
+                    transform: 'translateZ(0)',
+                    backfaceVisibility: 'hidden'
+                  }}
+                  onError={(e) => {
+                    if (e.target.src.indexOf('imagem_principal.jpg') === -1) {
+                      e.target.src = 'imagem_principal.jpg';
+                    }
+                  }}
+                />
               </div>
             );
           })}
